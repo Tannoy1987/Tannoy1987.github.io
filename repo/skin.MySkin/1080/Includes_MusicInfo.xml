@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="MusicInfoArtistInfo">
+		<item>
+			<label>$LOCALIZE[21893]:</label>
+			<label2>$INFO[ListItem.Property(Artist_Born)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Artist_Born))</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[21897]:</label>
+			<label2>$INFO[ListItem.Property(Artist_Died)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Artist_Died))</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[21894]:</label>
+			<label2>$INFO[ListItem.Property(Artist_Formed)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Artist_Formed))</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[21896]:</label>
+			<label2>$INFO[ListItem.Property(Artist_Disbanded)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Artist_Disbanded))</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[21898]:</label>
+			<label2>$INFO[ListItem.Property(Artist_YearsActive)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Artist_YearsActive))</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[515]:</label>
+			<label2>$INFO[ListItem.Genre]</label2>
+			<visible>!String.IsEmpty(ListItem.Genre)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[175]:</label>
+			<label2>$INFO[ListItem.Property(Artist_Mood)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Artist_Mood))</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[176]:</label>
+			<label2>$INFO[ListItem.Property(Artist_Style)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Artist_Style))</visible>
+		</item>
+	</include>
+	<include name="MusicInfoAlbumInfo">
+		<item>
+			<label>$LOCALIZE[172]:</label>
+			<label2>$INFO[ListItem.Year]</label2>
+			<visible>!String.IsEmpty(ListItem.Year)</visible>
+		</item>
+		<item>
+			<label>Tracks:</label>
+			<label2>$INFO[Container(50).NumItems]</label2>
+		</item>
+		<item>
+			<label>Runtime:</label>
+			<label2>$INFO[ListItem.Property(album_duration)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Album_Duration))</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[515]:</label>
+			<label2>$INFO[ListItem.Genre]</label2>
+			<visible>!String.IsEmpty(ListItem.Genre)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[176]:</label>
+			<label2>$INFO[ListItem.Property(Album_Style)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Album_Style))</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[175]:</label>
+			<label2>$INFO[ListItem.Property(Album_Mood)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Album_Mood))</visible>
+		</item>
+
+
+		
+
+
+		
+
+	</include>
+	<include name="MusicInfoSongInfo">
+		<item>
+			<label>$LOCALIZE[568]</label>
+			<label2>$INFO[ListItem.LastPlayed]</label2>
+			<visible>!String.IsEmpty(ListItem.LastPlayed)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[558]:</label>
+			<label2>$INFO[ListItem.Album]$INFO[listitem.discnumber, - $LOCALIZE[427] ]</label2>
+			<visible>!String.IsEmpty(ListItem.Album)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[515]:</label>
+			<label2>$INFO[ListItem.Genre]</label2>
+			<visible>!String.IsEmpty(ListItem.Genre)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[175]:</label>
+			<label2>$INFO[ListItem.Mood]</label2>
+			<visible>!String.IsEmpty(ListItem.Mood)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[172]:</label>
+			<label2>$INFO[ListItem.ReleaseDate]</label2>
+			<visible>!String.IsEmpty(ListItem.ReleaseDate)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[38079]:</label>
+			<label2>$INFO[ListItem.OriginalDate]</label2>
+			<visible>!String.IsEmpty(ListItem.OriginalDate) + !String.IsEqual(ListItem.ReleaseDate, ListItem.OriginalDate)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[562]:</label>
+			<label2>$INFO[ListItem.Year]</label2>
+			<visible>!String.IsEmpty(ListItem.Year) + String.IsEmpty(ListItem.ReleaseDate) + String.IsEmpty(ListItem.OriginalDate)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[554]:</label>
+			<label2>$INFO[ListItem.TrackNumber]</label2>
+			<visible>!String.IsEmpty(ListItem.TrackNumber)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[427]:</label>
+			<label2>$INFO[ListItem.DiscNumber]$INFO[ListItem.DiscTitle, - ]</label2>
+			<visible>Integer.IsGreater(ListItem.TotalDiscs,1)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[38080]:</label>
+			<label2>$INFO[ListItem.Bpm]</label2>
+			<visible>!String.IsEmpty(ListItem.Bpm)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[29903]:</label>
+			<label2>$INFO[ListItem.Property(Role.Composer)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Role.Composer))</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[29905]:</label>
+			<label2>$INFO[ListItem.Property(Role.Conductor)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Role.Conductor))</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[38034]:</label>
+			<label2>$INFO[ListItem.Property(Role.Orchestra)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Role.Orchestra))</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[38035]:</label>
+			<label2>$INFO[ListItem.Property(Role.Lyricist)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Role.Lyricist))</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[38036]:</label>
+			<label2>$INFO[ListItem.Property(Role.Remixer)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Role.Remixer))</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[38037]:</label>
+			<label2>$INFO[ListItem.Property(Role.Arranger)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Role.Arranger))</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[38038]:</label>
+			<label2>$INFO[ListItem.Property(Role.Engineer)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Role.Engineer))</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[38039]:</label>
+			<label2>$INFO[ListItem.Property(Role.Producer)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Role.Producer))</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[38040]:</label>
+			<label2>$INFO[ListItem.Property(Role.DJMixer)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Role.DJMixer))</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[38041]:</label>
+			<label2>$INFO[ListItem.Property(Role.Mixer)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Role.Mixer))</visible>
+		</item>
+		<item>
+			<label>FileExtension:</label>
+			<label2>$INFO[ListItem.FileExtension]</label2>
+			<visible>!String.IsEmpty(ListItem.FileExtension)</visible>
+		</item>
+		<item>
+			<label>Samplerate:</label>
+			<label2>$INFO[ListItem.Samplerate, ,kHz]</label2>
+			<visible>!String.IsEmpty(ListItem.Samplerate)</visible>
+		</item>
+		<item>
+			<label>Bitrate:</label>
+			<label2>$INFO[ListItem.BitRate, ,kbps]</label2>
+			<visible>!String.IsEmpty(ListItem.BitRate)</visible>
+		</item>	
+	</include>
+	<variable name="StarRatingAndVotesVar">
+		<value condition="String.IsEmpty(ListItem.RatingAndVotes)">flags/starrating/0.png</value>
+	    <value condition="Integer.IsGreater(ListItem.RatingAndVotes,9)">flags/starrating/10.png</value>
+	    <value condition="Integer.IsGreater(ListItem.RatingAndVotes,8)">flags/starrating/9.png</value>
+	    <value condition="Integer.IsGreater(ListItem.RatingAndVotes,7)">flags/starrating/8.png</value>
+	    <value condition="Integer.IsGreater(ListItem.RatingAndVotes,6)">flags/starrating/7.png</value>
+	    <value condition="Integer.IsGreater(ListItem.RatingAndVotes,5)">flags/starrating/6.png</value>
+	    <value condition="Integer.IsGreater(ListItem.RatingAndVotes,4)">flags/starrating/5.png</value>
+	    <value condition="Integer.IsGreater(ListItem.RatingAndVotes,3)">flags/starrating/4.png</value>
+	    <value condition="Integer.IsGreater(ListItem.RatingAndVotes,2)">flags/starrating/3.png</value>
+	    <value condition="Integer.IsGreater(ListItem.RatingAndVotes,1)">flags/starrating/2.png</value>
+	    <value condition="Integer.IsGreater(ListItem.RatingAndVotes,0)">flags/starrating/1.png</value>
+	</variable>
+	<variable name="StarRatingVar">
+		<value condition="String.IsEmpty(ListItem.UserRating)">flags/starrating/0.png</value>
+	    <value condition="Integer.IsGreater(ListItem.UserRating,9)">flags/starrating/10.png</value>
+	    <value condition="Integer.IsGreater(ListItem.UserRating,8)">flags/starrating/9.png</value>
+	    <value condition="Integer.IsGreater(ListItem.UserRating,7)">flags/starrating/8.png</value>
+	    <value condition="Integer.IsGreater(ListItem.UserRating,6)">flags/starrating/7.png</value>
+	    <value condition="Integer.IsGreater(ListItem.UserRating,5)">flags/starrating/6.png</value>
+	    <value condition="Integer.IsGreater(ListItem.UserRating,4)">flags/starrating/5.png</value>
+	    <value condition="Integer.IsGreater(ListItem.UserRating,3)">flags/starrating/4.png</value>
+	    <value condition="Integer.IsGreater(ListItem.UserRating,2)">flags/starrating/3.png</value>
+	    <value condition="Integer.IsGreater(ListItem.UserRating,1)">flags/starrating/2.png</value>
+	    <value condition="Integer.IsGreater(ListItem.UserRating,0)">flags/starrating/1.png</value>
+	</variable>
+	<variable name="FocusedButtonLabel">
+	    <value condition="Control.HasFocus(7)">Rate</value>
+	    <value condition="Control.HasFocus(8)">$LOCALIZE[208]</value>
+	    <value condition="Control.HasFocus(6)">$LOCALIZE[184]</value>
+	    <value condition="Control.HasFocus(10)">$LOCALIZE[13405]</value>
+	    <value condition="Control.HasFocus(12) + String.IsEqual(ListItem.DBType,song)">View Album</value>
+	    <value condition="Control.HasFocus(12) + String.IsEqual(ListItem.DBType,album)">View Artist</value>
+	    <value condition="Control.HasFocus(120)">Show Fanart</value>
+	</variable> 
+	<variable name="Artist/Album">
+	    <value condition="Container.Content(albums)">$INFO[ListItem.Title]</value>
+	    <value condition="Container.Content(artists)">$INFO[ListItem.Artist]</value>
+	</variable> 
+	<variable name="Artist/AlbumBF">
+	    <value condition="Container.Content(albums)">white</value>
+	    <value condition="Container.Content(artists)">button_focus</value>
+	</variable> 
+	<variable name="Album/Tracklist">
+	    <value condition="Container.Content(artists)">DefaultMusicAlbums.png</value>
+	    <value condition="Container.Content(albums)">DefaultMusicPlaylists.png</value>
+	</variable> 
+</includes>

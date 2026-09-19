@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timers>
+    <timer>
+        <name>dv_logo_timer</name>
+        <start>VideoPlayer.Content + !String.IsEmpty(VideoPlayer.Title)</start>
+        <onstart>SetProperty(ShowDVLogo, true, home)</onstart>
+        <stop>Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(dv_logo_timer), 5)</stop>
+        <onstop>ClearProperty(ShowDVLogo, home)</onstop>
+    </timer>
+</timers>

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol>9000</defaultcontrol>
+		<onload condition="String.IsEmpty(Skin.String(background_overlay))">Skin.SetString(background_overlay,0)</onload>
+	<controls>
+		<include>DefaultBGNSB</include>
+		<control type="image">
+			<description>Dialog Header image</description>
+			<left>10</left>
+			<top>130</top>
+			<right>15</right>
+			<height>3</height>
+			<texture colordiffuse="button_focus" border="2">dialogs/separator-grey.png</texture>
+		</control>
+		<control type="image">
+			<description>Dialog Header image</description>
+			<left>10</left>
+			<bottom>134</bottom>
+			<right>15</right>
+			<height>3</height>
+			<texture colordiffuse="button_focus" border="2">dialogs/separator-grey.png</texture>
+		</control>
+		<control type="group" id="6">
+		    <left>500</left>
+    		<include>OpenClose_Right</include>
+    	<!--Home-->
+    		<control type="grouplist" id="60">
+    		    <top>143</top>
+    		    <left>0</left>
+    		    <right>1000</right>
+    		    <bottom>140</bottom>
+    		    <onleft>9000</onleft>
+    		    <pagecontrol>531</pagecontrol>
+    		    <itemgap>10</itemgap>
+    		    <visible>Container(9000).HasFocus(2)</visible>
+    		    <control type="button" id="61">
+    		        <label> POV</label>
+    		        <label2>$VAR[povlayout]</label2>
+    		        <include>DefaultSettingButton</include>
+    		        <onclick condition="String.IsEqual(Skin.String(home_layout),1)">Skin.SetString(home_layout,2)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(home_layout),2)">Skin.SetString(home_layout,3)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(home_layout),3)">Skin.SetString(home_layout,4)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(home_layout),4)">Skin.SetString(home_layout,5)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(home_layout),5)">Skin.SetString(home_layout,1)</onclick>
+    		    </control>
+    		    <control type="radiobutton" id="62">
+    		        <label>- POV Search</label>
+    		        <selected>Skin.HasSetting(povsearch)</selected>
+    		        <onclick>Skin.ToggleSetting(povsearch)</onclick>
+    		        <visible>String.IsEqual(Skin.String(home_layout),2)</visible>
+    		    </control>
+    		    <control type="button" id="63">
+    		        <label>  TV</label>
+    		        <label2>$VAR[tvlayout]</label2>
+    		        <include>DefaultSettingButton</include>
+    		        <onclick condition="String.IsEqual(Skin.String(tv_layout),1)">Skin.SetString(tv_layout,2)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(tv_layout),2)">Skin.SetString(tv_layout,3)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(tv_layout),3)">Skin.SetString(tv_layout,4)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(tv_layout),4)">Skin.SetString(tv_layout,1)</onclick>
+    		    </control>
+    		    <control type="button" id="64">
+    		        <label>  Addons</label>
+    		        <label2>$VAR[addon_widget_size]</label2>
+    		        <include>DefaultSettingButton</include>
+    		        <onclick condition="String.IsEqual(Skin.String(addon_widget_size),1)">Skin.SetString(addon_widget_size,2)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(addon_widget_size),2)">Skin.SetString(addon_widget_size,3)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(addon_widget_size),3)">Skin.SetString(addon_widget_size,4)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(addon_widget_size),4)">Skin.SetString(addon_widget_size,1)</onclick>
+    		    </control>
+    		    <control type="radiobutton" id="65">
+    		        <label>- Addon Label</label>
+    		        <selected>Skin.HasSetting(HomeAddonLabel)</selected>
+    		        <onclick>Skin.ToggleSetting(HomeAddonLabel)</onclick>
+					<visible>String.IsEqual(Skin.String(addon_widget_size),4)</visible>
+    		    </control>
+    		    <control type="radiobutton" id="66">
+    		        <label>$LOCALIZE[3]</label>
+    		        <selected>!Skin.HasSetting(HomeMenuNoVideosButton)</selected>
+    		        <onclick>Skin.ToggleSetting(HomeMenuNoVideosButton)</onclick>
+    		    </control>
+    		    <control type="radiobutton" id="67">
+    		        <label>$LOCALIZE[2]</label>
+    		        <selected>!Skin.HasSetting(HomeMenuNoMusicButton)</selected>
+    		        <onclick>Skin.ToggleSetting(HomeMenuNoMusicButton)</onclick>
+    		    </control>
+    		    <control type="radiobutton" id="68">
+    		        <label>$LOCALIZE[10134]</label>
+    		        <selected>!Skin.HasSetting(HomeMenuNoFavButton)</selected>
+    		        <onclick>Skin.ToggleSetting(HomeMenuNoFavButton)</onclick>
+    		    </control>
+    		</control>
+    	<!--Home Previews-->
+    		<control type="group">
+    		    <control type="image" id="61000">
+    		        <right>9</right>
+    		        <width>1000</width>
+    		        <top>143</top>
+    		        <height>540</height>
+    		        <aspectratio align="center" aligny="center">keep</aspectratio>
+    		        <texture>special://skin/extras/home-images/Flix.png</texture>
+    		        <visible>Control.HasFocus(61) + String.IsEqual(Skin.String(home_layout),2)</visible>
+    		    </control>
+    		    <control type="image" id="61111">
+    		        <right>9</right>
+    		        <width>1000</width>
+    		        <top>143</top>
+    		        <height>540</height>
+    		        <aspectratio align="center" aligny="center">keep</aspectratio>
+    		        <texture>special://skin/extras/home-images/Rows.png</texture>
+    		        <visible>Control.HasFocus(61) + String.IsEqual(Skin.String(home_layout),3)</visible>
+    		    </control>
+        		<control type="image" id="61112">
+        		    <right>9</right>
+        		    <width>1000</width>
+        		    <top>143</top>
+        		    <height>540</height>
+        		    <aspectratio align="center" aligny="center">keep</aspectratio>
+        		    <texture>special://skin/extras/home-images/List.png</texture>
+        		    <visible>Control.HasFocus(61) + String.IsEqual(Skin.String(home_layout),4)</visible>
+        		</control>
+    		</control>
+    	<!--Visual-->
+    		<control type="grouplist" id="600">
+    		    <top>142</top>
+    		    <left>0</left>
+    		    <right>800</right>
+    		    <bottom>140</bottom>
+    		    <onleft>9000</onleft>
+    		    <pagecontrol>60</pagecontrol>
+    		    <itemgap>10</itemgap>
+    		    <visible>Container(9000).HasFocus(3)</visible>
+    		    <control type="button" id="601">
+    		        <label>$LOCALIZE[31156]</label>
+    		        <label2>$VAR[BackgroundOverlayTypeVar]</label2>
+    		        <include>DefaultSettingButton</include>
+    		        <onclick condition="String.IsEqual(Skin.String(background_overlay),7)">Skin.SetString(background_overlay,0)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(background_overlay),6)">Skin.SetString(background_overlay,7)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(background_overlay),5)">Skin.SetString(background_overlay,6)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(background_overlay),4)">Skin.SetString(background_overlay,5)</onclick>
+            		<onclick condition="String.IsEqual(Skin.String(background_overlay),3)">Skin.SetString(background_overlay,4)</onclick>
+            		<onclick condition="String.IsEqual(Skin.String(background_overlay),2)">Skin.SetString(background_overlay,3)</onclick>
+            		<onclick condition="String.IsEqual(Skin.String(background_overlay),1)">Skin.SetString(background_overlay,2)</onclick>
+            		<onclick condition="String.IsEqual(Skin.String(background_overlay),0)">Skin.SetString(background_overlay,1)</onclick>
+    		    </control>
+    		    <control type="button" id="602">
+    		        <label>Power Menu Layout</label>
+    		        <label2>$VAR[power_menu_layout]</label2>
+    		        <include>DefaultSettingButton</include>
+    		        <onclick condition="String.IsEqual(Skin.String(power_menu_layout),2)">Skin.SetString(power_menu_layout,1)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(power_menu_layout),3)">Skin.SetString(power_menu_layout,2)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(power_menu_layout),1)">Skin.SetString(power_menu_layout,3)</onclick>
+    		    </control>
+    		    <control type="radiobutton" id="603">
+    		        <label>Animation Slide</label>
+    		    </control>
+    		    <control type="label" id="604">
+            		<height>70</height>
+            		<label>Music</label>
+            		<font>font16</font>
+            		<align>center</align>
+            		<aligny>center</aligny>
+    		    </control>
+    		    <control type="radiobutton" id="605">
+    		        <label>Focused Albums Are Discs</label>
+    		        <selected>Skin.HasSetting(cd)</selected>
+    		        <onclick>Skin.ToggleSetting(cd)</onclick>
+    		    </control>
+    		</control>
+    	<!--osd-->
+    		<control type="grouplist" id="6000">
+    		    <top>143</top>
+    		    <left>0</left>
+    		    <right>100</right>
+    		    <bottom>140</bottom>
+    		    <onleft>9000</onleft>
+    		    <pagecontrol>60</pagecontrol>
+    		    <itemgap>10</itemgap>
+    		    <visible>Container(9000).HasFocus(4)</visible>
+    		    <control type="radiobutton" id="6001">
+    		        <label>$LOCALIZE[31172]</label>
+    		        <selected>Skin.HasSetting(OSDAutoClose)</selected>
+    		        <onclick>Skin.ToggleSetting(OSDAutoClose)</onclick>
+    		    </control>
+    		    <control type="button" id="6002">
+    		        <label>- $LOCALIZE[31173]</label>
+    		        <label2>$VAR[SkinSettingOSDAutoCloseTime]</label2>
+    		        <onclick>Skin.SetNumeric(OSDAutoCloseTime)</onclick>
+    		        <enable>Skin.HasSetting(OSDAutoClose)</enable>
+    		    </control>
+    		    <control type="button" id="6003">
+    		        <label>  Media Header</label>
+    		        <label2>$VAR[osd_clearlogo]</label2>
+    		        <include>DefaultSettingButton</include>
+    		        <onclick condition="String.IsEqual(Skin.String(osd_clearlogo),1)">Skin.SetString(osd_clearlogo,2)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(osd_clearlogo),2)">Skin.SetString(osd_clearlogo,3)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(osd_clearlogo),3)">Skin.SetString(osd_clearlogo,1)</onclick>
+    		    </control>
+    		    <control type="radiobutton" id="6004">
+    		        <label>DV / HDR Flags</label>
+    		        <selected>Skin.HasSetting(DV/HDRflags)</selected>
+    		        <onclick>Skin.ToggleSetting(DV/HDRflags)</onclick>
+    		    </control>
+    		    <control type="radiobutton" id="6005">
+    		        <label>Info Label</label>
+    		        <selected>Skin.HasSetting(noinfo)</selected>
+    		        <onclick>Skin.ToggleSetting(noinfo)</onclick>
+    		    </control>
+    		    <control type="button" id="6006">
+    		        <label>  Player Process Info</label>
+    		        <label2>$VAR[ppilayout]</label2>
+    		        <include>DefaultSettingButton</include>
+    		        <onclick condition="String.IsEqual(Skin.String(ppi_layout),1)">Skin.SetString(ppi_layout,2)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(ppi_layout),2)">Skin.SetString(ppi_layout,3)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(ppi_layout),3)">Skin.SetString(ppi_layout,4)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(ppi_layout),4)">Skin.SetString(ppi_layout,5)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(ppi_layout),5)">Skin.SetString(ppi_layout,1)</onclick>
+    		    </control>
+    		    <control type="button" id="6007">
+    		        <label>  Player Info</label>
+    		        <label2>$VAR[osd_info_layout]</label2>
+    		        <include>DefaultSettingButton</include>
+    		        <onclick condition="String.IsEqual(Skin.String(osd_info_layout),1)">Skin.SetString(osd_info_layout,2)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(osd_info_layout),2)">Skin.SetString(osd_info_layout,3)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(osd_info_layout),3)">Skin.SetString(osd_info_layout,1)</onclick>
+    		    </control>
+    		    <control type="button" id="6008">
+    		        <label>  - Mediaflags Size</label>
+    		        <label2>$VAR[mediaflags_layout]</label2>
+    		        <include>DefaultSettingButton</include>
+    		        <visible>String.IsEqual(Skin.String(osd_info_layout),2) | String.IsEqual(Skin.String(osd_info_layout),3)</visible>
+    		        <onclick condition="String.IsEqual(Skin.String(mediaflags_layout),1)">Skin.SetString(mediaflags_layout,2)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(mediaflags_layout),2)">Skin.SetString(mediaflags_layout,3)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(mediaflags_layout),3)">Skin.SetString(mediaflags_layout,1)</onclick>
+    		    </control>
+    		    <control type="button" id="6009">
+    		        <label>  Background</label>
+    		        <label2>$VAR[osd_background]</label2>
+    		        <include>DefaultSettingButton</include>
+				    <onclick condition="String.IsEqual(Skin.String(osd_background),1)">Skin.SetString(osd_background,2)</onclick>
+				    <onclick condition="String.IsEqual(Skin.String(osd_background),2)">Skin.SetString(osd_background,1)</onclick>
+				</control>
+				<control type="radiobutton" id="6010">
+				    <label>CRT</label>
+				    <selected>Skin.HasSetting(crtvideos)</selected>
+				    <onclick>Skin.ToggleSetting(crtvideos)</onclick>
+				</control>
+			</control>
+			<control type="image">
+			    <description>Dialog Header image</description>
+			    <left>10</left>
+			    <top>130</top>
+			    <right>15</right>
+			    <height>3</height>
+			    <texture colordiffuse="button_focus" border="2">dialogs/separator-grey.png</texture>
+			</control>
+			<control type="image">
+			    <description>Dialog Header image</description>
+			    <left>10</left>
+			    <bottom>134</bottom>
+			    <right>15</right>
+			    <height>3</height>
+			    <texture colordiffuse="button_focus" border="2">dialogs/separator-grey.png</texture>
+			</control>
+		</control>
+		<control type="group">
+			<top>115</top>
+			<bottom>120</bottom>
+			<left>0</left>
+			<width>499</width>
+			<include>OpenClose_Left</include>
+			<control type="list" id="9000">
+				<description>button area</description>
+				<left>100</left>
+				<top>22</top>
+				<right>5</right>
+				<height>700</height>
+				<onright>6</onright>
+				<itemlayout height="70">
+					<include>backbox</include>
+					<include>DefaultNoFocus</include>
+				</itemlayout>
+				<focusedlayout height="70">
+					<include>DefaultFocus</include>
+				</focusedlayout>
+				<content>
+					<item id="2">
+						<label>Home Menu Items</label>
+						<onclick>noop</onclick>
+					</item>
+					<item id="3">
+						<label>Visual Settings</label>
+						<onclick>noop</onclick>
+					</item>
+					<item id="4">
+						<label>$LOCALIZE[31170]</label>
+						<onclick>noop</onclick>
+					</item>
+				</content>
+			</control>
+		</control>
+		<control type="textbox" id="6">
+			<include>OpenClose_Right</include>
+			<description>description area</description>
+			<left>50</left>
+			<bottom>20</bottom>
+			<right>50</right>
+			<height>100</height>
+			<font>font13</font>
+			<align>center</align>
+			<aligny>center</aligny>
+			<textcolor>button_focus</textcolor>
+			<label>$VAR[SkinSettingsHelpTextVar]</label>
+			<autoscroll time="3000" delay="5000" repeat="5000">true</autoscroll>
+		</control>
+	</controls>
+</window>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="General Settings">
+        <setting label="Account" type="lsep" />
+        <setting id="api_key" label="API Key" type="text" default="" />
+        
+        <setting label="Cache" type="lsep" />
+        <setting id="cache_enabled" label="Enable Cache" type="bool" default="true" />
+        <setting id="cache_expiry_unlimited" label="Never Expire Cache" type="bool" default="false" enable="eq(-1,true)" />
+        <setting id="cache_expiry" label="Cache Expiry (Minutes)" type="number" default="60" enable="eq(-2,true) + !eq(-1,true)" />
+        <setting id="clear_cache" label="Clear Cache" type="action" action="RunPlugin(plugin://plugin.video.filester/?action=clear_cache)" enable="eq(-3,true)" />
+        <setting id="folder_thumb_overrides" type="text" default="" visible="false" />
+        
+        <setting label="Display" type="lsep" />
+        <setting id="default_view" label="Default View Mode ID" type="number" default="640" />
+        
+        <setting label="Folder Options" type="lsep" />
+        <setting id="show_new_folder_item" label="Show 'New Folder' Item in Lists                          (Requires Restart)" type="bool" default="false" />
+        
+        <setting label="Reset Settings" type="action" action="RunPlugin(plugin://plugin.video.filester/?mode=reset_settings)" />
+    </category>
+</settings>

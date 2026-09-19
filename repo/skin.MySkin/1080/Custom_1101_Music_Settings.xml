@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window type="dialog" id="1101">
+	<defaultcontrol always="true">11000</defaultcontrol>
+	<include>DA</include>
+	<onunload>ClearProperty(settingsdialog_header,Home)</onunload>
+	<onunload>ClearProperty(settingsdialog_content,Home)</onunload>
+	<controls>
+		<control type="group">
+			<right>5</right>
+			<top>538</top>
+			<width>530</width>
+			<height>425</height>
+			<animation effect="fade" time="200">VisibleChange</animation>
+    	    <control type="image">
+				<bordersize>10</bordersize>
+                <texture diffuse="diffuse/square.png">colors/black.png</texture> 
+            </control>
+			<control type="grouplist" id="11000">
+				<left>20</left>
+				<right>20</right>
+				<top>20</top>
+				<itemgap>10</itemgap>
+				<onup>11000</onup>
+				<ondown>11000</ondown>
+				<orientation>vertical</orientation>
+				<control type="radiobutton" id="22101">
+					<height>55</height>
+					<label>$LOCALIZE[31163]</label>
+					<onclick>Skin.ToggleSetting(hide_background_fanart)</onclick>
+					<selected>!Skin.HasSetting(hide_background_fanart)</selected>
+				</control>
+				<control type="radiobutton" id="22102">
+					<height>56</height>
+					<label>$LOCALIZE[31167]</label>
+					<onclick>Skin.ToggleSetting(animate_background_fanart)</onclick>
+					<selected>Skin.HasSetting(animate_background_fanart)</selected>
+				</control>
+				<control type="button" id="22103">
+					<height>56</height>
+					<label>$LOCALIZE[250]</label>
+					<label2>[B]$INFO[Visualisation.Name][/B]</label2>	
+					<onclick>SendClick(500)</onclick>
+				</control>
+				<control type="button" id="22104">
+					<height>56</height>
+					<label>$LOCALIZE[31084]</label>
+					<onclick>Addon.Default.OpenSettings(xbmc.player.musicviz)</onclick>
+				</control>
+				<control type="button" id="22105">
+					<height>56</height>
+					<label>$LOCALIZE[31068]</label>
+					<onclick>ActivateWindow(visualisationpresetlist)</onclick>
+					<visible>Visualisation.HasPresets</visible>
+				</control>
+				<control type="button" id="22106">
+					<height>56</height>
+					<label>$LOCALIZE[31082]</label>
+					<label2>[B]$INFO[Skin.String(LyricScript_Path)][/B]</label2>
+					<onclick>Skin.SetAddon(LyricScript_Path,xbmc.python.lyrics)</onclick>
+				</control>
+				<control type="button" id="22107">
+					<height>56</height>
+					<label>$LOCALIZE[31083]</label>
+					<onclick>Addon.OpenSettings($INFO[Skin.String(LyricScript_Path)])</onclick>
+					<visible>!String.IsEmpty(Skin.String(LyricScript_Path))</visible>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>

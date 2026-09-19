@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="skin.MySkin" version="0.3.5" name="MySkin" provider-name="Tannoy">
+	<requires>
+		<import addon="xbmc.gui" version="5.17.0"/>
+		<import addon="xbmc.python" version="3.0.0"/>
+		<import addon="script.playalbum" version="4.0.2" />
+	</requires>
+	<extension point="xbmc.gui.skin" debugging="false">
+		<res width="1920" height="1080" aspect="16:9" default="true" folder="1080" />
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<license>CC BY-SA 4.0, GNU GENERAL PUBLIC LICENSE Version 2.0</license>
+		<assets>
+			<icon>resources/icon.png</icon>
+			<fanart>resources/fanart.jpg</fanart>
+			<screenshot>resources/screenshot-01.jpg</screenshot>
+			<screenshot>resources/screenshot-02.jpg</screenshot>
+			<screenshot>resources/screenshot-03.jpg</screenshot>
+			<screenshot>resources/screenshot-04.jpg</screenshot>
+			<screenshot>resources/screenshot-05.jpg</screenshot>
+			<screenshot>resources/screenshot-06.jpg</screenshot>
+			<screenshot>resources/screenshot-07.jpg</screenshot>
+			<screenshot>resources/screenshot-08.jpg</screenshot>
+		</assets>
+		<summary lang="en_GB">MySkin — a custom Kodi skin by Tannoy</summary>
+		<description lang="en_GB">A custom Kodi skin with a modern look.</description>
+		<disclaimer lang="en_GB"></disclaimer>
+	</extension>
+</addon>

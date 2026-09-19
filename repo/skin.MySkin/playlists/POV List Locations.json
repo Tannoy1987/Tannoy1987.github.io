@@ -1,0 +1,78 @@
+
+
+
+        "Next Episodes"
+
+            "plugin://plugin.video.pov/?name=32483&iconImage=next_episodes.png&mode=build_next_episode"
+
+
+        "In Progress Movies"
+
+            "plugin://plugin.video.pov/?name=32476&iconImage=player.png&mode=build_movie_list&action=in_progress_movies"
+
+
+
+        "Trending TV Shows"
+
+            "plugin://plugin.video.pov/?name=32458&iconImage=trending.png&mode=build_tvshow_list&action=trakt_tv_trending"
+
+
+        "Trending Movies"
+            
+            "plugin://plugin.video.pov/?name=32458&iconImage=trending.png&mode=build_movie_list&action=trakt_movies_trending"
+
+
+
+        "WATCHLIST:TV Shows"
+
+            "plugin://plugin.video.pov/?mode=build_tvshow_list&action=trakt_watchlist&name=TV+Shows&iconImage=special%3A%2F%2Fhome%2Faddons%2Fplugin.video.pov%2Fresources%2Fskins%2FDefault%2Fmedia%2Ftrakt.png"
+  
+        "WATCHLIST:Movies"
+
+            "plugin://plugin.video.pov/?mode=build_movie_list&action=trakt_watchlist&name=Movies&iconImage=special%3A%2F%2Fhome%2Faddons%2Fplugin.video.pov%2Fresources%2Fskins%2FDefault%2Fmedia%2Ftrakt.png"
+
+
+
+        "RECOMMENDED:TV Shows"
+        
+            "plugin://plugin.video.pov/?mode=build_tvshow_list&action=trakt_recommendations&name=TV+Shows&iconImage=special%3A%2F%2Fhome%2Faddons%2Fplugin.video.pov%2Fresources%2Fskins%2FDefault%2Fmedia%2Ftrakt.png"
+
+        "RECOMMENDED:Movies"
+
+            "plugin://plugin.video.pov/?mode=build_movie_list&action=trakt_recommendations&name=Movies&iconImage=special%3A%2F%2Fhome%2Faddons%2Fplugin.video.pov%2Fresources%2Fskins%2FDefault%2Fmedia%2Ftrakt.png"
+
+
+        
+        "Because You Watched...TV Shows"
+        
+            "plugin://plugin.video.pov/?name=32474&iconImage=because_you_watched.png&mode=navigator.because_you_watched&menu_type=tvshow"
+   
+        "Because You Watched...Movies"
+        
+            "plugin://plugin.video.fenlight/?name=Because+You+Watched...&iconImage=because_you_watched&mode=navigator.because_you_watched&menu_type=movie"
+            
+
+        
+        "TRAKT:Trending User Lists"
+        
+            "plugin://plugin.video.pov/?mode=build_trakt_list.get_trakt_trending_popular_lists&list_type=trending&name=Trending+User+Lists&iconImage=special%3A%2F%2Fhome%2Faddons%2Fplugin.video.pov%2Fresources%2Fskins%2FDefault%2Fmedia%2Ftrakt.png"
+        
+        
+        
+        "SEARCH:TV Shows"
+
+            "plugin://plugin.video.pov/?mode=search_history&action=tvshow&name=TV+Shows&iconImage=special%3A%2F%2Fhome%2Faddons%2Fplugin.video.pov%2Fresources%2Fskins%2FDefault%2Fmedia%2Fsearch_tv.png"
+
+        "SEARCH:Movies"
+
+            "plugin://plugin.video.pov/?mode=search_history&action=movie&name=Movies&iconImage=special%3A%2F%2Fhome%2Faddons%2Fplugin.video.pov%2Fresources%2Fskins%2FDefault%2Fmedia%2Fsearch_movie.png"
+
+
+        
+        "SEARCH:People"
+          
+            "plugin://plugin.video.pov/?mode=search_history&action=people&name=People&iconImage=special%3A%2F%2Fhome%2Faddons%2Fplugin.video.pov%2Fresources%2Fskins%2FDefault%2Fmedia%2Fsearch_people.png"
+    
+        
+        
+        

@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="View_List">
+        <include>list50</include>  
+        <include>infopanel50</include>
+        <include>View_Files</include>
+    </include>
+    <include name="list50">
+        <definition>
+            <control type="group"> 
+                <control type="group">
+                    <include>R 2/3 Panel</include>
+                    <visible>Container.Content() + Control.HasFocus(50)</visible>
+                    <include>bg</include>
+                    <control type="image" id="1111">
+                        <texture>$INFO[ListItem.Icon]</texture>
+                        <aspectratio>keep</aspectratio>
+                        <bordersize>300</bordersize>
+                    </control>
+                </control>  
+                <control type="group">
+                    <include>R 1/3 Panel</include>
+                        <visible>[Container.Content() + Control.HasFocus(55)] + !Window.IsActive(addonbrowser)</visible>
+                        <include>bg</include>
+                    <control type="image" id="1112">
+                        <texture>$INFO[ListItem.Icon]</texture>
+                        <aspectratio>keep</aspectratio>
+                        <bordersize>30</bordersize>
+                    </control>
+                </control>  
+                <include>DefaultList</include>             
+            </control>
+        </definition>
+    </include>
+    <include name="infopanel50">
+        <control type="group">
+            <visible>![Container.Content(files) | Container.Content(videos)]</visible>
+            <visible>Control.IsVisible(50) | ![Control.HasFocus(531) | Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(55) | Control.IsVisible(640) | Control.IsVisible(840)]</visible>
+            <include>R 2/3 Panel</include>
+            <control type="group">
+                <include content="bg">
+                    <param name="vis" value="Control.HasFocus(50)" />
+                </include>   
+                <control type="image">
+                     <visible>!String.IsEmpty(ListItem.Plot)</visible>
+					<right>0</right>
+					<bottom>10</bottom>
+					<left>0</left>
+					<height>276</height>
+					<texture border="5">boxes/inner.png</texture>
+				</control>
+                <control type="textbox">
+                    <right>10</right>
+					<left>10</left>
+                    <height>270</height>
+                    <bottom>12</bottom>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <autoscroll time="3000" delay="5000" repeat="10000">true</autoscroll>
+                    <label>$INFO[ListItem.Plot]</label>
+                    <visible>String.IsEmpty(ListItem.VideoResolution) | String.IsEmpty(ListItem.AudioCodec) | String.IsEmpty(ListItem.AudioChannels)</visible>
+                    <shadowcolor>black</shadowcolor>
+                </control>
+                <control type="textbox">
+                    <width>97%</width>
+                    <left>1.5%</left>
+                    <height>194</height>
+                    <bottom>8.5%</bottom>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <autoscroll time="3000" delay="5000" repeat="10000">true</autoscroll>
+                    <label>$INFO[ListItem.Plot]</label>
+                    <visible>![String.IsEmpty(ListItem.VideoResolution) | String.IsEmpty(ListItem.AudioCodec) | String.IsEmpty(ListItem.AudioChannels)]</visible>
+                    <shadowcolor>black</shadowcolor>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Window.IsActive(tvchannels)</visible>                
+                <control type="image">
+                    <texture>$INFO[ListItem.Icon]</texture>
+                    <left>108</left>
+                    <right>108</right>
+                    <top>108</top>   
+                    <bottom>400</bottom>                 
+                    <aspectratio>keep</aspectratio>
+                    <animation effect="slide" end="0,138" time="0" condition="String.IsEmpty(ListItem.Plot)">conditional</animation>
+                </control>
+            </control>
+            <control type="group">
+                <top>0</top>
+                <visible>![Container.Content() | Container.Content(addons)]</visible>
+                <include>logofanart</include>
+                <control type="image">
+                    <texture>$INFO[ListItem.Art(thumb)]</texture>
+                    <left>0</left>
+                    <right>0</right>
+                    <aspectratio>scale</aspectratio>
+                    <top>48</top>
+                    <bottom>293</bottom>
+                    <visible>Container.Content(episodes)</visible>
+                </control>
+                <control type="image">
+                    <texture>$INFO[ListItem.Art(thumb)]</texture>
+                    <left>0</left>
+                    <right>0</right>
+                    <top>4</top>                    
+                    <aspectratio>keep</aspectratio>
+                    <visible>Window.IsActive(pictures)</visible>
+                </control>               
+            </control>
+            <control type="group">
+                <visible>!Window.IsActive(pictures)</visible>
+                <include content="MediaFlagsTR">
+		        	<param name="groupid" value="510"/>
+		        	<param name="greater" value="51"/>
+		        	<param name="top" value="7"/>
+		        	<param name="right" value="7"/>
+		        	<param name="width" value="1280"/>
+		        </include>
+                <control type="group">
+                    <bottom>16</bottom>
+                    <include>mediaflags</include>
+                </control>  
+            </control>
+        </control>
+        <control type="group">
+            <visible>![Container.Content(files) | Container.Content(videos) | Window.IsActive(tvchannels)]</visible>
+            <visible>Control.IsVisible(55) | ![Control.HasFocus(531) | Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(640) | Control.IsVisible(840)]</visible>
+            <include>R 1/3 Panel</include>
+            <control type="group">
+                <include>bg</include>
+                <visible>!String.IsEmpty(ListItem.Plot)</visible>
+                 <control type="image">
+					<right>0</right>
+					<bottom>10</bottom>
+					<left>0</left>
+					<height>633</height>
+					<texture border="5">boxes/inner.png</texture>
+				</control>
+                <control type="textbox">
+                    <right>10</right>
+					<left>10</left>
+                    <height>620</height>
+                    <bottom>18</bottom>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <autoscroll time="3000" delay="5000" repeat="10000">true</autoscroll>
+                    <label>$INFO[ListItem.Plot]</label>
+                    <visible>String.IsEmpty(ListItem.VideoResolution) | String.IsEmpty(ListItem.AudioCodec) | String.IsEmpty(ListItem.AudioChannels)</visible>
+                    <shadowcolor>black</shadowcolor>
+                </control>
+                <control type="textbox">
+                    <width>97%</width>
+                    <left>1.5%</left>
+                    <height>555</height>
+                    <bottom>8%</bottom>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <autoscroll time="3000" delay="5000" repeat="10000">true</autoscroll>
+                    <label>$INFO[ListItem.Plot]</label>
+                    <visible>![String.IsEmpty(ListItem.VideoResolution) | String.IsEmpty(ListItem.AudioCodec) | String.IsEmpty(ListItem.AudioChannels)]</visible>
+                    <shadowcolor>black</shadowcolor>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Window.IsActive(tvchannels)</visible>                
+                <control type="image">
+                    <texture>$INFO[ListItem.Icon]</texture>
+                    <left>108</left>
+                    <right>108</right>
+                    <top>108</top>   
+                    <bottom>400</bottom>                 
+                    <aspectratio>keep</aspectratio>
+                </control>
+            </control>
+            <control type="group">
+                <top>0</top>
+                <visible>![Container.Content() | Container.Content(addons)]</visible>
+                <include content="logofanart">
+                    <param name="top" value="50" />
+                    <param name="bottom" value="650" />
+                    <param name="left" value="0" />
+                    <param name="otop" value="50" />
+                    <param name="oleft" value="0" />
+                    <param name="owidth" value="600" />
+                    <param name="oheight" value="353" />
+                    <param name="lbottom" value="660" />
+                </include>
+                <control type="image">
+                    <texture>$INFO[ListItem.Art(thumb)]</texture>
+                    <left>0</left>
+                    <right>0</right>
+                    <aspectratio>keep</aspectratio>
+                    <top>48</top>
+                    <bottom>650</bottom>
+                    <visible>Container.Content(episodes)</visible>
+                </control>
+                <control type="image">
+                    <texture>$INFO[ListItem.Art(thumb)]</texture>
+                    <left>0</left>
+                    <right>0</right>
+                    <top>4</top>                    
+                    <aspectratio>keep</aspectratio>
+                    <visible>Window.IsActive(pictures)</visible>
+                </control>               
+            </control>
+            <control type="group">
+                <visible>!Window.IsActive(pictures)</visible>
+                <include content="MediaFlagsTR">
+		        	<param name="groupid" value="510"/>
+		        	<param name="greater" value="51"/>
+		        	<param name="top" value="7"/>
+		        	<param name="right" value="30"/>
+		        	<param name="width" value="1280"/>
+		        </include>
+                <control type="group">
+                    <bottom>16</bottom>
+
+                    <include>mediaflags</include>
+                </control>  
+            </control>
+        </control>
+    </include> 
+<!--favourites | files | videos | images | none-->    
+    <include name="View_Files">
+        <control type="group">
+            <visible>[Control.IsVisible(50) | Control.IsVisible(55)] + [Container.Content(favourites) | Container.Content(files) | Container.Content(videos) | Container.Content(images) | Container.Content(none)] + ![Container.Content(music)]</visible>
+            <include>FullScreen</include>
+            <control type="group">
+                <include>R 1/3 Panel</include>
+                <include>bg</include>
+                <!-- <control type="grouplist">    
+                    <top>840</top>
+                    <left>10</left>     
+                    <itemgap>-100</itemgap>    
+                    <control type="label">
+                        <left>10</left>
+                        <top>10</top>
+                        <width>600</width>
+	                    <visible>!String.IsEmpty(ListItem.Duration)</visible>
+                        <textcolor>white</textcolor>
+                        <align>center</align>
+                        <height>100</height>
+                        <label>[COLOR button_focus]Runtime : [/COLOR]$INFO[ListItem.Duration]</label>
+                    </control>
+                    <control type="label">
+                        <left>10</left>
+                        <top>10</top>
+                        <width>600</width>
+                        <visible>Integer.IsGreater(ListItem.Size,0)</visible>
+                        <textcolor>white</textcolor>
+                        <align>center</align>
+                        <height>100</height>
+                        <label>[CR][COLOR button_focus]Size : [/COLOR]$INFO[ListItem.Size]</label>
+                    </control>
+                </control>    -->
+                <control type="image" id="32112">
+                    <height>50%</height>
+                    <left>0</left>
+                    <right>0</right>
+                    <aspectratio>keep</aspectratio>
+                    <texture fallback="DefaultNoPreview.png">$VAR[ShiftThumbVar]</texture>
+                    <animation effect="slide" end="160,0" time="0" condition="Container.Content(images) | Container.Content(none)">conditional</animation>
+                    <animation effect="zoom" start="100" end="50" time="0" condition="Container.Content(images) | Container.Content(none)">conditional</animation>
+                    <visible>!Container.Content(favourites)</visible>
+                </control>
+                <control type="image" id="32113">
+                    <aspectratio>keep</aspectratio>
+                    <texture fallback="DefaultNoPreview.png">$VAR[ShiftThumbVar]</texture>
+                    <visible>Container.Content(favourites)</visible>
+                </control>
+                <control type="group">
+                    <top>50%</top>
+                    <bottom>0</bottom>
+                    <control type="textbox">
+                        <left>30</left>
+                        <top>30</top>
+                        <bottom>30</bottom>
+                        <right>30</right>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <autoscroll time="3000" delay="5000" repeat="10000">true</autoscroll>
+                        <label>$INFO[ListItem.Tagline,[I],[/I][CR][CR]]$INFO[ListItem.Plot][CR][CR]</label>
+                        <shadowcolor>black</shadowcolor>
+                    </control>
+                </control>
+                <control type="group">
+                    <bottom>2%</bottom>
+                    <include>mediaflags</include>
+                </control>         
+            </control>
+        </control>
+    </include>   
+    <include name="DefaultList">
+		<definition> 
+            <control type="list" id="50">  
+                <viewtype label="List (50)">Panel</viewtype>              
+                <width>100%</width>
+                <left>8</left>
+                <top>8</top>
+                <bottom>8</bottom>
+                <scrolltime tween="sine">150</scrolltime>
+                <orientation>vertical</orientation>
+                <pagecontrol>531</pagecontrol>
+                <movement>6</movement>
+                <focusposition>2</focusposition>
+                <onleft>9000</onleft>
+                <onright>531</onright>
+                <onup>50</onup>
+                <ondown>50</ondown>
+                <visible>![Container.Content(favourites) | Container.Content(files) | Container.Content(videos) | Container.Content(none)]</visible>
+		        <focusedlayout height="81.8" width="634">
+		        	<include>DefaultFocus</include>		
+		        </focusedlayout>
+		        <itemlayout height="81.8" width="634">
+		        	<include>DefaultNoFocus</include>	
+		        </itemlayout>
+            </control>
+            <control type="list" id="55">  
+                <viewtype label="WideList (55)">Panel</viewtype>              
+                <width>100%</width>
+                <left>8</left>
+                <top>8</top>
+                <bottom>8</bottom>
+                <scrolltime tween="sine">150</scrolltime>
+                <orientation>vertical</orientation>
+                <pagecontrol>531</pagecontrol>
+                <movement>6</movement>
+                <focusposition>2</focusposition>
+                <onleft>9000</onleft>
+                <onright>531</onright>
+                <onup>55</onup>
+                <ondown>55</ondown>
+		        <focusedlayout height="81.8" width="1270">
+                     <control type="group">
+		        	<include>DefaultFocus</include>	
+                </control>	
+		        </focusedlayout>
+		        <itemlayout height="81.8" width="1270">
+		        	<include>DefaultNoFocus</include>	
+		        </itemlayout>
+            </control>
+        </definition>
+    </include>
+     <include name="PVRList">
+        <control type="group">
+            <left>0</left>
+            <top>0</top>
+            <width>100%</width>
+            <bottom>0</bottom>
+                <control type="list" id="65"><!--groups-->  
+                <animation type="conditional" condition="!Control.HasFocus(65)">
+                    <effect type="slide" start="0" end="-644" time="400" tween="cubic" easing="out" />
+                </animation>
+                <width>33.5%</width>
+                <left>1</left>
+                <top>1</top> 	
+                <height>1080</height>							   
+                <focusposition>0</focusposition>
+                <onleft>50</onleft>
+                <onright>66</onright>
+                <onup>65</onup>
+                <ondown>65</ondown>
+                <onback>50</onback>
+                <orientation>vertical</orientation>
+                <scrolltime>200</scrolltime>
+                <itemlayout height="57.1">
+                    <include>backbox</include>					
+                    <control type="label">
+                        <left>35</left>
+                        <right>40</right>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Label]</label>
+                        <textcolor>white</textcolor>
+                    </control>
+                </itemlayout>
+                <focusedlayout height="57.1">      <!--focuschannel groupbackground-->
+                    <include>focusbox</include>
+                    <control type="label">
+                        <left>35</left>
+                        <aligny>center</aligny>
+                        <scroll>true</scroll>
+                        <label>$INFO[ListItem.Label]</label>
+                         <textcolor>black</textcolor>
+                    </control>
+                </focusedlayout>
+                <content target="tvchannels" browse="auto" sortorder="descending">pvr://channels/tv/</content>
+            </control>
+            <control type="list" id="66"><!--lastplayed-->  
+                <animation type="conditional" condition="!Control.HasFocus(66)">
+                    <effect type="slide" start="0" end="-644" time="400" tween="cubic" easing="out" />
+                </animation>
+                <width>33.5%</width>
+                <left>1</left>
+                <top>1</top> 	
+                <height>1080</height>							   
+                <focusposition>0</focusposition>
+                <onleft>65</onleft>
+                <onright>531</onright>
+                <onup>66</onup>
+                <ondown>66</ondown>
+                <onback>50</onback>
+                <orientation>vertical</orientation>
+                <scrolltime>200</scrolltime>	
+                <itemlayout height="51.25">
+                    	 <include>backbox</include>						
+                    <control type="label">
+                        <left>35</left>
+                        <right>40</right>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Label]</label>
+                        <textcolor>white</textcolor>
+                    </control>
+                </itemlayout>
+                <focusedlayout height="51.25">      <!--focuschannel groupbackground-->
+ <include>focusbox</include>
+                    <control type="label">
+                        <left>35</left>
+                        <aligny>center</aligny>
+                        <scroll>true</scroll>
+                        <label>$INFO[ListItem.Label]</label>
+                        <textcolor>black</textcolor>
+                    </control>
+                </focusedlayout>
+                <content target="tvchannels" browse="auto" sortby="lastplayed" sortorder="descending">pvr://channels/tv/*?view=lastplayed</content>
+            </control>
+        </control>  
+    </include>
+</includes>

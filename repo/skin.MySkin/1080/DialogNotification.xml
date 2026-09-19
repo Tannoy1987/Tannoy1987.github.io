@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<zorder>3</zorder>
+	<controls>
+		<control type="group">
+			<top>14</top>
+			<right>14</right>
+			<width>32.5%</width>
+			<height>80</height>
+			<include>Pop2</include>
+			<visible>String.IsEmpty(Window(Home).Property(script.cinemavision.running))</visible>
+			<control type="image">
+				<texture border="16" colordiffuse="box">boxes/box.png</texture>
+			</control>
+			<control type="fadelabel" id="401">
+				<description>Line 1 Label</description>
+				<left>20</left>
+				<top>10</top>
+				<right>110</right>
+				<height>18</height>
+				<font>font13</font>
+				<aligny>center</aligny>
+				<align>center</align>
+				<scrollout>false</scrollout>
+				<pauseatend>2000</pauseatend>
+			</control>
+			<control type="fadelabel" id="402">
+				<description>Line 2 Label</description>
+				<left>20</left>
+				<top>44</top>
+				<right>110</right>
+				<height>18</height>
+				<font>font27_narrow</font>
+				<aligny>center</aligny>
+				<align>center</align>
+				<scrollout>false</scrollout>
+				<pauseatend>2000</pauseatend>
+			</control>
+			<control type="group">	
+				<animation type="WindowOpen">
+					<effect type="fade" start="0" end="100" delay="300" time="300"/>
+				</animation>
+				<animation type="WindowClose">
+					<effect type="fade" start="100" end="0" time="0"/>
+				</animation>
+				<control type="image" id="400">
+					<description>avatar</description>
+					<centerbottom>50%</centerbottom>
+					<centerleft>91.30%</centerleft>
+					<texture diffuse="diffuse/square2.png">$INFO[Notification.Icon]</texture>
+					<width>83</width>
+					<height>83</height>
+					<aspectratio>stretch</aspectratio>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>

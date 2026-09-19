@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <defaultcontrol always="true">5</defaultcontrol>
+    <zorder>3</zorder>
+    <controls>
+<!--Dialog Overlay-->
+	<!-- <control type="group">
+		<visible>!Window.IsActive(fullscreenvideo) + !Window.IsActive(visualisation)</visible>
+		<include>DialogOverlayExtra</include>
+		<animation effect="fade" time="250" start="0" end="100" reversible="false">WindowOpen</animation>
+		<animation effect="fade" time="250" start="100" end="0" reversible="false">WindowClose</animation>
+    </control> -->
+<!-- osd setings background -->
+<control type="group">
+	   <include>DA</include>
+        <right>-5</right>
+        <top>-10</top>
+        <width>960</width>
+        <height>1100</height>
+		<include>backbox</include>
+        <control type="grouplist">
+            <top>0</top>
+            <left>15</left>
+            <right>15</right>
+            <orientation>vertical</orientation>
+            <height>1080</height>
+            <align>center</align>
+            <itemgap>30</itemgap>
+<!--Header-->
+            <control type="label" id="2">
+                <description>Heading</description>
+                <width>100%</width>
+                <font>font45_title</font>
+                <textcolor>white</textcolor>
+                <align>center</align>
+                <height>52</height>
+                <label>$LOCALIZE[20333]</label>
+            </control>
+<!-- templates -->
+            <control type="grouplist" id="5">
+                <description>Control Area</description>
+            <left>15</left>
+            <right>-13</right>
+                <height>864</height>
+                <orientation>vertical</orientation>
+                <itemgap>10</itemgap>
+                <onup>5</onup>
+                <ondown>5</ondown>
+                <onleft>8002</onleft>
+                <onright>8002</onright>
+                <scrolltime tween="cubic" easing="out">500</scrolltime>
+            </control>
+            <control type="button" id="7">
+                <description>button template</description>
+                <width>100%</width>
+                <height>60</height>
+                <align>left</align>
+                <textoffsetx>20</textoffsetx>
+                <include>DialogButton</include>
+            </control>
+            <control type="radiobutton" id="8">
+                <description>radiobutton template</description>
+                <width>100%</width>
+                <height>60</height>
+                <align>left</align>
+                <textoffsetx>20</textoffsetx>
+                <include>DialogButton</include>
+                <radioposx>845</radioposx>
+            </control>
+            <control type="spincontrolex" id="9">
+                <description>spincontrol template</description>
+                <width>100%</width>
+                <height>60</height>
+                <align>left</align>
+                <textoffsetx>20</textoffsetx>
+                <include>DialogButton</include>
+				<spinposx>17</spinposx>
+            </control>
+            <control type="image" id="11">
+                <description>separator image</description>
+                <width>100%</width>
+                <height>3</height>
+                <texture></texture>
+            </control>
+            <control type="edit" id="12">
+                <description>edit template</description>
+                <width>100%</width>
+                <height>60</height>
+                <align>left</align>
+                <textoffsetx>20</textoffsetx>
+                <include>DialogButton</include>
+            </control>
+            <control type="sliderex" id="13">
+                <width>100%</width>
+                <height>60</height>
+                <align>left</align>
+                <textoffsetx>20</textoffsetx>
+            </control>
+            <control type="label" id="14">
+                <description>label template</description>
+                <width>100%</width>
+                <height>90</height>
+                <align>left</align>
+                <textoffsetx>20</textoffsetx>
+                <font>Bold32</font>
+            </control>
+            <!--Button Group-->
+			<control type="group" id="8002">
+                <control type="grouplist">				
+                    <orientation>horizontal</orientation>
+                    <itemgap>10</itemgap>
+                    <onup>5</onup>
+					<left>1</left>
+                    <top>-20</top>
+                    <height>60</height>
+                    <control type="button" id="28">
+                        <description>OK</description>
+						<width>240</width>
+                        <label>$LOCALIZE[186]</label>
+                        <align>center</align>
+                        <include>DialogButtonOther</include>
+                        <animation effect="fade" start="100" end="75" time="0" condition="!Control.IsEnabled(28)">conditional</animation>
+                    </control>
+                    <control type="button" id="29">
+                        <visible>!Window.IsActive(fullscreenvideo)</visible>
+                        <description>Cancel</description>
+						<width>240</width>
+                        <label>$LOCALIZE[222]</label>
+                        <align>center</align>
+                        <include>DialogButtonOther</include>
+                        <animation effect="fade" start="100" end="75" time="0" condition="!Control.IsEnabled(29)">conditional</animation>
+                    </control>
+                    <control type="button" id="30">
+                        <description>Clear</description>
+                        <label/>
+						<width>240</width>
+                        <align>center</align>
+                        <include>DialogButtonOther</include>
+                        <animation effect="fade" start="100" end="75" time="0" condition="!Control.IsEnabled(6)">conditional</animation>
+                    </control>
+                </control>
+				</control>
+            </control>
+        </control>
+    </controls>
+</window>

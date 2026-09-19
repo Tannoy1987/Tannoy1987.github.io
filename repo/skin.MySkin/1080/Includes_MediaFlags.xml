@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="utf-8"?>
+<includes>
+<!-- ========================================================= -->
+<!-- ===================== VARIABLES ========================= -->
+<!-- ========================================================= -->
+
+<!-- HDR Type (flag image) -->
+	<variable name="Flag_HdrType">
+		<!-- 1. ACTIVE PLAYBACK: Native Dolby Vision FEL / MEL -->
+		<value condition="Player.HasVideo + String.IsEqual(Player.Process(video.dovi.el.type),full)">codecs/dolby_vision_fel.png</value>
+		<value condition="Player.HasVideo + String.IsEqual(Player.Process(video.dovi.el.type),minimum)">codecs/dolby_vision_mel.png</value>
+		<value condition="Player.HasVideo + String.IsEqual(Player.Process(video.source.hdr.type.raw),3)">codecs/dolby_vision.png</value>
+		<value condition="Player.HasVideo + String.Contains(Player.Process(video.hdr.type),dolby)">codecs/dolby_vision.png</value>
+		<!-- 2. ACTIVE PLAYBACK: VS10 Processing Modes -->
+		<value condition="Player.HasVideo + String.Contains(Player.Process(amlogic.vs10.mode),dolby vision)">codecs/dolby_visionvs.png</value>
+		<value condition="Player.HasVideo + String.Contains(Player.Process(amlogic.vs10.mode),hdr10)">codecs/hdr10vs.png</value>
+		<value condition="Player.HasVideo + String.Contains(Player.Process(amlogic.vs10.mode),sdr)">codecs/sdrvs.png</value>
+		<!-- 3. ACTIVE PLAYBACK: Native HDR10+ / HDR10 / HLG -->
+		<value condition="Player.HasVideo + String.IsEqual(Player.Process(video.source.hdr.type.raw),2)">codecs/hdr10plus.png</value>
+		<value condition="Player.HasVideo + String.Contains(Player.Process(video.hdr.type),hdr10plus)">codecs/hdr10plus.png</value>
+		<value condition="Player.HasVideo + String.IsEqual(Player.Process(video.source.hdr.type.raw),1)">codecs/hdr10.png</value>
+		<value condition="Player.HasVideo + String.Contains(Player.Process(video.hdr.type),hdr10)">codecs/hdr10.png</value>
+		<value condition="Player.HasVideo + String.IsEqual(Player.Process(video.source.hdr.type.raw),4)">codecs/hlg.png</value>
+		<value condition="Player.HasVideo + String.Contains(Player.Process(video.hdr.type),hlg)">codecs/hlg.png</value>
+		<!-- 4. ACTIVE PLAYBACK: SDR Bit Depth -->
+		<value condition="Player.HasVideo + Integer.IsEqual(Player.Process(video.bit.depth),10)">codecs/sdr10.png</value>
+		<value condition="Player.HasVideo + Integer.IsEqual(Player.Process(video.bit.depth),8)">codecs/sdr8.png</value>
+		<!-- 5. LIBRARY LISTITEMS (Scraped Metadata / Filenames) -->
+		<value condition="String.Contains(ListItem.FileName,.fel.) | String.Contains(ListItem.FileName,-fel.)">codecs/dolby_vision_fel.png</value>
+		<value condition="String.Contains(ListItem.FileName,.mel.) | String.Contains(ListItem.FileName,-mel.)">codecs/dolby_vision_mel.png</value>
+		<value condition="String.IsEqual(ListItem.HdrType,dolbyvision) | String.IsEqual(ListItem.HdrType,dv)">codecs/dolby_vision.png</value>
+		<value condition="String.IsEqual(ListItem.HdrType,hdr10plus)">codecs/hdr10plus.png</value>
+		<value condition="String.IsEqual(ListItem.HdrType,hdr10)">codecs/hdr10.png</value>
+		<value condition="String.IsEqual(ListItem.HdrType,hlg)">codecs/hlg.png</value>
+		<!-- 6. FILENAME FALLBACKS -->
+		<value condition="String.Contains(ListItem.FileName,.dv.) | String.Contains(ListItem.FileName,.dovi.) | String.Contains(ListItem.FileName,_dv_)">codecs/dolby_vision.png</value>
+		<value condition="String.Contains(ListItem.FileName,hdr10plus) | String.Contains(ListItem.FileName,hdr10plus) | String.Contains(ListItem.FileName,hdr10p)">codecs/hdr10plus.png</value>
+		<value condition="String.Contains(ListItem.FileName,hdr) | String.Contains(ListItem.FileName,hdr10)">codecs/hdr10.png</value>
+	</variable>
+
+<!--  Audio Codec (flag image)  -->
+	<variable name="Flag_AudioCodec">
+		<!-- Dolby Variants -->
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,truehd_atmos) | String.IsEqual(ListItem.AudioCodec,truehd_atmos)">codecs/dolby_truehd_atmos.png</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,eac3_ddp_atmos) | String.IsEqual(ListItem.AudioCodec,eac3_ddp_atmos)">codecs/dolby_atmos.png</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,truehd) | String.IsEqual(ListItem.AudioCodec,truehd)">codecs/dolby_truehd.png</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,eac3) | String.IsEqual(ListItem.AudioCodec,eac3)">codecs/dolby_digital_plus.png</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dolbydigital) | String.IsEqual(VideoPlayer.AudioCodec,ac3) | String.IsEqual(ListItem.AudioCodec,dolbydigital) | String.IsEqual(ListItem.AudioCodec,ac3)">codecs/dolby_digital.png</value>
+		<!-- DTS Variants -->
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x) | String.IsEqual(ListItem.AudioCodec,dtshd_ma_x)">codecs/dts-x.png</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x_imax) | String.IsEqual(ListItem.AudioCodec,dtshd_ma_x_imax)">codecs/imax.png</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma) | String.IsEqual(ListItem.AudioCodec,dtshd_ma)">codecs/dts-hd-ma.png</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dtshd_hra) | String.IsEqual(ListItem.AudioCodec,dtshd_hra)">codecs/dts-hd-hra.png</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dca) | String.IsEqual(ListItem.AudioCodec,dca) | String.IsEqual(VideoPlayer.AudioCodec,dts) | String.IsEqual(ListItem.AudioCodec,dts)">codecs/dts.png</value>
+		<!-- General Audio Codecs -->
+		<value condition="String.StartsWith(VideoPlayer.AudioCodec,aac) | String.IsEqual(ListItem.AudioCodec,aac)">codecs/aac.png</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,flac) | String.IsEqual(ListItem.AudioCodec,flac)">codecs/flac.png</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,mp2) | String.IsEqual(ListItem.AudioCodec,mp2)">codecs/mp2.png</value>
+		<value condition="String.StartsWith(VideoPlayer.AudioCodec,mp3) | String.IsEqual(ListItem.AudioCodec,mp3)">codecs/mp3.png</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,opus) | String.IsEqual(ListItem.AudioCodec,opus)">codecs/opus.png</value>
+		<value condition="String.StartsWith(VideoPlayer.AudioCodec,pcm) | String.IsEqual(ListItem.AudioCodec,pcm)">codecs/pcm.png</value>
+	</variable>
+
+<!--  MPAA / Rating  -->
+	<variable name="GetMPAA">
+		<!-- US -->
+		<value condition="String.Contains(ListItem.mpaa,US:G) | String.Contains(ListItem.mpaa,USA:G) | String.Contains(ListItem.mpaa,Rated G)">G</value>
+		<value condition="String.Contains(ListItem.mpaa,PG-13)">PG-13</value>
+		<value condition="String.Contains(ListItem.mpaa,Rated PG) | String.IsEqual(ListItem.Mpaa,PG)">PG</value>
+		<value condition="String.Contains(ListItem.mpaa,US:R) | String.Contains(ListItem.mpaa,USA:R) | String.Contains(ListItem.mpaa,Rated R) | String.IsEqual(ListItem.mpaa,R)">Rated-R</value>
+		<value condition="String.Contains(ListItem.mpaa,US:NC-17) | String.Contains(ListItem.mpaa,USA:NC-17)| String.Contains(ListItem.mpaa,Rated NC-17)">NC-17</value>
+		<value condition="String.Contains(ListItem.mpaa,NR)">NR</value>
+		<!-- US TV -->
+		<value condition="String.Contains(ListItem.mpaa,TV-Y)">TV-Y</value>
+		<value condition="String.Contains(ListItem.mpaa,TV-Y7)">TV-Y7</value>
+		<value condition="String.Contains(ListItem.mpaa,TV-G)">TV-G</value>
+		<value condition="String.Contains(ListItem.mpaa,TV-PG)">TV-PG</value>
+		<value condition="String.Contains(ListItem.mpaa,TV-14)">TV-14</value>
+		<value condition="String.Contains(ListItem.mpaa,TV-MA) | String.Contains(ListItem.mpaa,USA:TV-MA)">TV-MA</value>
+		<!-- UK -->
+		<value condition="String.Contains(ListItem.mpaa,UK:U)">ALL</value>
+		<value condition="String.Contains(ListItem.mpaa,UK:PG)">PG</value>
+		<value condition="String.Contains(ListItem.mpaa,UK:12A)">12A</value>
+		<value condition="String.Contains(ListItem.mpaa,UK:12)">12</value>
+		<value condition="String.Contains(ListItem.mpaa,UK:15)">15</value>
+		<value condition="String.Contains(ListItem.mpaa,UK:18)">18</value>
+		<!-- DE -->
+		<value condition="String.Contains(ListItem.mpaa,Germany:16) | String.Contains(ListItem.mpaa,ab 16) | String.Contains(ListItem.mpaa,FSK 16)">FSK16</value>
+		<value condition="String.Contains(ListItem.mpaa,Germany:6)| String.Contains(ListItem.mpaa,ab 6) | String.Contains(ListItem.mpaa,FSK 6)">FSK6</value>
+		<value condition="String.Contains(ListItem.mpaa,Germany:12) | String.Contains(ListItem.mpaa,ab 12) | String.Contains(ListItem.mpaa,FSK 12)">FSK12</value>
+		<value condition="String.Contains(ListItem.mpaa,Germany:18) | String.Contains(ListItem.mpaa,ab 18) | String.Contains(ListItem.mpaa,FSK 18)">FSK18</value>
+		<value condition="String.Contains(ListItem.mpaa,Germany)|String.Contains(ListItem.mpaa,FSK)| String.Contains(ListItem.mpaa,o.A) | String.Contains(ListItem.mpaa,FSK 0)">FSK0</value>
+		<value condition="String.Contains(ListItem.mpaa,besorolás alatt)">BA</value>
+		<!-- HU -->
+		<value condition="String.Contains(ListItem.mpaa,korhatárra való tekintett nélkül megtekintetheto)">KN</value>
+		<value condition="String.Contains(ListItem.mpaa,12 éven aluliak számára a megtekintése nagykorú felügyelete mellett ajánlott)">12</value>
+		<value condition="String.Contains(ListItem.mpaa,16 éven aluliak számára nem ajánlott)">16</value>
+		<value condition="String.Contains(ListItem.mpaa,18 éven aluliak számára nem ajánlott)">18</value>
+		<!-- FR -->
+		<value condition="String.Contains(ListItem.mpaa,France:U) | String.Contains(ListItem.mpaa,partir de 3 ans) | String.Contains(ListItem.mpaa,partir de 6 ans)">CSAU</value>
+		<value condition="String.Contains(ListItem.mpaa,France:-10) | String.Contains(ListItem.mpaa,Interdit aux moins de 10 ans) | String.Contains(ListItem.mpaa,des propos ou des images peuvent heurter)">CSA-10</value>
+		<value condition="String.Contains(ListItem.mpaa,France:-12) | String.Contains(ListItem.mpaa,Interdit aux moins de 12 ans)">CSA12</value>
+		<value condition="String.Contains(ListItem.mpaa,France:-16) | String.Contains(ListItem.mpaa,Interdit aux moins de 16 ans)">CSA16</value>
+		<value condition="String.Contains(ListItem.mpaa,France:-18) | String.Contains(ListItem.mpaa,Interdit aux moins de 18 ans)">CSA18</value>
+		<!-- BR -->
+		<value condition="String.Contains(ListItem.mpaa,Brazil:Livre) | String.Contains(ListItem.mpaa,Livre)">L</value>
+		<value condition="String.Contains(ListItem.mpaa,Brazil:10) | String.Contains(ListItem.mpaa,10 anos)">10</value>
+		<value condition="String.Contains(ListItem.mpaa,Brazil:12) | String.Contains(ListItem.mpaa,12 anos)">12</value>
+		<value condition="String.Contains(ListItem.mpaa,Brazil:14) | String.Contains(ListItem.mpaa,14 anos)">14</value>
+		<value condition="String.Contains(ListItem.mpaa,Brazil:16) | String.Contains(ListItem.mpaa,16 anos)">16</value>
+		<value condition="String.Contains(ListItem.mpaa,Brazil:18) | String.Contains(ListItem.mpaa,18 anos)">18</value>
+		<!-- Fallbacks -->
+		<value condition="!String.IsEmpty(ListItem.mpaa) + !String.Contains(ListItem.mpaa,not rated) + !String.Contains(ListItem.mpaa,n/a)">$INFO[ListItem.MPAA]</value>
+		<value condition="!String.IsEmpty(Container(17195).ListItem.mpaa)">$INFO[Container(17195).ListItem.MPAA]</value>
+		<!-- Home widget variants -->
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),US:G) | String.Contains(Window(Home).Property(ListItem.mpaa),USA:G) | String.Contains(Window(Home).Property(ListItem.mpaa),Rated G)]">G</value>
+		<value condition="String.Contains(Window(Home).Property(ListItem.mpaa),PG-13)">PG-13</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),Rated PG) | String.IsEqual(Window(Home).Property(ListItem.Mpaa),PG)]">PG</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),US:R) | String.Contains(Window(Home).Property(ListItem.mpaa),USA:R) | String.Contains(Window(Home).Property(ListItem.mpaa),Rated R) | String.IsEqual(Window(Home).Property(ListItem.Mpaa),R)]">Rated-R</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),US:NC-17)| String.Contains(Window(Home).Property(ListItem.mpaa),USA:NC-17)| String.Contains(Window(Home).Property(ListItem.mpaa),Rated NC-17)]">NC-17</value>
+		<value condition="String.Contains(Window(Home).Property(ListItem.mpaa),UK:U)">ALL</value>
+		<value condition="String.Contains(Window(Home).Property(ListItem.mpaa),UK:PG)">PG</value>
+		<value condition="String.Contains(Window(Home).Property(ListItem.mpaa),UK:12A)">12A</value>
+		<value condition="String.Contains(Window(Home).Property(ListItem.mpaa),UK:12)">12</value>
+		<value condition="String.Contains(Window(Home).Property(ListItem.mpaa),UK:15)">15</value>
+		<value condition="String.Contains(Window(Home).Property(ListItem.mpaa),UK:18)">18</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),Germany:16) | String.Contains(Window(Home).Property(ListItem.mpaa),ab 16) | String.Contains(Window(Home).Property(ListItem.mpaa),FSK 16)]">FSK16</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),Germany:6)| String.Contains(Window(Home).Property(ListItem.mpaa),ab 6) | String.Contains(Window(Home).Property(ListItem.mpaa),FSK 6)]">FSK6</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),Germany:12) | String.Contains(Window(Home).Property(ListItem.mpaa),ab 12) | String.Contains(Window(Home).Property(ListItem.mpaa),FSK 12)]">FSK12</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),Germany:18) | String.Contains(Window(Home).Property(ListItem.mpaa),ab 18) | String.Contains(Window(Home).Property(ListItem.mpaa),FSK 18)]">FSK18</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),Germany)|String.Contains(Window(Home).Property(ListItem.mpaa),FSK)| String.Contains(Window(Home).Property(ListItem.mpaa),o.A) | String.Contains(Window(Home).Property(ListItem.mpaa),FSK 0)]">FSK-0</value>
+		<value condition="String.Contains(Window(Home).Property(ListItem.mpaa),besorolás alatt)">BA</value>
+		<value condition="String.Contains(Window(Home).Property(ListItem.mpaa),korhatárra való tekintett nélkül megtekintetheto)">KN</value>
+		<value condition="String.Contains(Window(Home).Property(ListItem.mpaa),12 éven aluliak számára a megtekintése nagykorú felügyelete mellett ajánlott)">12</value>
+		<value condition="String.Contains(Window(Home).Property(ListItem.mpaa),16 éven aluliak számára nem ajánlott)">16</value>
+		<value condition="String.Contains(Window(Home).Property(ListItem.mpaa),18 éven aluliak számára nem ajánlott)">18</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),France:U) | String.Contains(Window(Home).Property(ListItem.mpaa),partir de 3 ans) | String.Contains(Window(Home).Property(ListItem.mpaa),partir de 6 ans)]">CSA-U</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),France:-10) | String.Contains(Window(Home).Property(ListItem.mpaa),Interdit aux moins de 10 ans) | String.Contains(Window(Home).Property(ListItem.mpaa),des propos ou des images peuvent heurter)]">CSA-10</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),France:-12) | String.Contains(Window(Home).Property(ListItem.mpaa),Interdit aux moins de 12 ans)]">CSA12</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),France:-16) | String.Contains(Window(Home).Property(ListItem.mpaa),Interdit aux moins de 16 ans)]">CSA16</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),France:-18) | String.Contains(Window(Home).Property(ListItem.mpaa),Interdit aux moins de 18 ans)]">CSA18</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),Brazil:Livre) | String.Contains(Window(Home).Property(ListItem.mpaa),Livre)]">L</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),Brazil:10) | String.Contains(Window(Home).Property(ListItem.mpaa),10 anos)]">10</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),Brazil:12) | String.Contains(Window(Home).Property(ListItem.mpaa),12 anos)]">12</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),Brazil:14) | String.Contains(Window(Home).Property(ListItem.mpaa),14 anos)]">14</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),Brazil:16) | String.Contains(Window(Home).Property(ListItem.mpaa),16 anos)]">16</value>
+		<value condition="[String.Contains(Window(Home).Property(ListItem.mpaa),Brazil:18) | String.Contains(Window(Home).Property(ListItem.mpaa),18 anos)]">18</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(ListItem.mpaa)) + !String.Contains(Window(Home).Property(ListItem.mpaa),not rated)">$INFO[Window(Home).Property(ListItem.MPAA)]</value>
+		<value>Unrated</value>
+	</variable>
+
+<!--  Video Resolution  -->
+	<variable name="VideoResolutionVar">
+		<value condition="String.IsEqual(ListItem.VideoResolution,480)">480</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,540)">540</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,576)">576</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,720)">720</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,1080)">1080</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,4K)">4k</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,8K)">8k</value>
+		<value>$INFO[ListItem.VideoResolution]</value>
+	</variable>
+	<variable name="VideoListResolutionTypeVar">
+		<value condition="String.IsEqual(ListItem.VideoResolution,480)">SD</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,540)">SD</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,576)">SD</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,720)">HD</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,1080)">HD</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,4K)">UHD</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,8K)">UHD</value>
+		<value>$INFO[ListItem.VideoResolution]</value>
+	</variable>
+	<variable name="VideoPlayerResolutionTypeVar">
+		<value condition="String.IsEqual(VideoPlayer.VideoResolution,480)">SD</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoResolution,540)">SD</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoResolution,576)">SD</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoResolution,720)">HD</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoResolution,1080)">HD</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoResolution,4K)">UHD</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoResolution,8K)">UHD</value>
+		<value>$INFO[VideoPlayer.VideoResolution]</value>
+	</variable>
+	<variable name="VideoResolutionTypeVar">
+		<value condition="String.IsEqual(ListItem.VideoResolution,480) | [Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.VideoResolution,480)]">SD</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,540) | [Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.VideoResolution,540)]">SD</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,576) | [Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.VideoResolution,576)]">SD</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,720) | [Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.VideoResolution,720)]">HD</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,1080) | [Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.VideoResolution,1080)]">HD</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,4K) | [Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.VideoResolution,4K)]">UHD</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,8K) | [Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.VideoResolution,8K)]">UHD</value>
+		<value condition="Window.IsActive(fullscreenvideo)">$INFO[VideoPlayer.VideoResolution]</value>
+		<value>$INFO[ListItem.VideoResolution]</value>
+	</variable>
+	<variable name="ResolutionFlagVar">
+		<value condition="ListItem.IsStereoscopic">flags/videoresolution/3D.png</value>
+		<value>$INFO[ListItem.VideoResolution,flags/videoresolution/,.png]</value>
+	</variable>
+	<variable name="ContainerResolutionFlagVar">
+		<value condition="Container.ListItem.IsStereoscopic">flags/videoresolution/3D.png</value>
+		<value>$INFO[Container.ListItem.VideoResolution,flags/videoresolution/,.png]</value>
+	</variable>
+
+<!--  Video Codec  -->
+	<variable name="VideoListCodecVar">
+		<value condition="String.IsEqual(ListItem.VideoCodec,av1)">AV1</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,avc1)">AVC-1</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,div3)">DivX</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,divx)">DivX</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,dx50)">DivX</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,flv)">FLV</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,h264)">H.264</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,hev1)">H.265</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,hevc)">H.265</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,hvc1)">H.265</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,mpeg1)">MPEG-1</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,mpeg2)">MPEG-2</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,mpeg2video)">MPEG-2</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,mp4v)">MPEG-4</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,mpeg4)">MPEG-4</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,theora)">Theora</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,vc1)">VC-1</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,vc-1)">VC-1</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,vp8)">VP8</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,vp9)">VP9</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,wmv)">WMV</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,wmv3)">WMV</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,wvc1)">VC-1</value>
+		<value condition="String.IsEqual(ListItem.VideoCodec,xvid)">XviD</value>
+		<value>$INFO[ListItem.VideoCodec]</value>
+	</variable>
+	<variable name="VideoPlayerCodecVar">
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,av1)">AV1</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,avc1)">AVC-1</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,div3)">DivX</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,divx)">DivX</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,dx50)">DivX</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,flv)">FLV</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,h264)">H.264</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,hev1)">H.265</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,hevc)">H.265</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,hvc1)">H.265</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,mpeg1)">MPEG-1</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,mpeg2)">MPEG-2</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,mpeg2video)">MPEG-2</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,mp4v)">MPEG-4</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,mpeg4)">MPEG-4</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,theora)">Theora</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,vc1)">VC-1</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,vc-1)">VC-1</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,vp8)">VP8</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,vp9)">VP9</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,wmv)">WMV</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,wmv3)">WMV</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,wvc1)">VC-1</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoCodec,xvid)">XviD</value>
+		<value>$INFO[VideoPlayer.VideoCodec]</value>
+	</variable>
+
+<!--  HDR (text/icon)  -->
+	<variable name="VideoListHDRVar">
+		<value condition="String.IsEqual(ListItem.HdrType,dolbyvision)">DoVi</value>
+		<value condition="String.IsEqual(ListItem.HdrType,hdr10)">HDR10</value>
+		<value condition="String.IsEqual(ListItem.HdrType,hlg)">HLG</value>
+		<value>$INFO[ListItem.HdrType]</value>
+	</variable>
+	<variable name="VideoPlayerHDRVar">
+		<value condition="String.IsEqual(VideoPlayer.HdrType,dolbyvision)">DoVi</value>
+		<value condition="String.IsEqual(VideoPlayer.HdrType,hdr10)">HDR10</value>
+		<value condition="String.IsEqual(VideoPlayer.HdrType,hlg)">HLG</value>
+		<value>$INFO[VideoPlayer.HdrType]</value>
+	</variable>
+	<variable name="VideoHDRTypeVar">
+		<value condition="String.IsEqual(ListItem.HdrType,dolbyvision) | [Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.HdrType,dolbyvision)]">Dolby Vision</value>
+		<value condition="String.IsEqual(ListItem.HdrType,hdr10) | [Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.HdrType,hdr10)]">HDR10</value>
+		<value condition="String.IsEqual(ListItem.HdrType,hlg) | [Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.HdrType,hlg)]">HLG</value>
+		<value condition="Window.IsActive(fullscreenvideo)">$INFO[VideoPlayer.HdrType]</value>
+		<value>$INFO[ListItem.HdrType]</value>
+	</variable>
+	<variable name="HDR">
+		<value condition="String.IsEqual(VideoPlayer.HdrType,dolbyvision)">info/dolbyvision.png</value>
+		<value condition="String.IsEqual(VideoPlayer.HdrType,hdr10)">info/hdr10.png</value>
+	</variable>
+	<variable name="HDRcodectypeVar">
+		<value condition="String.Contains(VideoPlayer.HdrType,dolbyvision)">Dolby Vision</value>
+		<value condition="String.Contains(VideoPlayer.HdrType,hdr10) + [String.Contains(Player.Filenameandpath,.hdrplus.) | String.Contains(Player.Filenameandpath,.hdr10plus.) | String.Contains(Player.Filenameandpath,_hdr10plus_) | String.Contains(Player.Filenameandpath,_hdr10plus-) | String.Contains(Player.Filenameandpath,-HDR10plus-)]">HDR 10+</value>
+		<value condition="String.Contains(VideoPlayer.HdrType,hdr10)">HDR10</value>
+		<value condition="String.Contains(VideoPlayer.HdrType,hlg)">HLG</value>
+		<value condition="String.IsEmpty(VideoPlayer.HdrType)">SDR</value>
+	</variable>
+
+<!--  Audio Codec (text)  -->
+	<variable name="AudioListCodecVar">
+		<value condition="String.IsEqual(ListItem.AudioCodec,aac)">AAC</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,aac_latm)">AAC</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,ac3)">Dolby D</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,aif)">AIFF</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,aifc)">AIFF</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,aiff)">AIFF</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,alac)">ALAC</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,ape)">APE</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,avc)">AVC</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,cdda)">CDDA</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dca)">DTS</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dolbydigital)">Dolby D</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dts)">DTS</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dtshd_hra)">DTSHD-HRA</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dtshd_ma)">DTSHD-MA</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dtsma)">DTSHD-MA</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,eac3)">Dolby D+</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,flac)">FLAC</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,mp1)">MP1</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,mp3)">MP3</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,mp3float)">MP3</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,ogg)">OGG</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,opus)">OPUS</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,pcm)">PCM</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,pcm_bluray)">PCM</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,pcm_s16le)">PCM</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,pcm_s24le)">PCM</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,truehd)">TrueHD</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,vorbis)">Vorbis</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,wav)">WAV</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,wavpack)">WAVP</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,wmapro)">WMA-PRO</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,wmav2)">WMA</value>
+		<value>$INFO[ListItem.AudioCodec]</value>
+	</variable>
+	<variable name="VideoPlayerAudioCodecVar">
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,aac)">AAC</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,aac_latm)">AAC</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,ac3)">Dolby Digital</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,aif)">AIFF</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,aifc)">AIFF</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,aiff)">AIFF</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,alac)">ALAC</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,ape)">APE</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,avc)">AVC</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,cdda)">CDDA</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dca)">DTS</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dolbydigital)">Dolby Digital</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dtshd)">DTS-HD</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma)">DTS-HD MA</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dtshd_hra)">DTS-HD HRA</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x)">DTS:X MA</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x_imax)">DTS:X</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,eac3)">Dolby Digital Plus</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,eac3_ddp_atmos)">Dolby Digital Plus</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,flac)">FLAC</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,mp1)">MP1</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,mp2)">MP2</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,mp3)">MP3</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,mp3float)">MP3</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,ogg)">OGG</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,opus)">OPUS</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,pcm)">PCM</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,pcm_bluray)">PCM</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,pcm_s16le)">PCM</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,pcm_s24le)">PCM</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,truehd)">Dolby TrueHD</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,truehd_atmos)">Dolby TrueHD</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,vorbis)">Vorbis</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,wav)">WAV</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,wavpack)">WAVP</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,wmapro)">WMA-PRO</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,wmav2)">WMA</value>
+		<value condition="String.IsEmpty(VideoPlayer.AudioCodec)">$LOCALIZE[13205]</value>
+	</variable>
+	<variable name="MusicPlayerCodecVar">
+		<value condition="String.IsEqual(MusicPlayer.Codec,aac)">AAC</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,aac_latm)">AAC</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,ac3)">Dolby D</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,aif)">AIFF</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,aifc)">AIFF</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,aiff)">AIFF</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,alac)">ALAC</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,ape)">APE</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,avc)">AVC</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,cdda)">CDDA</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,dca)">DTS</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,dolbydigital)">Dolby D</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,dts)">DTS</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,dtshd_hra)">DTSHD-HRA</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,dtshd_ma)">DTSHD-MA</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,dtsma)">DTSHD-MA</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,eac3)">Dolby D+</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,flac)">FLAC</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,mp1)">MP1</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,mp3)">MP3</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,mp3float)">MP3</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,ogg)">OGG</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,opus)">OPUS</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,pcm)">PCM</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,pcm_bluray)">PCM</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,pcm_s16le)">PCM</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,pcm_s24le)">PCM</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,truehd)">TrueHD</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,vorbis)">Vorbis</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,wav)">WAV</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,wavpack)">WAVP</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,wmapro)">WMA-PRO</value>
+		<value condition="String.IsEqual(MusicPlayer.Codec,wmav2)">WMA</value>
+		<value>$INFO[MusicPlayer.Codec]</value>
+	</variable>
+
+<!--  Audio Channels  -->
+	<variable name="AudioListChannelsVar">
+		<value condition="String.IsEqual(ListItem.AudioChannels,0)">0.0</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,1)">1.0</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,2)">2.0</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,3)">2.1</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,4)">4.0</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,5)">4.1</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,6)">5.1</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,7)">6.1</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,8)">7.1</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,10)">9.1</value>
+		<value>$INFO[ListItem.AudioChannels]</value>
+	</variable>
+	<variable name="VideoPlayerAudioChannelsVar">
+		<value condition="String.IsEqual(VideoPlayer.AudioChannels,0)">0.0</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioChannels,1)">1.0</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioChannels,2)">2.0</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioChannels,3)">2.1</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioChannels,4)">4.0</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioChannels,5)">4.1</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioChannels,6)">5.1</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioChannels,7)">6.1</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioChannels,8)">7.1</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioChannels,10)">9.1</value>
+		<value>$INFO[VideoPlayer.AudioChannels]</value>
+	</variable>
+	<variable name="MusicListChannelsVar">
+		<value condition="String.IsEqual(ListItem.MusicChannels,0)">0.0</value>
+		<value condition="String.IsEqual(ListItem.MusicChannels,1)">1.0</value>
+		<value condition="String.IsEqual(ListItem.MusicChannels,2)">2.0</value>
+		<value condition="String.IsEqual(ListItem.MusicChannels,3)">2.1</value>
+		<value condition="String.IsEqual(ListItem.MusicChannels,4)">4.0</value>
+		<value condition="String.IsEqual(ListItem.MusicChannels,5)">4.1</value>
+		<value condition="String.IsEqual(ListItem.MusicChannels,6)">5.1</value>
+		<value condition="String.IsEqual(ListItem.MusicChannels,7)">6.1</value>
+		<value condition="String.IsEqual(ListItem.MusicChannels,8)">7.1</value>
+		<value condition="String.IsEqual(ListItem.MusicChannels,10)">9.1</value>
+		<value>$INFO[ListItem.MusicChannels]</value>
+	</variable>
+	<variable name="MusicPlayerAudioChannelsVar">
+		<value condition="String.IsEqual(MusicPlayer.Channels,0)">0.0</value>
+		<value condition="String.IsEqual(MusicPlayer.Channels,1)">1.0</value>
+		<value condition="String.IsEqual(MusicPlayer.Channels,2)">2.0</value>
+		<value condition="String.IsEqual(MusicPlayer.Channels,3)">2.1</value>
+		<value condition="String.IsEqual(MusicPlayer.Channels,4)">4.0</value>
+		<value condition="String.IsEqual(MusicPlayer.Channels,5)">4.1</value>
+		<value condition="String.IsEqual(MusicPlayer.Channels,6)">5.1</value>
+		<value condition="String.IsEqual(MusicPlayer.Channels,7)">6.1</value>
+		<value condition="String.IsEqual(MusicPlayer.Channels,8)">7.1</value>
+		<value condition="String.IsEqual(MusicPlayer.Channels,10)">9.1</value>
+		<value>$INFO[MusicPlayer.Channels]</value>
+	</variable>
+
+<!--  Audio (player process / object audio)  -->
+	<variable name="AudioCodecVar">
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,aac)">AAC</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,aac_latm)">AAC</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,ac3)">Dolby Digital</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,aif)">AIFF</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,aifc)">AIFF</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,aiff)">AIFF</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,alac)">ALAC</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,ape)">APE</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,avc)">AVC</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,cdda)">CDDA</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dca)">DTS</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dolbydigital)">Dolby Digital</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dtshd)">DTS-HD</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma)">DTS-HD MA</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dtshd_hra)">DTS-HD HRA</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x)">DTS:X MA</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x_imax)">DTS:X</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,eac3)">Dolby Digital Plus</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,eac3_ddp_atmos)">Dolby Digital Plus</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,flac)">FLAC</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,mp1)">MP1</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,mp2)">MP2</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,mp3)">MP3</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,mp3float)">MP3</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,ogg)">OGG</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,opus)">OPUS</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,pcm)">PCM</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,pcm_bluray)">PCM</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,pcm_s16le)">PCM</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,pcm_s24le)">PCM</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,truehd)">Dolby TrueHD</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,truehd_atmos)">Dolby TrueHD</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,vorbis)">Vorbis</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,wav)">WAV</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,wavpack)">WAVP</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,wmapro)">WMA-PRO</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,wmav2)">WMA</value>
+		<value condition="String.IsEmpty(VideoPlayer.AudioCodec)">$LOCALIZE[13205]</value>
+	</variable>
+	<variable name="AudioCodecSpatialVar">
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x_imax)">(IMAX)</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,eac3_ddp_atmos)">(Atmos)</value>
+		<value condition="String.IsEqual(VideoPlayer.AudioCodec,truehd_atmos)">(Atmos)</value>
+	</variable>
+	<variable name="AudioChannelsVar">
+		<value condition="Integer.IsEqual(VideoPlayer.AudioChannels,1)">1.0</value>
+		<value condition="Integer.IsEqual(VideoPlayer.AudioChannels,2)">2.0</value>
+		<value condition="Integer.IsEqual(VideoPlayer.AudioChannels,4)">4.0</value>
+		<value condition="Integer.IsEqual(VideoPlayer.AudioChannels,5)">5.0</value>
+		<value condition="Integer.IsEqual(VideoPlayer.AudioChannels,6)">5.1</value>
+		<value condition="Integer.IsEqual(VideoPlayer.AudioChannels,7)">6.1</value>
+		<value condition="Integer.IsEqual(VideoPlayer.AudioChannels,8)">7.1</value>
+		<value condition="Integer.IsEqual(VideoPlayer.AudioChannels,10)">9.1</value>
+	</variable>
+	<variable name="ObjectAudioTypeVar">
+		<value condition="String.IsEqual(ListItem.AudioCodec,eac3_ddp_atmos) | [Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,eac3_ddp_atmos)] | [Window.IsActive(visualisation) + String.IsEqual(MusicPlayer.Codec,eac3_ddp_atmos)]">Dolby Atmos</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,truehd_atmos) | [Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,truehd_atmos)] | [Window.IsActive(visualisation) + String.IsEqual(MusicPlayer.Codec,truehd_atmos)]">Dolby Atmos</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dtshd_ma_x) | [Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x)] | [Window.IsActive(visualisation) + String.IsEqual(MusicPlayer.Codec,dtshd_ma_x)]">DTS:X</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dtshd_ma_x_imax) | [Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x_imax)] | [Window.IsActive(visualisation) + String.IsEqual(MusicPlayer.Codec,dtshd_ma_x_imax)]">DTS:X IMAX</value>
+	</variable>
+
+<!--  Source / Path helpers  -->
+	<variable name="mediaflags_large_path">
+		<value condition="Window.IsActive(fullscreenvideo)">flags/flags_large</value>
+		<value condition="!Window.IsActive(fullscreenvideo)">flags/flags_color</value>
+		<value>flags/flags_large</value>
+	</variable>
+	<variable name="mediaflags_large_source_audio">
+		<value condition="!String.Contains(ListItem.Title,atmos) + String.Contains(ListItem.Filenameandpath,atmos)">atmos</value>
+		<value condition="!String.Contains(ListItem.Title,dts-x) + String.Contains(ListItem.Filenameandpath,dts-x) | !String.Contains(ListItem.Title,dtsx) + String.Contains(ListItem.Filenameandpath,dtsx)">dts_x</value>
+		<value condition="String.Contains(ListItem.AudioCodec,ac3)">ac3</value>
+		<value condition="String.Contains(ListItem.AudioCodec,truehd)">dolbytruehd</value>
+		<value condition="String.Contains(ListItem.AudioCodec,atmos)">atmos</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dtsx)">dts_x</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dca)">dca</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dts)">dts</value>
+		<value condition="String.Contains(ListItem.AudioCodec,dts-hd)">dtsma</value>
+		<value condition="String.Contains(ListItem.AudioCodec,dtshd)">dtsma</value>
+		<value condition="String.Contains(ListItem.AudioCodec,pcm)">pcm</value>
+		<value condition="String.Contains(ListItem.AudioCodec,aac)">aac</value>
+		<value condition="!String.IsEmpty(ListItem.AudioCodec)">$INFO[ListItem.AudioCodec]</value>
+		<value condition="Window.IsActive(visualisation) + !String.IsEmpty(MusicPlayer.Codec)">$INFO[MusicPlayer.Codec]</value>
+		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,ac3)">DOLBY</value>
+		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,dca)">DTS</value>
+		<value condition="Window.IsActive(fullscreenvideo) + String.Contains(VideoPlayer.AudioCodec,dts-hd)">DTS HD</value>
+		<value condition="Window.IsActive(fullscreenvideo) + String.Contains(VideoPlayer.AudioCodec,dtshd)">DTS HD</value>
+		<value condition="Window.IsActive(fullscreenvideo) + String.Contains(VideoPlayer.AudioCodec,pcm)">PCM</value>
+		<value condition="Window.IsActive(fullscreenvideo) + !String.IsEmpty(VideoPlayer.AudioCodec)">$INFO[VideoPlayer.AudioCodec]</value>
+		<value condition="String.IsEqual(Window(Home).Property(ListItem.AudioCodec),ac3)">ac3</value>
+		<value condition="String.IsEqual(Window(Home).Property(ListItem.AudioCodec),dca)">dca</value>
+		<value condition="String.Contains(Window(Home).Property(ListItem.AudioCodec),dts-hd)">dtsma</value>
+		<value condition="String.Contains(Window(Home).Property(ListItem.AudioCodec),dtshd)">dtsma</value>
+		<value condition="String.Contains(Window(Home).Property(ListItem.AudioCodec),pcm)">pcm</value>
+		<value condition="String.Contains(Window(Home).Property(ListItem.AudioCodec),atmos)">atmos</value>
+		<value condition="String.Contains(Window(Home).Property(ListItem.AudioCodec),dtsx)">dtsx</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(ListItem.AudioCodec))">$INFO[Window(Home).Property(ListItem.AudioCodec)]</value>
+	</variable>
+	<variable name="mediaflags_large_source">
+		<value condition="[String.Contains(ListItem.filename,PDTV) | String.Contains(ListItem.filename,sdtv) | String.Contains(ListItem.filename,sd tv)]">sdtv</value>
+		<value condition="[String.Contains(ListItem.Filename,hdtv) | String.Contains(ListItem.Filename,HDTV) | String.Contains(ListItem.Filename,hd tv)]">hdtv</value>
+		<value condition="[String.Contains(ListItem.Filename,hddvd) | String.Contains(ListItem.Filename,HDDVD) | String.Contains(ListItem.Filename,hd-dvd)]">hddvd</value>
+		<value condition="ListItem.IsStereoscopic">bluray3d</value>
+		<value condition="[String.Contains(ListItem.Filename,bluray) | String.Contains(ListItem.Filename,blu-ray) | String.Contains(ListItem.Filename,bdrip) | String.Contains(ListItem.Filename,brrip)]">bluray</value>
+		<value condition="String.Contains(ListItem.Filename,dvb)">dvb</value>
+		<value condition="String.Contains(ListItem.Filename,web-dl) | String.Contains(ListItem.Filename,webdl)">web-dl</value>
+		<value condition="String.Contains(ListItem.Filename,dvd) | String.IsEqual(ListItem.FileExtension,iso) | String.IsEqual(ListItem.FileExtension,ifo)">dvd</value>
+		<value condition="!String.IsEmpty(ListItem.VideoCodec)">$INFO[ListItem.VideoCodec]</value>
+		<value condition="[String.Contains(Player.FileNameAndPath,PDTV) | String.Contains(Player.FileNameAndPath,sdtv)]">sdtv</value>
+		<value condition="String.Contains(Player.FileNameAndPath,hdtv)">hdtv</value>
+		<value condition="[String.Contains(Player.FileNameAndPath,hddvd) | String.Contains(Player.FileNameAndPath,hd-dvd)]">hddvd</value>
+		<value condition="VideoPlayer.IsStereoscopic">bluray3d</value>
+		<value condition="[String.Contains(Player.FileNameAndPath,bluray) | String.Contains(Player.FileNameAndPath,blu-ray) | String.Contains(Player.FileNameAndPath,bdrip) | String.Contains(Player.FileNameAndPath,brrip)]">bluray</value>
+		<value condition="String.Contains(Player.FileNameAndPath,dvb)">dvb</value>
+		<value condition="String.Contains(Player.FileNameAndPath,web-dl) | String.Contains(Player.Filename,webdl)">web-dl</value>
+		<value condition="String.EndsWith(Player.FileNameAndPath,dvd) | String.EndsWith(Player.FileNameAndPath,.iso) | String.Contains(Player.FileNameAndPath,.ifo)">dvd</value>
+		<value>$INFO[VideoPlayer.VideoCodec]</value>
+	</variable>
+	<variable name="mediaflags_large_source_aspect">
+		<value condition="String.Contains(ListItem.VideoAspect,1.33)">4:3</value>
+		<value condition="String.Contains(ListItem.VideoAspect,1.37)">4:3</value>
+		<value condition="String.Contains(ListItem.VideoAspect,1.66)">15:9</value>
+		<value condition="String.Contains(ListItem.VideoAspect,1.78)">16:9</value>
+		<value condition="String.Contains(ListItem.VideoAspect,1:85)">16:9</value>
+		<value condition="String.Contains(ListItem.VideoAspect,2:20)">22:10</value>
+		<value condition="String.Contains(ListItem.VideoAspect,2:35)">21:9</value>
+		<value condition="String.Contains(ListItem.VideoAspect,2:40)">21:9</value>
+		<value condition="String.Contains(ListItem.VideoAspect,2:55)">23:9</value>
+		<value condition="String.Contains(ListItem.VideoAspect,2:76)">11:4</value>
+	</variable>
+
+<!-- ========================================================= -->
+<!-- ====================== INCLUDES ========================= -->
+<!-- ========================================================= -->
+
+<!--  OSD flag size selector  -->
+	<include name="osdmediaflags">
+		<include condition="String.IsEqual(Skin.String(mediaflags_layout),3)">largeflags</include>
+		<include condition="String.IsEqual(Skin.String(mediaflags_layout),2)">mediumflags</include>
+		<include condition="String.IsEqual(Skin.String(mediaflags_layout),1)">smallflags</include>
+	</include>
+	<include name="largeflags">
+		<height>35</height>
+		<width min="0" max="138">auto</width>
+		<aspectratio align="center" aligny="top">keep</aspectratio>
+		<animation effect="fade" time="200">VisibleChange</animation>
+	</include>
+	<include name="mediumflags">
+		<height>28</height>
+		<width min="0" max="108">auto</width>
+		<aspectratio align="center" aligny="top">keep</aspectratio>
+		<animation effect="fade" time="200">VisibleChange</animation>
+	</include>
+	<include name="smallflags">
+		<height>20</height>
+		<width min="0" max="88">auto</width>
+		<aspectratio align="center" aligny="top">keep</aspectratio>
+		<animation effect="fade" time="200">VisibleChange</animation>
+	</include>
+
+<!--  OSD VideoPlayer codec flags  -->
+	<include name="Player_MediaFlags_Codecs">
+		<control type="grouplist">
+			<top>0</top>
+			<right>-12</right>
+			<align>right</align>
+			<orientation>horizontal</orientation>
+			<itemgap>-25</itemgap>
+			<visible>Player.HasVideo</visible>
+			<animation effect="slide" end="0,7" time="0" condition="String.IsEqual(Skin.String(mediaflags_layout),1)">conditional</animation>
+			<animation effect="slide" end="0,3" time="0" condition="String.IsEqual(Skin.String(mediaflags_layout),2)">conditional</animation>
+			<control type="image">
+				<include>osdmediaflags</include>
+				<texture background="true">$VAR[mediaflags_large_path]$INFO[VideoPlayer.VideoResolution,/resolution/,.png]</texture>
+				<visible>!String.IsEmpty(VideoPlayer.VideoResolution)</visible>
+			</control>
+			<control type="image">
+				<include>osdmediaflags</include>
+				<texture background="true">$VAR[Flag_HdrType]</texture>
+				<visible>!String.IsEmpty(VideoPlayer.HdrType)</visible>
+			</control>
+			<control type="image">
+				<include>osdmediaflags</include>
+				<texture background="true">$VAR[mediaflags_large_path]$INFO[VideoPlayer.VideoCodec,/video/,.png]</texture>
+				<visible>!String.IsEmpty(VideoPlayer.VideoCodec) + ![String.IsEqual(VideoPlayer.HdrType,hdr10) | String.IsEqual(VideoPlayer.HdrType,dolbyvision) | String.IsEqual(VideoPlayer.HdrType,hlg)]</visible>
+			</control>
+			<control type="image">
+				<include>osdmediaflags</include>
+				<texture background="true">$VAR[mediaflags_large_path]$INFO[VideoPlayer.AudioChannels,/channels/,.png]</texture>
+				<visible>!String.IsEmpty(VideoPlayer.AudioChannels)</visible>
+			</control>
+			<control type="image">
+				<include>osdmediaflags</include>
+				<texture background="true">$VAR[Flag_AudioCodec]</texture>
+				<visible>!String.IsEmpty(VideoPlayer.AudioCodec)</visible>
+			</control>
+			<control type="image">
+				<include>osdmediaflags</include>
+				<texture background="true">$VAR[mediaflags_large_path]$INFO[VideoPlayer.VideoAspect,/aspectratio/,.png]</texture>
+				<visible>!String.IsEmpty(VideoPlayer.VideoAspect)</visible>
+			</control>
+		</control>
+	</include>
+
+<!--  Media flags entry points  -->
+	<include name="mediaflags">
+		<include condition="Window.IsActive(fullscreenvideo)">mediaflags_large_osd</include>
+		<include condition="!Window.IsActive(fullscreenvideo)">mediaflags_large</include>
+	</include>
+	<include name="mediaflags_large_layout">
+		<width>112</width>
+		<height>80</height>
+		<aspectratio align="center" aligny="center">keep</aspectratio>
+		<animation effect="fade" time="200">VisibleChange</animation>
+	</include>
+	<include name="mediaflags_large">
+		<include condition="!Window.IsActive(Home)">mediaflags_large_normal</include>
+	</include>
+
+<!--  Library footer flags  -->
+	<include name="mediaflags_large_normal">
+		<control type="group">
+			<top>93.25%</top>
+			<left>0</left>
+			<control type="image">
+				<right>0</right>
+				<top>6</top>
+				<left>0</left>
+				<height>70</height>
+				<texture border="5">boxes/inner.png</texture>
+				<visible>!String.IsEmpty(ListItem.VideoResolution) | !String.IsEmpty(ListItem.AudioCodec) | !String.IsEmpty(ListItem.AudioChannels) | !String.IsEmpty(ListItem.VideoAspect)</visible>
+			</control>
+			<control type="grouplist">
+				<align>center</align>
+				<left>35</left>
+				<orientation>horizontal</orientation>
+				<control type="image">
+					<width>82</width>
+					<include>mediaflags_large_layout</include>
+					<texture background="true">flags/flags_color$VAR[VideoResolutionVar,/resolution/,.png]</texture>
+					<visible>!String.IsEmpty(ListItem.VideoResolution)</visible>
+				</control>
+				<control type="image">
+					<include>mediaflags_large_layout</include>
+					<texture background="true">flags/flags_color$VAR[mediaflags_large_source_audio,/audio/,.png]</texture>
+					<visible>!String.IsEmpty(ListItem.AudioCodec)</visible>
+				</control>
+				<control type="image">
+					<include>mediaflags_large_layout</include>
+					<texture background="true">flags/flags_color$INFO[ListItem.AudioChannels,/channels/,.png]</texture>
+					<visible>!String.IsEmpty(ListItem.AudioChannels)</visible>
+				</control>
+				<control type="image">
+					<include>mediaflags_large_layout</include>
+					<texture background="true">flags/flags_color$VAR[mediaflags_large_source,/video/,.png]</texture>
+					<visible>!String.IsEmpty(ListItem.VideoCodec) + ![String.IsEqual(Listitem.HdrType,hdr10) | String.IsEqual(Listitem.HdrType,dolbyvision) | String.IsEqual(Listitem.HdrType,hlg)]</visible>
+				</control>
+				<control type="image">
+					<include>mediaflags_large_layout</include>
+					<texture background="true">flags/flags_color$INFO[Listitem.HdrType,/video/,.png]</texture>
+					<visible>[String.IsEqual(Listitem.HdrType,hdr10) | String.IsEqual(Listitem.HdrType,dolbyvision) | String.IsEqual(Listitem.HdrType,hlg)]</visible>
+				</control>
+				<control type="image">
+					<include>mediaflags_large_layout</include>
+					<texture background="true">flags/flags_color$INFO[ListItem.VideoAspect,/aspectratio/,.png]</texture>
+					<visible>!String.IsEmpty(ListItem.VideoAspect)</visible>
+				</control>
+			</control>
+		</control>
+	</include>
+
+<!--  OSD footer flags  -->
+	<include name="mediaflags_large_osd">
+		<param name="left">-17</param>
+		<param name="top">12</param>
+		<definition>
+			<control type="grouplist">
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<orientation>horizontal</orientation>
+				<control type="image">
+					<width>86</width>
+					<include>mediaflags_large_layout</include>
+					<texture background="true">$VAR[mediaflags_large_path]$INFO[VideoPlayer.VideoResolution,/resolution/,.png]</texture>
+					<visible>!String.IsEmpty(VideoPlayer.VideoResolution)</visible>
+				</control>
+				<control type="image">
+					<include>mediaflags_large_layout</include>
+					<texture background="true">$VAR[mediaflags_large_path]$INFO[VideoPlayer.AudioCodec,/audio/,.png]</texture>
+					<visible>!String.IsEmpty(VideoPlayer.AudioCodec)</visible>
+				</control>
+				<control type="image">
+					<include>mediaflags_large_layout</include>
+					<texture background="true">$VAR[mediaflags_large_path]$INFO[VideoPlayer.AudioChannels,/channels/,.png]</texture>
+					<visible>!String.IsEmpty(VideoPlayer.AudioChannels)</visible>
+				</control>
+				<control type="image">
+					<include>mediaflags_large_layout</include>
+					<texture background="true">$VAR[mediaflags_large_path]$INFO[VideoPlayer.VideoCodec,/video/,.png]</texture>
+					<visible>!String.IsEmpty(VideoPlayer.VideoCodec) + ![String.IsEqual(VideoPlayer.HdrType,hdr10) | String.IsEqual(VideoPlayer.HdrType,dolbyvision) | String.IsEqual(VideoPlayer.HdrType,hlg)]</visible>
+				</control>
+				<control type="image">
+					<include>mediaflags_large_layout</include>
+					<texture background="true">$VAR[mediaflags_large_path]$INFO[VideoPlayer.HdrType,/video/,.png]</texture>
+					<visible>[String.IsEqual(VideoPlayer.HdrType,hdr10) | String.IsEqual(VideoPlayer.HdrType,dolbyvision) | String.IsEqual(VideoPlayer.HdrType,hlg)]</visible>
+				</control>
+				<control type="image">
+					<include>mediaflags_large_layout</include>
+					<texture background="true">$VAR[mediaflags_large_path]$INFO[VideoPlayer.VideoAspect,/aspectratio/,.png]</texture>
+					<visible>!String.IsEmpty(VideoPlayer.VideoAspect)</visible>
+				</control>
+			</control>
+		</definition>
+	</include>
+
+<!--  Audio/text fallback buttons  -->
+	<include name="AudioFileExtension">
+		<include>Visible_Fade</include>
+		<control type="button" id="542271">
+			<visible>!String.IsEmpty(ListItem.FileExtension)</visible>
+			<posy>70</posy>
+			<height>36</height>
+			<width>auto</width>
+			<align>center</align>
+			<aligny>top</aligny>
+			<textwidth>140</textwidth>
+			<textcolor>white</textcolor>
+			<disabledcolor>white</disabledcolor>
+			<texturenofocus border="10">boxes/square-rounded2.png</texturenofocus>
+			<texturefocus  border="10">boxes/square-rounded2.png</texturefocus>
+			<textoffsetx>8</textoffsetx>
+			<textoffsety>2</textoffsety>
+			<font>Reg24</font>
+			<label>$INFO[ListItem.FileExtension,[UPPERCASE][B],[/B][/UPPERCASE]]</label>
+			<enable>false</enable>
+		</control>
+	</include>
+	<include name="AudioBitRate">
+		<include>DA</include>
+		<control type="button" id="542272">
+			<visible>!String.IsEmpty(ListItem.BitRate)</visible>
+			<posy>7</posy>
+			<height>36</height>
+			<width>auto</width>
+			<align>center</align>
+			<aligny>top</aligny>
+			<textwidth>140</textwidth>
+			<textcolor>white</textcolor>
+			<disabledcolor>white</disabledcolor>
+			<texturenofocus border="10">boxes/square-rounded2.png</texturenofocus>
+			<texturefocus border="10">boxes/square-rounded2.png</texturefocus>
+			<textoffsetx>8</textoffsetx>
+			<textoffsety>2</textoffsety>
+			<font>Reg24</font>
+			<label>$INFO[ListItem.BitRate,[UPPERCASE][B],[/B][/UPPERCASE]]</label>
+			<enable>false</enable>
+		</control>
+	</include>
+	<include name="Audiocodec">
+		<control type="group">
+			<include>Visible_Fade</include>
+			<posy>7</posy>
+			<height>37</height>
+			<width>159</width>
+			<control type="button">
+				<visible>!String.IsEmpty(ListItem.AudioCodec)</visible>
+				<height>36</height>
+				<width>auto</width>
+				<align>center</align>
+				<aligny>center</aligny>
+				<textwidth>140</textwidth>
+				<textcolor>white</textcolor>
+				<disabledcolor>red</disabledcolor>
+				<texture background="true">$VAR[mediaflags_large_path]$INFO[ListItem.AudioCodec,/audio/,.png]</texture>
+				<texturefocus></texturefocus>
+				<textoffsetx>8</textoffsetx>
+				<textoffsety>2</textoffsety>
+				<font>Reg24</font>
+				<label>$VAR[AudioCodecVar,[UPPERCASE][B],[/B][/UPPERCASE]]</label>
+			</control>
+		</control>
+	</include>
+
+<!--  MediaFlag / MediaFlags (music + music OSD)  -->
+	<include name="MediaFlag">
+		<param name="texture">colors/white.png</param>
+		<param name="flag_visible">true</param>
+		<definition>
+			<control type="button">
+				<width>auto</width>
+				<height>33</height>
+				<align>center</align>
+				<aligny>center</aligny>
+				<font>flags</font>
+				<textcolor>button_focus</textcolor>
+				<label>$PARAM[flag_label]</label>
+				<texturefocus border="0" infill="false" colordiffuse="white">$PARAM[texture]</texturefocus>
+				<texturenofocus border="0" infill="false" colordiffuse="white">$PARAM[texture]</texturenofocus>
+				<visible>$PARAM[flag_visible]</visible>
+			</control>
+		</definition>
+	</include>
+	<include name="MediaFlags">
+		<param name="visible">true</param>
+		<definition>
+			<control type="group">
+				<bottom>0</bottom>
+				<left>10</left>
+				<width>604</width>
+				<height>40</height>
+				<control type="grouplist">
+					<visible>!String.IsEqual(ListItem.DbType,musicvideo) + [Window.IsActive(musicplaylist) | Container.Content(albums) | Window.IsActive(music)]</visible>
+					<visible>![Control.HasFocus(87) | Control.HasFocus(70038) | Control.HasFocus(70039) | Control.HasFocus(70052) | Control.HasFocus(70053) | Control.HasFocus(70054) | Control.HasFocus(70055) | Control.HasFocus(70048) | Control.HasFocus(31066)]</visible>
+					<orientation>horizontal</orientation>
+					<left>0</left>
+					<bottom>10</bottom>
+					<height>40</height>
+					<align>center</align>
+					<itemgap>-80</itemgap>
+					<width>604</width>
+					<usecontrolcoords>true</usecontrolcoords>
+					<include content="MediaFlag">
+						<param name="flag_visible" value="!String.IsEmpty(ListItem.FileExtension)" />
+						<param name="flag_label" value="$INFO[ListItem.FileExtension]" />
+					</include>
+					<include content="MediaFlag">
+						<param name="flag_visible" value="!String.IsEmpty(ListItem.MusicChannels)" />
+						<param name="flag_label" value="$VAR[AudioChannelsVar]" />
+					</include>
+					<include content="MediaFlag">
+						<param name="flag_visible" value="!String.IsEmpty(ListItem.Samplerate)" />
+						<param name="flag_label" value="$INFO[ListItem.Samplerate, ,kHz]" />
+					</include>
+					<include content="MediaFlag">
+						<param name="flag_visible" value="!String.IsEmpty(ListItem.BitRate)" />
+						<param name="flag_label" value="$INFO[ListItem.BitRate, ,kbps]" />
+					</include>
+					<include content="MediaFlag">
+						<param name="flag_visible" value="!String.IsEmpty(ListItem.MusicBitsPerSample)" />
+						<param name="flag_label" value="$INFO[ListItem.MusicBitsPerSample, ,bit]" />
+					</include>
+					<include content="MediaFlag">
+						<param name="flag_visible" value="!String.IsEmpty(ListItem.BMP)" />
+						<param name="flag_label" value="$INFO[ListItem.BMP, ,bpm]" />
+					</include>
+				</control>
+				<control type="grouplist">
+					<visible>Player.ShowInfo + Window.IsActive(musicosd) + ![Player.ChannelPreviewActive | Window.IsActive(musicplaylist)]</visible>
+					<visible>![Control.HasFocus(87) | Control.HasFocus(70052) | Control.HasFocus(70053) | Control.HasFocus(70054) | Control.HasFocus(70055) | Control.HasFocus(70048) | Control.HasFocus(31066)]</visible>
+					<orientation>horizontal</orientation>
+					<left>-35</left>
+					<bottom>20</bottom>
+					<height>40</height>
+					<align>center</align>
+					<itemgap>-80</itemgap>
+					<width>604</width>
+					<usecontrolcoords>true</usecontrolcoords>
+					<include content="MediaFlag">
+						<param name="flag_visible" value="!String.IsEmpty(MusicPlayer.Codec)" />
+						<param name="flag_label" value="$VAR[AudioCodecVar]" />
+					</include>
+					<include content="MediaFlag">
+						<param name="flag_visible" value="String.IsEqual(MusicPlayer.Codec,eac3_ddp_atmos) | String.IsEqual(MusicPlayer.Codec,truehd_atmos) | String.IsEqual(MusicPlayer.Codec,dtshd_ma_x) | String.IsEqual(MusicPlayer.Codec,dtshd_ma_x_imax)" />
+						<param name="flag_label" value="$VAR[ObjectAudioTypeVar]" />
+					</include>
+					<include content="MediaFlag">
+						<param name="flag_visible" value="!String.IsEmpty(MusicPlayer.SampleRate)" />
+						<param name="flag_label" value="$INFO[MusicPlayer.SampleRate, ,kHz]" />
+					</include>
+					<include content="MediaFlag">
+						<param name="flag_visible" value="!String.IsEmpty(MusicPlayer.BitRate)" />
+						<param name="flag_label" value="$INFO[MusicPlayer.BitRate, ,kbps]" />
+					</include>
+					<include content="MediaFlag">
+						<param name="flag_visible" value="!String.IsEmpty(MusicPlayer.BitsPerSample)" />
+						<param name="flag_label" value="$INFO[MusicPlayer.BitsPerSample, ,bit]" />
+					</include>
+					<include content="MediaFlag">
+						<param name="flag_visible" value="!String.IsEmpty(MusicPlayer.BMP)" />
+						<param name="flag_label" value="$INFO[MusicPlayer.BMP, ,bpm]" />
+					</include>
+				</control>
+			</control>
+		</definition>
+	</include>
+	<include name="VideoThumb">
+		<definition>
+			<control type="group">
+				<visible>String.IsEqual(Skin.String(osd_info_layout),3)</visible>
+				<visible>Player.ShowInfo | Window.IsActive(fullscreeninfo) | ![Window.IsVisible(playerprocessinfo) | Window.IsActive(musicosd) | Window.IsActive(visualisation) | Player.Seeking | Player.HasPerformedSeek(3) | Player.Forwarding | Player.Rewinding | Player.Paused]</visible>
+				<visible>[Player.ShowInfo | Window.IsActive(fullscreeninfo)] + !VideoPlayer.Content(LiveTV) + Window.IsActive(fullscreenvideo)</visible>
+			<!--Xstream-->
+				<control type="group">	
+					<visible>String.IsEmpty(Player.Art(poster)) + !String.IsEmpty(Player.Art(thumb))</visible>
+					<include content="box">
+						<param name="bs" value="9,646,1755,278" />
+						<param name="cd" value="white.png" />
+						<param name="texture" value="box" />
+					</include>
+					<control type="image">
+						<left>15</left>
+						<bottom>284</bottom>
+						<width>144</width>
+						<height>144</height>
+						<aspectratio align="center" aligny="center">keep</aspectratio>
+						<texture fallback="DefaultTVShows.png" background="true">$INFO[Player.Art(icon)]</texture>
+						<include>DA</include>
+					</control>
+				</control>
+			<!--Movie/TVShows-->	
+				<control type="group">
+					<visible>!String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(thumb))</visible>
+					<include content="backbox">
+						<param name="bs" value="9,534,1729,278" />
+					</include>		
+					<control type="image">
+						<left>15</left>
+						<bottom>284</bottom>
+						<width>144</width>
+						<height>256</height>
+						<aspectratio align="center" aligny="center">keep</aspectratio>
+						<texture fallback="DefaultVideo.png" background="true">$INFO[Player.Art(poster)]</texture>
+						<include>DA</include>
+					</control>			
+				</control>
+			<!--Videos-->
+				<control type="group">
+					<visible>!String.IsEmpty(Player.Art(poster)) + !String.IsEmpty(Player.Art(thumb))</visible>
+					<include content="backbox">
+						<param name="bs" value="9,646,1643,278" />
+					</include>		
+					<control type="image">
+						<left>15</left>
+						<bottom>284</bottom>
+						<width>256</width>
+						<height>144</height>
+						<aspectratio align="center" aligny="center">keep</aspectratio>
+						<texture fallback="DefaultFolderSquare.png" background="true">$INFO[Player.Art(thumb)]</texture>
+						<include>DA</include>
+					</control>			
+				</control>
+			</control>
+		</definition>
+	</include>	
+</includes>

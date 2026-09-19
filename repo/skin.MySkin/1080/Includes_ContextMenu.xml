@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<includes>
+	<include name="DialogContextMenuModern">
+		<!--Dialog Overlay-->
+		<control type="image">
+
+			<texture diffuse="diffuse/sb.png" border="16" colordiffuse="box">boxes/dbox.png</texture>
+			<animation effect="zoom" start="100" end="100.5" time="5" condition="Window.IsActive(home)">conditional</animation>
+			<animation effect="slide" start="0" end="-3,-3" time="0" condition="Window.IsActive(home)">conditional</animation>
+			<animation effect="fade" time="200">VisibleChange</animation>
+		</control>		
+		<control type="group">
+			<height>100%</height>
+    	    <width>490</width>
+			<animation effect="zoom" start="100" end="100.5" time="5" condition="Window.IsActive(home)">conditional</animation>
+			<animation effect="slide" start="0" end="-3,-3" time="0" condition="Window.IsActive(home)">conditional</animation>
+			<animation effect="slide" start="0" end="0,210" time="0" condition="Window.IsActive(visualisation)">conditional</animation>
+			<animation type="WindowOpen">
+				<effect type="slide" start="-660" end="0" time="250" tween="cubic" easing="inout" />
+			</animation>
+			<animation type="WindowClose">
+				<effect type="slide" start="0" end="-660" time="250" tween="cubic" easing="inout" />
+			</animation>
+		<!--Panel-->
+			<control type="image">
+				<posy>0</posy>
+				<posx>0</posx>
+				<bordersize>3,3,0,3</bordersize>
+				<width>490</width>
+				<height>1080</height>
+				<texture border="16" colordiffuse="button_focus">boxes/sbox.png</texture>
+			</control>
+		<!--Seperator-->			
+            <control type="image">
+                <posx>13</posx>
+                <posy>77</posy>
+                <width>466</width>
+                <height>20</height>
+                <align>left</align>
+                <texture>boxes/menu-separator2.png</texture>
+            </control>
+		<!--Seperator-->			
+			<control type="image">
+                <posx>13</posx>
+                <posy>1000</posy>
+                <width>466</width>
+                <height>20</height>
+                <align>left</align>
+                <texture>boxes/menu-separator2.png</texture>
+            </control>						
+            <control type="grouplist" id="996">
+                <width>466</width>
+                <posx>13</posx>
+                <posy>90</posy>
+				<onright>Dialog.Close(contextmenu)</onright>
+                <height>900</height>
+                <itemgap>10</itemgap>
+                <control type="button" id="1000">
+                    <description>Buttons</description>
+                    <include>SideBladeMenuButton</include>               
+				</control>			
+            </control>
+        </control>
+	</include>	
+	<include name="SideBladeModern">
+		<posx>-660</posx>
+		<posy>0</posy>
+		<visible>!Window.IsActive(virtualkeyboard)</visible>
+		<include>animation_sub_menu</include>
+        <control type="group">
+            <posy>0</posy>
+            <posx>0</posx>
+            <width>520</width>
+            <height>100%</height>
+            <control type="image">
+                <left>0</left>
+                <width>500</width>
+                <height>100%</height>
+                <aspectratio>stretch</aspectratio>
+                <texture background="true">diffuse/panel2.png</texture>
+            </control>
+        </control>
+	<!-- header -->
+        <control type="label">
+            <posx>58</posx>
+            <posy>10</posy>
+            <width min="80" max="1100">auto</width>
+            <height>100</height>
+            <font>font45_title</font>
+            <align>left</align>
+            <textcolor>white</textcolor>
+            <label>[UPPERCASE]$LOCALIZE[33063][/UPPERCASE]</label>
+        </control>
+	<!--Seperator-->		
+		<control type="image">
+			<posx>39</posx>
+			<posy>160</posy>
+			<width>422</width>
+			<height>20</height>
+			<align>left</align>
+			<texture>boxes/menu-separator2.png</texture>
+		</control>
+	<!--Seperator-->		
+		<control type="image">
+			<posx>39</posx>
+			<posy>978</posy>
+			<width>422</width>
+			<height>20</height>
+			<align>left</align>
+			<texture>boxes/menu-separator2.png</texture>
+		</control>		
+	</include>
+    <include name="SideBladeViewCommands">
+	<!--Switch fullscreen-->		
+        <control type="button" id="308">
+			<include>SideBladeMenuButton</include>
+			<label>$LOCALIZE[244]</label>
+			<onclick>FullScreen</onclick>
+            <visible>Player.HasMedia</visible>
+		</control>
+	<!--Open Kodi favourites-->		
+         <control type="button" id="309">
+			<include>SideBladeMenuButton</include>
+			<label>$LOCALIZE[1036]</label>
+			<onclick>ActivateWindow(FavouritesBrowser)</onclick>
+			<visible>!Window.IsActive(favouritesbrowser)</visible>
+		</control>
+	<!-- VIEW SETTINGS START HERE -->
+	<!--empty space-->
+        <control type="label" id="2001">
+            <width>458</width>
+            <height>11</height>
+        </control>
+		<control type="group" id="2002">
+	<!--Seperator-->			
+        <control type="image">
+			<posx>18</posx>
+            <width>422</width>
+			<height>20</height>
+			<align>left</align>
+			<texture>boxes/menu-separator2.png</texture>
+        </control>		
+		</control>
+	<!--empty space-->		
+		<control type="label" id="2003">
+            <width>458</width>
+            <height>8</height>
+        </control>
+	<!--Label Menu-->		
+        <control type="label" id="14018">
+            <textoffsetx>38</textoffsetx>
+            <textcolor>white</textcolor>
+            <include>SideBladeMenuButton</include>
+            <label>$LOCALIZE[14018]:</label>
+        </control>
+	<!--Show info-->		
+        <control type="radiobutton" id="36427">
+            <include>SideBladeMenuButton</include>
+            <label>$LOCALIZE[36427]</label>
+			<textwidth>300</textwidth>
+            <onclick>Skin.ToggleSetting(GuideShowInfo)</onclick>
+            <selected>Skin.HasSetting(GuideShowInfo)</selected>
+            <visible>Window.IsActive(tvguide)</visible>
+        </control>
+	</include>
+    <include name="PVRsideblade">
+	<!-- hidden labels for pvr -->		
+	    <control type="group">
+			<include>SideBladeModern</include>
+			<control type="label" id="29">
+				<description>Empty so we can pass the values up one level</description>
+				<visible>False</visible>
+			</control>
+			<control type="label" id="30">
+				<description>Empty so we can pass the values up one level</description>
+				<visible>False</visible>
+			</control>
+            <control type="grouplist" id="9000">
+                <posx>21</posx>
+                <posy>180</posy>
+                <width>458</width>
+                <height>781</height>
+                <itemgap>10</itemgap>
+                <onleft>5000</onleft>
+                <onright>5000</onright>
+				<onright>ClearProperty(ShowViewSubMenu,Home)</onright>
+				<onleft>ClearProperty(ShowViewSubMenu,Home)</onleft>
+				<onback>ClearProperty(ShowViewSubMenu,Home)</onback>
+				<onback condition="!Window.IsActive(tvguide)">5000</onback>
+                <onup>9000</onup>
+                <ondown>9000</ondown>
+                <orientation>vertical</orientation>
+			<!--Channels-->				
+                <control type="button" id="100">
+                    <description>Channels</description>
+                    <label>$LOCALIZE[19019]</label>
+                    <include>SideBladeMenuButton</include>
+					<onclick condition="Window.IsActive(TVChannels) | Window.IsActive(RadioChannels)">NextChannelGroup</onclick>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVChannels)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioChannels)</onclick>
+                </control>
+                <control type="button" id="101">
+					<description>TV Guide</description>
+					<left>0</left>
+					<top>80</top>
+					<textwidth>400</textwidth>
+					<include>SideBladeMenuButton</include>
+					<label>$LOCALIZE[22020]</label>
+					<onclick condition="Window.IsActive(TVGuide) | Window.IsActive(RadioGuide)">NextChannelGroup</onclick>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVGuide)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioGuide)</onclick>
+				</control>
+				<control type="button" id="102">
+					<description>Recordings</description>
+					<left>0</left>
+					<top>120</top>
+					<textwidth>400</textwidth>
+					<include>SideBladeMenuButton</include>
+					<label>$LOCALIZE[19163]</label>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVRecordings)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioRecordings)</onclick>
+				</control>
+				<control type="button" id="103">
+					<description>Timers</description>
+					<left>0</left>
+					<top>160</top>
+					<textwidth>400</textwidth>
+					<include>SideBladeMenuButton</include>
+					<label>$LOCALIZE[19040]</label>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVTimers)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioTimers)</onclick>
+				</control>
+                <control type="button" id="105">
+					<description>Timer Rules</description>
+					<left>0</left>
+					<top>160</top>
+					<textwidth>400</textwidth>
+					<include>SideBladeMenuButton</include>
+					<label>$LOCALIZE[19138]</label>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVTimerRules)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioTimerRules)</onclick>
+				</control>
+				<control type="button" id="104">
+					<description>Search</description>
+					<left>0</left>
+					<top>200</top>
+					<textwidth>400</textwidth>
+					<include>SideBladeMenuButton</include>
+					<label>$LOCALIZE[137]</label>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVSearch)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioSearch)</onclick>
+				</control>
+				<control type="button" id="28">
+					<description>Channel Groups</description>
+					<left>0</left>
+					<right>40</right>
+					<textwidth>400</textwidth>
+					<include>SideBladeMenuButton</include>
+					<label/>
+				</control>
+				<control type="radiobutton" id="5">
+					<description>Group recording items by folder structure</description>
+					<left>0</left>
+					<right>40</right>
+					<textwidth>300</textwidth>
+					<include>SideBladeMenuButton</include>
+					<label>$LOCALIZE[19270]</label>
+					<visible>Window.IsActive(TVRecordings) | Window.IsActive(RadioRecordings)</visible>
+				</control>
+				<control type="button" id="3">
+					<description>Sort by button</description>
+					<include>SideBladeMenuButton</include>
+					<label>$LOCALIZE[103]</label>
+				</control>
+				<control type="togglebutton" id="4">
+					<description>Sort asc</description>
+					<include>SideBladeMenuButton</include>
+					<alttexturefocus border="10" colordiffuse="$INFO[Skin.String(ButtonFocusColor)]">diffuse/panel.png</alttexturefocus>
+					<alttexturenofocus/>
+					<label>$LOCALIZE[21431]</label>
+					<altlabel>$LOCALIZE[21430]</altlabel>
+					<usealttexture>Container.SortDirection(Ascending)</usealttexture>
+				</control>
+                <control type="radiobutton" id="6">
+					<description>Show hidden channels</description>
+					<include>SideBladeMenuButton</include>
+					<label>$LOCALIZE[19051]</label>
+					<textwidth>300</textwidth>
+					<visible>Window.IsActive(TVChannels) | Window.IsActive(RadioChannels)</visible>
+				</control>
+				<control type="radiobutton" id="7">
+					<description>Show deleted recordings</description>
+					<include>SideBladeMenuButton</include>
+					<label>$LOCALIZE[19184]</label>
+					<textwidth>300</textwidth>
+					<visible>Window.IsActive(TVRecordings) | Window.IsActive(RadioRecordings)</visible>
+				</control>
+                <control type="radiobutton" id="8">  
+                    <description>Hide disabled timers</description>  
+                    <include>SideBladeMenuButton</include>  
+                    <label>$LOCALIZE[19077]</label> 
+					<textwidth>300</textwidth>					
+                    <visible>Window.IsActive(TVTimers) | Window.IsActive(RadioTimers) | Window.IsActive(TVTimerRules) | Window.IsActive(RadioTimerRules)</visible>  
+                </control>  
+			<!--filter-->  
+				<control type="radiobutton" id="31">
+                    <include>SideBladeMenuButton</include>
+                    <label>$LOCALIZE[587]</label>
+					<textwidth>300</textwidth>
+					<selected>Container.Filtered</selected>
+					<onclick>right</onclick>
+					<visible>Window.IsActive(TVChannels) | Window.IsActive(RadioChannels)</visible>
+                </control>
+                <include>SideBladeViewCommands</include>
+            </control>
+         </control>
+	</include>
+    <include name="SideBladeMenuButton">
+        <bordersize>5</bordersize>
+		<align>center</align>
+		<font>Reg34</font>
+		<textcolor>white</textcolor>
+		<focusedcolor>black</focusedcolor>
+		<disabledcolor>red</disabledcolor>
+		<invalidcolor>FFFF0000</invalidcolor>
+		<pulseonselect>true</pulseonselect>
+		<texturefocus colordiffuse="button_focus" border="16">boxes/box.png</texturefocus>
+        <texturenofocus colordiffuse="box" border="16">boxes/box.png</texturenofocus>
+    </include>
+</includes>

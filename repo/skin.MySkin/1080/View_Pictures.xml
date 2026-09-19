@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<includes>
+    
+    <include name="View_Pictures">
+        <include>picturesinfopanel</include>
+        <include>picturespanel</include>
+        </include>
+    <include name="picturesinfopanel">
+        <control type="group">
+            <visible>Control.IsVisible(50) + Container.Content(images)</visible>
+            <include>fullpanelright</include>
+            <include>backbox</include>
+            <include>infopanel50</include>
+            
+        </control>
+    </include>        
+      <include name="picturespanel">
+        <control type="group">
+            <visible>Control.IsVisible(860) + Container.Content(images)</visible>      
+       
+            <control type="group">
+                <include>fullpanelleft</include>
+                <include>backbox</include>  
+               
+         
+                <control type="panel" id="860">
+                    <top>7</top>
+                    <left>7</left>
+                    <bottom>15</bottom>
+                    <onup>860</onup>
+                    <ondown>860</ondown>
+                    <onleft>9000</onleft>
+                    <onright>531</onright>
+                    <pagecontrol>531</pagecontrol>
+                    <onback>ClearProperty(ListAnimation,home)</onback>
+                    <viewtype label="Pictures">Panel</viewtype>
+                    <visible>!Container.Content(movies)</visible>
+                    <orientation>vertical</orientation>
+                    <preloaditems>4</preloaditems>
+                    <scrolltime tween="sine">150</scrolltime>
+                    <itemlayout width="334" height="480">
+                     <include>ShiftImageBox</include>
+                     <!-- <include>ShiftTextbox</include> -->
+                     <include>IconStatusOverlay</include>
+                   
+                    </itemlayout>
+                    <focusedlayout width="334" height="480">
+                  <include>focusbox</include>
+                       <include>ShiftImageBox</include>
+                     <!-- <include>ShiftTextbox</include> -->
+                     <include>IconStatusOverlay</include>
+                    </focusedlayout>
+                </control>
+                    
+            </control>
+
+        </control>    
+          			<control type="group">
+				
+			
+				
+				<visible>Container.Content(images) + !Control.HasFocus(50)</visible>
+			  <include>halfpanel</include>
+            <include>backbox</include>
+				<control type="textbox">
+					<left>40</left>
+					<top>360</top>
+					<right>40</right>
+					<height>413</height>
+					<align>center</align>
+					<aligny>center</aligny>
+					<font>font27</font>
+					<textcolor>80FFFFFF</textcolor>
+					<label>$LOCALIZE[19055]</label>
+		<visible>!ListItem.IsParentFolder + ListItem.IsFolder</visible>
+				</control>
+				<control type="grouplist">
+					<left>20</left>
+					<top>152</top>
+<right>20</right>
+					<height>760</height>
+					<orientation>vertical</orientation>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21820]"/>
+						<param name="value" value="ListItem.PictureDatetime" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21805]"/>
+						<param name="value" value="ListItem.PictureResolution" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21826]"/>
+						<param name="value" value="ListItem.PictureAperture" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21863]"/>
+						<param name="value" value="ListItem.PictureAuthor" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21867]"/>
+						<param name="value" value="ListItem.PictureByline" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21868]"/>
+						<param name="value" value="ListItem.PictureBylineTitle" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21822]"/>
+						<param name="value" value="ListItem.PictureCamMake" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21823]"/>
+						<param name="value" value="ListItem.PictureCamModel" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21862]"/>
+						<param name="value" value="ListItem.PictureCaption" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21866]"/>
+						<param name="value" value="ListItem.PictureCategory" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21839]"/>
+						<param name="value" value="ListItem.PictureCCDWidth" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21873]"/>
+						<param name="value" value="ListItem.PictureCity" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21807]"/>
+						<param name="value" value="ListItem.PictureColour" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21839]"/>
+						<param name="value" value="ListItem.PictureComment" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21871]"/>
+						<param name="value" value="ListItem.PictureCopyrightNotice" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21875]"/>
+						<param name="value" value="ListItem.PictureCountry" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21879]"/>
+						<param name="value" value="ListItem.PictureCountryCode" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21869]"/>
+						<param name="value" value="ListItem.PictureCredit" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21821]"/>
+						<param name="value" value="ListItem.PictureDesc" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21838]"/>
+						<param name="value" value="ListItem.PictureDigitalZoom" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21832]"/>
+						<param name="value" value="ListItem.PictureExpMode" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21829]"/>
+						<param name="value" value="ListItem.PictureExposure" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21831]"/>
+						<param name="value" value="ListItem.PictureExposureBias" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21830]"/>
+						<param name="value" value="ListItem.PictureExpTime" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21833]"/>
+						<param name="value" value="ListItem.PictureFlashUsed" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21827]"/>
+						<param name="value" value="ListItem.PictureFocalLen" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21828]"/>
+						<param name="value" value="ListItem.PictureFocusDist" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21840]"/>
+						<param name="value" value="ListItem.PictureGPSLat" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21841]"/>
+						<param name="value" value="ListItem.PictureGPSLon" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21842]"/>
+						<param name="value" value="ListItem.PictureGPSAlt" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21864]"/>
+						<param name="value" value="ListItem.PictureHeadline" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21858]"/>
+						<param name="value" value="ListItem.PictureImageType" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21837]"/>
+						<param name="value" value="ListItem.PictureISO" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21861]"/>
+						<param name="value" value="ListItem.PictureKeywords" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21843]"/>
+						<param name="value" value="ListItem.PictureOrientation" />
+					</include>
+					<include content="PicsInfoLine">
+						<param name="label" value="$LOCALIZE[21808]"/>
+						<param name="value" value="ListItem.PictureProcess" />
+					</include>
+				</control>
+			</control>
+
+    </include>  
+     	<include name="PicsInfoLine">
+		<control type="grouplist">
+			<visible>!String.IsEmpty($PARAM[value])</visible>
+			<height>45</height>
+			<orientation>horizontal</orientation>
+	
+			<itemgap>10</itemgap>
+			<control type="label">
+				<width>auto</width>
+				<height>40</height>
+				<aligny>center</aligny>
+				<label>$PARAM[label]:</label>
+				<textcolor>button_focus</textcolor>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<height>40</height>
+				<align>right</align>
+				<aligny>center</aligny>
+				<label>$INFO[$PARAM[value]]</label>
+			</control>
+		</control>
+	</include>
+    	<include name="ShiftImageBox">
+            
+		<control type="image">
+			<bordersize>10</bordersize>
+			<aspectratio aligny="center">stretch</aspectratio>
+			<texture>dialogs/dialog-bg-nobo.png</texture>
+			<bordertexture border="21" infill="false">overlays/shadow.png</bordertexture>
+		</control>
+		<control type="image">
+
+			
+			<aspectratio align="center" aligny="center">keep</aspectratio>
+			<texture fallback="DefaultVideo.png" background="true">$VAR[ShiftThumbVar]</texture>
+	
+			<bordersize>10,10,10,120</bordersize>
+			<visible>String.IsEmpty(ListItem.Art(poster))</visible>
+		</control>
+		<control type="image">
+			<depth>DepthContentPopout</depth>
+
+			<aspectratio aligny="center">scale</aspectratio>
+			<texture fallback="DefaultVideo.png" background="true">$VAR[ShiftThumbVar]</texture>
+
+			<bordersize>10,10,10,120</bordersize>
+			<visible>!String.IsEmpty(ListItem.Art(poster))</visible>
+		</control>
+		<control type="textbox">
+			<left>20</left>
+			<bottom>10</bottom>
+			<right>20</right>
+			<top>360</top>
+			<align>center</align>
+			<aligny>center</aligny>
+			<label>$INFO[ListItem.Label]</label>
+            <font>font13</font>
+		</control>
+		<include>IconStatusOverlay</include>
+		<control type="group">
+			<left>158</left>
+			<top>92</top>
+			<include condition="Skin.HasSetting(circle_rating) | Skin.HasSetting(circle_userrating)">RatingCircle</include>
+		</control>
+	</include>
+	<!-- <include name="ShiftTextbox">
+		<control type="group">
+			<animation effect="fade" time="200" start="0" end="100" condition="!String.IsEmpty(Control.GetLabel($PARAM[textbox_id]))">conditional</animation>
+			<animation effect="fade" time="200" start="100" end="0" condition="String.IsEmpty(Control.GetLabel($PARAM[textbox_id]))">conditional</animation>
+			<control type="textbox" id="$PARAM[textbox_id]">
+				<left>30</left>
+				<top>45</top>
+				<right>30</right>
+				<height>163</height>
+				<label>$PARAM[textbox_content]</label>
+				<shadowcolor>text_shadow</shadowcolor>
+			</control>
+		</control>
+	</include> -->
+	<include name="IconStatusOverlay">
+		<control type="group">
+			<visible>String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBType,season) | ListItem.IsRecording | ListItem.HasReminder | ListItem.HasTimer | ListItem.IsCollection | ListItem.HasVideoVersions | ListItem.IsPlaying | ListItem.IsResumable | ListItem.HasVideoExtras | ListItem.HasArchive | Integer.IsGreater(ListItem.Playcount,0)</visible>
+			<control type="image">
+				<left>38</left>
+				<top>500</top>
+				<width>294</width>
+				<height>50</height>
+				<texture colordiffuse="CCFFFFFF">overlays/overlayfade.png</texture>
+				<visible>!String.IsEmpty(ListItem.Art(poster))</visible>
+			</control>
+			<control type="image">
+				<left>45</left>
+				<top>522</top>
+				<width>24</width>
+				<height>24</height>
+				<align>left</align>
+				<aligny>center</aligny>
+				<texture>$VAR[ItemTypeIconVar]</texture>
+			</control>
+			<control type="image">
+				<left>75</left>
+				<top>522</top>
+				<width>24</width>
+				<height>24</height>
+				<align>left</align>
+				<aligny>center</aligny>
+				<texture>overlays/extras.png</texture>
+				<visible>ListItem.HasVideoVersions + ListItem.HasVideoExtras</visible>
+			</control>
+			<control type="label">
+				<left>110</left>
+				<top>522</top>
+				<width>185</width>
+				<height>24</height>
+				<label>$VAR[WatchedStatusVar]</label>
+				<font>font20_title</font>
+				<shadowcolor>text_shadow</shadowcolor>
+				<align>right</align>
+				<aligny>center</aligny>
+				<visible>String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,set) | String.IsEqual(ListItem.DBType,season)</visible>
+			</control>
+			<control type="image">
+				<left>302</left>
+				<top>522</top>
+				<width>24</width>
+				<height>24</height>
+				<texture>$VAR[ItemStatusIconVar]</texture>
+				<align>right</align>
+				<aligny>center</aligny>
+			</control>
+		</control>
+	</include>   
+    	      
+</includes>

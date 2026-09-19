@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<onload condition="String.IsEmpty(Skin.String(ppi_layout))">Skin.SetString(ppi_layout,1)</onload>
+	<onload condition="String.IsEmpty(Skin.String(tv_layout))">Skin.SetString(tv_layout,1)</onload>
+	<onload condition="String.IsEmpty(Skin.String(home_layout))">Skin.SetString(home_layout,2)</onload>
+	<onload condition="String.IsEmpty(Skin.String(grid_layout))">Skin.SetString(grid_layout,6)</onload>
+	<onload condition="String.IsEmpty(Skin.String(osd_info_layout))">Skin.SetString(osd_info_layout,1)</onload>
+	<onload condition="String.IsEmpty(Skin.String(osd_clearlogo))">Skin.SetString(osd_clearlogo,1)</onload>
+	<onload condition="String.IsEmpty(Skin.String(osd_background))">Skin.SetString(osd_background,2)</onload>
+	<onload condition="String.IsEmpty(Skin.String(power_menu_layout))">Skin.SetString(power_menu_layout,1)</onload>
+	<onload condition="String.IsEmpty(Skin.String(mediaflags_layout))">Skin.SetString(mediaflags_layout,1)</onload>
+	<onload condition="String.IsEmpty(Skin.String(addon_widget_size))">Skin.SetString(addon_widget_size,2)</onload>
+	<defaultcontrol>1000</defaultcontrol>
+	<controls>
+		<include>HomeLoad</include>
+		<include>DefaultBGNSB</include>
+		<control type="group" id="100">
+			<include>DA</include>			
+			<control type="group" id="101">
+				<animation effect="fade" start="100" end="0" time="0" condition="Player.HasVideo + Control.HasFocus(1000)">conditional</animation>
+				<include>FavoritesPanel</include>
+				<include>MusicPanel</include>
+				<include>AddonPanel</include>
+				<include condition="Integer.IsGreaterOrEqual(Skin.String(tv_layout),2)">TVPanel</include>
+				<include>VideoPanel</include>
+				<include condition="String.IsEqual(Skin.String(home_layout),2)">POVFlixPanel</include>
+				<include condition="String.IsEqual(Skin.String(home_layout),3)">POVRowPanel</include>
+				<include condition="String.IsEqual(Skin.String(home_layout),4)">POVListPanel</include>
+				<include condition="String.IsEqual(Skin.String(home_layout),5)">FlixPlaylistPanel</include>
+			</control>
+			<include>HomePanel</include>
+			<include>HomeMouseMenu</include>
+		</control>
+	</controls>
+</window>

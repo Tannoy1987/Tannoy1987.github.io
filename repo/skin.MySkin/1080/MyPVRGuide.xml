@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">50</defaultcontrol>
+	<views>50</views>
+	<menucontrol>9000</menucontrol>
+	<controls>	
+	<include>background</include>
+		<include>DA</include>
+		<control type="group">
+		<!--topleft-->
+			<control type="group">
+				<include>backbox</include>
+				<left>10</left>
+				<top>9</top>
+				<height>350</height>
+				<width>590</width>
+				<control type="image">
+                    <texture>$INFO[ListItem.Icon]</texture>
+                    <aspectratio>keep</aspectratio>
+                    <bordersize>50</bordersize>
+					<visible>!Player.HasVideo</visible>
+                </control>
+				<include>tv</include>
+			</control>
+		<!--top right header-->	
+			<control type="group">
+				<include>backbox</include>
+				<right>9</right>
+				<top>9</top>
+				<width>1311</width>
+				<height>60</height>
+				<control type="label">
+					<top>0</top>
+					<left>20</left>
+					<right>20</right>							
+					<font>font13</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<scroll>true</scroll>
+					<label>$INFO[ListItem.Label]   $INFO[ListItem.StartTime] - $INFO[ListItem.EndTime]</label>
+				</control>		
+			</control>	
+		<!--description-->				
+			<control type="group">
+				<include>backbox</include>
+				<right>9</right>
+				<top>69</top>
+				<width>1311</width>
+				<height>290</height>
+				<control type="textbox">  
+					<top>20</top>
+					<left>20</left>
+					<bottom>20</bottom>
+					<right>20</right>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$INFO[ListItem.Plot]</label>
+					<Scroll>true</Scroll>
+					<autoscroll delay="10000" time="3000" repeat="10000">Control.HasFocus(50)</autoscroll>
+				</control>				
+			</control>	
+			<control type="group">
+				<description>Guide Timeline</description>
+				<visible>Control.IsVisible(50)</visible>
+				<include>DA</include>
+				<control type="group">
+					<include>backbox</include>
+					<left>10</left>
+					<bottom>10</bottom>
+					<height>710</height>
+					<width>1900</width>
+					<control type="image">
+						<description>separator image</description>
+						<top>42</top>
+						<left>14</left>
+						<right>14</right>
+						<height>4</height>
+						<texture border="5">boxes/inner.png</texture>
+						<visible>!Control.HasFocus(11)</visible>
+					</control>	
+					<control type="group" id="61">
+						<visible allowhiddenfocus="true">!Control.HasFocus(11)</visible>
+						<control type="epggrid" id="50">
+							<height>702</height>
+							<bottom>8</bottom>
+							<right>15</right>
+							<pagecontrol>60</pagecontrol>
+							<scrolltime tween="quadratic" easing="out">300</scrolltime>
+							<timeblocks>34</timeblocks>
+							<rulerunit>11</rulerunit>
+							<onleft>11</onleft>
+							<onright>60</onright>
+							<onup>50</onup>
+							<ondown>50</ondown>
+							<onback>11</onback>
+							<progresstexture border="0,60,18,14" colordiffuse="button_focus">windows/pvr/epg_progress_vertical.png</progresstexture>
+							<rulerdatelayout height="45" width="1290" condition="windows/pvr/epg_progress_vertical.png">
+								<control type="label">
+									<width>1290</width>
+									<height>45</height>
+									<font>font13</font>
+									<label>$INFO[ListItem.Label]</label>
+									<textcolor>button_focus</textcolor>
+									<align>center</align>
+									<aligny>center</aligny>
+								</control>
+							</rulerdatelayout>
+							<rulerlayout height="45" width="1700">
+								<control type="label">
+									<left>0</left>
+									<width>480</width>
+									<height>45</height>
+									<font>font13</font>
+									<label>$INFO[ListItem.Label]</label>
+									<textcolor>button_focus</textcolor>
+									<align>center</align>
+									<aligny>center</aligny>
+								</control>
+							</rulerlayout>
+							<channellayout height="72.8" width="608">
+								<control type="image">
+									<left>15</left>
+									<top>7</top>
+									<height>62</height>
+									<texture colordiffuse="box" border="16">boxes/box.png</texture>
+									<right>10</right>
+								</control>
+								<control type="label">
+									<top>0</top>
+									<left>16</left>
+									<width>90</width>
+									<height>73</height>
+									<font>font32_title</font>
+									<label>$INFO[ListItem.ChannelNumberLabel]</label>
+									<align>center</align>
+									<aligny>center</aligny>
+								</control>
+								<control type="label" id="1">
+									<width>460</width>
+									<left>120</left>
+									<top>0</top>
+									<height>73</height>
+									<font>font13</font>
+									<label>$INFO[ListItem.ChannelName]</label>
+									<aligny>center</aligny>
+									<textoffsetx>10</textoffsetx>
+								</control>
+							</channellayout>
+							<focusedchannellayout height="72.8" width="608">
+								<control type="image">
+									<left>15</left>
+									<top>7</top>
+									<height>62</height>
+									<texture colordiffuse="button_focus" border="16">boxes/box.png</texture>
+									<right>10</right>
+								</control>
+								<control type="label">
+									<left>16</left>
+									<top>0</top>
+									<width>90</width>
+									<font>font32_title</font>
+									<label>$INFO[ListItem.ChannelNumberLabel]</label>
+									<height>73</height>
+									<align>center</align>
+									<aligny>center</aligny>
+									<textcolor>black</textcolor>
+								</control>
+								<control type="label" id="1">
+									<width>465</width>
+									<left>120</left>
+									<top>0</top>
+									<height>73</height>
+									<width>540</width>
+									<font>font13</font>
+									<label>$INFO[ListItem.ChannelName]</label>
+									<aligny>center</aligny>
+									<textoffsetx>10</textoffsetx>
+									<scroll>true</scroll>
+									<textcolor>black</textcolor>
+								</control>
+							</focusedchannellayout>
+							<itemlayout height="72.8" width="1290">
+								<control type="image" id="2">
+									<top>1</top>
+									<height>73</height>
+									<texture border="3" fallback="windows/pvr/epg-genres/0.png">$INFO[ListItem.Property(GenreType),windows/pvr/epg-genres/,.png]</texture>
+								</control>
+								<control type="label" id="1">
+									<top>1</top>
+									<left>6</left>
+									<top>11</top>
+									<height>73</height>
+									<aligny>center</aligny>
+									<font>font13</font>
+									<label>$INFO[ListItem.Label]</label>
+								</control>
+								<control type="image">
+									<visible>ListItem.IsNew | ListItem.IsPremiere | ListItem.IsFinale | ListItem.IsLive</visible>
+									<left>6</left>
+									<top>1</top>
+									<width>16</width>
+									<height>16</height>
+									<aspectratio>keep</aspectratio>
+									<texture colordiffuse="button_focus">icons/pvr/premiere.png</texture>
+								</control>
+								<!-- <control type="image">
+									<left>6</left>
+									<top>1</top>
+									<width>16</width>
+									<height>16</height>
+									<texture>$VAR[PVRTimerIcon]</texture>
+									<animation effect="slide" start="0,0" end="19,0" condition="ListItem.IsNew | ListItem.IsPremiere | ListItem.IsFinale | ListItem.IsLive">conditional</animation>
+								</control> -->
+							</itemlayout>
+							<focusedlayout height="72.8" width="1290">
+								<control type="image" id="2">
+									<top>5</top>
+									<height>66</height>
+									<texture border="4" infill="false" colordiffuse="button_focus">colors/white.png</texture>
+								</control>
+								<control type="image" id="2">
+									<height>65</height>
+									<top>1</top>
+									<texture border="3" fallback="windows/pvr/epg-genres/0.png">$INFO[ListItem.Property(GenreType),windows/pvr/epg-genres/,.png]</texture>
+									<visible>!Control.HasFocus(50)</visible>
+								</control>
+								<control type="label" id="1">
+									<left>6</left>
+									<top>1</top>
+									<height>65</height>
+									<aligny>center</aligny>
+									<font>font13</font>
+									<label>$INFO[ListItem.Label]</label>
+								</control>
+								<control type="image">
+									<visible>ListItem.IsNew | ListItem.IsPremiere | ListItem.IsFinale | ListItem.IsLive</visible>
+									<left>6</left>
+									<top>1</top>
+									<width>16</width>
+									<height>16</height>
+									<aspectratio>keep</aspectratio>
+									<texture colordiffuse="button_focus">icons/pvr/premiere.png</texture>
+								</control>
+								<!-- <control type="image">
+									<left>6</left>
+									<top>1</top>
+									<width>16</width>
+									<height>16</height>
+									<texture>$VAR[PVRTimerIcon]</texture>
+									<animation effect="slide" start="0,0" end="19,0" condition="ListItem.IsNew | ListItem.IsPremiere | ListItem.IsFinale | ListItem.IsLive">conditional</animation>
+								</control> -->
+							</focusedlayout>
+						</control>
+						<control type="scrollbar" id="60">
+							<right>0</right>
+							<top>60.5%</top>
+							<width>12</width>
+							<bottom>7</bottom>
+							<onleft>10</onleft>
+							<onright>10</onright>
+							<orientation>vertical</orientation>
+							<texturesliderbackground colordiffuse="22FFFFFF">colors/white.png</texturesliderbackground>
+							<animation effect="fade" start="100" end="40" time="0" condition="!system.getbool(input.enablemouse)">conditional</animation>
+							<visible>Control.IsVisible(50)</visible>
+						</control>
+					</control>
+				</control>
+			<!--groups-->
+				<control type="list" id="11">  
+					<visible allowhiddenfocus="true">Control.HasFocus(11)</visible>
+					<top>372</top>
+					<bottom>1.5%</bottom>
+					<left>21</left>
+					<width>600</width>
+					<focusposition>0</focusposition>
+					<onleft>9000</onleft>
+					<onright>50</onright>
+					<onup>11</onup>
+					<ondown>11</ondown>
+					<onclick>SetFocus(50)</onclick>
+					<onback>50</onback>
+					<orientation>vertical</orientation>
+					<scrolltime>200</scrolltime>	
+					<itemlayout height="62.55" width="565">
+						<include>backbox</include>
+  						<control type="label">
+							<top>0</top>
+							<left>20</left>
+							<width>540</width>
+							<height>62</height>						
+							<align>left</align>
+							<aligny>center</aligny>
+							<label>$INFO[ListItem.Label]</label>
+							<textcolor>white</textcolor>
+						</control>
+					</itemlayout>
+					<focusedlayout height="62.55" width="565">      
+						<include>focusbox</include>
+						<control type="label">
+							<top>0</top>
+							<left>20</left>
+							<width>540</width>
+							<height>62</height>					
+							<align>left</align>
+							<aligny>center</aligny>
+							<scroll>true</scroll>
+							<label>$INFO[ListItem.Label]</label>
+							<textcolor>black</textcolor>
+						</control>
+					</focusedlayout>
+				</control>
+			</control>
+			<include>PVRChannelNumberInput</include>
+			<control type="group">
+				<include>MediaMenuCommon</include>
+				<include content="PVRSideBar">
+					<param name="group_label2" value="$INFO[Control.GetLabel(30)]" />
+				</include>
+			</control>
+		</control>
+		<include>crt</include>
+	</controls>
+</window>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">3</defaultcontrol>
+	<include>DA</include>
+	<zorder>3</zorder>
+	<controls>
+		<include>DefaultBG</include>
+		<include content="DialogBackgroundCommons">
+			<param name="left" value="4" />
+			<param name="top" value="4" />
+			<param name="btop" value="76" />
+			<param name="width" value="1918" />
+			<param name="height" value="1078" />
+			<param name="header_label" value="" />
+			<param name="header_id" value="1" />
+		</include>
+		<control type="group">
+			<control type="list" id="3">
+                <top>100</top>
+                <bottom>30</bottom>
+				<left>33</left>
+				<width>1560</width>
+				<onup>3</onup>
+				<ondown>3</ondown>
+				<onleft>531</onleft>
+				<onright>9001</onright>
+				<pagecontrol>531</pagecontrol>
+				<scrolltime>200</scrolltime>
+				<itemgap>40</itemgap>
+				<include content="DefaultSimpleListLayout">
+					<param name="width" value="1520" />
+					<param name="fwidth" value="1520" />
+					<param name="height" value="95" />
+					<param name="fheight" value="95" />
+					<param name="list_id" value="3" />
+					<param name="vis" value="3" />
+				</include>
+			</control>
+			<control type="list" id="6">
+				<left>33</left>
+				<top>100</top>
+				<width>1560</width>
+				<bottom>30</bottom>
+				<onup>6</onup>
+				<ondown>6</ondown>
+				<onleft>531</onleft>
+				<onright>9001</onright>
+				<pagecontrol>531</pagecontrol>
+				<scrolltime>200</scrolltime>
+				<itemlayout height="158" width="1520">
+					<include>backbox</include>
+					<control type="image">
+						<left>8</left>
+						<top>8</top>
+						<width>142</width>
+						<height>142</height>
+						<texture diffuse="diffuse/square2.png">$VAR[InfoWallThumbVar]</texture>
+						<aspectratio>keep</aspectratio>
+						<visible>!ListItem.Property(PVR.IsRecordingTimer) + !ListItem.Property(PVR.IsRemindingTimer)</visible>
+					</control>
+					<control type="image">
+						<left>8</left>
+						<top>8</top>
+						<width>142</width>
+						<height>142</height>
+						<aspectratio>keep</aspectratio>
+						<aligny>center</aligny>
+						<texture>icons/pvr/timers/recording.png</texture>
+						<visible>ListItem.Property(PVR.IsRecordingTimer)</visible>
+					</control>
+					<control type="image">
+						<left>8</left>
+						<top>8</top>
+						<width>142</width>
+						<height>142</height>
+						<aspectratio>keep</aspectratio>
+						<aligny>center</aligny>
+						<texture>icons/pvr/timers/bell.png</texture>
+						<visible>ListItem.Property(PVR.IsRemindingTimer)</visible>
+					</control>
+					<control type="label">
+						<left>200</left>
+						<top>30</top>
+						<right>20</right>
+						<height>30</height>
+						<font>font16</font>
+						<align>left</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="textbox">
+						<align>left</align>
+						<aligny>center</aligny>
+						<left>200</left>
+						<top>60</top>
+						<right>20</right>
+						<height>80</height>
+						<font>font13</font>
+						<textcolor>grey</textcolor>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="158" width="1520">
+					<include>backbox</include>
+					<include content="box">
+					<param name="vis" value="!Control.HasFocus(6)" />
+				</include>
+					<include content="focusbox">
+					<param name="vis" value="Control.HasFocus(6)" />
+				</include>
+					<control type="image">
+						<left>8</left>
+						<top>8</top>
+						<width>142</width>
+						<height>142</height>
+						<texture diffuse="diffuse/square2.png">$VAR[InfoWallThumbVar]</texture>
+						<aspectratio>keep</aspectratio>
+						<visible>!ListItem.Property(PVR.IsRecordingTimer) + !ListItem.Property(PVR.IsRemindingTimer)</visible>
+					</control>
+					<control type="image">
+						<left>8</left>
+						<top>8</top>
+						<width>142</width>
+						<height>142</height>
+						<aspectratio>keep</aspectratio>
+						<aligny>center</aligny>
+						<texture>icons/pvr/timers/recording.png</texture>
+						<visible>ListItem.Property(PVR.IsRecordingTimer)</visible>
+					</control>
+					<control type="image">
+						<left>8</left>
+						<top>8</top>
+						<width>142</width>
+						<height>142</height>
+						<aspectratio>keep</aspectratio>
+						<aligny>center</aligny>
+						<texture>icons/pvr/timers/bell.png</texture>
+						<visible>ListItem.Property(PVR.IsRemindingTimer)</visible>
+					</control>
+					<control type="label">
+						<left>200</left>
+						<top>30</top>
+						<right>20</right>
+						<height>30</height>
+						<font>font16</font>
+						<align>left</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+						<textcolor>black</textcolor>
+						<visible>Control.HasFocus(6)</visible>
+					</control>
+					<control type="textbox">
+						<align>left</align>
+						<aligny>center</aligny>
+						<left>200</left>
+						<top>60</top>
+						<right>20</right>
+						<height>80</height>
+						<font>font13</font>
+						<textcolor>black</textcolor>
+						<label>$INFO[ListItem.Label2]</label>
+						<visible>Control.HasFocus(6)</visible>						
+					</control>
+					<control type="label">
+						<left>200</left>
+						<top>30</top>
+						<right>20</right>
+						<height>30</height>
+						<font>font16</font>
+						<align>left</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+						<textcolor>white</textcolor>
+						<visible>!Control.HasFocus(6)</visible>
+					</control>
+					<control type="textbox">
+						<align>left</align>
+						<aligny>center</aligny>
+						<left>200</left>
+						<top>60</top>
+						<right>20</right>
+						<height>80</height>
+						<font>font13</font>
+						<textcolor>grey</textcolor>
+						<label>$INFO[ListItem.Label2]</label>
+						<visible>!Control.HasFocus(6)</visible>						
+					</control>
+				</focusedlayout>
+			</control>
+
+			<control type="label">
+				<left>1584</left>
+				<bottom>50</bottom>
+				<width>275</width>
+				<height>35</height>
+				<font>font13</font>
+				<align>right</align>
+				<textcolor>grey</textcolor>
+				<label>$VAR[SelectLabel]</label>
+			</control>
+			<control type="grouplist" id="9001">
+				<left>1584</left>
+				<top>105</top>
+				<itemgap>13</itemgap>
+				<onleft condition="Control.IsVisible(3)">3</onleft>
+				<onleft condition="Control.IsVisible(6)">6</onleft>
+				<onright condition="Control.IsVisible(3)">531</onright>
+				<onright condition="Control.IsVisible(6)">531</onright>
+				<include content="DefaultDialogButton">
+					<param name="id" value="5" />
+					<param name="label" value="" />
+				</include>
+				<include content="DefaultDialogButton">
+					<param name="id" value="8" />
+					<param name="label" value="" />
+				</include>
+				<include content="DefaultDialogButton">
+					<param name="id" value="7" />
+					<param name="label" value="$LOCALIZE[222]" />
+				</include>
+			</control>
+		</control>
+	</controls>
+</window>

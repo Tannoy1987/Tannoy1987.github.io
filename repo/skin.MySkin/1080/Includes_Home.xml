@@ -1,0 +1,1738 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="HomePanel">
+		<control type="list" id="1000">
+			<include>OpenClose_Left</include>
+			<include>Homecenter</include>
+			<left>0</left>
+			<top>510</top>
+			<width>80</width>
+			<height>540</height>
+			<orientation>vertical</orientation>
+			<onright>SetFocus($INFO[Container(1000).ListItem.Property(menu_id)])</onright>
+			<onleft>ActivateWindow(10111)</onleft>
+			<visible allowhiddenfocus="true">Control.HasFocus(1000)</visible>
+			<focusedlayout height="60">
+				<control type="image">
+					<left>8</left>
+					<top>5</top>
+					<width>50</width>
+					<height>50</height>
+					<texture colordiffuse="box">boxes/glass.png</texture>
+					<visible>Player.HasVideo</visible>
+				</control>						
+				<control type="image">
+					<left>3</left>
+					<top>0</top>
+					<width>60</width>
+					<height>60</height>
+					<texture colordiffuse="button_focus">$INFO[ListItem.Art(thumb)]</texture>
+				</control> 							
+			</focusedlayout>
+			<itemlayout height="60">				
+				<control type="image">
+					<left>8</left>
+					<top>5</top>
+					<width>50</width>
+					<height>50</height>
+					<texture colordiffuse="box">boxes/glass.png</texture>
+					<visible>Player.HasVideo</visible>
+				</control>											
+				<control type="image">
+					<left>3</left>
+					<top>0</top>
+					<width>60</width>
+					<height>60</height>
+					<texture>$INFO[ListItem.Art(thumb)]</texture>
+				</control>														
+			</itemlayout>
+			<content>
+				<item>
+					<label>Search</label>
+					<onclick>ActivateWindow(10025,plugin://plugin.video.pov/?mode=navigator.search&name=32450)</onclick>
+					<thumb>DefaultAddonsSearch.png</thumb>
+					<visible>Skin.HasSetting(povsearch) + String.IsEqual(Skin.String(home_layout),2)</visible>
+				</item>
+				<item>
+					<label>POV</label>
+					<property name="menu_id">$NUMBER[2000]</property>
+					<onclick>ActivateWindow(10025,plugin://plugin.video.pov)</onclick>
+					<thumb>icons/POV.png</thumb>
+					<property name="id">POV</property>
+					<visible>String.IsEqual(Skin.String(home_layout),2) | String.IsEqual(Skin.String(home_layout),3) | String.IsEqual(Skin.String(home_layout),5)</visible>
+				</item>
+				<item>
+					<label>POV</label>
+					<property name="menu_id">$NUMBER[1500]</property>
+					<onclick>ActivateWindow(10025,plugin://plugin.video.pov)</onclick>
+					<thumb>icons/POV.png</thumb>
+					<property name="id">POV</property>
+					<visible>String.IsEqual(Skin.String(home_layout),4)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[19020]</label>
+					<property name="menu_id">$NUMBER[6000]</property>
+					<onclick>ActivateWindow(10025,plugin://plugin.video.xstream-player)</onclick>
+					<thumb>icons/sidemenu/livetv.png</thumb>
+					<property name="id">livetv</property>
+					<visible>String.IsEqual(Skin.String(tv_layout),4)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[19020]</label>
+					<property name="menu_id">$NUMBER[6000]</property>
+					<onclick>ActivateWindow(10025,plugin://plugin.video.giptv)</onclick>
+					<thumb>icons/sidemenu/livetv.png</thumb>
+					<property name="id">livetv</property>
+					<visible>String.IsEqual(Skin.String(tv_layout),3)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[19020]</label>
+					<property name="menu_id">$NUMBER[6000]</property>
+					<onclick>ActivateWindow(tvguide)</onclick>
+					<thumb>icons/sidemenu/livetv.png</thumb>
+					<property name="id">livetv</property>
+					<visible>String.IsEqual(Skin.String(tv_layout),2)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[3]</label>
+					<onclick>ActivateWindow(Videos,root)</onclick>
+					<property name="menu_id">$NUMBER[5000]</property>
+					<thumb>icons/sidemenu/videos.png</thumb>
+					<property name="id">videos</property>
+					<visible>!Skin.HasSetting(HomeMenuNoVideosButton)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[2]</label>
+					<onclick>ActivateWindow(Music,root,return)</onclick>
+					<property name="menu_id">$NUMBER[510]</property>
+					<thumb>icons/sidemenu/music.png</thumb>
+					<property name="id">music</property>
+					<visible>!Skin.HasSetting(HomeMenuNoMusicButton)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[24001]</label>
+					<property name="menu_id">$NUMBER[310]</property>
+					<onclick>ActivateWindow(AddonBrowser)</onclick>
+					<thumb>icons/sidemenu/addons.png</thumb>
+					<property name="id">addons</property>
+					<visible>!String.IsEqual(Skin.String(addon_widget_size),1)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[10134]</label>
+					<onclick>ActivateWindow(favouritesbrowser)</onclick>
+					<property name="menu_id">$NUMBER[700]</property>
+					<thumb>icons/sidemenu/favourites.png</thumb>
+					<property name="id">favorites</property>
+					<visible>!Skin.HasSetting(HomeMenuNoFavButton)</visible>
+				</item>
+			</content>
+		</control>
+	</include>
+	<!-- <include name="HomePanel2">
+		<control type="list" id="1000">
+			<include>Animation_TopSlide</include>
+			<left>0</left>
+			<top>4</top>
+			<width>720</width>
+			<height>108</height>
+			<orientation>horizontal</orientation>
+			<ondown>SetFocus($INFO[Container(1000).ListItem.Property(menu_id)])</ondown>
+			<onup>ActivateWindow(10111)</onup>
+			<focusedlayout height="60" width="60">
+				<control type="image">
+					<left>8</left>
+					<top>5</top>
+					<width>50</width>
+					<height>50</height>
+					<texture colordiffuse="box">boxes/glass.png</texture>
+					<visible>Player.HasVideo</visible>
+				</control>						
+				<control type="image">
+					<left>3</left>
+					<top>0</top>
+					<width>60</width>
+					<height>60</height>
+					<texture colordiffuse="button_focus">$INFO[ListItem.Art(thumb)]</texture>
+				</control> 							
+			</focusedlayout>
+			<itemlayout height="60" width="60">				
+				<control type="image">
+					<left>8</left>
+					<top>5</top>
+					<width>50</width>
+					<height>50</height>
+					<texture colordiffuse="box">boxes/glass.png</texture>
+					<visible>Player.HasVideo</visible>
+				</control>											
+				<control type="image">
+					<left>3</left>
+					<top>0</top>
+					<width>60</width>
+					<height>60</height>
+					<texture>$INFO[ListItem.Art(thumb)]</texture>
+				</control>														
+			</itemlayout>
+			<content>
+				<item>
+					<label>Search</label>
+					<onclick>ActivateWindow(10025,plugin://plugin.video.pov/?mode=navigator.search&name=32450)</onclick>
+					<thumb>DefaultAddonsSearch.png</thumb>
+					<visible>Skin.HasSetting(povsearch) + String.IsEqual(Skin.String(home_layout),2)</visible>
+				</item>
+				<item>
+					<label>POV</label>
+					<property name="menu_id">$NUMBER[2000]</property>
+					<onclick>ActivateWindow(10025,plugin://plugin.video.pov)</onclick>
+					<thumb>icons/POV.png</thumb>
+					<property name="id">POV</property>
+					<visible>String.IsEqual(Skin.String(home_layout),2) | String.IsEqual(Skin.String(home_layout),3) | String.IsEqual(Skin.String(home_layout),5)</visible>
+				</item>
+				<item>
+					<label>POV</label>
+					<property name="menu_id">$NUMBER[1500]</property>
+					<onclick>ActivateWindow(10025,plugin://plugin.video.pov)</onclick>
+					<thumb>icons/POV.png</thumb>
+					<property name="id">POV</property>
+					<visible>String.IsEqual(Skin.String(home_layout),4)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[19020]</label>
+					<property name="menu_id">$NUMBER[6000]</property>
+					<onclick>ActivateWindow(10025,plugin://plugin.video.giptv)</onclick>
+					<thumb>icons/sidemenu/livetv.png</thumb>
+					<property name="id">livetv</property>
+					<visible>String.IsEqual(Skin.String(tv_layout),3)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[19020]</label>
+					<property name="menu_id">$NUMBER[6000]</property>
+					<onclick>ActivateWindow(tvguide)</onclick>
+					<thumb>icons/sidemenu/livetv.png</thumb>
+					<property name="id">livetv</property>
+					<visible>String.IsEqual(Skin.String(tv_layout),2)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[3]</label>
+					<onclick>ActivateWindow(Videos,root)</onclick>
+					<property name="menu_id">$NUMBER[5000]</property>
+					<thumb>icons/sidemenu/videos.png</thumb>
+					<property name="id">videos</property>
+					<visible>!Skin.HasSetting(HomeMenuNoVideosButton)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[2]</label>
+					<onclick>ActivateWindow(Music,root,return)</onclick>
+					<property name="menu_id">$NUMBER[510]</property>
+					<thumb>icons/sidemenu/music.png</thumb>
+					<property name="id">music</property>
+					<visible>!Skin.HasSetting(HomeMenuNoMusicButton)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[24001]</label>
+					<property name="menu_id">$NUMBER[310]</property>
+					<onclick>ActivateWindow(AddonBrowser)</onclick>
+					<thumb>icons/sidemenu/addons.png</thumb>
+					<property name="id">addons</property>
+					<visible>!Skin.HasSetting(HomeMenuNoAddonButton)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[10134]</label>
+					<onclick>ActivateWindow(favouritesbrowser)</onclick>
+					<property name="menu_id">$NUMBER[700]</property>
+					<thumb>icons/sidemenu/favourites.png</thumb>
+					<property name="id">favorites</property>
+					<visible>!Skin.HasSetting(HomeMenuNoFavButton)</visible>
+				</item>
+			</content>
+		</control>
+	</include>	 -->
+	<include name="AddonPanel">				
+		<control type="grouplist" id="300">
+			<include>MenuZoom</include>
+			<left>8</left>
+			<top>8</top>
+			<right>8</right>
+			<itemgap>-2</itemgap>
+			<visible>String.IsEqual(Container(1000).ListItem.Property(id),addons)</visible>
+			<include content="WidgetListIcon" condition="String.IsEqual(Skin.String(addon_widget_size),2)">
+				<param name="content_path" value="addons://sources/video/" />
+				<param name="widget_header" value="$LOCALIZE[1037]" />
+				<param name="widget_target" value="videos" />
+				<param name="sortby" value="lastused" />
+				<param name="sortorder" value="descending" />
+				<param name="list_id" value="310" />
+				<param name="fallback_icon" value="DefaultAddon.png" />
+			</include>
+			<include content="WidgetListIcon" condition="String.IsEqual(Skin.String(addon_widget_size),2)">
+				<param name="content_path" value="addons://sources/executable/" />
+				<param name="widget_header" value="$LOCALIZE[1043]" />
+				<param name="widget_target" value="programs" />
+				<param name="sortby" value="lastused" />
+				<param name="sortorder" value="descending" />
+				<param name="list_id" value="320" />
+				<param name="fallback_icon" value="DefaultAddon.png" />
+			</include>
+			<include content="WidgetListIcon" condition="String.IsEqual(Skin.String(addon_widget_size),2)">
+				<param name="content_path" value="androidapp://sources/apps/" />
+				<param name="widget_header" value="Android" />
+				<param name="widget_target" value="programs" />
+				<param name="sortby" value="lastused" />
+				<param name="sortorder" value="descending" />
+				<param name="list_id" value="330" />
+				<param name="fallback_icon" value="DefaultAddon.png" />
+			</include>
+			<include content="WidgetListIcon2" condition="String.IsEqual(Skin.String(addon_widget_size),3)">
+				<param name="content_path" value="addons://sources/video/" />
+				<param name="widget_header" value="$LOCALIZE[1037]" />
+				<param name="widget_target" value="videos" />
+				<param name="sortby" value="lastused" />
+				<param name="sortorder" value="descending" />
+				<param name="list_id" value="310" />
+				<param name="fallback_icon" value="DefaultAddon.png" />
+			</include>
+			<include content="WidgetListIcon2" condition="String.IsEqual(Skin.String(addon_widget_size),3)">
+				<param name="content_path" value="addons://sources/executable/" />
+				<param name="widget_header" value="$LOCALIZE[1043]" />
+				<param name="widget_target" value="programs" />
+				<param name="sortby" value="lastused" />
+				<param name="sortorder" value="descending" />
+				<param name="list_id" value="320" />
+				<param name="fallback_icon" value="DefaultAddon.png" />
+			</include>
+			<include content="WidgetListIcon2" condition="String.IsEqual(Skin.String(addon_widget_size),3)">
+				<param name="content_path" value="androidapp://sources/apps/" />
+				<param name="widget_header" value="Android" />
+				<param name="widget_target" value="programs" />
+				<param name="sortby" value="lastused" />
+				<param name="sortorder" value="descending" />
+				<param name="list_id" value="330" />
+				<param name="fallback_icon" value="DefaultAddon.png" />
+			</include>
+			<include content="WidgetNoLabelListIcon" condition="String.IsEqual(Skin.String(addon_widget_size),4)">
+				<param name="content_path" value="addons://sources/video/" />
+				<param name="widget_header" value="$LOCALIZE[1037]" />
+				<param name="widget_target" value="videos" />
+				<param name="sortby" value="lastused" />
+				<param name="sortorder" value="descending" />
+				<param name="list_id" value="310" />
+				<param name="fallback_icon" value="DefaultAddon.png" />
+			</include>
+			<include content="WidgetNoLabelListIcon" condition="String.IsEqual(Skin.String(addon_widget_size),4)">
+				<param name="content_path" value="addons://sources/executable/" />
+				<param name="widget_header" value="$LOCALIZE[1043]" />
+				<param name="widget_target" value="programs" />
+				<param name="sortby" value="lastused" />
+				<param name="sortorder" value="descending" />
+				<param name="list_id" value="320" />
+				<param name="fallback_icon" value="DefaultAddon.png" />
+			</include>
+			<include content="WidgetNoLabelListIcon" condition="String.IsEqual(Skin.String(addon_widget_size),4)">
+				<param name="content_path" value="androidapp://sources/apps/" />
+				<param name="widget_header" value="Android" />
+				<param name="widget_target" value="programs" />
+				<param name="sortby" value="lastused" />
+				<param name="sortorder" value="descending" />
+				<param name="list_id" value="330" />
+				<param name="fallback_icon" value="DefaultAddon.png" />
+			</include>
+			<control type="label">
+				<left>13</left>
+				<right>13</right>
+				<bottom>4</bottom>
+				<height>85</height>
+				<label>$INFO[ListItem.Label]</label>
+				<font>title3</font>
+				<shadowcolor>text_shadow</shadowcolor>
+				<align>center</align>
+				<aligny>center</aligny>
+				<visible>ControlGroup(300).HasFocus() + Skin.HasSetting(HomeAddonLabel) + String.IsEqual(Skin.String(addon_widget_size),4)</visible>
+			</control>
+		</control>
+	</include>
+    <include name="MusicPanel">	
+		<control type="panel" id="510">
+			<visible>String.IsEqual(Container(1000).ListItem.Property(id),music) + Library.HasContent(music)</visible>
+			<include>MenuZoom</include>
+			<onleft condition="Player.HasMedia">1000</onleft>
+			<onup>PlayerControl(PartyMode(music))</onup>
+			<onunfocus>SetProperty(listposition,$INFO[Container(510).Position],home)</onunfocus>
+			<onback condition="!Container(510).Position(0)">SetFocus(510,0,absolute)</onback>
+			<onback condition="Container(510).Position(0)">1000</onback>
+			<left>28</left>
+			<top>8</top>
+			<scrolltime tween="cubic" easing="out">500</scrolltime>
+			<orientation>vertical</orientation>
+			<preloaditems>2</preloaditems>
+			<visible>Integer.IsGreater(Container(510).NumItems,0) | Container(510).IsUpdating</visible>
+			<itemlayout width="266" height="266">
+				<control type="group">
+					<left>0</left>
+					<top>0</top>
+					<control type="image">
+						<bordersize>5</bordersize>
+						<texture border="10" colordiffuse="button_focus">boxes/box2.png</texture>
+					</control>
+					<control type="image">
+						<bordersize>9</bordersize>
+						<texture diffuse="diffuse/square.png" fallback="DefaultMusicAlbums.png">$VAR[musicthumbnails]</texture>
+					</control>
+				</control>
+			</itemlayout>
+			<focusedlayout width="266" height="266">
+				<control type="group">
+					<left>0</left>
+					<top>0</top>
+					<control type="image">
+						<bordersize>5</bordersize>
+						<texture border="10" colordiffuse="button_focus">boxes/box3.png</texture>
+					</control>
+					<control type="image">
+						<bordersize>12</bordersize>
+						<texture diffuse="diffuse/square.png" fallback="DefaultMusicAlbums.png">$VAR[musicthumbnails2]</texture>
+					</control>
+				</control>
+			</focusedlayout>
+			<content target="music" limit="0" browse="auto" sortorder="descending" sortby="lastused">musicdb://recentlyplayedalbums</content>
+		</control>
+	</include>
+    <include name="VideoPanel">
+		<control type="group" id="50000">
+			<visible>String.IsEqual(Container(1000).ListItem.Property(id),videos)</visible>		
+		<!--InfoPanel-->			
+			<include content="HomeInfoPanel">
+				<param name="groupid" value="50000" />
+				<param name="greater" value="5001" />
+			</include>
+		<!--current/NumItems-->			
+			<control type="label"  id="50099">
+				<top>690</top>
+				<left>20</left>
+				<width min="80" max="1100">auto</width>
+    		    <height>30</height>
+    		    <font>font11</font>
+    		    <align>left</align>
+    		    <textcolor>button_focus</textcolor>
+    		    <label>$VAR[ContainerItemCountTextVar]</label>
+    			<visible>!Window.IsActive(movieinformation)</visible>
+				<visible>ControlGroup(50000).HasFocus()</visible>	
+    		</control>
+		<!--Home-->
+			<control type="group">
+				<visible>Control.HasFocus(1000) + !Container(5000).IsUpdating</visible>
+				<include content="bg">
+					<param name="bs" value="170,95,170,95" />
+					<param name="vis" value="Integer.IsGreater(Container(5100).NumItems,0)" />
+				</include>
+				<control type="panel" id="5100">
+					<right>0</right>
+					<top>0</top>
+					<width>1824</width>
+					<height>1080</height>
+ 					<include content="SingleFSWidget">
+						<param name="width" value="1824" />
+						<param name="height" value="1080" />
+						<param name="widget_target" value="videos" />
+						<param name="sortorder" value="descending" />
+						<param name="limit" value="1" />
+						<param name="poster" value="$INFO[ListItem.Art(thumb)]" />
+						<param name="content_path" value="library://video/tvshows/titles.xml" />
+					</include>	
+ 					<include content="SingleFSWidget">
+						<param name="width" value="1824" />
+						<param name="height" value="1080" />
+						<param name="widget_target" value="videos" />
+						<param name="sortorder" value="descending" />
+						<param name="sortby" value="random" />
+						<param name="poster" value="$INFO[ListItem.Art(thumb)]" />
+						<param name="content_path" value="library://video/movies/titles.xml" />
+					</include>	
+				</control>
+			</control>		
+   			<control type="grouplist" id="5000">
+				<height>354</height>
+				<bottom>4</bottom>
+				<left>4</left>
+				<width>1912</width>
+				<itemgap>0</itemgap>
+				<visible allowhiddenfocus="true">!Control.HasFocus(1000)</visible>
+				<include content="PosterWidget" condition="Library.HasContent(tvshows)">
+					<param name="list_id" value="5001" />
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="videodb://inprogresstvshows" />
+					<param name="vis" value="Integer.IsGreater(Container(5001).NumItems,0) | Container(5001).IsUpdating" />
+				</include>	
+				<include content="PosterWidget" condition="Library.HasContent(movies)">
+					<param name="list_id" value="5002" />
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="special://skin/playlists/inprogress_movies.xsp"/>
+					<param name="vis" value="Integer.IsGreater(Container(5002).NumItems,0) | Container(5002).IsUpdating" />
+				</include>
+				<include content="PosterWidget" condition="Library.HasContent(movies)">
+					<param name="list_id" value="5003" />
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="videodb://recentlyaddedmovies" />
+					<param name="vis" value="Integer.IsGreater(Container(5003).NumItems,0) | Container(5003).IsUpdating" />
+				</include>
+				<include content="PosterWidget" condition="Library.HasContent(movies)">
+					<param name="list_id" value="5004" />
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="videodb://movies/sets" />
+					<param name="vis" value="Integer.IsGreater(Container(5004).NumItems,0) | Container(5004).IsUpdating" />
+				</include>
+				<include content="PosterWidget" condition="Library.HasContent(tvshows)">
+					<param name="list_id" value="5005" />
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="videodb://tvshows/titles" />
+					<param name="vis" value="Integer.IsGreater(Container(5005).NumItems,0) | Container(5005).IsUpdating" />
+				</include>
+			</control>
+		</control>
+	</include>	
+    <include name="TVPanel">
+		<control type="group">
+			<visible>String.IsEqual(Container(1000).ListItem.Property(id),livetv)</visible>
+			<include>MenuZoom</include>
+			<control type="group">			
+                <include>R 1/3 Panel</include>
+                <include>bg</include>
+				<visible>Integer.IsGreater(Container(6000).NumItems,0) + !Container(6000).IsUpdating</visible>
+                <control type="image" id="32112"><!--thumb-->
+					<top>10</top>
+					<left>10</left>
+					<right>10</right>
+					<height>40%</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture fallback="DefaultNoPreview.png">$VAR[ShiftThumbVar]</texture>
+                </control>
+                <control type="group">
+                    <top>37.5%</top>
+                    <bottom>0.5%</bottom>
+        			<control type="textbox">
+        			    <left>30</left>
+        			    <top>30</top>
+        			    <bottom>30</bottom>
+        			    <right>30</right>
+        			    <align>center</align>
+        			    <aligny>center</aligny>
+        			    <autoscroll time="3000" delay="5000" repeat="10000">true</autoscroll>
+        			    <label>$INFO[ListItem.Tagline,[I],[/I][CR][CR]]$INFO[ListItem.Plot][CR][CR]</label>
+        			    <shadowcolor>black</shadowcolor>
+        			</control>
+                </control>
+                <control type="group">
+                    <bottom>2%</bottom>
+                    <include>mediaflags</include>
+                </control>         
+           	</control>
+			<control type="group">
+				<include>L 2/3 List</include>
+				<control type="panel" id="6000">
+					<top>0</top>
+					<left>0</left>
+					<onup>6000</onup>
+					<ondown>6000</ondown>
+					<onleft>1000</onleft>
+					<onback>1000</onback>
+					<focusedlayout width="1270" height="88.65">
+						<control type="image">
+							<bordersize>5</bordersize>
+							<texture colordiffuse="button_focus" border="16">boxes/box.png</texture>
+							<visible>Control.HasFocus(6000)</visible>
+						</control>
+						<control type="textbox">
+							<left>20</left>
+							<right>20</right>
+							<align>center</align>
+							<aligny>center</aligny>
+							<label>$INFO[ListItem.Label]</label>
+							<textcolor>black</textcolor>
+						</control>
+					</focusedlayout>
+					<itemlayout width="1270" height="88.65">
+						<control type="image">
+							<bordersize>5</bordersize>
+							<texture border="16" colordiffuse="button_focus">boxes/tdbox.png</texture>
+						</control>
+						<control type="textbox">
+							<left>20</left>
+							<right>20</right>
+							<align>center</align>
+							<aligny>center</aligny>
+							<label>$INFO[ListItem.Label]</label>
+							<shadowcolor>text_shadow</shadowcolor>
+							<textcolor>white</textcolor>
+						</control>
+					</itemlayout>
+					<content target="tv" sortby="descending">$VAR[TVPanelContentVar]</content> 
+				</control>
+            </control>
+		</control>
+	</include>		
+	<include name="FavoritesPanel">
+		<control type="panel" id="700">
+			<left>8</left>
+			<top>8</top>
+			<bottom>8</bottom>
+			<onleft condition="Player.HasMedia">1000</onleft>
+			<onunfocus>SetProperty(listposition,$INFO[Container(700).Position],home)</onunfocus>
+			<onback condition="!Container(700).Position(0)">SetFocus(700,0,absolute)</onback>
+			<onback condition="Container(700).Position(0)">1000</onback>
+			<include>MenuZoom</include>
+			<visible>String.IsEqual(Container(1000).ListItem.Property(id),favorites)</visible>
+			<itemlayout width="272" height="354.66">
+				<control type="image">
+            	    <bordersize>5</bordersize>
+					<texture border="16" colordiffuse="button_focus">boxes/box2.png</texture>
+				</control>	
+            	<control type="image">
+            	    <bordersize>8,8,8,80</bordersize>
+            	    <texture>$VAR[thumbnails]</texture>
+            	    <aspectratio align="center" aligny="center">keep</aspectratio>
+            	</control>
+            	<control type="textbox">
+            	    <height>90</height>
+            	    <left>20</left>
+            	    <right>20</right>
+            	    <bottom>5</bottom>
+            	    <align>center</align>
+            	    <aligny>center</aligny>
+            	    <font>font10</font>
+            	    <label>$INFO[ListItem.Label]</label>
+            	</control>
+			</itemlayout>
+			<focusedlayout width="272" height="354.66">
+				<control type="image">
+            	    <bordersize>5</bordersize>
+					<texture border="16" colordiffuse="button_focus">boxes/box3.png</texture>
+				</control>				
+            	<control type="image">
+         			<bordersize>8,8,8,80</bordersize>
+            	    <texture>$VAR[thumbnails]</texture>
+            	    <aspectratio align="center" aligny="center">keep</aspectratio>
+            	</control>
+            	<control type="textbox">
+            	    <height>90</height>
+            	    <left>20</left>
+            	    <right>20</right>
+            	    <bottom>5</bottom>
+            	    <align>center</align>
+            	    <aligny>center</aligny>
+            	    <font>font10</font>
+            	    <label>$INFO[ListItem.Label]</label>
+            	</control>
+			</focusedlayout>
+			<content target="favourites" sortorder="descending" sortby="lastused">favourites://</content>
+		</control>
+	</include>
+	<include name="FlixPlaylistPanel">
+		<control type="group" id="20000">
+   			<visible>String.IsEqual(Container(1000).ListItem.Property(id),POV)</visible>
+		<!--InfoPanel-->	
+			<include content="HomeInfoPanel">
+				<param name="groupid" value="20000" />
+				<param name="greater" value="2001" />
+			</include>
+		<!--current/NumItems-->					
+			<control type="label" id="20099">
+				<top>690</top>
+    			<left>20</left>
+				<width>auto</width>
+				<height>30</height>
+				<font>font11</font>
+				<align>left</align>
+				<textcolor>button_focus</textcolor>
+				<label>$VAR[ContainerItemCountTextVar]</label>
+    			<visible>!Window.IsActive(movieinformation)</visible>						
+    			<visible>ControlGroup(20000).HasFocus()</visible>						
+			</control>	
+			<!--Home-->
+			<control type="group">
+				<visible>Control.HasFocus(1000) + !Container(2000).IsUpdating</visible>	
+				<include content="bg">
+					<param name="bs" value="170,95,170,95" />
+					<param name="vis" value="Integer.IsGreater(Container(2100).NumItems,0)" />
+				</include>
+				<control type="panel" id="2100">
+					<right>0</right>
+					<top>0</top>
+					<width>1360</width>
+					<height>1080</height>
+ 					<include content="SingleFSWidget">
+						<param name="width" value="960" />
+						<param name="height" value="1080" />
+						<param name="widget_target" value="videos" />
+						<param name="sortorder" value="descending" />
+						<param name="limit" value="1" />
+						<param name="poster" value="$INFO[ListItem.Art(thumb)]" />
+						<param name="content_path" value="plugin://plugin.video.pov/?name=32483&mode=build_next_episode" />
+					</include>	
+				</control>
+			</control>
+	    	<control type="grouplist" id="2000">
+				<height>354</height>
+				<bottom>4</bottom>
+				<left>4</left>
+				<width>1912</width>
+				<visible allowhiddenfocus="true">!Control.HasFocus(1000)</visible>
+				<include content="PosterWidget">
+					<param name="list_id" value="2001" />
+					<param name="widget_target" value="videos"/>
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?name=32483&mode=build_next_episode&instance=2001" />
+					<param name="vis" value="Integer.IsGreater(Container(2001).NumItems,0) | Container(2001).IsUpdating" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2002" />						
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?name=32476&mode=build_movie_list&action=in_progress_movies&instance=2002" />
+					<param name="vis" value="Integer.IsGreater(Container(2002).NumItems,0) | Container(2002).IsUpdating" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2004" />			
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?name=32449&mode=build_tvshow_list&action=trakt_tv_trending_recent" />
+					<param name="vis" value="Integer.IsGreater(Container(2004).NumItems,0) | Container(2004).IsUpdating" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2005" />
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?name=32449&mode=build_movie_list&action=trakt_movies_trending_recent" />
+					<param name="vis" value="Integer.IsGreater(Container(2005).NumItems,0) | Container(2005).IsUpdating" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2007" />
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=build_tvshow_list&action=trakt_watchlist&name=TV+Shows&&instance=2007" />
+					<param name="vis" value="Integer.IsGreater(Container(2007).NumItems,0) | Container(2007).IsUpdating" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2008" />						
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=build_movie_list&action=trakt_watchlist&name=Movies&instance=2008" />
+					<param name="vis" value="Integer.IsGreater(Container(2008).NumItems,0) | Container(2008).IsUpdating" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2013" />						
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=build_tvshow_list&action=trakt_recommendations&name=TV+Shows&instance=2013" />
+					<param name="vis" value="Integer.IsGreater(Container(2013).NumItems,0) | Container(2013).IsUpdating" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2014" />						
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=build_movie_list&action=trakt_recommendations&name=Movies&instance=2014" />
+					<param name="vis" value="Integer.IsGreater(Container(2014).NumItems,0) | Container(2014).IsUpdating" />
+				</include>	
+				<include content="WidgetListIcon">
+					<param name="list_id" value="2015" />						
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.filester/?action=list&folder_id=aada2b05dafb3fce" />
+					<param name="vis" value="Integer.IsGreater(Container(2015).NumItems,0) | Container(2015).IsUpdating" />
+				</include>	
+				<include content="WidgetListIcon">
+					<param name="list_id" value="2016" />						
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="$INFO[Skin.String(MyWidgetPath)]" />
+					<param name="vis" value="Integer.IsGreater(Container(2016).NumItems,0) | Container(2016).IsUpdating" />
+				</include>	
+			</control>
+		</control>
+	</include>
+	<include name="POVFlixPanel">
+		<control type="group" id="20000">
+   			<visible>String.IsEqual(Container(1000).ListItem.Property(id),POV)</visible>
+		<!--InfoPanel-->	
+			<include content="HomeInfoPanel">
+				<param name="groupid" value="20000" />
+				<param name="greater" value="2001" />
+			</include>
+		<!--current/NumItems-->					
+			<control type="label" id="20099">
+				<top>690</top>
+    			<left>20</left>
+				<width>auto</width>
+				<height>30</height>
+				<font>font11</font>
+				<align>left</align>
+				<textcolor>button_focus</textcolor>
+				<label>$VAR[ContainerItemCountTextVar]</label>
+    			<visible>!Window.IsActive(movieinformation)</visible>						
+    			<visible>ControlGroup(20000).HasFocus()</visible>						
+			</control>	
+			<!--Home-->
+			<control type="group">
+				<visible>Control.HasFocus(1000) + !Container(2000).IsUpdating</visible>	
+				<include content="bg">
+					<param name="bs" value="170,95,170,95" />
+					<param name="vis" value="Integer.IsGreater(Container(2100).NumItems,0)" />
+				</include>
+				<control type="panel" id="2100">
+					<right>0</right>
+					<top>0</top>
+					<width>1824</width>
+					<height>1080</height>
+ 					<include content="SingleFSWidget">
+						<param name="width" value="1824" />
+						<param name="height" value="1080" />
+						<param name="widget_target" value="videos" />
+						<param name="sortorder" value="descending" />
+						<param name="limit" value="1" />
+						<param name="poster" value="$INFO[ListItem.Art(thumb)]" />
+						<param name="content_path" value="plugin://plugin.video.pov/?name=32483&mode=build_next_episode" />
+					</include>	
+				</control>
+			</control>
+	    	<control type="grouplist" id="2000">
+				<height>354</height>
+				<bottom>4</bottom>
+				<left>4</left>
+				<width>1912</width>
+				<animation effect="slide" end="0,500" time="400" condition="Window.IsActive(movieinformation)">conditional</animation>
+				<visible allowhiddenfocus="true">!Control.HasFocus(1000)</visible>
+				<include content="PosterWidget">
+					<param name="list_id" value="2001" />
+					<param name="widget_target" value="videos"/>
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?name=32483&mode=build_next_episode&instance=2001" />
+					<param name="vis" value="Integer.IsGreater(Container(2001).NumItems,0) | Container(2001).IsUpdating" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2002" />						
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?name=32476&mode=build_movie_list&action=in_progress_movies&instance=2002" />
+					<param name="vis" value="Integer.IsGreater(Container(2002).NumItems,0) | Container(2002).IsUpdating" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2004" />			
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?name=32449&mode=build_tvshow_list&action=trakt_tv_trending_recent" />
+					<param name="vis" value="Integer.IsGreater(Container(2004).NumItems,0) | Container(2004).IsUpdating" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2005" />
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?name=32449&mode=build_movie_list&action=trakt_movies_trending_recent" />
+					<param name="vis" value="Integer.IsGreater(Container(2005).NumItems,0) | Container(2005).IsUpdating" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2007" />
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=build_tvshow_list&action=trakt_watchlist&name=TV+Shows&&instance=2007" />
+					<param name="vis" value="Integer.IsGreater(Container(2007).NumItems,0) | Container(2007).IsUpdating" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2008" />						
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=build_movie_list&action=trakt_watchlist&name=Movies&instance=2008" />
+					<param name="vis" value="Integer.IsGreater(Container(2008).NumItems,0) | Container(2008).IsUpdating" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2013" />						
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=build_tvshow_list&action=trakt_recommendations&name=TV+Shows&instance=2013" />
+					<param name="vis" value="Integer.IsGreater(Container(2013).NumItems,0) | Container(2013).IsUpdating" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2014" />						
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=build_movie_list&action=trakt_recommendations&name=Movies&instance=2014" />
+					<param name="vis" value="Integer.IsGreater(Container(2014).NumItems,0) | Container(2014).IsUpdating" />
+				</include>	
+			</control>
+		</control>
+	</include>
+    <include name="POVRowPanel">
+        <control type="group">
+            <visible>String.IsEqual(Container(1000).ListItem.Property(id),POV)</visible>
+			<include>MenuZoom2</include>
+			<control type="group">
+				<include>L 1/3 Panel</include>
+				<include>HomeInfoPanel2</include>
+			</control>
+			<control type="grouplist" id="2000">
+        <right>4</right>
+        <top>0</top>
+        <width>1270</width>
+        <height>1080</height>
+        		<control type="label" id="20011">
+        		    <width min="80" max="1100">auto</width>
+        		    <height>30</height>
+        		    <font>font13</font>
+        		    <align>left</align>
+					<aligny>bottom</aligny>
+        		    <textcolor>white</textcolor>
+        		    <label>In Progress TV Shows</label>
+					<visible>Integer.IsGreater(Container(2001).NumItems,0)</visible>
+        		</control>
+				<include content="PosterWidget">
+					<param name="list_id" value="2001" />
+					<param name="width" value="182" />
+					<param name="height" value="267" />
+					<param name="Pheight" value="267" />
+					<param name="Pwidth" value="1300" />
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?name=32483&mode=build_next_episode&instance=2001" />
+				</include>	
+        		<control type="label" id="20022">
+        		    <width min="80" max="1100">auto</width>
+        		    <height>30</height>
+        		    <font>font13</font>
+        		    <align>left</align>
+        		    <textcolor>white</textcolor>
+        		    <label>In Progress Movies</label>
+					<visible>Integer.IsGreater(Container(2002).NumItems,0)</visible>
+        		</control>
+				<include content="PosterWidget">
+					<param name="list_id" value="2002" />			
+					<param name="width" value="182" />
+					<param name="height" value="267" />
+					<param name="Pheight" value="267" />
+					<param name="Pwidth" value="1300" />
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?name=32476&mode=build_movie_list&action=in_progress_movies&instance=2002" />
+				</include>	
+ 				<control type="label" id="20044">
+        		    <width min="80" max="1100">auto</width>
+        		    <height>30</height>
+        		    <font>font13</font>
+        		    <align>left</align>
+        		    <textcolor>white</textcolor>
+        		    <label>Trending TV Shows</label>
+					<visible>Integer.IsGreater(Container(2004).NumItems,0)</visible>			
+        		</control>
+				<include content="PosterWidget">
+					<param name="list_id" value="2004" />						
+					<param name="width" value="182" />
+					<param name="height" value="267" />			
+					<param name="Pheight" value="267" />
+					<param name="Pwidth" value="1300" />
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?name=32449&mode=build_tvshow_list&action=trakt_tv_trending_recent" />
+				</include>	
+				 <control type="label" id="20055">
+        		    <width min="80" max="1100">auto</width>
+        		    <height>30</height>
+        		    <font>font13</font>
+        		    <align>left</align>
+        		    <textcolor>white</textcolor>
+        		    <label>Trending Movies</label>
+					<visible>Integer.IsGreater(Container(2005).NumItems,0)</visible>			
+        		</control>
+				<include content="PosterWidget">
+					<param name="list_id" value="2005" />	
+					<param name="width" value="182" />
+					<param name="height" value="267" />			
+					<param name="Pheight" value="267" />
+					<param name="Pwidth" value="1300" />
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?name=32449&mode=build_movie_list&action=trakt_movies_trending_recent" />
+				</include>	
+				 <control type="label" id="20077">
+        		    <width min="80" max="1100">auto</width>
+        		    <height>30</height>
+        		    <font>font13</font>
+        		    <align>left</align>
+        		    <textcolor>white</textcolor>
+        		    <label>TV Shows Watchlist</label>
+					<visible>Integer.IsGreater(Container(2007).NumItems,0)</visible>			
+        		</control>
+				<include content="PosterWidget">
+					<param name="list_id" value="2007" />				
+					<param name="width" value="182" />
+					<param name="height" value="267" />			
+					<param name="Pheight" value="267" />
+					<param name="Pwidth" value="1300" />
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=build_tvshow_list&action=trakt_watchlist&name=TV+Shows&instance=2007" />
+				</include>	
+				 <control type="label" id="20088">
+        		    <width min="80" max="1100">auto</width>
+        		    <height>30</height>
+        		    <font>font13</font>
+        		    <align>left</align>
+        		    <textcolor>white</textcolor>
+        		    <label>Movies Watchlist</label>
+					<visible>Integer.IsGreater(Container(2008).NumItems,0)</visible>			
+        		</control>
+				<include content="PosterWidget">
+					<param name="list_id" value="2008" />					
+					<param name="width" value="182" />
+					<param name="height" value="267" />			
+					<param name="Pheight" value="267" />
+					<param name="Pwidth" value="1300" />
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=build_movie_list&action=trakt_watchlist&name=Movies&instance=2008" />
+				</include>	
+	 			<control type="label" id="20133">
+        		    <width min="80" max="1100">auto</width>
+        		    <height>30</height>
+        		    <font>font13</font>
+        		    <align>left</align>
+        		    <textcolor>white</textcolor>
+        		    <label>Recommended TV Shows</label>
+					<visible>Integer.IsGreater(Container(2013).NumItems,0)</visible>			
+        		</control>
+				<include content="PosterWidget">
+					<param name="list_id" value="2013" />				
+					<param name="width" value="182" />
+					<param name="height" value="267" />			
+					<param name="Pheight" value="267" />
+					<param name="Pwidth" value="1300" />
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=build_tvshow_list&action=trakt_recommendations&name=TV+Shows&instance=2013" />
+				</include>	
+	 			<control type="label" id="20144">
+        		    <width min="80" max="1100">auto</width>
+        		    <height>30</height>
+        		    <font>font13</font>
+        		    <align>left</align>
+        		    <textcolor>white</textcolor>
+        		    <label>Recommended Movies</label>
+					<visible>Integer.IsGreater(Container(2014).NumItems,0)</visible>			
+        		</control>
+				<include content="PosterWidget">
+					<param name="list_id" value="2014" />	
+					<param name="width" value="182" />
+					<param name="height" value="267" />			
+					<param name="Pheight" value="267" />
+					<param name="Pwidth" value="1300" />
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=build_movie_list&action=trakt_recommendations&name=Movies&instance=2014" />
+				</include>	
+			</control>	
+		</control>			
+    </include>
+    <include name="POVListPanel">
+        <control type="group">
+			<include>MenuZoom</include>		
+            <visible>String.IsEqual(Container(1000).ListItem.Property(id),POV)</visible>	
+			<include>HomeInfoPanel2</include>
+			<animation effect="slide" end="-315,0" time="0" condition="[String.IsEqual(Skin.String(home_layout),4) + ControlGroup(2000).HasFocus() + [Control.HasFocus(2003) | Control.HasFocus(2006) | Control.HasFocus(2009) | Control.HasFocus(2010) | Control.HasFocus(2011) | Control.HasFocus(2012)]]">conditional</animation>
+    		<control type="panel" id="1500">
+			<!--list-->
+				<include>L 1/3 List</include>
+    			<onback>1000</onback>
+    			<onleft>1000</onleft>
+    			<onright>SetFocus($INFO[Container(1500).ListItem.Property(menu_id)])</onright>
+				<visible allowhiddenfocus="true">!ControlGroup(2000).HasFocus()</visible>
+				<itemlayout height="89" width="631">
+					<control type="group">
+						<include content="bg">
+       						<param name="bs" value="11,5,-1,5" />
+    					</include>
+						<control type="textbox">
+							<top>0</top>
+							<left>20</left>
+							<right>20</right>
+							<height>80</height>
+							<aligny>center</aligny>
+							<align>center</align>
+							<label>$INFO[ListItem.Label]</label>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+					</control>
+				</itemlayout>
+				<focusedlayout height="89" width="631">
+					<control type="group">
+						<include content="focusbox">
+       						<param name="bs" value="11,5,-1,5" />
+    					</include>
+						<control type="label">
+							<top>0</top>
+							<left>20</left>
+							<right>20</right>
+							<height>80</height>
+							<aligny>center</aligny>
+							<align>center</align>
+							<label>$INFO[ListItem.Label]</label>
+							<textcolor>black</textcolor>
+						</control>
+					</control>
+				</focusedlayout>
+				<content>
+					<item>
+						<label>In Progress TV Shows</label>
+						<onclick>ActivateWindow(10025,plugin://plugin.video.pov/?name=32483&mode=build_next_episode)</onclick>
+						<property name="menu_id">$NUMBER[2001]</property>
+						<property name="id">iptvs</property>
+					</item>
+					<item>
+						<label>InProgress Movies</label>
+						<onclick>ActivateWindow(10025,plugin://plugin.video.pov/?name=32476&mode=build_movie_list&action=in_progress_movies)</onclick>
+						<property name="menu_id">$NUMBER[2002]</property>
+						<property name="id">ipm</property>
+					</item>
+					<item>
+						<label>Trending TV Shows</label>
+						<onclick>ActivateWindow(10025,plugin://plugin.video.pov/?name=32458&mode=build_tvshow_list&action=trakt_tv_trending)</onclick>
+						<property name="menu_id">$NUMBER[2004]</property>
+						<property name="id">ttvs</property>
+					</item>
+					<item>
+						<label>Trending Movies</label>
+						<onclick>ActivateWindow(10025,plugin://plugin.video.pov/?name=32458&mode=build_movie_list&action=trakt_movies_trending)</onclick>
+						<property name="menu_id">$NUMBER[2005]</property>
+						<property name="id">tm</property>			
+					</item>
+					<item>
+						<label>TV Shows Watchlist</label>
+						<onclick>ActivateWindow(10025,plugin://plugin.video.pov/?mode=build_tvshow_list&action=trakt_watchlist&name=TV+Shows)</onclick>
+						<property name="menu_id">$NUMBER[2007]</property>
+						<property name="id">tvswl</property>			
+					</item>
+					<item>
+						<label>Movie Watchlist</label>
+						<onclick>ActivateWindow(10025,plugin://plugin.video.pov/?mode=build_movie_list&action=trakt_watchlist&name=Movies)</onclick>
+						<property name="menu_id">$NUMBER[2008]</property>
+						<property name="id">mwl</property>			
+					</item>
+					<item>
+						<label>Recommended TV Shows</label>
+						<onclick>ActivateWindow(10025,plugin://plugin.video.pov/?mode=build_tvshow_list&action=trakt_recommendations&name=TV+Shows)</onclick>
+						<property name="menu_id">$NUMBER[2013]</property>
+						<property name="id">rtvs</property>			
+					</item>
+					<item>
+						<label>Recommended Movies</label>
+						<onclick>ActivateWindow(10025,plugin://plugin.video.pov/?mode=build_movie_list&action=trakt_recommendations&name=Movies)</onclick>
+						<property name="menu_id">$NUMBER[2014]</property>
+						<property name="id">rm</property>			
+					</item>
+					<item>
+						<label>Because You Watched TV Shows</label>
+						<onclick>ActivateWindow(10025,plugin://plugin.video.pov/?name=32474&mode=navigator.because_you_watched&menu_type=tvshow)</onclick>
+						<property name="menu_id">$NUMBER[2010]</property>
+						<property name="id">buwtvs</property>			
+					</item>
+					<item>
+						<label>Because You Watched Movies</label>
+						<onclick>ActivateWindow(10025,plugin://plugin.video.pov/?name=Because+You+Watched...&mode=navigator.because_you_watched&menu_type=movie)</onclick>
+						<property name="menu_id">$NUMBER[2011]</property>
+						<property name="id">buwm</property>			
+					</item>
+					<item>
+						<label>Trending User Lists</label>
+						<onclick>ActivateWindow(10025,plugin://plugin.video.pov/?mode=build_trakt_list.get_trakt_trending_popular_lists&list_type=trending&name=Trending+User+Lists)</onclick>
+						<property name="menu_id">$NUMBER[2012]</property>
+						<property name="id">tul</property>			
+					</item>
+					<item>
+						<label>TV Show Search</label>
+						<onclick>ActivateWindow(10025,plugin://plugin.video.pov/?mode=search_history&action=tvshow&name=TV+Shows)</onclick>
+						<property name="menu_id">$NUMBER[2003]</property>
+						<property name="id">tvss</property>
+					</item>
+					<item>
+						<label>Movie Search</label>
+						<onclick>ActivateWindow(10025,plugin://plugin.video.pov/?mode=search_history&action=movie&name=Movies)</onclick>
+						<property name="menu_id">$NUMBER[2006]</property>
+						<property name="id">ms</property>			
+					</item>
+					<item>
+						<label>People Search</label>
+						<onclick>ActivateWindow(10025,plugin://plugin.video.pov/?mode=search_history&action=people&name=People)</onclick>
+						<property name="menu_id">$NUMBER[2009]</property>
+						<property name="id">ps</property>			
+					</item>
+				</content>			
+    		</control>	
+		<!--list widgets-->
+			<control type="group" id="2000">
+				<include>R 2/3 Panel</include>
+				<include content="PosterWidget">
+					<param name="list_id" value="2001" />
+					<param name="top" value="-7" />
+					<param name="left" value="-8" />
+					<param name="width" value="182" />
+					<param name="height" value="267" />
+					<param name="Pheight" value="1072" />
+					<param name="Pwidth" value="1390" />		
+					<param name="orientation" value="vertical" />		
+					<param name="vis" value="String.IsEqual(Container(1500).ListItem.Property(id),iptvs)" />		
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?name=32483&iconImage=next_episodes.png&mode=build_next_episode&instance=2001" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2002" />
+					<param name="top" value="-7" />
+					<param name="left" value="-8" />
+					<param name="width" value="182" />
+					<param name="height" value="267" />
+					<param name="Pheight" value="1072" />
+					<param name="Pwidth" value="1390" />		
+					<param name="orientation" value="vertical" />		
+					<param name="vis" value="String.IsEqual(Container(1500).ListItem.Property(id),ipm)" />	
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?name=32476&iconImage=player.png&mode=build_movie_list&action=in_progress_movies&instance=2002" />
+				</include>	
+				<include content="iptvlist">
+					<param name="list_id" value="2003" />						
+					<param name="vis" value="String.IsEqual(Container(1500).ListItem.Property(id),tvss)" />
+					<param name="left" value="-8" />
+					<param name="top" value="-7" />
+					<param name="width" value="1273" />
+					<param name="height" value="89" />
+					<param name="Pheight" value="1072" />
+					<param name="Pwidth" value="1390" />								
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=search_history&action=tvshow&name=TV+Shows&instance=2003" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2004" />
+					<param name="top" value="-7" />
+					<param name="left" value="-8" />
+					<param name="width" value="182" />
+					<param name="height" value="267" />
+					<param name="Pheight" value="1072" />
+					<param name="Pwidth" value="1390" />		
+					<param name="orientation" value="vertical" />		
+					<param name="vis" value="String.IsEqual(Container(1500).ListItem.Property(id),ttvs)" />	
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?name=32449&iconImage=trending.png&mode=build_tvshow_list&action=trakt_tv_trending_recent" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2005" />
+					<param name="top" value="-7" />
+					<param name="left" value="-8" />
+					<param name="width" value="182" />
+					<param name="height" value="267" />
+					<param name="Pheight" value="1072" />
+					<param name="Pwidth" value="1390" />		
+					<param name="orientation" value="vertical" />		
+					<param name="vis" value="String.IsEqual(Container(1500).ListItem.Property(id),tm)" />	
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?name=32449&iconImage=trending.png&mode=build_movie_list&action=trakt_movies_trending_recent" />
+				</include>	
+				<include content="iptvlist">
+					<param name="list_id" value="2006" />						
+					<param name="vis" value="String.IsEqual(Container(1500).ListItem.Property(id),ms)" />
+					<param name="left" value="-8" />
+					<param name="top" value="-7" />
+					<param name="width" value="1273" />
+					<param name="height" value="89" />
+					<param name="Pheight" value="1072" />
+					<param name="Pwidth" value="1390" />							
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=search_history&action=movie&name=Movies&instance=2006" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2007" />
+					<param name="top" value="-7" />
+					<param name="left" value="-8" />
+					<param name="width" value="182" />
+					<param name="height" value="267" />
+					<param name="Pheight" value="1072" />
+					<param name="Pwidth" value="1390" />		
+					<param name="orientation" value="vertical" />		
+					<param name="vis" value="String.IsEqual(Container(1500).ListItem.Property(id),tvswl)" />	
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=build_tvshow_list&action=trakt_watchlist&name=TV+Shows&iconImage=special%3A%2F%2Fhome%2Faddons%2Fplugin.video.pov%2Fresources%2Fskins%2FDefault%2Fmedia%2Ftrakt.png&instance=2007" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2008" />
+					<param name="top" value="-7" />
+					<param name="left" value="-8" />
+					<param name="width" value="182" />
+					<param name="height" value="267" />
+					<param name="Pheight" value="1072" />
+					<param name="Pwidth" value="1390" />		
+					<param name="orientation" value="vertical" />		
+					<param name="vis" value="String.IsEqual(Container(1500).ListItem.Property(id),mwl)" />	
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=build_movie_list&action=trakt_watchlist&name=Movies&iconImage=special%3A%2F%2Fhome%2Faddons%2Fplugin.video.pov%2Fresources%2Fskins%2FDefault%2Fmedia%2Ftrakt.png&instance=2008" />
+				</include>	
+				<include content="iptvlist">
+					<param name="list_id" value="2009" />	
+					<param name="vis" value="String.IsEqual(Container(1500).ListItem.Property(id),ps)" />
+					<param name="left" value="-8" />
+					<param name="top" value="-7" />
+					<param name="width" value="1273" />
+					<param name="height" value="89" />
+					<param name="Pheight" value="1072" />
+					<param name="Pwidth" value="1390" />	
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=search_history&action=people&instance=2009" />
+				</include>				
+				<include content="iptvlist">
+					<param name="list_id" value="2010" />							
+					<param name="vis" value="String.IsEqual(Container(1500).ListItem.Property(id),buwtvs)" />
+					<param name="left" value="-8" />
+					<param name="top" value="-7" />
+					<param name="width" value="1273" />
+					<param name="height" value="89" />
+					<param name="Pheight" value="1072" />
+					<param name="Pwidth" value="1390" />	
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />			
+					<param name="content_path" value="plugin://plugin.video.pov/?name=32474&mode=navigator.because_you_watched&menu_type=tvshow&instance=2010" />
+				</include>
+				<include content="iptvlist">
+					<param name="list_id" value="2011" />							
+					<param name="vis" value="String.IsEqual(Container(1500).ListItem.Property(id),buwm)" />
+					<param name="left" value="-8" />
+					<param name="top" value="-7" />
+					<param name="width" value="1273" />
+					<param name="height" value="89" />
+					<param name="Pheight" value="1072" />
+					<param name="Pwidth" value="1390" />	
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="content_path" value="plugin://plugin.video.pov/?name=Because+You+Watched...&mode=navigator.because_you_watched&menu_type=movie&instance=2011" />
+				</include>				
+				<include content="iptvlist">
+					<param name="list_id" value="2012" />	
+					<param name="vis" value="String.IsEqual(Container(1500).ListItem.Property(id),tul)" />
+					<param name="left" value="-8" />
+					<param name="top" value="-7" />
+					<param name="width" value="1273" />
+					<param name="height" value="89" />
+					<param name="Pheight" value="1072" />
+					<param name="Pwidth" value="1390" />	
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=build_trakt_list.get_trakt_trending_popular_lists&list_type=trending&name=Trending+User+Lists&instance=2012" />
+				</include>				
+				<include content="PosterWidget">
+					<param name="list_id" value="2013" />
+					<param name="top" value="-7" />
+					<param name="left" value="-8" />
+					<param name="width" value="182" />
+					<param name="height" value="267" />
+					<param name="Pheight" value="1072" />
+					<param name="Pwidth" value="1390" />		
+					<param name="orientation" value="vertical" />		
+					<param name="vis" value="String.IsEqual(Container(1500).ListItem.Property(id),rtvs)" />	
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=build_tvshow_list&action=trakt_recommendations&name=TV+Shows&instance=2013" />
+				</include>	
+				<include content="PosterWidget">
+					<param name="list_id" value="2014" />
+					<param name="top" value="-7" />
+					<param name="left" value="-8" />
+					<param name="width" value="182" />
+					<param name="height" value="267" />
+					<param name="Pheight" value="1072" />
+					<param name="Pwidth" value="1390" />		
+					<param name="orientation" value="vertical" />		
+					<param name="vis" value="String.IsEqual(Container(1500).ListItem.Property(id),rm)" />	
+					<param name="widget_target" value="videos" />
+					<param name="sortorder" value="descending" />
+					<param name="poster" value="$INFO[ListItem.Art(poster)]" />
+					<param name="content_path" value="plugin://plugin.video.pov/?mode=build_movie_list&action=trakt_recommendations&name=Movies&instance=2014" />
+				</include>	
+			</control>
+    	</control>			
+    </include>
+	<include name="HomeInfoPanel2">
+	    <control type="group">
+			<visible>String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode)</visible>
+	        <top>360</top>
+	        <left>24</left>
+	        <width>580</width>
+	        <height>700</height>
+	        <control type="grouplist">
+				<top>0</top>
+	            <left>0</left>
+	            <width>580</width>
+	            <height>700</height> 
+	            <orientation>vertical</orientation>
+	            <align>center</align>
+	            <itemgap>30</itemgap>
+	            <control type="textbox" id="19">				
+	
+	                <height max="225">auto</height> 
+	                <textcolor>button_focus</textcolor>
+	                <align>center</align>
+	                <aligny>center</aligny>
+	                <font>Title</font>
+	                <label>$INFO[ListItem.Label]</label>
+	                <shadowcolor>black</shadowcolor>
+					<visible>String.IsEmpty(ListItem.Art(clearlogo))</visible>
+	            </control>	
+				<control type="image" id="20">
+					<top>0</top>
+					<width>580</width>
+					<height min="108" max="160">auto</height>
+					<visible>!String.IsEmpty(ListItem.Art(clearlogo))</visible>					
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<texture background="true" fallback="colors/color_transparent.png">$VAR[InfoClearlogo]</texture>
+				</control>	 					
+	    	    <include content="HomeMediaFlags">
+	    	        <param name="groupid" value="2000"/>
+	    	        <param name="greater" value="2001"/>
+	    	        <param name="left" value="-4"/>
+	    	        <param name="top" value="10"/>
+	    	        <param name="width" value="580"/>
+	    	    </include>
+	            <control type="textbox" id="21">
+	                <width>580</width>
+	                <height>80</height> 
+	                <textcolor>button_focus</textcolor>
+	                <align>center</align>
+	                <aligny>center</aligny>
+	                <font>Bold27</font>
+	                <label>$INFO[ListItem.Title]</label>
+	                <shadowcolor>black</shadowcolor>
+	                <visible>Control.HasFocus(2001)</visible>
+	            </control>
+	            <control type="textbox" id="23">
+	                <width>580</width>
+	                <height>80</height> 
+	                <align>center</align>
+	                <aligny>center</aligny>
+	                <font>Bold29</font>
+	                <textcolor>button_focus</textcolor>
+	                <label>$INFO[ListItem.Tagline,[I],[/I]]</label>
+	                <shadowcolor>black</shadowcolor>
+	                <visible>!String.IsEmpty(ListItem.Tagline)</visible>
+	            </control>				
+				<control type="textbox" id="22">
+					<top>0</top>
+	                <width>580</width>
+	                <height max="350">auto</height> 
+	                <textcolor>grey</textcolor>
+	                <align>center</align>
+	                <aligny>center</aligny>
+	                <font>Reg33</font>
+	                <label>$INFO[ListItem.Plot]</label>
+	                <shadowcolor>black</shadowcolor>
+	            </control>
+
+			</control>
+	    </control> 
+	</include>
+	<include name="HomeInfoPanel">
+	    <control type="group">
+			<visible>!Window.IsActive(movieinformation)</visible>	
+			<visible>String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode)</visible>	        <top>4</top>
+	        <left>24</left>
+			<top>24</top>
+	        <width>700</width>
+	        <height>680</height>
+	        <control type="grouplist">
+	            <left>0</left>
+	            <width>700</width>
+	            <height>680</height> 
+	            <orientation>vertical</orientation>
+	            <align>center</align>
+	            <itemgap>15</itemgap>
+	            <control type="textbox" id="19">
+	                <width>700</width>
+	                <height max="360">auto</height> 
+	                <textcolor>button_focus</textcolor>
+	                <align>center</align>
+	                <aligny>center</aligny>
+	                <font>Title</font>
+	                <label>$INFO[ListItem.Label]</label>
+	                <shadowcolor>black</shadowcolor>
+					<visible>String.IsEmpty(ListItem.Art(clearlogo))</visible>
+	            </control>	
+	            <control type="image" id="20">
+	                <width>700</width>
+	                <height>300</height>
+					<visible>!String.IsEmpty(ListItem.Art(clearlogo))</visible>					
+	                <aspectratio align="center" aligny="center">keep</aspectratio>
+	                <texture background="true" fallback="colors/color_transparent.png">$VAR[InfoClearlogo]</texture>
+	            </control>
+	            <include content="HomeMediaFlags">
+	                <param name="groupid" value="20000"/>
+	                <param name="greater" value="2001"/>
+	                <param name="left" value="-4"/>
+	                <param name="width" value="700"/>
+	            </include>
+	            <include content="HomeMediaFlags">
+	                <param name="groupid" value="50000"/>
+	                <param name="greater" value="5001"/>
+	                <param name="left" value="-4"/>
+	                <param name="width" value="700"/>
+	            </include>
+	            <control type="textbox" id="21">
+	                <width>700</width>
+	                <height max="80">auto</height> 
+	                <textcolor>button_focus</textcolor>
+	                <align>center</align>
+	                <aligny>center</aligny>
+	                <font>Bold27</font>
+	                <label>$INFO[ListItem.Title]</label>
+	                <shadowcolor>black</shadowcolor>
+	                <visible>Control.HasFocus(2001)</visible>
+	            </control>
+	            <control type="textbox" id="22">
+	                <width>700</width>
+	                <height max="80">auto</height> 
+	                <align>center</align>
+	                <aligny>center</aligny>
+	                <font>Bold29</font>
+	                <textcolor>button_focus</textcolor>
+	                <label>$INFO[ListItem.Tagline,[I],[/I]]</label>
+	                <shadowcolor>black</shadowcolor>
+	                <visible>!String.IsEmpty(ListItem.Tagline)</visible>
+	            </control>
+	            <control type="textbox" id="23">
+	                <width>700</width>
+	                <height max="220">auto</height>
+	                <textcolor>grey</textcolor>
+	                <align>center</align>
+	                <aligny>center</aligny>
+	                <font>Reg33</font>
+	                <label>$INFO[ListItem.Plot]</label>
+	                <shadowcolor>black</shadowcolor>
+	            </control>
+	        </control>
+	    </control> 
+	</include>
+    <include name="HomeMediaFlags">
+        <param name="groupid"></param>
+        <param name="greater"></param>
+        <param name="top">0</param>
+        <param name="left">0</param>
+        <param name="right">0</param>
+        <param name="width">auto</param>
+        <param name="align">center</param>
+		<definition> 
+   			<control type="grouplist">
+			   <width>$PARAM[width]</width>
+			   <height>30</height>
+			   <top>$PARAM[top]</top>
+			   <left>$PARAM[left]</left>
+			   <right>$PARAM[right]</right>
+			   <orientation>horizontal</orientation>
+			   <itemgap>8</itemgap>
+               <align>$PARAM[align]</align>
+			   	<visible>ControlGroup($PARAM[groupid]).HasFocus() + Integer.IsGreater(Container($PARAM[greater]).NumItems,0)</visible>
+				<control type="image" id="601">
+       				<left>0</left>
+       				<top>0</top>
+       				<width>120</width>
+       				<height>35</height>
+       				<texture colordiffuse="button_focus">$VAR[StarRatingAndVotesVar]</texture>
+       				<aspectratio>keep</aspectratio>
+       			</control> 
+				<control type="label" id="602">
+					<width>auto</width>
+					<height>40</height>
+					<top>0</top>
+					<left>0</left>
+					<font>Reg26</font>
+					<shadowcolor>black</shadowcolor>
+					<textcolor>button_focus</textcolor>
+					<label>∙ $VAR[FormattedDuration]</label>
+					<visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEmpty(ListItem.DBType,tvshow)</visible>
+				</control>
+				<control type="label" id="604">
+					<top>0</top>
+					<left>0</left>
+					<width>auto</width>		
+					<height>40</height>
+					<label>∙ Seasons $INFO[ListItem.Property(TotalSeasons)]</label>
+					<visible>!String.IsEmpty(ListItem.Property(TotalSeasons))</visible>
+					<shadowcolor>black</shadowcolor>
+					<textcolor>button_focus</textcolor>
+					<font>Reg26</font>
+				</control>
+				<control type="label" id="605">
+					<top>0</top>
+					<left>0</left>
+					<width>auto</width>		
+					<height>40</height>
+					<label>∙ $VAR[WatchedStatusVar]</label>
+					<font>reg26</font>
+					<shadowcolor>black</shadowcolor>
+                    <textcolor>button_focus</textcolor>
+					<visible>String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,set) | String.IsEqual(ListItem.DBType,season)</visible>
+				</control> 	
+				<control type="label" id="603">
+					<width>auto</width>
+					<height>40</height>
+					<top>0</top>
+					<left>0</left>
+					<font>Reg26</font>
+					<shadowcolor>black</shadowcolor>
+					<textcolor>button_focus</textcolor>
+					<label>∙ $VAR[GetMPAA]</label>
+				</control>					
+				<control type="label" id="606">
+					<left>0</left>
+					<top>0</top>
+					<height>40</height>
+					<width>auto</width>			
+					<font>Reg26</font>
+					<shadowcolor>black</shadowcolor>
+					<textcolor>button_focus</textcolor>
+					<label>∙ $INFO[ListItem.Year]</label>
+					<include>Visible_Fade</include>
+					<visible>!String.IsEmpty(ListItem.Year)</visible>
+				</control>
+			</control>
+        </definition>    
+    </include>
+	<include name="HomeLoad">
+	   <control type="image" id="950">
+		   <bottom>0</bottom>
+		   <left>0</left>
+		   <width>240</width>
+		   <height>3</height>
+		   <texture colordiffuse="button_focus">colors/white.png</texture>
+			<visible>String.IsEqual(Skin.String(home_layout),2) + ControlGroup(20000).HasFocus() + !Integer.IsGreater(Container(2001).NumItems,0)</visible>
+		</control>
+	    <control type="image" id="951">
+		   <bottom>0</bottom>
+		   <left>240</left>
+		   <width>240</width>
+		   <height>3</height>
+		   <texture colordiffuse="button_focus">colors/white.png</texture>
+			<visible>String.IsEqual(Skin.String(home_layout),2) + ControlGroup(20000).HasFocus() + !Integer.IsGreater(Container(2002).NumItems,0)</visible>
+		</control>
+	    <control type="image" id="952">
+		   <bottom>0</bottom>
+		   <left>480</left>
+		   <width>240</width>
+		   <height>3</height>
+		   <texture colordiffuse="button_focus">colors/white.png</texture>
+			<visible>String.IsEqual(Skin.String(home_layout),2) + ControlGroup(20000).HasFocus() + !Integer.IsGreater(Container(2004).NumItems,0)</visible>
+		</control>
+		<control type="image" id="954">
+			<bottom>0</bottom>
+			<left>720</left>
+			<width>240</width>
+			<height>3</height>
+			<texture colordiffuse="button_focus">colors/white.png</texture>
+			<visible>String.IsEqual(Skin.String(home_layout),2) + ControlGroup(20000).HasFocus() + !Integer.IsGreater(Container(2005).NumItems,0)</visible>
+	   </control>
+	   <control type="image" id="953">
+	  	    <bottom>0</bottom>
+	  	    <right>720</right>
+	  	    <width>240</width>
+	  	    <height>3</height>
+	  	    <texture colordiffuse="button_focus">colors/white.png</texture>
+	  	    <visible>String.IsEqual(Skin.String(home_layout),2) + ControlGroup(20000).HasFocus() + !Integer.IsGreater(Container(2007).NumItems,0)</visible>
+	  	</control>
+	  	<control type="image" id="955">
+	  		<bottom>0</bottom>
+	  		<right>480</right>
+	  		<width>240</width>
+	  		<height>3</height>
+	  		<texture colordiffuse="button_focus">colors/white.png</texture>
+	  		<visible>String.IsEqual(Skin.String(home_layout),2) + ControlGroup(20000).HasFocus() + !Integer.IsGreater(Container(2008).NumItems,0)</visible>
+	  	</control>
+		<control type="image" id="956">
+		    <bottom>0</bottom>
+		    <right>240</right>
+		    <width>240</width>
+		    <height>3</height>
+		    <texture colordiffuse="button_focus">colors/white.png</texture>
+			<visible>String.IsEqual(Skin.String(home_layout),2) + ControlGroup(20000).HasFocus() + !Integer.IsGreater(Container(2013).NumItems,0)</visible>
+		</control>
+		<control type="image" id="957">
+		  	<bottom>0</bottom>
+		    <right>0</right>
+		    <width>240</width>
+		    <height>3</height>
+		    <texture colordiffuse="button_focus">colors/white.png</texture>
+			<visible>String.IsEqual(Skin.String(home_layout),2) + ControlGroup(20000).HasFocus() + !Integer.IsGreater(Container(2014).NumItems,0)</visible>
+		</control>
+	</include>
+	<include name="HomeMouseMenu">
+		<control type="image">
+            <left>1%</left>
+			<bottom>1%</bottom>
+			<width>8%</width>
+			<height>6%</height>
+            <texture  border="16" colordiffuse="button_focus">boxes/box3.png</texture>
+			<visible>Control.HasFocus(22221)</visible>
+        </control>
+		<control type="button" id="22221">
+			<left>1%</left>
+			<width>8%</width>
+			<top>1070</top>
+			<texturenofocus />
+			<onclick>ActivateWindow(10111)</onclick>
+			<visible>system.getbool(input.enablemouse)</visible>
+		</control>
+		<control type="image" id="22222">
+			<bottom>1%</bottom>
+       		<left>64</left>
+		    <height>64</height>
+			<width>64</width>
+			<texture colordiffuse="button_focus">DefaultAddonService.png</texture>
+			<visible>Control.HasFocus(22221)</visible>
+		</control>
+	</include>	
+</includes>

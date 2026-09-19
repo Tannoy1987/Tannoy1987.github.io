@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+	<defaultcontrol always="true">602</defaultcontrol>
+	<zorder>2</zorder>
+	<visible>Window.IsActive(videoosd) + !Window.IsActive(playerprocessinfo)</visible>
+	<controls>
+
+		<control type="button">
+			<description>background close area</description>
+			<left>0</left>
+			<top>0</top>
+			<width>100%</width>
+			<bottom>10%</bottom>
+			<texturefocus />
+			<texturenofocus />
+			<onclick>Action(close)</onclick>
+		</control>	
+	<!--Background-->		
+		<control type="group">
+			<visible>String.IsEqual(Skin.String(osd_background),2)</visible>
+			<control type="image">
+			<right>-1%</right>
+			<bottom>0</bottom>
+			<width>102%</width>
+			<height>162</height>
+			<texture flipy="true">frame/osdfade.png</texture>			
+			</control> 
+			<control type="image">
+			<right>-1%</right>
+			<top>0</top>
+			<width>102%</width>
+			<height>162</height>
+			<texture>frame/osdfade.png</texture>
+			</control> 
+		</control>
+	<!--Media-Header-->
+		<control type="group">
+			<height>9%</height>
+			<control type="image">
+				<right>1%</right>
+				<top>5%</top>
+				<width>12%</width>
+				<height>100%</height>
+				<include>DA</include>					
+				<visible>String.IsEqual(Skin.String(osd_clearlogo),2)</visible>
+				<visible>![Window.IsActive(musicosd) | Window.IsActive(visualisation)] | Window.IsActive(fullscreeninfo) | Window.IsActive(videoosd)</visible>
+				<texture>$VAR[PlayerClearLogoVar]</texture>
+				<aspectratio aligny="center" align="right">keep</aspectratio>
+			</control>
+			<control type="group">
+				<visible>String.IsEqual(Skin.String(osd_clearlogo),3)</visible>
+				<control type="textbox">
+					<right>33</right>
+					<top>25%</top>
+					<width>66%</width>
+					<height>80</height>
+					<label>$VAR[NowPlayingBreadcrumbsVar]</label>
+					<font>font1</font>
+					<shadowcolor>black</shadowcolor>
+					<align>right</align>
+					<aligny>center</aligny>
+					<visible>String.IsEmpty(VideoPlayer.Episode)</visible>
+				</control>
+			<!--tv show details-->			
+				<control type="label">
+					<right>37</right>
+					<align>right</align>
+					<top>27</top>
+					<centerbottom>0</centerbottom>
+					<height>125</height>
+					<label>$VAR[NowPlayingBreadcrumbsVar2]    [COLOR button_focus]Season:[/COLOR] $INFO[VideoPlayer.Season][CR]              $INFO[Player.Title]    [COLOR button_focus]Episode:[/COLOR] $INFO[VideoPlayer.Episode]</label>
+					<shadowcolor>text_shadow</shadowcolor>
+					<visible>!String.IsEmpty(VideoPlayer.Episode)</visible>
+					<font>font1</font>
+				</control>
+			</control>
+		</control>
+	<!--top left list-->
+		<control type="group">
+            <control type="grouplist" id="400">
+				<posx>28</posx>
+				<top>27</top>
+                <width>auto</width>
+                <height>10%</height>
+                <itemgap>10</itemgap>
+                <onleft>400</onleft>
+                <onright>400</onright>
+				<ondown>602</ondown>
+                <orientation>horizontal</orientation>
+				<control type="button" id="204">
+					<description>Exit</description>
+					<width>80</width>
+					<height>80</height>
+					<font/>
+					<label/>
+					<texturefocus colordiffuse="button_focus">osd/bingie/back_fo.png</texturefocus>
+					<texturenofocus>osd/bingie/back.png</texturenofocus>
+					<onclick>PlayerControl(Stop)</onclick>
+					<visible>Player.PauseEnabled</visible>
+				</control>
+				<control type="togglebutton" id="10">
+					<description>record</description>
+					<width>80</width>
+					<height>80</height>
+					<label/>
+					<font/>
+					<texturefocus colordiffuse="button_focus">osd/bingie/recordoff_fo.png</texturefocus>
+					<texturenofocus>osd/bingie/recordoff.png</texturenofocus>
+					<alttexturefocus colordiffuse="button_focus">osd/bingie/recordon_fo.png</alttexturefocus>
+					<alttexturenofocus>osd/bingie/recordon.png</alttexturenofocus>
+					<usealttexture>PVR.IsRecordingPlayingChannel</usealttexture>
+					<onclick>PVR.ToggleRecordPlayingChannel</onclick>
+					<visible>PVR.CanRecordPlayingChannel</visible>
+				</control>
+				<control type="button" id="104">
+					<description>Subtitles</description>
+					<width>80</width>
+					<height>80</height>
+					<label/>
+					<font/>
+					<texturefocus colordiffuse="button_focus">osd/bingie/subtitles_fo.png</texturefocus>
+					<texturenofocus>osd/bingie/subtitles.png</texturenofocus>
+					<onclick>ActivateWindow(osdsubtitlesettings)</onclick>
+					<visible>!Player.HasAudio</visible>
+				</control>
+                <control type="button" id="101">
+                    <description>Audio Settings</description>
+                    <width>80</width>
+                    <height>80</height>
+                    <label/>
+                    <font/>
+                    <texturefocus colordiffuse="button_focus">osd/bingie/audio_fo.png</texturefocus>
+                    <texturenofocus>osd/bingie/audio.png</texturenofocus>
+                    <onclick>ActivateWindow(124)</onclick>
+                </control>
+				<control type="button" id="811">
+					<description> playlist </description>
+					<width>80</width>
+                    <height>80</height>
+					<label/>
+					<font/>
+					<texturefocus colordiffuse="button_focus">osd/bingie/playlist_fo.png</texturefocus>
+                    <texturenofocus>osd/bingie/playlist.png</texturenofocus>
+					<visible>!String.IsEqual(Playlist.Length(music),0) + Player.HasAudio</visible>
+					<onclick>SetProperty(playlistdialog,show,Home)</onclick>
+					<onclick>Dialog.Close(MusicOSD)</onclick>
+					<onclick>ActivateWindow(musicplaylist)</onclick>
+				</control>
+				<control type="button" id="500">
+					<description> vizualisation addon </description>
+					<width>80</width>
+                    <height>80</height>
+					<label/>
+					<font/>
+					<texturefocus colordiffuse="button_focus">osd/bingie/viz_fo.png</texturefocus>
+					<texturenofocus>osd/bingie/viz.png</texturenofocus>
+					<onfocus>SetProperty(VizSlide,hide,Home)</onfocus>
+					<visible>Player.HasAudio</visible>
+				</control>
+				<control type="togglebutton" id="701">
+					<description> lyrics </description>
+					<width>80</width>
+                    <height>80</height>
+					<label/>
+					<font/>
+					<texturefocus colordiffuse="button_focus">osd/bingie/lyrics_fo.png</texturefocus>
+					<texturenofocus>osd/bingie/lyrics.png</texturenofocus>
+					<alttexturefocus colordiffuse="button_focus">osd/bingie/lyrics_fo.png</alttexturefocus>
+					<alttexturenofocus>osd/bingie/lyrics.png</alttexturenofocus>
+					<onclick>RunScript($INFO[Skin.String(LyricScript_iconspath)])</onclick>
+					<altclick>Skin.SetAddon(LyricScript_iconspath,xbmc.python.lyrics)</altclick>
+					<altclick>RunScript($INFO[Skin.String(LyricScript_iconspath)])</altclick>
+					<usealttexture>!Skin.String(LyricScript_iconspath)</usealttexture>
+					<visible>Player.HasAudio</visible>
+					<visible>System.HasAddon(script.cu.lrclyrics)</visible>
+				</control>
+                <control type="button" id="102">
+                    <description>Video Settings</description>
+                    <width>80</width>
+                    <height>80</height>
+                    <label/>
+                    <font/>
+                    <texturefocus colordiffuse="button_focus">osd/bingie/video_fo.png</texturefocus>
+                    <texturenofocus>osd/bingie/video.png</texturenofocus>
+                    <onclick>ActivateWindow(123)</onclick>
+					<visible>Player.HasVideo</visible>
+                </control>
+				<control type="button" id="806">
+					<description> pvr </description>
+					<width>80</width>
+					<height>80</height>
+					<label/>
+					<font/>
+					<texturefocus colordiffuse="button_focus">osd/bingie/channellist_fo.png</texturefocus>
+					<texturenofocus>osd/bingie/channellist.png</texturenofocus>
+					<visible>VideoPlayer.Content(livetv)</visible>
+					<onclick condition="Skin.HasSetting(small_pvrchannelsosd)">ActivateWindow(PVROSDChannels)</onclick>
+					<onclick condition="!Skin.HasSetting(small_pvrchannelsosd)">Dialog.Close(VideoOSD)</onclick>
+					<onclick condition="!Skin.HasSetting(small_pvrchannelsosd)">AlarmClock(ActivetePVRChanels,ActivateWindow(PVROSDChannels),00:01,silent)</onclick>					
+				</control>
+				<control type="button" id="807">
+					<description>pvrguide</description>
+					<width>80</width>
+					<height>80</height>
+					<label/>
+					<font/>
+					<texturefocus colordiffuse="button_focus">osd/bingie/epg_fo.png</texturefocus>
+					<texturenofocus>osd/bingie/epg.png</texturenofocus>
+					<visible>VideoPlayer.Content(livetv) + VideoPlayer.HasEpg</visible>
+					<onclick>ActivateWindow(pvrchannelguide)</onclick>
+				</control>
+				<control type="button" id="214">
+					<description>bookmarks</description>
+					<width>80</width>
+					<height>80</height>
+					<label/>
+					<font/>
+					<texturefocus colordiffuse="button_focus">osd/bingie/bookmarks_fo.png</texturefocus>
+					<texturenofocus>osd/bingie/bookmarks.png</texturenofocus>
+					<onclick>ActivateWindow(VideoBookmarks)</onclick>
+					<visible>!VideoPlayer.Content(livetv)</visible>
+					<visible>Player.HasVideo</visible>
+				</control>
+				<control type="button" id="215">
+					<description>pvrguide</description>
+					<width>80</width>
+					<height>80</height>
+					<label/>
+					<font/>
+					<texturefocus colordiffuse="button_focus">osd/bingie/epg_fo.png</texturefocus>
+					<texturenofocus>osd/bingie/epg.png</texturenofocus>
+					<onclick>PlayerControl(ShowVideoMenu)</onclick>
+					<visible>VideoPlayer.HasMenu</visible>
+				</control>
+				<control type="button" id="209">
+					<description>Play From Beginning</description>
+					<width>80</width>
+					<height>80</height>
+					<font/>
+					<label/>
+					<texturefocus colordiffuse="button_focus">osd/bingie/play_beginning_fo.png</texturefocus>
+					<texturenofocus>osd/bingie/play_beginning.png</texturenofocus>
+					<onclick>seek(-298800)</onclick>
+					<onclick condition="Player.Paused">PlayerControl(Play)</onclick>
+					<visible>Player.SeekEnabled</visible>
+					<visible>!Player.HasAudio</visible>
+				</control>			
+            </control>	
+			<control type="label">
+				<visible>![Control.HasFocus(602) | Control.HasFocus(603) | Control.HasFocus(87)]</visible>
+				<posy>115</posy>
+				<left>38</left>
+                <height>60</height>
+                <width>400</width>
+                <align>left</align>
+                <font>Reg28</font>
+                <textcolor>white</textcolor>
+                <shadowcolor>black</shadowcolor>				
+                <label>$VAR[osd_button_description]</label>
+                <scroll>false</scroll>
+				<visible>Skin.HasSetting(noinfo)</visible>
+            </control>
+		</control>				                       		
+	<!--bottom-->
+		<control type="group">
+			<height>10%</height>
+			<bottom>-0.25%</bottom>
+			<left>-0.25%</left>
+			<right>-0.25%</right>
+			<control type="group">
+				<top>0</top>
+				<left>7%</left>
+				<right>10%</right>
+				<control type="group" id="200">
+					<visible>!Player.ShowInfo</visible>
+					<control type="group" id="698"> 
+						<width>76</width>
+						<height>76</height>
+						<control type="togglebutton" id="602"> 	
+							<width>80</width>
+							<height>80</height>
+							<label></label>
+							<font></font>
+							<texturefocus colordiffuse="button_focus">osd/bingie/pause_fo.png</texturefocus>
+							<texturenofocus>osd/bingie/pause.png</texturenofocus>
+							<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
+							<alttexturefocus colordiffuse="button_focus">osd/bingie/play_fo.png</alttexturefocus>
+							<alttexturenofocus>osd/bingie/play.png</alttexturenofocus>
+							<onleft condition="Integer.IsLess(Skin.String(ppi_layout),5)">ActivateWindow(playerprocessinfo)</onleft>
+							<onleft condition="String.IsEqual(Skin.String(ppi_layout),5)">RunScript(script.tinyppi)</onleft>
+							<ondown>Info</ondown>
+							<onright>1000</onright>
+							<onup>400</onup>
+							<onclick>PlayerControl(Play)</onclick>
+							<visible>Player.PauseEnabled</visible>
+						</control>
+					</control>
+					<control type="button" id="602">
+						<width>80</width>
+							<height>80</height>
+							<label></label>
+							<font></font>
+							<texturefocus colordiffuse="button_focus">osd/bingie/stop-fo.png</texturefocus>
+							<texturenofocus>osd/fullscreen/buttons/stop.png</texturenofocus>
+							<onleft>ActivateWindow(playerprocessinfo)</onleft>
+							<ondown>Info</ondown>
+							<onright>1000</onright>
+							<onup>400</onup>
+						<onclick>PlayerControl(Stop)</onclick>
+						<visible>!Player.PauseEnabled</visible>
+					</control>
+					<control type="label">
+						<label>$INFO[Player.Time]</label>
+						<shadowcolor>text_shadow</shadowcolor>
+						<left>120</left>
+						<top>26</top>
+						<width>auto</width>
+						<font>font1</font>
+						<visible>!String.isempty(Player.Duration)</visible>
+						<visible>Player.HasVideo + ![VideoPlayer.HasEpg]</visible>
+					</control>
+					<control type="label">
+						<label>$INFO[Player.Duration] / $INFO[Player.FinishTime]</label>
+						<shadowcolor>text_shadow</shadowcolor>
+						<left>1490</left>
+						<top>26</top>
+						<width>auto</width>
+						<font>font1</font>
+						<visible>!String.isempty(Player.Duration)</visible>
+						<visible>Player.HasVideo + ![VideoPlayer.HasEpg]</visible>
+					</control>
+				</control>	
+			</control>
+			<control type="group">
+				<height>18</height>
+				<bottom>55%</bottom>
+				<left>18%</left>
+				<right>18%</right>
+				<control type="group" id="6000">
+					<visible>Player.SeekEnabled</visible>	
+					<control type="button" id="87">
+						<include>HiddenObject</include>
+						<onup>200</onup>
+						<ondown>200</ondown>
+						<onleft>StepBack</onleft>
+						<onright condition="!Player.Paused">StepForward</onright>
+						<onright condition="Player.Paused">PlayerControl(FrameAdvance(1))</onright>
+					</control>
+					<control type="slider">
+						<texturesliderbar />
+						<textureslidernib />
+						<textureslidernibfocus />				
+						<info>Player.Progress</info>
+						<onup>200</onup>
+						<ondown>200</ondown>
+						<action>seek</action>
+					</control>
+				</control>
+			</control>
+		</control>	
+	<!--VS10-->		
+		<control type="grouplist" id="1000">
+			<visible>[String.IsEqual(Skin.String(ppi_layout),3) | String.IsEqual(Skin.String(ppi_layout),4)] + !Player.ShowInfo</visible>
+			<right>1%</right>
+			<top>97%</top>
+			<width>25%</width>
+			<onleft>602</onleft>
+			<orientation>horizontal</orientation>
+			<align>right</align>
+			<itemgap>10</itemgap>
+				<control type="label" id="7013">
+		   	    <font>font1</font>
+		   	    <label>ORIGINAL</label>
+				<height>18</height>
+				<aligny>center</aligny>
+				<align>right</align>
+				<width>200</width>
+				<visible>Control.HasFocus(70013)</visible>
+		   	</control> 
+		   	<control type="label" id="7014">
+		   	    <font>font1</font>
+		   	    <label>SDR</label>
+				<height>18</height>
+				<align>right</align>
+				<aligny>center</aligny>
+				<width>200</width>
+				<visible>Control.HasFocus(70014)</visible>
+		   	</control> 
+		   	<control type="label" id="7015">
+				<height>18</height>
+		   	    <font>font1</font>
+		   	    <label>HDR</label>
+				<align>right</align>
+				<aligny>center</aligny>
+				<width>200</width>
+				<visible>[Control.HasFocus(70015) + [String.Contains(Player.Process(video.hdr.type),SDR) | String.Contains(Player.Process(video.hdr.type),HLG)]]</visible>
+		   	</control> 
+		   	<control type="label" id="7016">
+				<height>18</height>
+		   	    <font>font1</font>
+		   	    <label>DV</label>
+				<align>right</align>
+				<aligny>center</aligny>
+				<width>200</width>				
+				<visible>Control.HasFocus(70016) + [String.Contains(Player.Process(video.hdr.type),SDR) | String.Contains(Player.Process(video.hdr.type),HDR)]</visible>
+		   	</control> 
+			<include content="OSDSmallButton">
+				<param name="control_id" value="70013"/>
+				<param name="texture" value="osd/fullscreen/buttons/button-ring-star-small.png"/>
+				<param name="onclick" value="vs10.original"/>
+				<param name="selected" value="Integer.IsEqual(Player.Process(amlogic.vs10.mode.raw),5) | [[Integer.IsEqual(Player.Process(amlogic.vs10.mode.raw),0) | Integer.IsEqual(Player.Process(amlogic.vs10.mode.raw),1)] + String.Contains(Player.Process(video.hdr.type),Dolby)]"/>
+				<param name="visible" value="true"/>
+			</include>
+			<include content="OSDSmallButton">
+				<param name="control_id" value="70014"/>
+				<param name="texture" value="osd/fullscreen/buttons/button-ring-s-small.png"/>
+				<param name="onclick" value="vs10.sdr"/>
+				<param name="selected" value="Integer.IsEqual(Player.Process(amlogic.vs10.mode.raw),3)"/>
+				<param name="visible" value="true"/>
+			</include>
+			<include content="OSDSmallButton">
+				<param name="control_id" value="70015"/>
+				<param name="texture" value="osd/fullscreen/buttons/button-ring-h-small.png"/>
+				<param name="onclick" value="vs10.hdr10"/>
+				<param name="selected" value="Integer.IsEqual(Player.Process(amlogic.vs10.mode.raw),2)"/>
+				<param name="visible" value="[String.Contains(Player.Process(video.hdr.type),SDR) | String.Contains(Player.Process(video.hdr.type),HLG)]"/>
+			</include>
+			<include content="OSDSmallButton">
+				<param name="control_id" value="70016"/>
+				<param name="texture" value="osd/fullscreen/buttons/button-ring-dv-small.png"/>
+				<param name="onclick" value="vs10.dv"/>
+				<param name="selected" value="[Integer.IsEqual(Player.Process(amlogic.vs10.mode.raw),0) | Integer.IsEqual(Player.Process(amlogic.vs10.mode.raw),1)] + !String.Contains(Player.Process(video.hdr.type),Dolby)"/>
+				<param name="visible" value="String.Contains(Player.Process(video.hdr.type),SDR) | String.Contains(Player.Process(video.hdr.type),HDR)"/>
+			</include>
+		</control>
+	</controls>
+</window>

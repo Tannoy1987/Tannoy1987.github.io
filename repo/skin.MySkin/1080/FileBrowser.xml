@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<window>
+    <defaultcontrol always="true">450</defaultcontrol>
+	<zorder>3</zorder>
+    <controls>
+		<include>DefaultBG</include>
+    <!--File Browser-->
+        <control type="group">
+            <include>DA</include>
+            <visible>!Window.IsActive(virtualkeyboard) + !Window.IsActive(locksettings)</visible>
+        <!--List-->
+            <control type="list" id="450">
+                <include>L 60/40 Panel</include>
+                <onleft>531</onleft>
+                <onright>8000</onright>
+                <onup>450</onup>
+                <ondown>450</ondown>
+                <scrolltime tween="cubic" easing="out">500</scrolltime>
+                <pagecontrol>531</pagecontrol>
+                <itemlayout height="75">
+                    <control type="image">
+                        <bordersize>5</bordersize>
+                        <texture  border="16" colordiffuse="button_focus">boxes/tdbox.png</texture>
+                    </control>
+                    <control type="label">
+                        <left>60</left>
+                        <right>60</right>
+                        <height>75</height>
+                        <info>ListItem.Label</info>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <scroll>false</scroll>
+                    </control>
+                </itemlayout>
+                <focusedlayout height="75">
+                    <control type="group">
+                        <control type="image">
+                           <bordersize>5</bordersize>
+                           <texture border="16" colordiffuse="button_focus">boxes/box.png</texture>
+                           <visible>Control.HasFocus(450)</visible>
+                        </control>
+                        <control type="image">
+                           <bordersize>5</bordersize>
+                           <texture border="16" colordiffuse="button_focus">boxes/box2.png</texture>
+                           <visible>!Control.HasFocus(450)</visible>
+                        </control>
+                        <control type="label">
+                            <left>60</left>
+                            <right>60</right>
+                            <height>75</height>
+                            <info>ListItem.Label</info>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <scroll>true</scroll>
+                            <textcolor>black</textcolor>
+                            <visible>Control.HasFocus(450)</visible>
+                        </control>
+                        <control type="label">
+                            <left>60</left>
+                            <right>60</right>
+                            <height>75</height>
+                            <info>ListItem.Label</info>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <scroll>true</scroll>
+                            <textcolor>white</textcolor>
+                            <visible>!Control.HasFocus(450)</visible>
+                        </control>
+                    </control>
+                </focusedlayout>
+            </control>
+        </control>
+        <control type="group">
+            <include>R 60/40 Panel</include>  
+            <include>bg</include>  
+            <control type="image">
+                <bordersize>10,75,10,75</bordersize>
+                <texture border="5">boxes/inner.png</texture>
+            </control>   
+<!--Header-->
+            <control type="label" id="411">
+                <description>Heading</description>
+                <left>10</left>
+                <right>20</right>
+                <top>20</top>
+                <label />
+                <align>center</align>
+            </control>
+            <control type="image">
+                <bordersize>0,80,0,80</bordersize>
+                <aspectratio>keep</aspectratio>
+                <texture background="true">$INFO[ListItem.Icon]</texture>
+            </control>
+<!--Buttons-->
+            <control type="grouplist" id="8000">
+                <left>75</left>
+                <bottom>-35</bottom>
+				<orientation>horizontal</orientation>
+				<height>100</height>
+				<onright>531</onright>
+				<onleft>450</onleft>
+				<itemgap>10</itemgap>
+                <control type="button" id="413">
+                    <description>OK</description>
+                    <label>$LOCALIZE[186]</label>
+					<width>297</width>
+                    <height>55</height>
+		<texturenofocus border="16" colordiffuse="button_focus">boxes/tdbox.png</texturenofocus>
+                    <pulseonselect>false</pulseonselect>
+                    <align>center</align>
+                </control>
+                <control type="button" id="414">
+                    <posx>200</posx>
+                    <description>Cancel</description>
+                    <label>$LOCALIZE[222]</label>
+					<width>297</width>
+                    <height>55</height>
+		<texturenofocus border="16" colordiffuse="button_focus">boxes/tdbox.png</texturenofocus>
+                    <align>center</align>
+                </control>
+            </control>           
+        </control>        
+    </controls>
+</window>

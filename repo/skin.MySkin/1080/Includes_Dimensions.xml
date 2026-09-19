@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="L 1/3 Panel">
+		<left>13</left>
+		<top>13</top>
+        <width>624</width>
+        <height>1054</height>
+    </include>
+    <include name="L 1/3 Listog">
+		<left>8</left>
+		<top>8</top>
+        <width>634</width>
+        <height>1064</height>
+    </include>
+    <include name="L 1/3 List">
+		<left>0</left>
+		<top>6</top>
+        <width>634</width>
+        <height>1068</height>
+    </include>
+    <include name="L 2/3 Panel">
+		<left>13</left>
+		<top>13</top>
+        <width>1260</width>
+        <height>1054</height>
+    </include>
+    <include name="L 2/3 List">
+		<left>8</left>
+		<top>8</top>
+        <width>1270</width>
+        <height>1065</height>
+    </include>
+    <include name="R 1/3 Panel">
+		<right>13</right>
+		<top>13</top>
+        <width>624</width>
+        <height>1054</height>
+    </include>
+    <include name="R 2/3 Panel">
+        <right>13</right>
+        <top>13</top>
+        <width>1260</width>
+        <height>1054</height>
+    </include>
+    <include name="R 2/3 List">
+        <right>8</right>
+        <top>8</top>
+        <width>1270</width>
+        <height>1059</height>
+    </include>
+    <include name="C 1/3 Panel">
+		<centerleft>50%</centerleft>
+		<top>13</top>
+        <width>626</width>
+        <height>1054</height>
+    </include>
+    <include name="L 50/50 Panel">
+        <left>13</left>
+        <top>13</top>
+        <width>947</width>
+        <height>1054</height>
+    </include>
+    <include name="R 50/50 Panel">
+        <right>13</right>
+        <top>13</top>
+        <width>947</width>
+        <height>1054</height>
+    </include>
+    <include name="L 60/40 Panel">
+        <left>13</left>
+        <top>13</top>
+        <width>1130</width>
+        <height>1054</height>
+    </include>
+    <include name="R 60/40 Panel">
+        <right>13</right>
+        <top>13</top>
+        <width>758</width>
+        <height>1054</height>
+    </include>
+    <include name="Panel 100">
+        <left>13</left>
+        <top>13</top>
+        <width>1894</width>
+        <height>1054</height>
+    </include>
+    <include name="List 100">
+        <left>8</left>
+        <top>8</top>
+        <width>1904</width>
+        <height>1064</height>
+    </include>
+	<include name="FullScreenDimensions">
+		<left>0</left>
+		<top>0</top>
+		<width>100%</width>
+		<height>100%</height>
+	</include>
+
+    <include name="fullscreen">
+        <left>15</left>
+        <top>14</top>
+        <width>1891</width>
+        <height>1051</height>
+    </include>
+    <include name="backboxfullscreen">
+        <left>10</left>
+        <top>9</top>
+        <width>1901</width>
+        <height>1061</height>
+    </include>
+    <include name="fullpanelright">
+        <right>8</right>
+        <top>9</top>
+        <width>1263</width>
+        <height>1061</height>
+    </include>
+    <include name="fullpanelleft">
+        <left>9</left>
+        <top>9</top>
+        <width>1347</width>
+        <height>1061</height>
+    </include>
+    <include name="plotpanel">
+        <right>7</right>
+        <top>62.5%</top>
+        <width>66%</width>
+        <height>31.2%</height>
+    </include>
+    <include name="listpanel">
+        <left>10</left>
+        <top>9</top>
+        <width>639</width>
+        <height>1061</height>
+    </include>
+
+    <include name="filepanel">
+        <right>7</right>
+        <top>7</top>
+        <width>652</width>
+        <height>1064</height>
+    </include>
+
+    <include name="posterplot">
+        <left>7</left>
+        <top>65</top>
+        <width>1906</width>
+        <height>197</height>
+    </include>
+    <include name="posterlogo">
+        <right>7</right>
+        <top>7</top>
+        <width>392</width>
+        <height>216</height>
+    </include>    
+    <include name="halfpanel">
+        <right>9</right>
+        <top>9</top>
+        <width>555</width>
+        <height>1061</height>
+    </include>
+    <include name="FullScreen">
+        <left>0</left>
+        <top>0</top>
+        <width>100%</width>
+        <height>100%</height>
+    </include>
+</includes>

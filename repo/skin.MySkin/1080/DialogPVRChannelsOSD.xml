@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">11</defaultcontrol>
+	<controls>
+		<control type="group">
+			<width>100%</width>
+			<height>22.2%</height>
+			<top>841</top>
+			<animation effect="fade" start="100" end="0" time="200" tween="sine" condition="$EXP[infodialog_active]">conditional</animation>
+			<control type="group">
+				<include>Keyboard_Slide_Up</include>
+				<include content="box">
+					<param name="texture" value="box3"/>
+					<param name="bs" value="10,0,10,10"/>
+					<param name="cd" value="button_focus"/>
+				</include>	
+				<include content="box">
+					<param name="texture" value="box"/>
+					<param name="bs" value="1514,5,15,15"/>
+					<param name="cd" value="white"/>
+				</include>	
+				<include content="box">
+					<param name="texture" value="box"/>
+					<param name="bs" value="15,5,1800,15"/>
+					<param name="cd" value="box"/>
+				</include>	
+				<include content="box">
+					<param name="texture" value="box"/>
+					<param name="bs" value="750,5,410,15"/>
+					<param name="cd" value="box"/>
+				</include>	
+			<!--channel logo-->	
+				<control type="image"> 
+					<left>79%</left>
+					<top>2.2%</top>
+					<width>20%</width>
+					<height>91.5%</height>
+					<align>bottomright</align>
+					<aspectratio aligny="bottomleft">keep</aspectratio>
+					<texture>$INFO[ListItem.ActualIcon]</texture>
+					<visible>Control.HasFocus(11)</visible> 
+				</control>
+				<control type="fixedlist" id="11">
+					<left>10</left>
+					<top>5</top>
+					<width>1500</width>
+					<bottom>15</bottom>
+					<onleft>PreviousChannelGroup</onleft>
+					<onright>NextChannelGroup</onright>
+					<onup>11</onup>
+					<ondown>11</ondown>
+					<movement>4</movement>
+					<focusposition>4</focusposition>
+					<pagecontrol>60</pagecontrol>
+					<scrolltime tween="cubic" easing="out">500</scrolltime>
+					<itemlayout height="44" infoupdate="0">
+						<control type="label">
+							<left>10</left>
+							<top>0</top>
+							<width>90</width>
+							<height>44</height>
+							<align>center</align>
+							<aligny>center</aligny>
+							<font>font32_title</font>
+							<label>$INFO[ListItem.ChannelNumberLabel]</label>
+						</control>
+						<control type="label">
+							<left>130</left>
+							<top>0</top>
+							<width>600</width>
+							<height>44</height>
+							<font>font36_title</font>
+							<aligny>center</aligny>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+						<control type="label">
+							<left>730</left>
+							<width>765</width>
+							<top>4</top>
+							<height>44</height>
+							<font>font13</font>
+							<aligny>top</aligny>
+							<label>$VAR[PVRListItemSubLabel]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="44" infoupdate="0">
+						<control type="image">
+							<left>5</left>
+							<top>0</top>
+							<right>0</right>
+							<height>44</height>
+							<animation effect="fade" start="100" end="0" time="0">UnFocus</animation>
+							<texture colordiffuse="button_focus" border="10,10,10,10">boxes/box.png</texture>
+						</control>
+						<control type="label">
+							<left>10</left>
+							<top>0</top>
+							<width>90</width>
+							<height>44</height>
+							<align>center</align>
+							<aligny>center</aligny>
+							<font>font32_title</font>
+							<textcolor>black</textcolor>
+							<label>$INFO[ListItem.ChannelNumberLabel]</label>
+						</control>
+						<control type="label">
+							<left>130</left>
+							<top>0</top>
+							<width>600</width>
+							<height>44</height>
+							<font>font36_title</font>
+							<aligny>center</aligny>
+							<label>$INFO[ListItem.Label]</label>
+							<textcolor>black</textcolor>							
+						</control>
+						<control type="label">
+							<left>730</left>
+							<width>765</width>
+							<top>4</top>
+							<height>44</height>
+							<font>font13</font>
+							<aligny>top</aligny>
+							<label>$VAR[PVRListItemSubLabel]</label>
+							<textcolor>black</textcolor>	
+						</control>
+					</focusedlayout>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<zorder>3</zorder>
+	<animation effect="fade" start="0" end="100" time="300">WindowOpen</animation>
+	<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+	<controls>
+		<control type="group">
+			<right>8</right>
+    	    <top>8</top>
+    	    <width>634</width>
+			<height>100</height>
+			<include content="backbox">
+                <param name="bs" value="5" />
+            </include>		
+			<control type="label" id="30">
+				<top>10</top>
+				<left>20</left>
+				<right>20</right>
+				<height>20</height>
+				<font>font1</font>
+				<align>center</align>
+				<aligny>center</aligny>		
+			</control>
+			<control type="textbox" id="31">
+				<description>Title label</description>
+				<top>30</top>
+				<left>20</left>
+				<right>20</right>
+				<height>50</height>
+				<font>font1</font>
+				<textcolor>80FFFFFF</textcolor>
+				<align>center</align>
+				<aligny>center</aligny>
+			</control>
+			<control type="progress" id="32">
+				<bottom>10</bottom>
+				<left>10</left>
+				<right>10</right>
+				<height>10</height>
+			</control>
+		</control>	
+	</controls>
+</window>

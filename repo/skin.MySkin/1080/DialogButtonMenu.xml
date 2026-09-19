@@ -1,0 +1,1219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol>901</defaultcontrol>
+	<onload condition="String.IsEqual(Skin.String(power_menu_layout),3)">Control.SetFocus(901, 0)</onload>
+	<onload condition="String.IsEqual(Skin.String(power_menu_layout),2)">Control.SetFocus(9010, 0)</onload>
+	<onload condition="String.IsEqual(Skin.String(power_menu_layout),1)">Control.SetFocus(90100, 0)</onload>
+	<controls>
+		<control type="group">
+			<visible>String.IsEqual(Skin.String(power_menu_layout),3)</visible>
+			<control type="image">
+				<top>3</top>
+				<left>3</left>
+				<height>1074</height>
+				<width>1915</width>
+				<texture diffuse="diffuse/sb.png" border="16" colordiffuse="box">boxes/dbox.png</texture>
+				<animation effect="zoom" start="100" end="100.6" time="0" condition="Window.IsActive(home)">conditional</animation>
+				<animation effect="slide" start="0" end="-3,-3" time="0" condition="Window.IsActive(home)">conditional</animation>
+				<animation effect="fade" time="200">VisibleChange</animation>
+			</control>	
+			<control type="group">
+			<include>OpenClose_Left</include>
+			<left>0</left>
+			<top>0</top>
+    	    <width>618</width>
+    	    <height>1080</height>	
+			<control type="image">
+				<posy>0</posy>
+				<posx>0</posx>
+				<bordersize>3,3,0,3</bordersize>
+				<texture border="16" colordiffuse="button_focus">boxes/sbox.png</texture>
+				<animation effect="zoom" start="100" end="100.5" time="5" condition="Window.IsActive(home)">conditional</animation>
+				<animation effect="slide" start="0,0" end="-3,-3" time="0" condition="Window.IsActive(home)">conditional</animation>
+			</control>		
+		<!--top-->
+			<include content="box">
+				<param name="texture" value="box"/>
+				<param name="bs" value="15,15,15,967"/>
+				<param name="cd" value="box"/>
+			</include>
+		<!--right-main-->
+			<include content="box">
+				<param name="texture" value="box"/>
+				<param name="bs" value="497,123,15,165"/>
+				<param name="cd" value="box"/>
+				<param name="vis" value="Control.HasFocus(901)"/>
+			</include>	
+		<!--left-sub-->
+			<include content="box">
+				<param name="texture" value="box"/>
+				<param name="bs" value="15,123,497,165"/>
+				<param name="cd" value="box"/>
+				<param name="vis" value="![Control.HasFocus(901) | Control.HasFocus(902)]"/>
+			</include>
+		<!--Power Menu-->			
+			<control type="group"> 
+				<onload>Control.SetFocus(902, 0)</onload>	
+				<control type="panel" id="902"> 
+					<left>10</left>
+					<top>118</top>
+					<right>10</right>
+					<height>600</height>
+					<align>center</align>
+					<onback>901</onback>
+					<onright>901</onright>
+					<include>SettingsPanelPowerMenu</include>
+					<visible allowhiddenfocus="true">![Control.HasFocus(901) | Control.HasFocus(903) | Control.HasFocus(904) | Control.HasFocus(905) | Control.HasFocus(906) | Control.HasFocus(907)]</visible>
+					<content>
+						<item>
+							<label>Reload skin</label>
+							<onclick>ReloadSkin()</onclick>
+							<icon>icons/sidemenu/reloadskin2.png</icon>
+						</item>
+						<item>
+							<label>Restart Kodi</label>
+							<icon>icons/sidemenu/restartkodi2.png</icon>
+							<onclick>RestartApp</onclick>
+							<visible>System.CanReboot</visible>
+						</item>
+						<item>
+							<label>$LOCALIZE[13012]</label>
+							<icon>icons/sidemenu/exit.png</icon>
+							<onclick>Quit()</onclick>
+							<visible>System.ShowExitButton</visible>
+						</item>
+						<item>
+							<label>Reboot to eMMC/NAND</label>
+							<icon>icons/sidemenu/android2.png</icon>
+							<onclick>System.ExecWait("/usr/sbin/rebootfromnand")</onclick>
+							<onclick>Reset()</onclick>
+							<visible>System.CanReboot + System.AddonIsEnabled(service.coreelec.settings)</visible> 
+						</item>
+						<item>
+							<label>$LOCALIZE[13013]</label>
+							<icon>icons/sidemenu/restart2.png</icon>
+							<onclick>Reset()</onclick>
+							<visible>System.CanReboot</visible>
+						</item>
+						<item>
+							<label>$LOCALIZE[13016]</label>
+							<icon>icons/sidemenu/power2.png</icon>
+							<onclick>Powerdown()</onclick>
+							<visible>System.CanPowerDown</visible>
+						</item>
+					</content>
+				</control>
+				 <control type="label">
+					<right>30</right>
+					<top>45</top>
+					<left>350</left>
+					<height>140</height>
+					<label>$INFO[System.Time]</label>
+					<align>right</align>
+					<font>font36_title</font>
+				</control>
+				 <control type="label">
+					<right>150</right>
+					<top>45</top>
+					<left>30</left>
+					<height>140</height>
+					<label>$INFO[System.Date]</label>
+					<align>left</align>
+					<font>font36_title</font>
+				</control>
+			</control>	
+			<control type="group" id="9"> 
+				<visible>!Control.HasFocus(902)</visible>
+				<control type="panel" id="903"> <!--File Manager-->
+					<visible>String.IsEqual(Container(901).ListItem.Property(id),file)</visible>
+					<visible>!Control.HasFocus(902)</visible>
+					<animation effect="slide" end="-8,0" time="0" condition="Control.HasFocus(903)">conditional</animation>
+					<left>133</left>
+					<width>500</width>
+					<top>118</top>
+					<bottom>20%</bottom>
+					<onleft>901</onleft>
+					<include>SettingsPanelSubMenu</include>
+					<content>
+						<item>
+							<label>Videos</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(videos)</onclick>
+							<icon>icons/settings/videofiles.png</icon>
+						</item>
+						<item>
+							<label>Music</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(music)</onclick>
+							<icon>icons/settings/musicfiles.png</icon>
+						</item>
+						<item>
+							<label>Pictures</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(pictures)</onclick>
+							<icon>icons/settings/picturefiles.png</icon>
+						</item>
+						<item>
+							<label>Favourites</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(favouritesbrowser)</onclick>
+							<icon>icons/settings/favourites.png</icon>
+						</item>
+					</content>
+				</control>
+			<!--addons-->		
+				<control type="panel" id="904"> 
+					<visible>String.IsEqual(Container(901).ListItem.Property(id),addons)</visible>
+					<animation effect="slide" end="-8,0" time="0" condition="Control.HasFocus(904)">conditional</animation>
+					<left>133</left>
+					<width>500</width>
+					<top>118</top>
+					<bottom>20%</bottom>
+					<onleft>901</onleft>
+					<include>SettingsPanelSubMenu</include>
+					<content>
+						<item>
+							<label>My Add-ons</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(addonbrowser,addons://user/,return)</onclick>
+							<icon>DefaultAddonsInstalled.png</icon>
+						</item>
+						<item>
+							<label>Recently Updated</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(addonbrowser,addons://recently_updated/,return)</onclick>
+							<icon>DefaultAddonsRecentlyUpdated.png</icon>
+						</item>
+						<item>
+							<label>Install from repository</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(addonbrowser,addons://repos/)</onclick>
+							<icon>DefaultAddonsRepo.png</icon>
+						</item>
+						<item>
+							<label>Install from zip file</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>InstallFromZip</onclick>
+							<icon>DefaultAddonsZip.png</icon>
+						</item>
+						<item>
+							<label>Search</label>
+							<onclick>Dialog.Close(all)</onclick>
+							<onclick>ActivateWindow(addonbrowser,addons://search/,return)</onclick>
+							<icon>DefaultAddonsSearch.png</icon>
+						</item>
+					</content>
+				</control>
+			<!--settings-->		
+				<control type="panel" id="905"> 
+					<visible>String.IsEqual(Container(901).ListItem.Property(id),settings)</visible>
+					<animation effect="slide" end="-8,0" time="0" condition="Control.HasFocus(905)">conditional</animation>
+					<left>133</left>
+					<width>500</width>
+					<top>118</top>
+					<bottom>20%</bottom>
+					<onright>Dialog.Close(all,true)</onright>			
+					<onright>ActivateWindow(10035)</onright>
+					<onleft>901</onleft>
+					<focusposition>0</focusposition>
+					<include>SettingsPanelSubMenu</include>
+					<content>
+						<item>
+							<label>$LOCALIZE[14206]</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(InterfaceSettings)</onclick>
+							<icon>icons/settings/interface.png</icon>
+						</item>
+						<item>
+							<label>$LOCALIZE[14200]</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(PlayerSettings)</onclick>
+							<icon>icons/settings/player.png</icon>
+						</item>
+						<item>
+							<label>$LOCALIZE[13000]</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(SystemSettings)</onclick>
+							<icon>icons/settings/system.png</icon>
+						</item>
+						<item>
+							<label>$LOCALIZE[14211]</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(MediaSettings)</onclick>
+							<icon>icons/settings/media.png</icon>
+						</item>
+						<item>
+							<label>$LOCALIZE[14036]</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(ServiceSettings)</onclick>
+							<icon>icons/settings/network.png</icon>
+						</item>
+					</content>
+				</control>
+			<!--tv-->		
+				<control type="panel" id="906"> 
+					<visible>String.IsEqual(Container(901).ListItem.Property(id),tv)</visible>
+					<animation effect="slide" end="-8,0" time="0" condition="Control.HasFocus(906)">conditional</animation>
+					<left>131</left>
+					<width>500</width>
+					<top>118</top>
+					<bottom>20%</bottom>
+					<onleft>901</onleft>
+					<include>SettingsPanelSubMenu</include>
+					<content>
+						<item>
+							<label>IPTV Simple</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>Addon.OpenSettings(pvr.iptvsimple)</onclick>
+							<icon>icons/settings/IPTVsimples.png</icon>
+						</item>
+					</content>
+				</control>
+			<!--sysinfo-->
+				<control type="panel" id="907"> 
+					<visible>String.IsEqual(Container(901).ListItem.Property(id),sysinfo)</visible>
+					<animation effect="slide" end="-8,0" time="0" condition="Control.HasFocus(907)">conditional</animation>
+					<left>133</left>
+					<width>500</width>
+					<top>118</top>
+					<bottom>20%</bottom>
+					<onleft>901</onleft>
+					<include>SettingsPanelSubMenu</include>
+					<content>
+						<item>
+							<label>$LOCALIZE[31067]</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(eventlog)</onclick>
+							<icon>icons/settings/eventlog.png</icon>
+						</item>
+						<item>
+							<label>$LOCALIZE[13200]</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(Profiles)</onclick>
+							<icon>icons/settings/profiles.png</icon>
+						</item>
+					</content>
+				</control>
+			</control>
+		<!--Main Menu-->		
+			<control type="panel" id="901">
+				<left>10</left>
+				<top>118</top>
+				<right>100</right>
+				<bottom>-5%</bottom>
+				<onright>$INFO[Container(901).ListItem.Property(focus)]</onright>
+				<onleft>902</onleft>
+				<animation effect="slide" end="-10,0" time="0" condition="!Control.HasFocus(901)">conditional</animation>
+				<include>SettingsPanelMainMenu</include>
+				<visible allowhiddenfocus="true">!Control.HasFocus(902)</visible>
+				<content>
+					<item>
+						<label>$LOCALIZE[10003]</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(filemanager)</onclick>
+						<icon>icons/settings/filemanager.png</icon>
+						<property name="id">file</property>
+						<property name="focus">SetFocus(903)</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[24001]</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(AddonBrowser)</onclick>
+						<icon>icons/settings/addons.png</icon>
+						<property name="id">addons</property>
+						<property name="focus">SetFocus(904)</property>
+					</item>
+					<item>
+						<label>Settings</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(Settings)</onclick>
+						<icon>icons/settings/settings.png</icon>
+						<property name="id">settings</property>
+						<property name="focus">SetFocus(905)</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[14204]</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(PVRSettings)</onclick>
+						<icon>icons/settings/livetv.png</icon>
+						<property name="id">tv</property>
+						<property name="focus">SetFocus(906)</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[138]</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(systeminfo)</onclick>
+						<icon>icons/settings/sysinfo.png</icon>
+						<property name="id">sysinfo</property>
+						<property name="focus">SetFocus(907)</property>
+					</item>
+					<item>
+						<label>CoreELEC</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>RunAddon(service.coreelec.settings)</onclick>
+						<icon>icons/settings/coreelec.png</icon>
+						<aspectratio>keep</aspectratio>
+						<visible>System.AddonIsEnabled(service.coreelec.settings)</visible>
+					</item>
+					<item>
+						<label>VPN</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>RunAddon(service.vpn.manager)</onclick>
+						<icon>icons/settings/VPNsettings.png</icon>
+						<aspectratio>keep</aspectratio>
+						<visible>System.AddonIsEnabled(service.vpn.manager)</visible>
+					</item>
+				</content>
+			</control>
+		<!--Build Info Panel-->
+			<control type="group"> 
+				<include content="box">
+					<param name="texture" value="box"/>
+					<param name="bs" value="15,925,15,15"/>
+					<param name="cd" value="box"/>
+				</include>
+				<control type="group">
+					<top>930</top>
+					<left>28</left>	
+					<right>8</right>
+					<!--CPU-->		
+					<control type="grouplist"> 	
+						<itemgap>25</itemgap>
+						<orientation>vertical</orientation>
+						<control type="grouplist"> 
+							<itemgap>0</itemgap>
+							<orientation>vertical</orientation>
+							<control type="textbox">
+								<top>50</top>
+								<description>CPU Text</description>
+								<width>auto</width>
+								<height>40</height>
+								<label>CPU - $INFO[System.CPUUsage]</label>
+								<aligny>bottom</aligny>
+								<align>left</align>
+								<shadowcolor>black</shadowcolor>
+								<font>font13</font>
+								<visible>System.SupportsCPUUsage</visible>
+								<wrapmultiline>true</wrapmultiline>
+							</control>
+							<control type="progress">
+								<description>CPU BAR</description>
+								<left>10</left>
+								<right>10</right>
+								<height>16</height>
+								<info>System.CPUUsage</info>
+								<visible>System.SupportsCPUUsage</visible>
+							</control>
+						</control>
+					<!--RAM-->			
+						<control type="grouplist"> 
+							<itemgap>40</itemgap>
+							<orientation>vertical</orientation>
+							<control type="label">
+								<description>Memory Text</description>
+								<width>auto</width>
+								<height>40</height>
+								<label>RAM - $INFO[system.memory(used)] [B]/[/B] $INFO[system.memory(total)] [B]-[/B] $INFO[system.memory(used.percent)]</label>
+								<aligny>top</aligny>
+								<textoffsety>40</textoffsety>
+								<shadowcolor>black</shadowcolor>
+								<font>font13</font>
+							</control>
+							<control type="progress">
+								<description>Memory BAR</description>
+								<left>10</left>
+								<right>10</right>
+								<height>16</height>
+								<info>system.memory(used)</info>
+							</control>
+						</control>
+					</control>
+				</control>
+			</control>				
+			</control>
+		</control>
+		<control type="group">
+			<visible>String.IsEqual(Skin.String(power_menu_layout),1)</visible>
+			<control type="image">
+				<top>3</top>
+				<left>3</left>
+				<height>1074</height>
+				<width>1915</width>
+				<texture diffuse="diffuse/sb.png" border="16" colordiffuse="box">boxes/dbox.png</texture>
+				<animation effect="zoom" start="100" end="100.6" time="0" condition="Window.IsActive(home)">conditional</animation>
+				<animation effect="slide" start="0" end="-3,-3" time="0" condition="Window.IsActive(home)">conditional</animation>
+				<animation effect="fade" time="200">VisibleChange</animation>
+			</control>	
+			<control type="group">
+			<include>OpenClose_Left</include>
+			<left>0</left>
+			<top>0</top>
+    	    <width>618</width>
+    	    <height>1080</height>	
+		
+			<control type="image">
+				<posy>0</posy>
+				<posx>0</posx>
+				<bordersize>3,3,115,3</bordersize>
+				<texture border="16" colordiffuse="button_focus">boxes/sbox.png</texture>
+				<animation effect="zoom" start="100" end="100.5" time="5" condition="Window.IsActive(home)">conditional</animation>
+				<animation effect="slide" start="0,0" end="-3,-3" time="0" condition="Window.IsActive(home)">conditional</animation>
+			</control>		
+	<!--top-->
+			<include content="box">
+				<param name="texture" value="box"/>
+				<param name="bs" value="15,15,130,967"/>
+				<param name="cd" value="box"/>
+			</include>			
+				 <control type="label">
+					<right>140</right>
+					<top>20</top>
+					<left>30</left>
+					<height>140</height>
+					<label>$INFO[System.Time]</label>
+					<align>center</align>
+					<font>font36_title</font>
+				</control>
+				 <control type="label">
+					<right>140</right>
+					<top>60</top>
+					<left>30</left>
+					<height>140</height>
+					<label>$INFO[System.Date]</label>
+					<align>center</align>
+					<font>font36_title</font>
+				</control>		
+		<!--Power Menu-->			
+			<control type="group"> 
+				<onload>Control.SetFocus(90200, 0)</onload>	
+				<control type="panel" id="90200"> 
+					<left>10</left>
+					<width>160</width>
+					<top>118</top>
+					<bottom>15%</bottom>
+					<align>center</align>
+					<onback>90100</onback>
+					<onright>90100</onright>
+					<include>SettingPanelCube</include>
+					<content>
+						<item>
+							<label>Reload skin</label>
+							<onclick>ReloadSkin()</onclick>
+							<icon>icons/sidemenu/reloadskin2.png</icon>
+						</item>
+						<item>
+							<label>Restart Kodi</label>
+							<icon>icons/sidemenu/restartkodi2.png</icon>
+							<onclick>RestartApp</onclick>
+							<visible>System.CanReboot</visible>
+						</item>
+						<item>
+							<label>$LOCALIZE[13012]</label>
+							<icon>icons/sidemenu/exit.png</icon>
+							<onclick>Quit()</onclick>
+							<visible>System.ShowExitButton</visible>
+						</item>
+						<item>
+							<label>Reboot to eMMC/NAND</label>
+							<icon>icons/sidemenu/android2.png</icon>
+							<onclick>System.ExecWait("/usr/sbin/rebootfromnand")</onclick>
+							<onclick>Reset()</onclick>
+							<visible>System.CanReboot + System.AddonIsEnabled(service.coreelec.settings)</visible> 
+						</item>
+						<item>
+							<label>$LOCALIZE[13013]</label>
+							<icon>icons/sidemenu/restart2.png</icon>
+							<onclick>Reset()</onclick>
+							<visible>System.CanReboot</visible>
+						</item>
+						<item>
+							<label>$LOCALIZE[13016]</label>
+							<icon>icons/sidemenu/power2.png</icon>
+							<onclick>Powerdown()</onclick>
+							<visible>System.CanPowerDown</visible>
+						</item>
+					</content>
+				</control>
+
+			</control>	
+		<!--Sub Menu-->				
+			<control type="group" id="900"> 
+					<left>330</left>
+					<width>160</width>
+					<top>118</top>
+					<bottom>15%</bottom>				
+			<!--File Manager-->	
+				<control type="panel" id="90300"> 
+					<visible>String.IsEqual(Container(90100).ListItem.Property(id),file)</visible>
+					<onleft>90100</onleft>
+					<include>SettingPanelCube</include>
+					<content>
+						<item>
+							<label>Videos</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(videos)</onclick>
+							<icon>icons/settings/videofiles.png</icon>
+						</item>
+						<item>
+							<label>Music</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(music)</onclick>
+							<icon>icons/settings/musicfiles.png</icon>
+						</item>
+						<item>
+							<label>Pictures</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(pictures)</onclick>
+							<icon>icons/settings/picturefiles.png</icon>
+						</item>
+						<item>
+							<label>Favourites</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(favouritesbrowser)</onclick>
+							<icon>icons/settings/favourites.png</icon>
+						</item>
+					</content>
+				</control>
+			<!--addons-->		
+				<control type="panel" id="90400"> 
+					<visible>String.IsEqual(Container(90100).ListItem.Property(id),addons)</visible>
+					<onleft>90100</onleft>
+					<include>SettingPanelCube</include>
+					<content>
+						<item>
+							<label>My Add-ons</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(addonbrowser,addons://user/,return)</onclick>
+							<icon>DefaultAddonsInstalled.png</icon>
+						</item>
+						<item>
+							<label>Recently Updated</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(addonbrowser,addons://recently_updated/,return)</onclick>
+							<icon>DefaultAddonsRecentlyUpdated.png</icon>
+						</item>
+						<item>
+							<label>Install from repository</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(addonbrowser,addons://repos/)</onclick>
+							<icon>DefaultAddonsRepo.png</icon>
+						</item>
+						<item>
+							<label>Install from zip file</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>InstallFromZip</onclick>
+							<icon>DefaultAddonsZip.png</icon>
+						</item>
+						<item>
+							<label>Search</label>
+							<onclick>Dialog.Close(all)</onclick>
+							<onclick>ActivateWindow(addonbrowser,addons://search/,return)</onclick>
+							<icon>DefaultAddonsSearch.png</icon>
+						</item>
+					</content>
+				</control>
+			<!--settings-->		
+				<control type="panel" id="90500"> 
+					<visible>String.IsEqual(Container(90100).ListItem.Property(id),settings)</visible>
+					<onright>Dialog.Close(all,true)</onright>			
+					<onright>ActivateWindow(10035)</onright>
+					<onleft>90100</onleft>
+					<focusposition>0</focusposition>
+					<include>SettingPanelCube</include>
+					<content>
+						<item>
+							<label>$LOCALIZE[14206]</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(InterfaceSettings)</onclick>
+							<icon>icons/settings/interface.png</icon>
+						</item>
+						<item>
+							<label>$LOCALIZE[14200]</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(PlayerSettings)</onclick>
+							<icon>icons/settings/player.png</icon>
+						</item>
+						<item>
+							<label>$LOCALIZE[13000]</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(SystemSettings)</onclick>
+							<icon>icons/settings/system.png</icon>
+						</item>
+						<item>
+							<label>$LOCALIZE[14211]</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(MediaSettings)</onclick>
+							<icon>icons/settings/media.png</icon>
+						</item>
+						<item>
+							<label>$LOCALIZE[14036]</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(ServiceSettings)</onclick>
+							<icon>icons/settings/network.png</icon>
+						</item>
+					</content>
+				</control>
+			<!--tv-->		
+				<control type="panel" id="90600"> 
+					<visible>String.IsEqual(Container(90100).ListItem.Property(id),tv)</visible>
+					<onleft>90100</onleft>
+					<include>SettingPanelCube</include>
+					<content>
+						<item>
+							<label>IPTV Simple</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>Addon.OpenSettings(pvr.iptvsimple)</onclick>
+							<icon>icons/settings/IPTVsimples.png</icon>
+						</item>
+					</content>
+				</control>
+			<!--sysinfo-->
+				<control type="panel" id="90700"> 
+					<visible>String.IsEqual(Container(90100).ListItem.Property(id),sysinfo)</visible>
+					<onleft>90100</onleft>
+					<include>SettingPanelCube</include>
+					<content>
+						<item>
+							<label>$LOCALIZE[31067]</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(eventlog)</onclick>
+							<icon>icons/settings/eventlog.png</icon>
+						</item>
+						<item>
+							<label>$LOCALIZE[13200]</label>
+							<onclick>Dialog.Close(all,true)</onclick>
+							<onclick>ActivateWindow(Profiles)</onclick>
+							<icon>icons/settings/profiles.png</icon>
+						</item>
+					</content>
+				</control>
+			</control>
+		<!--Main Menu-->		
+			<control type="panel" id="90100">
+				<left>170</left>
+				<top>118</top>
+				<width>160</width>
+				<bottom>15%</bottom>
+				<onright>$INFO[Container(90100).ListItem.Property(focus)]</onright>
+				<onleft>90200</onleft>
+				<include>SettingPanelCube</include>
+				<content>
+					<item>
+						<label>$LOCALIZE[10003]</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(filemanager)</onclick>
+						<icon>icons/settings/filemanager.png</icon>
+						<property name="id">file</property>
+						<property name="focus">SetFocus(90300)</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[24001]</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(AddonBrowser)</onclick>
+						<icon>icons/settings/addons.png</icon>
+						<property name="id">addons</property>
+						<property name="focus">SetFocus(90400)</property>
+					</item>
+					<item>
+						<label>Settings</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(Settings)</onclick>
+						<icon>icons/settings/settings.png</icon>
+						<property name="id">settings</property>
+						<property name="focus">SetFocus(90500)</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[14204]</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(PVRSettings)</onclick>
+						<icon>icons/settings/livetv.png</icon>
+						<property name="id">tv</property>
+						<property name="focus">SetFocus(90600)</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[138]</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(systeminfo)</onclick>
+						<icon>icons/settings/sysinfo.png</icon>
+						<property name="id">sysinfo</property>
+						<property name="focus">SetFocus(90700)</property>
+					</item>
+					<item>
+						<label>CoreELEC</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>RunAddon(service.coreelec.settings)</onclick>
+						<icon>icons/settings/coreelec.png</icon>
+						<aspectratio>keep</aspectratio>
+						<visible>System.AddonIsEnabled(service.coreelec.settings)</visible>
+					</item>
+					<item>
+						<label>VPN</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>RunAddon(service.vpn.manager)</onclick>
+						<icon>icons/settings/VPNsettings.png</icon>
+						<aspectratio>keep</aspectratio>
+						<visible>System.AddonIsEnabled(service.vpn.manager)</visible>
+					</item>
+				</content>
+			</control>
+		<!--Build Info Panel-->
+			<control type="group"> 
+				<include content="box">
+					<param name="texture" value="box"/>
+					<param name="bs" value="15,925,130,15"/>
+					<param name="cd" value="box"/>
+				</include>
+				<control type="group">
+					<top>930</top>
+					<left>28</left>	
+					<right>123</right>
+					<!--CPU-->		
+					<control type="grouplist"> 	
+						<itemgap>25</itemgap>
+						<orientation>vertical</orientation>
+						<control type="grouplist"> 
+							<itemgap>0</itemgap>
+							<orientation>vertical</orientation>
+							<control type="textbox">
+								<top>50</top>
+								<description>CPU Text</description>
+								<width>auto</width>
+								<height>40</height>
+								<label>CPU - $INFO[System.CPUUsage]</label>
+								<aligny>bottom</aligny>
+								<align>left</align>
+								<shadowcolor>black</shadowcolor>
+								<font>font13</font>
+								<visible>System.SupportsCPUUsage</visible>
+								<wrapmultiline>true</wrapmultiline>
+							</control>
+							<control type="progress">
+								<description>CPU BAR</description>
+								<left>10</left>
+								<right>10</right>
+								<height>16</height>
+								<info>System.CPUUsage</info>
+								<visible>System.SupportsCPUUsage</visible>
+							</control>
+						</control>
+					<!--RAM-->			
+						<control type="grouplist"> 
+							<itemgap>40</itemgap>
+							<orientation>vertical</orientation>
+							<control type="label">
+								<description>Memory Text</description>
+								<width>auto</width>
+								<height>40</height>
+								<label>RAM - $INFO[system.memory(used)] [B]/[/B] $INFO[system.memory(total)] [B]-[/B] $INFO[system.memory(used.percent)]</label>
+								<aligny>top</aligny>
+								<textoffsety>40</textoffsety>
+								<shadowcolor>black</shadowcolor>
+								<font>font13</font>
+							</control>
+							<control type="progress">
+								<description>Memory BAR</description>
+								<left>10</left>
+								<right>10</right>
+								<height>16</height>
+								<info>system.memory(used)</info>
+							</control>
+						</control>
+					</control>
+				</control>
+			</control>				
+			</control>
+		</control>
+		<control type="group">
+			<visible>String.IsEqual(Skin.String(power_menu_layout),2)</visible>
+				<control type="image">
+			<left>-2%</left>
+			<top>64.5%</top>
+			<height>37.5%</height>
+			<width>104%</width>
+			<texture colordiffuse="button_focus">colors/grey.png</texture>
+		</control>
+<!--Sub Menu-->		
+		<control type="group"> 
+ 			<include content="ContentPanel">
+				<param name="width" value="78.75%" />
+				<param name="height" value="17.05%" />
+				<param name="left" value="-5%" />
+				<param name="top" value="63.1%" />
+			</include>
+	<!--File Manager-->		
+		<control type="panel" id="9030"> 
+				<visible>String.IsEqual(Container(9010).ListItem.Property(id),file)</visible>
+				<visible>!Control.HasFocus(9020)</visible>
+				<left>5%</left>
+				<top>67%</top>
+				<bottom>20%</bottom>
+				<onup>back</onup>
+				<ondown>9010</ondown>
+				<include>SettingsPanel3</include>
+				<content>
+					<item>
+						<label>Videos</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(videos)</onclick>
+						<icon>icons/settings/videofiles.png</icon>
+					</item>
+					<item>
+						<label>Music</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(music)</onclick>
+						<icon>icons/settings/musicfiles.png</icon>
+					</item>
+					<item>
+						<label>Pictures</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(pictures)</onclick>
+						<icon>icons/settings/picturefiles.png</icon>
+					</item>
+					<item>
+						<label>Favourites</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(favouritesbrowser)</onclick>
+						<icon>icons/settings/favourites.png</icon>
+					</item>
+				</content>
+		</control>
+	<!--addons-->		
+		<control type="panel" id="9040"> 
+				<visible>String.IsEqual(Container(9010).ListItem.Property(id),addons)</visible>
+				<left>18%</left>
+				<top>67%</top>
+				<bottom>20%</bottom>
+				<onup>back</onup>
+				<ondown>9010</ondown>
+
+				<include>SettingsPanel3</include>
+				<content>
+					<item>
+					<label>My Addons</label>
+					<onclick>Dialog.Close(all,true)</onclick>
+					<onclick>ActivateWindow(addonbrowser,addons://user/,return)</onclick>
+					<icon>DefaultAddonsInstalled.png</icon>
+				</item>
+				<item>
+					<label>Updated</label>
+					<onclick>Dialog.Close(all,true)</onclick>
+					<onclick>ActivateWindow(addonbrowser,addons://recently_updated/,return)</onclick>
+					<icon>DefaultAddonsRecentlyUpdated.png</icon>
+				</item>
+				<item>
+					<label>Repos</label>
+					<onclick>Dialog.Close(all,true)</onclick>
+					<onclick>ActivateWindow(addonbrowser,addons://repos/)</onclick>
+					<icon>DefaultAddonsRepo.png</icon>
+				</item>
+				<item>
+					<label>ZIP</label>
+					<onclick>Dialog.Close(all,true)</onclick>
+					<onclick>InstallFromZip</onclick>
+					<icon>DefaultAddonsZip.png</icon>
+				</item>
+				<item>
+					<label>Search</label>
+					<onclick>Dialog.Close(all)</onclick>
+					<onclick>ActivateWindow(addonbrowser,addons://search/,return)</onclick>
+					<icon>DefaultAddonsSearch.png</icon>
+				</item>
+			</content>
+		</control>
+	<!--settings-->		
+		<control type="panel" id="9050"> 
+			<visible>String.IsEqual(Container(9010).ListItem.Property(id),settings)</visible>
+			<left>15%</left>
+			<top>67%</top>
+			<bottom>20%</bottom>
+			<onup>back</onup>
+			<ondown>9010</ondown>
+			<onleft></onleft>
+			<focusposition>0</focusposition>
+			<include>SettingsPanel3</include>
+			<content>
+				<item>
+					<label>$LOCALIZE[14200]</label>
+					<onclick>Dialog.Close(all,true)</onclick>
+					<onclick>ActivateWindow(PlayerSettings)</onclick>
+					<icon>icons/settings/player.png</icon>
+				</item>
+				<item>
+					<label>$LOCALIZE[13000]</label>
+					<onclick>Dialog.Close(all,true)</onclick>
+					<onclick>ActivateWindow(SystemSettings)</onclick>
+					<icon>icons/settings/system.png</icon>
+				</item>
+				<item>
+					<label>$LOCALIZE[14206]</label>
+					<onclick>Dialog.Close(all,true)</onclick>
+					<onclick>ActivateWindow(InterfaceSettings)</onclick>
+					<icon>icons/settings/interface.png</icon>
+				</item>
+				<item>
+					<label>$LOCALIZE[14211]</label>
+					<onclick>Dialog.Close(all,true)</onclick>
+					<onclick>ActivateWindow(MediaSettings)</onclick>
+					<icon>icons/settings/media.png</icon>
+				</item>
+				<item>
+					<label>$LOCALIZE[14036]</label>
+					<onclick>Dialog.Close(all,true)</onclick>
+					<onclick>ActivateWindow(ServiceSettings)</onclick>
+					<icon>icons/settings/network.png</icon>
+				</item>
+			</content>
+		</control>
+	<!--tv-->		
+		<control type="panel" id="9060"> 
+			<visible>String.IsEqual(Container(9010).ListItem.Property(id),tv)</visible>
+			<left>43.5%</left>
+			<top>67%</top>
+			<bottom>20%</bottom>
+			<onup>back</onup>
+			<ondown>9010</ondown>
+			<onleft></onleft>
+			<include>SettingsPanel3</include>
+			<content>
+				<item>
+					<label>IPTV Simple</label>
+					<onclick>Dialog.Close(all,true)</onclick>
+					<onclick>Addon.OpenSettings(pvr.iptvsimple)</onclick>
+					<icon>icons/settings/IPTVsimples.png</icon>
+				</item>
+			</content>
+		</control>
+	<!--sysinfo-->
+		<control type="panel" id="9070"> 
+			<visible>String.IsEqual(Container(9010).ListItem.Property(id),sysinfo)</visible>
+			<left>49%</left>
+			<top>67%</top>
+			<bottom>20%</bottom>
+			<onup>back</onup>
+			<ondown>9010</ondown>
+			<onleft></onleft>
+			<include>SettingsPanel3</include>
+			<content>
+				<item>
+					<label>$LOCALIZE[31067]</label>
+					<onclick>Dialog.Close(all,true)</onclick>
+					<onclick>ActivateWindow(eventlog)</onclick>
+					<icon>icons/settings/eventlog.png</icon>
+				</item>
+				<item>
+					<label>$LOCALIZE[13200]</label>
+					<onclick>Dialog.Close(all,true)</onclick>
+					<onclick>ActivateWindow(Profiles)</onclick>
+					<icon>icons/settings/profiles.png</icon>
+				</item>
+			</content>
+		</control>
+	</control>
+<!--Info Panel-->
+	<control type="group"> 
+		<include content="ContentPanel">
+			<param name="width" value="61%" />
+			<param name="height" value="50%" />
+			<param name="left" value="41.5%" />
+			<param name="top" value="3%" />
+		</include>
+		<animation effect="fade" end="100" time="700" tween="cubic" easing="inout">WindowOpen</animation>
+		<animation effect="fade" start="100" end="0" time="200" tween="cubic" easing="inout">WindowClose</animation>
+		<top>670</top>
+		<left>1000</left>
+		<height>370</height>
+		<include>DA</include>
+		<visible>true</visible>
+
+<!--CPU-->			
+			<control type="grouplist"> 
+				<top>55</top>
+				<left>413</left>
+				<itemgap>-5</itemgap>
+				<orientation>vertical</orientation>
+				<control type="textbox">
+					<top>50</top>
+					<description>CPU Text</description>
+					<width>auto</width>
+					<height>40</height>
+					<label>CPU - $INFO[System.CPUUsage]</label>
+					<aligny>bottom</aligny>
+					<align>left</align>
+					<shadowcolor>black</shadowcolor>
+					<font>font13</font>
+					<visible>System.SupportsCPUUsage</visible>
+					<wrapmultiline>true</wrapmultiline>
+				</control>
+				<control type="progress">
+					<description>CPU BAR</description>
+					<width>490</width>
+					<height>16</height>
+					<info>System.CPUUsage</info>
+					<visible>System.SupportsCPUUsage</visible>
+				</control>
+			</control>
+<!--RAM-->			
+			<control type="grouplist"> 
+				<top>75</top>
+					<left>413</left>
+					<itemgap>35</itemgap>
+					<orientation>vertical</orientation>
+				<control type="label">
+					<description>Memory Text</description>
+					<width>auto</width>
+					<height>40</height>
+					<label>RAM - $INFO[system.memory(used)] [B]/[/B] $INFO[system.memory(total)] [B]-[/B] $INFO[system.memory(used.percent)]</label>
+					<aligny>top</aligny>
+					<textoffsety>40</textoffsety>
+					<shadowcolor>black</shadowcolor>
+					<font>font13</font>
+				</control>
+				<control type="progress">
+					<description>Memory BAR</description>
+					<width>490</width>
+					<height>16</height>
+					<info>system.memory(used)</info>
+				</control>
+			</control>
+	
+		</control>
+<!--Main Menu-->		
+		<control type="group"> 
+			<include content="ContentPanel">
+				<param name="width" value="104%" />
+				<param name="height" value="25%" />
+				<param name="left" value="-2%" />
+				<param name="top" value="76.9%" />
+			</include>
+			<control type="panel" id="9010">
+				<left>3.5%</left>
+				<top>80%</top>
+				<bottom>-5%</bottom>
+				<onup>$INFO[Container(9010).ListItem.Property(onup)]</onup>
+				<ondown>9020</ondown>
+				<include>SettingsPanel2</include>
+				<content>
+					<item>
+						<label>$LOCALIZE[10003]</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(filemanager)</onclick>
+						<icon>icons/settings/filemanager.png</icon>
+						<property name="id">file</property>
+						<property name="onup">SetFocus(9030)</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[24001]</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(AddonBrowser)</onclick>
+						<icon>icons/settings/addons.png</icon>
+						<property name="id">addons</property>
+						<property name="onup">SetFocus(9040)</property>
+					</item>
+					<item>
+						<label>Settings</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(Settings)</onclick>
+						<icon>icons/settings/settings.png</icon>
+						<property name="id">settings</property>
+						<property name="onup">SetFocus(9050,2)</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[14204]</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(PVRSettings)</onclick>
+						<icon>icons/settings/livetv.png</icon>
+						<property name="id">tv</property>
+						<property name="onup">SetFocus(9060)</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[138]</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(systeminfo)</onclick>
+						<icon>icons/settings/sysinfo.png</icon>
+						<property name="id">sysinfo</property>
+						<property name="onup">SetFocus(9070,1)</property>
+					</item>
+					<item>
+						<label>CoreELEC</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>RunAddon(service.coreelec.settings)</onclick>
+						<icon>icons/settings/coreelec.png</icon>
+						<aspectratio>keep</aspectratio>
+						<visible>System.AddonIsEnabled(service.coreelec.settings)</visible>
+					</item>
+					<item>
+						<label>VPN</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>RunAddon(service.vpn.manager)</onclick>
+						<icon>icons/settings/VPNsettings.png</icon>
+						<aspectratio>keep</aspectratio>
+						<visible>System.AddonIsEnabled(service.vpn.manager)</visible>
+					</item>
+				</content>
+			</control>
+<!--Side Menu-->			
+			<control type="group"> 
+				<onload>Control.SetFocus(9020, 0)</onload>	
+				<control type="panel" id="9020"> 
+					<left>0%</left>
+					<top>80%</top>
+					<width>5%</width>
+					<height>20%</height>
+					<bottom>0%</bottom>
+					<onback>Dialog.Close(all,true)</onback>
+					<include>SettingsSideMenu</include>
+					<content>
+						<item>
+							<label>Reload skin</label>
+							<onclick>ReloadSkin()</onclick>
+							<icon>icons/sidemenu/reloadskin2.png</icon>
+						</item>
+						<item>
+							<label>Restart Kodi</label>
+							<icon>icons/sidemenu/restartkodi2.png</icon>
+							<onclick>RestartApp</onclick>
+							<visible>System.CanReboot</visible>
+						</item>
+						<item>
+							<label>$LOCALIZE[13012]</label>
+							<icon>icons/sidemenu/exit.png</icon>
+							<onclick>Quit()</onclick>
+							<visible>System.ShowExitButton</visible>
+						</item>
+						<item>
+							<label>Reboot to eMMC/NAND</label>
+							<icon>icons/sidemenu/android2.png</icon>
+							<onclick>System.ExecWait("/usr/sbin/rebootfromnand")</onclick>
+							<onclick>Reset()</onclick>
+							<visible>System.CanReboot + System.AddonIsEnabled(service.coreelec.settings)</visible> 
+						</item>
+						<item>
+							<label>$LOCALIZE[13013]</label>
+							<icon>icons/sidemenu/restart2.png</icon>
+							<onclick>Reset()</onclick>
+							<visible>System.CanReboot</visible>
+						</item>
+						<item>
+							<label>$LOCALIZE[13016]</label>
+							<icon>icons/sidemenu/power2.png</icon>
+							<onclick>Powerdown()</onclick>
+							<visible>System.CanPowerDown</visible>
+						</item>
+					</content>
+				</control>
+				<control type="label">
+					<left>1.5%</left>
+					<top>69.25%</top>
+					<width>1300</width>
+					<height>140</height>
+					<label>[COLOR button_focus]$INFO[ListItem.Label][/COLOR]</label>
+					<align>left</align>
+					<font>font36_title</font>
+					<visible>Control.HasFocus(9020)</visible>
+				</control>
+			</control>	
+		</control>
+		</control>
+
+	</controls>
+</window>

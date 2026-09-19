@@ -1,0 +1,19 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: plugin.video.filester\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_GB\n"
+
+msgctxt "#30000"
+msgid "API Key"
+msgstr "API Key"
+
+msgctxt "#30001"
+msgid "Account"
+msgstr "Account"
+
+msgctxt "#30002"
+msgid "API Key"
+msgstr "API Key"

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol>5</defaultcontrol>
+	<include>DA</include>
+	    <zorder>3</zorder>
+	<controls>
+        <include content="DialogBackgroundCommons">
+			<param name="width" value="1920" />
+			<param name="height" value="1080" />
+			<param name="header_label" value="" />
+			<param name="header_id" value="1" />
+			<param name="vis" value="true" />
+		</include>
+		<control type="group">
+			<left>2.1%</left>
+			<top>92</top>
+			<centerleft>50%</centerleft>
+			<width>1920</width>
+<!--Left-->
+			<control type="grouplist" id="3">
+				<description>Categories Area</description>
+				<left>29</left>
+				<top>16</top>
+				<width>400</width>
+				<height>625</height>
+				<itemgap>10</itemgap>
+				<orientation>vertical</orientation>
+				<onleft>9000</onleft>
+				<onright>5</onright>
+				<onup>20</onup>
+				<ondown>20</ondown>
+			</control>
+			<control type="button" id="10">
+				<description>Default Category Button</description>
+				<height>60</height>
+				<width>355</width>
+				<textoffsetx>20</textoffsetx>
+				<align>center</align>
+				<aligny>center</aligny>
+				<font>font25_title</font>
+				<texturefocus colordiffuse="button_focus" border="10">boxes/box.png</texturefocus>				
+				<texturenofocus colordiffuse="box" border="10">boxes/box.png</texturenofocus>
+			</control>
+<!--Middle-->
+			<control type="grouplist" id="5">
+				<description>control area</description>
+				<left>395</left>
+				<top>16</top>
+				<width>1100</width>
+				<height>760</height>
+				<pagecontrol>60</pagecontrol>
+				<onleft>3</onleft>
+				<onright>9000</onright>
+				<itemgap>10</itemgap>
+				<onup>5</onup>
+				<ondown>5</ondown>
+			</control>
+			<control type="textbox" id="6">
+				<description>description area</description>
+				<left>350</left>
+				<bottom>0</bottom>
+				<right>350</right>
+				<height>200</height>
+				<font>font13</font>
+				<align>center</align>
+				<aligny>center</aligny>
+				<textcolor>button_focus</textcolor>
+				<autoscroll time="3000" delay="5000" repeat="5000">true</autoscroll>
+			</control>
+			<control type="button" id="7">
+				<description>Default Button</description>
+			</control>
+			<control type="radiobutton" id="8">
+				<description>Default RadioButton</description>
+				<textwidth>880</textwidth>
+			</control>
+			<control type="spincontrolex" id="9">
+				<description>Default SpinControlex</description>
+			</control>
+			<control type="edit" id="12">
+			</control>
+			<control type="sliderex" id="13">
+				<description>Default Slider</description>
+				<textwidth>700</textwidth>
+			</control>
+			<control type="label" id="14">
+				<description>Default Label</description>
+				<align>center</align>
+			</control>
+			<control type="colorbutton" id="15">
+				<description>Default ColorButton</description>
+			</control>
+<!--Right-Buttons-->
+			<control type="grouplist" id="9000">
+				<left>1505</left>
+				<top>16</top>
+				<orientation>vertical</orientation>
+				<width>300</width>
+				<height>300</height>
+				<itemgap>10</itemgap>
+				<onleft>5</onleft>
+				<onright>3</onright>
+				<include content="DefaultDialogButton">
+					<param name="id" value="28" />
+					<param name="label" value="" />
+				</include>
+				<include content="DefaultDialogButton">
+					<param name="id" value="29" />
+					<param name="label" value="" />
+				</include>
+				<include content="DefaultDialogButton">
+					<param name="id" value="30" />
+					<param name="label" value="" />
+				</include>
+			</control>
+			<control type="group">
+				<description>Currently-playing emulator name and icon</description>
+				<visible>Player.HasGame + String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)</visible>
+				<left>1510</left>
+				<width>300</width>
+				<top>528</top>
+				<height>260</height>
+				<control type="label">
+					<description>Emulator name</description>
+					<height>30</height>
+					<font>font23_narrow</font>
+					<textoffsetx>20</textoffsetx>
+					<textcolor>button_focus</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<align>center</align>
+					<label>$INFO[Window(addonsettings).Property(GameClient.Name)]</label>
+				</control>
+				<control type="label">
+					<description>Emulator version</description>
+					<top>30</top>
+					<height>30</height>
+					<font>font23_narrow</font>
+					<textoffsetx>20</textoffsetx>
+					<textcolor>button_focus</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<align>center</align>
+					<label>$INFO[Window(addonsettings).Property(Addon.Version)]</label>
+				</control>
+				<control type="image">
+					<description>Emulator icon</description>
+					<left>50</left>
+					<top>70</top>
+					<height>200</height>
+					<width>200</width>
+					<aspectratio>keep</aspectratio>
+					<texture>$INFO[Window(addonsettings).Property(Addon.Icon)]</texture>
+				</control>
+			</control>
+			<control type="radiobutton" id="20">
+				<left>29</left>
+				<top>716</top>
+				<width>356</width>
+				<height>60</height>
+				<font>font25_title</font>
+				<aligny>center</aligny>
+				<onclick>SettingsLevelChange</onclick>
+				<radiowidth>40</radiowidth>
+				<onleft>9000</onleft>
+				<onright>5</onright>
+				<onup>3</onup>
+				<ondown>3</ondown>
+				<textureradioonfocus>icons/settings.png</textureradioonfocus>
+				<textureradioonnofocus>icons/settings.png</textureradioonnofocus>
+				<textureradioofffocus>icons/settings.png</textureradioofffocus>
+				<textureradiooffnofocus>icons/settings.png</textureradiooffnofocus>
+			</control>
+			<!-- <control type="scrollbar" id="60">
+				<right>40</right>
+				<top>-14</top>
+				<width>8</width>
+				<height>820</height>
+				<orientation>vertical</orientation>
+				<onleft>5</onleft>
+				<onright>9000</onright>
+				<animation effect="fade" start="0" end="100" delay="300" time="320">WindowOpen</animation>
+				<animation effect="fade" start="100" end="0" time="150">WindowClose</animation>
+			</control> -->
+		</control>
+	</controls>
+</window>

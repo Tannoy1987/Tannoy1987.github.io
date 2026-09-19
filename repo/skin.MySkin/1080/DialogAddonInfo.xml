@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <defaultcontrol always="true">9900</defaultcontrol>
+    <onunload>ClearProperty(showinfo,addoninformation)</onunload>
+	<onload>AlarmClock(SetAddonButtons,SetFocus(9900),00:00,silent)</onload>
+    <controls>
+        <include>DefaultBG</include>
+       <control type="group">	
+            <include>R 2/3 Panel</include>
+            <include>bg</include>
+        </control> 
+<!--Header-->
+        <control type="label">
+            <description>Heading</description>
+            <posx>695</posx>
+            <posy>10</posy>
+            <width>1200</width>
+			<font>Bold45</font>
+            <textcolor>$INFO[Skin.String(HeaderTextColor)]</textcolor>
+            <align>left</align>
+			<height>100</height>
+			<label>$LOCALIZE[24003]</label>
+        </control>
+<!-- title -->
+		<control type="label">
+			<posx>695</posx>
+			<posy>150</posy>
+			<width>800</width>
+			<font>Reg36</font>
+			<align>left</align>
+			<label>$INFO[ListItem.AddonName]</label>
+        </control>
+		<control type="image">
+			<posx>675</posx>
+            <posy>213</posy>
+			<width>1207</width>
+			<height>285</height>
+			<texture border="5">boxes/inner.png</texture>
+		</control>
+<!--Icon-->
+        <control type="image">
+            <right>40</right>
+            <posy>218</posy>
+            <width>275</width>
+            <height>275</height>
+			<aspectratio align="center" aligny="center" scalediffuse="true">keep</aspectratio>
+			<texture background="true" diffuse="diffuse/panel2.png" fallback="DefaultVideo.png">$INFO[ListItem.Icon]</texture>
+        </control>
+        <control type="grouplist">
+            <posx>675</posx>
+            <posy>220</posy>
+<!--Addon Type-->                
+            <control type="button">
+                <width>800</width>
+                <height>60</height>
+                <align>left</align>
+                <textoffsetx>20</textoffsetx>
+                <textwidth>540</textwidth>
+                <texturenofocus>dialogs/default/separator.png</texturenofocus>
+                <label>$LOCALIZE[146]</label>
+                <label2>$INFO[ListItem.AddonType]</label2>
+            </control>
+			<control type="button">
+                <!--Version-->
+                <width>800</width>
+                <height>60</height>
+                <align>left</align>
+                <textoffsetx>20</textoffsetx>
+                <textwidth>540</textwidth>
+                <texturenofocus>dialogs/default/separator.png</texturenofocus>
+                <label>$LOCALIZE[24051]</label>
+                <label2>$INFO[ListItem.AddonVersion]</label2>
+            </control>
+<!--Author-->                
+            <control type="button">  
+                <width>800</width>
+                <height>60</height>
+                <align>left</align>
+                <textoffsetx>20</textoffsetx>
+                <textwidth>540</textwidth>
+                <texturenofocus>dialogs/default/separator.png</texturenofocus>
+                <label>$LOCALIZE[21863]:</label>
+                <label2>$INFO[ListItem.AddonCreator]</label2>
+            </control>
+<!--Status-->                
+            <control type="button">
+                <width>800</width>
+                <height>60</height>
+                <align>left</align>
+                <textoffsetx>20</textoffsetx>
+                <textwidth>540</textwidth>
+                <texturenofocus/>
+                <label>$LOCALIZE[126]:</label>
+                <label2>$VAR[addonstatus]</label2>
+            </control>
+        </control>
+        <control type="textbox">
+            <description>Plot value</description>
+            <posx>695</posx>
+            <posy>500</posy>
+            <width>1160</width>
+            <height>400</height>
+            <align>justify</align>
+            <pagecontrol>60</pagecontrol>
+            <label fallback="19055">[B]$INFO[ListItem.AddonSummary][/B][CR]$INFO[ListItem.AddonDescription]</label>
+            <visible>String.IsEmpty(Window.Property(showinfo))</visible>
+        </control>
+        <control type="textbox">
+            <description>News value</description>
+            <posx>695</posx>
+            <posy>500</posy>
+            <width>1160</width>
+            <height>560</height>
+            <align>justify</align>
+            <pagecontrol>61</pagecontrol>
+            <label fallback="19055">$INFO[ListItem.AddonNews]</label>
+            <visible>String.IsEqual(Window.Property(showinfo),news)</visible>
+        </control>            
+<!-- screenshots -->
+        <control type="panel" id="50">
+            <posx>692</posx>
+            <posy>510</posy>
+            <width>1166</width>
+            <height>340</height>
+            <orientation>horizontal</orientation>
+            <onup>9900</onup>
+            <ondown>9900</ondown>
+            <preloaditems>4</preloaditems>
+            <visible>String.IsEqual(Window.Property(showinfo),screenshots)</visible>
+            <itemlayout height="340" width="583">
+                <control type="image">
+                    <bordersize>4</bordersize>
+                    <texture background="true" diffuse="home/home_matte2.png">$INFO[ListItem.Icon]</texture>
+                </control>
+            </itemlayout>
+            <focusedlayout height="340" width="583">
+                <control type="image">
+                    <!--focus image-->
+                    <texture>diffuse/panel2.png</texture>
+                </control>
+                <control type="image">
+                    <bordersize>4</bordersize>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+            </focusedlayout>
+        </control>
+<!--Button Group-->
+        <control type="grouplist" id="9900">
+            <left>13</left>
+			<orientation>vertical</orientation>
+			<itemgap>10</itemgap>
+			<onright condition="Control.IsVisible(50)">50</onright>
+			<onright condition="Control.IsVisible(60)">60</onright>
+			<onright condition="Control.IsVisible(61)">61</onright>
+            <top>20.25%</top>
+<!--Launch Addon button-->				
+            <control type="button" id="12">
+		        <width>624</width>
+                <height>68</height>
+                <align>center</align>
+                <label>$LOCALIZE[518]</label>
+				<visible>Control.IsEnabled(12)</visible>
+                <texturenofocus border="16">boxes/tdbox.png</texturenofocus>
+            </control>
+<!--Addon Settings-->                
+			<control type="button" id="9">
+		        <width>624</width>
+                <height>68</height>
+                <align>center</align>
+                <label>$LOCALIZE[24020]</label>
+				<visible>Control.IsEnabled(9)</visible>
+                <texturenofocus border="16">boxes/tdbox.png</texturenofocus>
+            </control>
+<!--Addon Dependencies-->                
+			<control type="button" id="10">
+		        <width>624</width>
+                <height>68</height>
+                <align>center</align>
+                <label>$LOCALIZE[39024]</label>
+                <include>DialogButtonOther</include>
+                <visible>Control.IsEnabled(10)</visible>
+                <texturenofocus border="16">boxes/tdbox.png</texturenofocus>
+            </control>
+<!--version-->                
+			<control type="button" id="14">
+		        <width>624</width>
+                <height>68</height>
+                <align>center</align>
+                <label>$LOCALIZE[24069]</label>
+                <visible>Control.IsEnabled(14)</visible>
+                <texturenofocus border="16">boxes/tdbox.png</texturenofocus>
+            </control>
+<!--news-->				
+			<control type="togglebutton" id="22112">
+		        <width>624</width>
+                <height>68</height>
+                <align>center</align>
+                <label>$LOCALIZE[29916]</label>
+                <altlabel>$LOCALIZE[29915]</altlabel>
+		        <textoffsety>12</textoffsety>
+                <onclick condition="!String.IsEqual(Window.Property(showinfo),news)">SetProperty(showinfo,news)</onclick>
+                <onclick condition="String.IsEqual(Window.Property(showinfo),news)">ClearProperty(showinfo)</onclick>
+                <texturenofocus border="16">boxes/tdbox.png</texturenofocus>
+                <alttexturenofocus border="16">boxes/tdbox.png</alttexturenofocus>
+            </control>  
+<!--screenshots-->                
+			<control type="togglebutton" id="22111">
+		        <width>624</width>
+                <height>68</height>
+                <align>center</align>
+                <label>$LOCALIZE[20008]</label>
+                <altlabel>$LOCALIZE[29915]</altlabel>
+				<usealttexture>String.IsEqual(Window.Property(showinfo),screenshots)</usealttexture>
+		        <textoffsety>12</textoffsety>
+                <onclick condition="!String.IsEqual(Window.Property(showinfo),screenshots)">SetProperty(showinfo,screenshots)</onclick>
+                <onclick condition="String.IsEqual(Window.Property(showinfo),screenshots)">ClearProperty(showinfo)</onclick>
+                <visible>Integer.IsGreater(Container(50).NumItems,0)</visible>
+                <texturenofocus border="16">boxes/tdbox.png</texturenofocus>
+                <alttexturenofocus border="16">boxes/tdbox.png</alttexturenofocus>
+            </control> 
+<!--Update Addon button-->                
+			<control type="button" id="8">
+		        <width>624</width>
+                <height>68</height>
+                <align>center</align>
+                <label>$LOCALIZE[24069]</label>
+				<visible>Control.IsEnabled(8)</visible>
+                <texturenofocus border="16">boxes/tdbox.png</texturenofocus>
+            </control>
+<!--enable auto update-->              
+            <control type="radiobutton" id="13">
+		        <width>624</width>
+                <height>68</height>
+                <align>center</align>
+                <label>$LOCALIZE[21340]</label>
+                <visible>Control.IsEnabled(13)</visible>
+                <texturenofocus border="16">boxes/tdbox.png</texturenofocus>
+            </control>
+<!--Enable/Disable Addon button-->
+			<control type="button" id="7">
+		        <width>624</width>
+                <height>68</height>
+                <align>center</align>
+                <label>$LOCALIZE[24021]</label>
+				<visible>Control.IsEnabled(7)</visible>
+                <texturenofocus border="16">boxes/tdbox.png</texturenofocus>
+            </control>				
+<!--Install/Uninstall Addon button-->				
+			<control type="button" id="6">
+		        <width>624</width>
+                <height>68</height>
+                <align>center</align>
+                <label>$LOCALIZE[24022]</label>
+				<visible>Control.IsEnabled(6)</visible>
+                <texturenofocus border="16">boxes/tdbox.png</texturenofocus>
+            </control>                           								               
+        </control>
+<!--Arrows-->
+        <control type="image">
+            <animation effect="fade" start="100" end="50" tween="sine" easing="inout" time="800" pulse="true" reversible="false" condition="true">conditional</animation>
+            <right>25</right>
+            <bottom>370</bottom>
+            <posy>50</posy>
+            <width>20</width>
+            <height>60</height>
+            <aspectratio>keep</aspectratio>
+            <texture>overlays/arrowright.png</texture>
+            <visible>Control.HasFocus(50)</visible>
+            <colordiffuse>white</colordiffuse>
+            <visible>Container(50).HasNext</visible>
+        </control>
+        <control type="image">
+            <animation effect="fade" start="100" end="50" tween="sine" easing="inout" time="800" pulse="true" reversible="false" condition="true">conditional</animation>
+            <right>1243</right>
+            <bottom>370</bottom>
+            <posy>50</posy>
+            <width>20</width>
+            <height>60</height>
+            <aspectratio>keep</aspectratio>
+            <texture flipx="true">overlays/arrowright.png</texture>
+            <colordiffuse>white</colordiffuse>
+            <visible>Container(50).HasPrevious</visible>
+        </control>
+    </controls>
+</window>
