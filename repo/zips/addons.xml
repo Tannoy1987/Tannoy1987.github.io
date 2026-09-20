@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<addons>
-	<addon id="plugin.video.filester" name="Filester" version="1.0.0" provider-name="Tannoy">
+<addons><addon id="plugin.video.filester" name="Filester" version="1.0.0" provider-name="Tannoy">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
     </requires>
@@ -15,13 +14,12 @@
             <icon>icon.png</icon>
         </assets>
     </extension>
-</addon>
-	<addon id="repository.tannoy1987" name="Tannoy1987 Repository" version="1.0.0" provider-name="Tannoy1987">
+</addon><addon id="repository.tannoy1987" name="Tannoy1987 Repository" version="1.0.0" provider-name="Tannoy1987">
     <extension point="xbmc.addon.repository" name="Tannoy1987 Repository">
         <dir>
-            <info compressed="false">https://raw.githubusercontent.com/Tannoy1987/Tannoy1987.github.io/main/repo/zips/addons.xml</info>
-            <checksum>https://raw.githubusercontent.com/Tannoy1987/Tannoy1987.github.io/main/repo/zips/addons.xml.md5</checksum>
-            <datadir zip="true">https://raw.githubusercontent.com/Tannoy1987/Tannoy1987.github.io/main/repo/zips/</datadir>
+<info compressed="false">https://raw.githubusercontent.com/Tannoy1987/Tannoy1987.github.io/refs/heads/main/repo/zips/addons.xml</info>
+<checksum>https://raw.githubusercontent.com/Tannoy1987/Tannoy1987.github.io/refs/heads/main/repo/zips/addons.xml.md5</checksum>
+<datadir zip="true">https://raw.githubusercontent.com/Tannoy1987/Tannoy1987.github.io/refs/heads/main/repo/zips/</datadir>
         </dir>
     </extension>
     <extension point="xbmc.addon.metadata">
@@ -34,8 +32,7 @@
             <fanart>fanart.jpg</fanart>
         </assets>
     </extension>
-</addon>
-	<addon id="skin.MySkin" version="0.3.5" name="MySkin" provider-name="Tannoy">
+</addon><addon id="skin.MySkin" version="0.3.5" name="MySkin" provider-name="Tannoy">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0" />
 		<import addon="xbmc.python" version="3.0.0" />
