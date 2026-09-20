@@ -1,41 +1,36 @@
 <?xml version='1.0' encoding='utf-8'?>
-<addons>
-    <addon id="plugin.video.filester" name="Filester" version="1.0.0" provider-name="Tannoy">
-        <requires>
-            <import addon="xbmc.python" version="3.0.0" />
-        </requires>
-        <extension point="xbmc.python.pluginsource" library="main.py">
-            <provides>video</provides>
-        </extension>
-        <extension point="xbmc.addon.metadata">
-            <summary lang="en_GB">Filester Kodi Addon</summary>
-            <description lang="en_GB">Stream files from Filester using an API key.</description>
-            <platform>all</platform>
-            <assets>
-                <icon>icon.png</icon>
-            </assets>
-        </extension>
-    </addon>
-    <addon id="repository.tannoy1987" name="Tannoy1987 Repository" version="1.0.0" provider-name="Tannoy1987">
-        <extension point="xbmc.addon.repository" name="Tannoy1987 Repository">
-            <dir>
-                <info compressed="false">https://raw.githubusercontent.com/Tannoy1987/Tannoy1987.github.io/refs/heads/main/repo/zips/addons.xml</info>
-                <checksum>https://raw.githubusercontent.com/Tannoy1987/Tannoy1987.github.io/refs/heads/main/repo/zips/addons.xml.md5</checksum>
-                <datadir zip="true">https://raw.githubusercontent.com/Tannoy1987/Tannoy1987.github.io/refs/heads/main/repo/zips/</datadir>
-            </dir>
-        </extension>
-        <extension point="xbmc.addon.metadata">
-            <summary>Tannoy1987 Kodi Repository</summary>
-            <description>Kodi repository hosting my skins and addons.</description>
-            <disclaimer />
-            <platform>all</platform>
-            <assets>
-                <icon>icon.png</icon>
-                <fanart>fanart.jpg</fanart>
-            </assets>
-        </extension>
-    </addon>   
-    <addon id="skin.MySkin" version="0.3.6" name="MySkin" provider-name="Tannoy">
+<addons><addon id="plugin.video.filester" name="Filester" version="1.0.0" provider-name="Tannoy">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="main.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">Filester Kodi Addon</summary>
+        <description lang="en_GB">Stream files from Filester using an API key.</description>
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+        </assets>
+    </extension>
+</addon><addon id="repository.tannoy1987" name="Tannoy Kodi Repository" version="1.0.1" provider-name="Tannoy">
+    <extension point="xbmc.addon.repository" name="Tannoy Kodi Repository">
+        <info compressed="false">https://tannoy1987.github.io/repository.tannoy/repo/zips/addons.xml</info>
+        <checksum>https://tannoy1987.github.io/repository.tannoy/repo/zips/addons.xml.md5</checksum>
+        <datadir zip="true">https://tannoy1987.github.io/repository.tannoy/repo/zips/</datadir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Tannoy1987 Kodi Repository</summary>
+        <description>Kodi repository hosting my skins and addons.</description>
+        <disclaimer />
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon><addon id="skin.MySkin" version="0.3.6" name="MySkin" provider-name="Tannoy">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0" />
 		<import addon="xbmc.python" version="3.0.0" />
