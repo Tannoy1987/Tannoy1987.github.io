@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="repository.tannoy1987" name="Tannoy Kodi Repository" version="1.0.1" provider-name="Tannoy">
+<addon id="repository.tannoy1987" name="Tannoy Kodi Repository" version="1.0.2" provider-name="Tannoy">
     <extension point="xbmc.addon.repository" name="Tannoy Kodi Repository">
         <info compressed="false">https://tannoy1987.github.io/repository.tannoy/repo/zips/addons.xml</info>
         <checksum>https://tannoy1987.github.io/repository.tannoy/repo/zips/addons.xml.md5</checksum>
