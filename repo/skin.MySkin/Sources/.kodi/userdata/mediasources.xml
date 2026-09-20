@@ -1,6 +1,0 @@
-<mediasources>
-    <network>
-        <location id="0">ftp://admin:123456@192.168.1.121:2222/</location>
-        <location id="1">davs://Tannoy1987:2KLENJHEGAULW@dav.real-debrid.com:443/</location>
-    </network>
-</mediasources>
