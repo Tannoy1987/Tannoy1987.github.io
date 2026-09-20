@@ -32,6 +32,9 @@
 		</definition>
 	</include>
 	<include name="DefaultFocus">
+		<param name="height">82</param>
+		<param name="imageWH">32</param>
+		<definition>		
 		<control type="group">
             <visible>![Control.HasFocus(50) | Control.HasFocus(55) | Control.HasFocus(9000)]</visible>
             <include content="box">
@@ -40,7 +43,7 @@
 			<control type="label">
 				<left>60</left>
 				<right>60</right>
-				<height>82</height>
+				<height>$PARAM[height]</height>
 				<align>center</align>
 				<aligny>center</aligny>
 				<label>[COLOR button_focus]$INFO[ListItem.Label][/COLOR]</label>
@@ -50,8 +53,8 @@
 			<control type="image">
 				<left>15</left>
 				<top>30</top>
-				<width>32</width>
-				<height>32</height>
+				<width>$PARAM[imageWH]</width>
+				<height>$PARAM[imageWH]</height>
 				<texture colordiffuse="grey">$VAR[ItemStatusIconVar]</texture>
 				<visible>!Container.Content()</visible>
 			</control>
@@ -62,7 +65,7 @@
 				<param name="bs" value="5" />
 			</include>
 			<control type="label">
-				<height>82</height>
+				<height>$PARAM[height]</height>
 				<left>60</left>
 				<right>60</right>
 				<align>center</align>
@@ -74,14 +77,20 @@
 			<control type="image">
 				<left>15</left>
 				<top>30</top>
-				<width>32</width>
-				<height>32</height>
+				<width>$PARAM[imageWH]</width>
+				<height>$PARAM[imageWH]</height>
 				<texture colordiffuse="black">$VAR[ItemStatusIconVar]</texture>
 				<visible>!Container.Content()</visible>
 			</control>
         </control>
+		</definition>
 	</include>	
 	<include name="DefaultNoFocus">
+		<param name="height">82</param>
+		<param name="imageWH">35</param>
+		<param name="imageL">20</param>
+		<param name="imageT">20</param>
+		<definition>		
 		<control type="image">
 			<bordersize>5</bordersize>
 			<texture colordiffuse="button_focus" border="16">boxes/tdbox.png</texture>
@@ -89,20 +98,21 @@
 		<control type="label">
 			<left>60</left>
 			<right>60</right>
-				<height>82</height>			
+			<height>$PARAM[height]</height>	
 			<align>center</align>
 			<aligny>center</aligny>
 			<label>$INFO[ListItem.Label]</label>
 			<shadowcolor>text_shadow</shadowcolor>
 		</control>
 		<control type="image">
-			<left>20</left>
-			<top>20</top>
-			<width>35</width>
-			<height>35</height>
+			<left>$PARAM[imageL]</left>
+			<top>$PARAM[imageT]</top>
+			<width>$PARAM[imageWH]</width>
+			<height>$PARAM[imageWH]</height>
 			<texture colordiffuse="grey">$VAR[ItemStatusIconVar]</texture>
 			<visible>!Container.Content()</visible>
 		</control>
+		</definition>
 	</include>	
 	<include name="Music_List">
 		<param name="top">9</param>

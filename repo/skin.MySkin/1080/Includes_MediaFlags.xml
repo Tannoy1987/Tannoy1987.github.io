@@ -975,7 +975,7 @@
 					<control type="image">
 						<left>15</left>
 						<bottom>284</bottom>
-						<width>144</width>
+						<width>170</width>
 						<height>256</height>
 						<aspectratio align="center" aligny="center">keep</aspectratio>
 						<texture fallback="DefaultVideo.png" background="true">$INFO[Player.Art(poster)]</texture>

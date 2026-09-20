@@ -1062,12 +1062,8 @@
 	</variable>
 	<variable name="power_menu_layout">
 		<value condition="String.IsEqual(Skin.String(power_menu_layout),1)">Mouse</value>
-		<value condition="String.IsEqual(Skin.String(power_menu_layout),2)">Bottom</value>
-		<value condition="String.IsEqual(Skin.String(power_menu_layout),3)">Left</value>
-	</variable>
-	<variable name="osd_back">
-		<value condition="String.IsEqual(Skin.String(osd_back),1)">Exit</value>
-		<value condition="String.IsEqual(Skin.String(osd_back),2)">Previous Window</value>
+		<value condition="String.IsEqual(Skin.String(power_menu_layout),2)">Landscape</value>
+		<value condition="String.IsEqual(Skin.String(power_menu_layout),3)">Portrait </value>
 	</variable>
 	<variable name="mediaflags_layout">
 		<value condition="String.IsEqual(Skin.String(mediaflags_layout),1)">Small</value>

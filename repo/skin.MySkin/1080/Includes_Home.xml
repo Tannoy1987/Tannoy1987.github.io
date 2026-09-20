@@ -59,6 +59,7 @@
 					<onclick>ActivateWindow(10025,plugin://plugin.video.pov)</onclick>
 					<thumb>icons/POV.png</thumb>
 					<property name="id">POV</property>
+					<visible>System.HasAddon(plugin.video.pov)</visible>
 					<visible>String.IsEqual(Skin.String(home_layout),2) | String.IsEqual(Skin.String(home_layout),3) | String.IsEqual(Skin.String(home_layout),5)</visible>
 				</item>
 				<item>
@@ -67,6 +68,7 @@
 					<onclick>ActivateWindow(10025,plugin://plugin.video.pov)</onclick>
 					<thumb>icons/POV.png</thumb>
 					<property name="id">POV</property>
+					<visible>System.HasAddon(plugin.video.pov)</visible>
 					<visible>String.IsEqual(Skin.String(home_layout),4)</visible>
 				</item>
 				<item>
@@ -99,7 +101,7 @@
 					<property name="menu_id">$NUMBER[5000]</property>
 					<thumb>icons/sidemenu/videos.png</thumb>
 					<property name="id">videos</property>
-					<visible>!Skin.HasSetting(HomeMenuNoVideosButton)</visible>
+					<visible>Skin.HasSetting(HomeMenuNoVideosButton)</visible>
 				</item>
 				<item>
 					<label>$LOCALIZE[2]</label>
@@ -107,7 +109,7 @@
 					<property name="menu_id">$NUMBER[510]</property>
 					<thumb>icons/sidemenu/music.png</thumb>
 					<property name="id">music</property>
-					<visible>!Skin.HasSetting(HomeMenuNoMusicButton)</visible>
+					<visible>Skin.HasSetting(HomeMenuNoMusicButton)</visible>
 				</item>
 				<item>
 					<label>$LOCALIZE[24001]</label>
@@ -123,7 +125,7 @@
 					<property name="menu_id">$NUMBER[700]</property>
 					<thumb>icons/sidemenu/favourites.png</thumb>
 					<property name="id">favorites</property>
-					<visible>!Skin.HasSetting(HomeMenuNoFavButton)</visible>
+					<visible>Skin.HasSetting(HomeMenuNoFavButton)</visible>
 				</item>
 			</content>
 		</control>
