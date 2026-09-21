@@ -373,21 +373,21 @@
 			<height>100%</height>
 			<onleft>9000</onleft>
 			<onup>9000</onup>
-			<onright condition="Control.IsVisible(840)">840</onright>
- 			<onright condition="Control.IsVisible(640)">640</onright>
- 			<onright condition="Control.IsVisible(55)">55</onright>
- 			<onright condition="Control.IsVisible(53)">53</onright>
- 			<onright condition="Control.IsVisible(52)">52</onright>
- 			<onright condition="Control.IsVisible(51)">51</onright>
- 			<onright condition="Control.IsVisible(50)">50</onright>
 			<ondown>9000</ondown>
-			<onback condition="Control.IsVisible(840)">840</onback>
+			<onright condition="Control.IsVisible(50)">50</onright>
+			<onright condition="Control.IsVisible(51)">51</onright>
+			<onright condition="Control.IsVisible(52)">52</onright>
+			<onright condition="Control.IsVisible(53)">53</onright>
+			<onright condition="Control.IsVisible(55)">55</onright>
 			<onback condition="Control.IsVisible(640)">640</onback>
-			<onback condition="Control.IsVisible(55)">55</onback>
-			<onback condition="Control.IsVisible(53)">53</onback>
-			<onback condition="Control.IsVisible(52)">52</onback>
-			<onback condition="Control.IsVisible(51)">51</onback>
+			<onright condition="Control.IsVisible(640)">640</onright>
 			<onback condition="Control.IsVisible(50)">50</onback>
+			<onback condition="Control.IsVisible(51)">51</onback>
+			<onback condition="Control.IsVisible(52)">52</onback>
+			<onback condition="Control.IsVisible(53)">53</onback>
+			<onback condition="Control.IsVisible(55)">55</onback>
+			<onright condition="Control.IsVisible(840)">840</onright>
+			<onback condition="Control.IsVisible(840)">840</onback>
 			<control type="label" id="200">
 				<include>MediaMenuLabelCommon</include>
 				<label>$LOCALIZE[14018]</label>

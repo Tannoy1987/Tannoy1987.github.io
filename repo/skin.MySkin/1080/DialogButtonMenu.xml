@@ -771,18 +771,18 @@
 						<itemgap>25</itemgap>
 						<orientation>vertical</orientation>
 						<control type="grouplist"> 
-							<itemgap>0</itemgap>
+							<itemgap>20</itemgap>
 							<orientation>vertical</orientation>
 							<control type="label">
-								<top>50</top>
+								<top>0</top>
 								<description>CPU Text</description>
-								<width>auto</width>
-								<height>40</height>
+								<width>445</width>
+								<height>22</height>
 								<label>CPU - $INFO[System.CPUUsage]</label>
-								<aligny>bottom</aligny>
 								<align>left</align>
 								<shadowcolor>black</shadowcolor>
-								<font>Reg26</font>
+								<font>Reg22</font>
+								<textoffsety>2</textoffsety>
 								<visible>System.SupportsCPUUsage</visible>
 								<wrapmultiline>true</wrapmultiline>
 							</control>
@@ -797,17 +797,17 @@
 						</control>
 					<!--RAM-->			
 						<control type="grouplist"> 
-							<itemgap>40</itemgap>
+							<itemgap>60</itemgap>
 							<orientation>vertical</orientation>
 							<control type="label">
 								<description>Memory Text</description>
-								<width>auto</width>
-								<height>40</height>
+								<width>445</width>
+								<height>22</height>
 								<label>RAM - $INFO[system.memory(used)] [B]/[/B] $INFO[system.memory(total)] [B]-[/B] $INFO[system.memory(used.percent)]</label>
 								<aligny>top</aligny>
-								<textoffsety>40</textoffsety>
+								<textoffsety>42</textoffsety>
 								<shadowcolor>black</shadowcolor>
-								<font>Reg26</font>
+								<font>Reg22</font>
 							</control>
 							<control type="progress">
 								<description>Memory BAR</description>
