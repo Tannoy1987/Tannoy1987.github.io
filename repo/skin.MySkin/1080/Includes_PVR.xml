@@ -16,7 +16,7 @@
 					<height>50</height>
 					<align>right</align>
 					<aligny>center</aligny>
-					<font>font13</font>
+					
 					<label>$INFO[PVR.TimeshiftProgressEndTime]</label>
 				</control>
 				<control type="label">
@@ -26,7 +26,7 @@
 					<height>50</height>
 					<align>left</align>
 					<aligny>center</aligny>
-					<font>font13</font>
+					
 					<label>$INFO[PVR.TimeshiftProgressStartTime]</label>
 				</control>
 				<control type="label">
@@ -36,7 +36,7 @@
 					<height>50</height>
 					<align>center</align>
 					<aligny>center</aligny>
-					<font>font13</font>
+					
 					<label>[B]$LOCALIZE[31026][/B] $INFO[PVR.TimeshiftCur] (-$INFO[PVR.TimeshiftOffset])</label>
 					<visible>PVR.IsTimeShift</visible>
 				</control>
@@ -86,7 +86,7 @@
 				<height>50</height>
 				<align>right</align>
 				<aligny>center</aligny>
-				<font>font13</font>
+				
 				<label>$INFO[VideoPlayer.EndTime]</label>
 			</control>
 			<control type="label">
@@ -96,7 +96,7 @@
 				<height>50</height>
 				<align>left</align>
 				<aligny>center</aligny>
-				<font>font13</font>
+				
 				<label>$INFO[VideoPlayer.StartTime]</label>
 			</control>
 			<control type="progress">

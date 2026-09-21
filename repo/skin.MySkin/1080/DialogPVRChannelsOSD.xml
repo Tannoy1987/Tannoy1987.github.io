@@ -78,7 +78,7 @@
 							<width>765</width>
 							<top>4</top>
 							<height>44</height>
-							<font>font13</font>
+							
 							<aligny>top</aligny>
 							<label>$VAR[PVRListItemSubLabel]</label>
 						</control>
@@ -118,7 +118,7 @@
 							<width>765</width>
 							<top>4</top>
 							<height>44</height>
-							<font>font13</font>
+							
 							<aligny>top</aligny>
 							<label>$VAR[PVRListItemSubLabel]</label>
 							<textcolor>black</textcolor>	

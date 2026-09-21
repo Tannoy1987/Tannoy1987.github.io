@@ -22,7 +22,7 @@
 				<height>30</height>
 				<align>center</align>
 				<aligny>center</aligny>
-				<font>font13</font>
+				
 				<label>$LOCALIZE[1021]</label>
 			</control>
 			<control type="image">
@@ -137,7 +137,7 @@
 				<height>30</height>
 				<align>center</align>
 				<aligny>center</aligny>
-				<font>font13</font>
+				
 				<label>$LOCALIZE[1022]</label>
 			</control>
 			<control type="edit" id="12">

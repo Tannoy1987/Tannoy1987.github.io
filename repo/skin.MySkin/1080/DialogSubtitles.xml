@@ -108,7 +108,7 @@
 							<top>20</top>
 							<width>100</width>
 							<height>100</height>
-							<font>font13</font>
+							
 							<textcolor>grey</textcolor>
 							<align>center</align>
 							<aligny>center</aligny>
@@ -135,7 +135,7 @@
 							<width>645</width>
 							<height>100</height>
 							<aligny>center</aligny>
-							<font>font13</font>
+							
 							<label>$INFO[ListItem.Label2]</label>
 						</control>
 						<control type="image">
@@ -168,7 +168,7 @@
 							<top>20</top>
 							<width>100</width>
 							<height>100</height>
-							<font>font13</font>
+							
 							<textcolor>grey</textcolor>
 							<align>center</align>
 							<aligny>center</aligny>
@@ -195,7 +195,7 @@
 							<width>645</width>
 							<height>100</height>
 							<aligny>center</aligny>
-							<font>font13</font>
+							
 							<label>$INFO[ListItem.Label2]</label>
 						</control>
 						<control type="image">

@@ -83,11 +83,11 @@
 		<!--<include>test</include>-->
 	</include>
     <include name="DefaultBG">
-        <include condition="!Player.HasVideo">CommonScrollbars</include>
+        <include>CommonScrollbars</include>
         <include>background</include>
         <include>tv</include>
         <include>black</include> 
-        <include condition="Player.HasVideo">VideoScrollbar</include>
+        <include condition="!Window.IsActive(selectdialog)">VideoScrollbar</include>
         <include>crt</include>
     </include>
     <include name="DefaultBGNSB">
@@ -99,6 +99,7 @@
 	<include name="CommonScrollbars">
 		<definition>
 			<control type="scrollbar" id="531">
+				<visible>!Player.HasVideo</visible>
 				<texturesliderbar colordiffuse="ff515151">colors/white.png</texturesliderbar>
 				<texturesliderbarfocus colordiffuse="button_focus">colors/white.png</texturesliderbarfocus>
 				<onleft condition="![Window.IsActive(filebrowser) | Window.IsActive(selectdialog)]">50</onleft>
@@ -109,7 +110,6 @@
 				<onleft condition="Window.IsActive(selectdialog) + Control.IsVisible(3)">3</onleft>
 				<onright condition="Window.IsActive(selectdialog) + Control.IsVisible(6)">6</onright>
 				<onleft condition="Window.IsActive(selectdialog) + Control.IsVisible(6)">6</onleft>
-				<visible>![Window.IsActive(addoninformation) | Window.IsActive(systemsettings) | Window.IsActive(appearancesettings) | Window.IsActive(pvrsettings) |  Window.IsActive(playersettings) | Window.IsActive(mediasettings)]</visible>
 				<top>0</top>
                 <left>0</left>
                 <bottom>0</bottom>
@@ -124,10 +124,11 @@
 		</definition>
 	</include>	
 	<include name="VideoScrollbar">
-		<definition>
+		<definition>				
 			<control type="scrollbar" id="531">
-				<texturesliderbar colordiffuse="ff515151">colors/white.png</texturesliderbar>
-				<texturesliderbarfocus colordiffuse="button_focus">colors/white.png</texturesliderbarfocus>
+			<visible>Player.HasVideo</visible>
+			<texturesliderbar colordiffuse="ff515151">colors/white.png</texturesliderbar>
+			<texturesliderbarfocus colordiffuse="button_focus">colors/white.png</texturesliderbarfocus>
 				<onleft condition="![Window.IsActive(filebrowser) | Window.IsActive(selectdialog)]">50</onleft>
 				<onright condition="![Window.IsActive(filebrowser) | Window.IsActive(selectdialog)]">50</onright>
 				<onleft condition="Window.IsActive(filebrowser)">450</onleft>
@@ -136,7 +137,6 @@
 				<onleft condition="Window.IsActive(selectdialog) + Control.IsVisible(3)">3</onleft>
 				<onright condition="Window.IsActive(selectdialog) + Control.IsVisible(6)">6</onright>
 				<onleft condition="Window.IsActive(selectdialog) + Control.IsVisible(6)">6</onleft>
-				<visible>![Window.IsActive(addoninformation) | Window.IsActive(systemsettings) | Window.IsActive(appearancesettings) | Window.IsActive(pvrsettings) |  Window.IsActive(playersettings) | Window.IsActive(mediasettings)]</visible>
 				<top>0</top>
                 <right>0</right>
                 <bottom>0</bottom>
@@ -317,7 +317,7 @@
 							<label>$VAR[NowPlayingSublabelVar]</label>
 							<left>0</left>
 							<top>0</top>
-							<font>font13</font>
+							
 							<textcolor>grey</textcolor>
 							<shadowcolor>text_shadow</shadowcolor>
 							<height>25</height>
@@ -335,7 +335,7 @@
 							</control>
 							<control type="label">
 								<label>$INFO[Player.Title]</label>
-								<font>font13</font>
+								
 								<align>left</align>
 								<shadowcolor>text_shadow</shadowcolor>
 								<height>35</height>
@@ -578,7 +578,7 @@
                     <align>right</align>
                     <aligny>center</aligny>
                     <label>$INFO[ListItem.Label2]</label>
-                    <font>font13</font>
+                    
                     <shadowcolor>text_shadow</shadowcolor>
                 </control>				
 			</itemlayout>
@@ -630,7 +630,7 @@
 					<align>right</align>
 					<aligny>center</aligny>
 					<label>$INFO[ListItem.Label2]</label>
-					<font>font13</font>
+					
 					<textcolor>white</textcolor>
 					<visible>!Control.HasFocus($PARAM[vis])</visible>
 				</control>
@@ -655,7 +655,7 @@
 					<align>right</align>
 					<aligny>center</aligny>
 					<label>$INFO[ListItem.Label2]</label>
-					<font>font13</font>
+					
 					<textcolor>black</textcolor>
 					<visible>Control.HasFocus($PARAM[vis])</visible>
 				</control>
@@ -1164,6 +1164,13 @@
 					<right>0</right>
 					<height>80</height>
 					<texture colordiffuse="button_focus" border="16">boxes/tbox.png</texture>
+					<visible>!Player.HasVideo</visible>
+				</control>
+				<control type="image">
+					<right>-2</right>
+					<height>80</height>
+					<texture colordiffuse="button_focus" border="16">boxes/tbox.png</texture>
+					<visible>Player.HasVideo</visible>
 				</control>
 				<control type="image">
 					<description>separator image</description>
@@ -1179,6 +1186,13 @@
 					<right>0</right>
 					<bottom>0</bottom>
 					<texture flipy="true" colordiffuse="button_focus" border="16">boxes/tbox.png</texture>
+					<visible>!Player.HasVideo</visible>
+				</control>
+				<control type="image">
+					<right>-2</right>
+					<bottom>-2</bottom>
+					<texture flipy="true" colordiffuse="button_focus" border="16">boxes/tbox.png</texture>
+					<visible>Player.HasVideo</visible>
 				</control>
 				<control type="image">
 					<description>separator image</description>

@@ -16,138 +16,151 @@
 				<include>OpenClose_Right</include>
 				<control type="fixedlist" id="50">
 					<left>500</left>
-					<top>10</top>
+					<top>115</top>
 					<right>10</right>
 					<bottom>10</bottom>
 					<onleft>9000</onleft>
 					<onright>60</onright>
 					<onup>50</onup>
 					<movement>2</movement>
-					<focusposition>3</focusposition>
+					<focusposition>0</focusposition>
 					<ondown>50</ondown>
 					<viewtype label="535">list</viewtype>
 					<pagecontrol>60</pagecontrol>
 					<scrolltime tween="cubic" easing="out">500</scrolltime>
-					<itemlayout height="141">
+					<itemlayout height="210">
+						<include>backbox</include>
 						<control type="image">
 							<left>10</left>
 							<top>10</top>
-							<width>120</width>
-							<height>120</height>
+							<bottom>10</bottom>
+							<width>190</width>
 							<texture fallback="DefaultAddon.png">$INFO[Listitem.Icon]</texture>
-							<aspectratio>scale</aspectratio>
+							<aspectratio>keep</aspectratio>
 							<bordertexture colordiffuse="border_alpha">colors/black.png</bordertexture>
 							<bordersize>4</bordersize>
 						</control>
+					<!--Header-->
 						<control type="label">
-							<left>160</left>
-							<right>400</right>
+							<left>205</left>
+							<right>10</right>
 							<top>10</top>
 							<height>35</height>
 							<aligny>center</aligny>
-							<font>font37</font>
+							<font>Title3</font>
 							<label>$INFO[ListItem.Label]</label>
 						</control>
+					<!--Date-->	
+						<control type="label">
+							<left>205</left>
+							<right>10</right>
+							<top>60</top>
+							<height>25</height>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>font14</font>
+							<label>$INFO[ListItem.Label2]</label>
+						</control>	
+					<!--Description-->
 						<control type="textbox">
-							<left>160</left>
-							<top>45</top>
-							<right>20</right>
-							<height>80</height>
-							<aligny>top</aligny>
+							<left>205</left>
+							<top>95</top>
+							<right>10</right>
+							<height>100</height>
+							<align>left</align>
+							<aligny>center</aligny>
 							<textcolor>grey</textcolor>
+							<font>font13</font>
 							<label>$INFO[ListItem.Property(Event.Description)]</label>
 						</control>
-						<control type="label">
-							<left>0</left>
-							<right>30</right>
-							<top>10</top>
-							<height>35</height>
-							<align>right</align>
-							<aligny>center</aligny>
-							<label>$INFO[ListItem.Label2]</label>
-						</control>
 					</itemlayout>
-					<focusedlayout height="141">
+					<focusedlayout height="210">
+						<include>backbox</include>
 						<control type="image">
-							<left>0</left>
-							<top>0</top>
-							<right>0</right>
-							<bottom>0</bottom>
+							<bordersize>5</bordersize>
 							<texture colordiffuse="button_focus" border="10">boxes/box.png</texture>
 							<visible>Control.HasFocus(50)</visible>
 						</control>
 						<control type="image">
 							<left>10</left>
 							<top>10</top>
-							<width>120</width>
-							<height>120</height>
+							<width>190</width>
+							<bottom>10</bottom>
 							<texture fallback="DefaultAddon.png">$INFO[Listitem.Icon]</texture>
 							<aspectratio>scale</aspectratio>
 							<bordertexture colordiffuse="border_alpha">colors/black.png</bordertexture>
 							<bordersize>4</bordersize>
 						</control>
+					<!--Header-->
 						<control type="label">
-							<left>160</left>
-							<right>400</right>
+							<left>205</left>
+							<right>10</right>
 							<top>10</top>
 							<height>35</height>
 							<aligny>center</aligny>
-							<font>font37</font>
+							<font>Title3</font>
 							<label>$INFO[ListItem.Label]</label>
 							<textcolor>black</textcolor>
-<visible>Control.HasFocus(50)</visible>
-						</control>
-						<control type="textbox">
-							<left>160</left>
-							<top>45</top>
-							<right>20</right>
-							<height>80</height>
-							<aligny>center</aligny>
-							<label>$INFO[ListItem.Property(Event.Description)]</label>
-							<textcolor>black</textcolor>
-							<visible>Control.HasFocus(50)</visible>		
+							<visible>Control.HasFocus(50)</visible>
 						</control>
 						<control type="label">
-							<left>0</left>
-							<right>30</right>
+							<left>205</left>
+							<right>10</right>
 							<top>10</top>
 							<height>35</height>
-							<align>right</align>
-					
+							<aligny>center</aligny>
+							<font>Title3</font>
+							<label>$INFO[ListItem.Label]</label>
+							<textcolor>white</textcolor>
+							<visible>!Control.HasFocus(50)</visible>
+						</control>
+					<!--Date-->	
+						<control type="label">
+							<left>205</left>
+							<right>10</right>
+							<top>60</top>
+							<height>25</height>
+							<align>left</align>
+							<font>font14</font>
 							<label>$INFO[ListItem.Label2]</label>
-								<textcolor>black</textcolor>
+							<textcolor>black</textcolor>
 							<visible>Control.HasFocus(50)</visible>	
 						</control>
 						<control type="label">
-							<left>160</left>
-							<right>400</right>
-							<top>10</top>
-							<height>35</height>
-						
-							<font>font37</font>
-							<label>$INFO[ListItem.Label]</label>
-							<textcolor>white</textcolor>
-							<visible>!Control.HasFocus(50)</visible>
-						</control>
-						<control type="textbox">
-							<left>160</left>
-							<top>45</top>
-							<right>20</right>
-							<height>80</height>
-					
-							<label>$INFO[ListItem.Property(Event.Description)]</label>
-							<textcolor>white</textcolor>
-							<visible>!Control.HasFocus(50)</visible>
-						</control>
-						<control type="label">
-							<left>0</left>
-							<right>30</right>
-							<top>10</top>
-							<height>35</height>
-							<align>right</align>
+							<left>205</left>
+							<right>10</right>
+							<top>60</top>
+							<height>25</height>
+							<align>left</align>
 							<aligny>center</aligny>
+							<font>font14</font>
 							<label>$INFO[ListItem.Label2]</label>
 							<textcolor>white</textcolor>
+							<visible>!Control.HasFocus(50)</visible>
+						</control>
+					<!--Description-->
+						<control type="textbox">
+							<left>205</left>
+							<top>95</top>
+							<right>10</right>
+							<height>100</height>
+							<align>left</align>
+							<aligny>center</aligny>
+							<label>$INFO[ListItem.Property(Event.Description)]</label>
+							<textcolor>black</textcolor>
+							<font>font13</font>
+							<visible>Control.HasFocus(50)</visible>		
+						</control>
+						<control type="textbox">
+							<left>205</left>
+							<top>95</top>
+							<right>10</right>
+							<height>100</height>
+							<align>left</align>
+							<aligny>center</aligny>
+							<label>$INFO[ListItem.Property(Event.Description)]</label>
+							<textcolor>grey</textcolor>
+							<font>font13</font>
 							<visible>!Control.HasFocus(50)</visible>
 						</control>
 					</focusedlayout>

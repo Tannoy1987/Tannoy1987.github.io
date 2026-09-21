@@ -8,7 +8,7 @@
 		<control type="group">
 			<include>DA</include>
 			<include content="fanart">
-				<param name="vis" value="!String.IsEqual(Skin.String(home_layout),2) | [String.IsEqual(Skin.String(home_layout),3) | String.IsEqual(Skin.String(home_layout),4)]" />
+				<param name="vis" value="![String.IsEqual(Skin.String(home_layout),2) + Window.IsActive(home)] | [String.IsEqual(Skin.String(home_layout),3) | String.IsEqual(Skin.String(home_layout),4)]" />
 				<param name="cd" value="ff2c2c2c" />
 			</include>
 			<include content="backbox">
@@ -187,7 +187,7 @@
 					<height>360</height>
 					<aspectratio>keep</aspectratio>
 					<texture diffuse="diffuse/card.png">$INFO[ListItem.Thumb]</texture>
-					<visible>String.IsEqual(ListItem.DbType,episode) + ![String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,movie)]</visible>
+					<visible>!Window.IsActive(home) + [String.IsEqual(ListItem.DbType,episode) + ![String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,movie)]]</visible>
 				</control>
 				<control type="grouplist" id="406">
 				<animation effect="slide" start="0" end="-30,530" time="0" condition="![String.IsEqual(ListItem.DbType,episode) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,movie)]">conditional</animation>
@@ -408,7 +408,7 @@
 							<bottom>70</bottom>
 							<align>center</align>
 							<aligny>center</aligny>
-							<font>font13</font>
+														<font>font13</font><font>font13</font>
 							<textcolor>grey</textcolor>
 							<label>$INFO[ListItem.Label2]</label>
 						</control>

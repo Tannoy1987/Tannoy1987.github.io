@@ -76,7 +76,7 @@
 				<width>1770</width>
 				<height>100</height>
 				<label></label>
-				<font>font13</font>
+				
 				<shadowcolor>black</shadowcolor>
 			</control>
 			<control type="label" id="11">
@@ -85,7 +85,7 @@
 				<width>1770</width>
 				<height>100</height>
 				<label></label>
-				<font>font13</font>
+				
 				<shadowcolor>black</shadowcolor>
 			</control>
 			<control type="label" id="12">
@@ -94,7 +94,7 @@
 				<width>1770</width>
 				<height>100</height>
 				<label></label>
-				<font>font13</font>
+				
 				<shadowcolor>black</shadowcolor>
 			</control>
 		</control>
@@ -137,7 +137,7 @@
 				<height>200</height>
 				<aligny>center</aligny>
 				<align>center</align>
-				<font>font13</font>
+				
 			</control>
 		</control>
 	</controls>

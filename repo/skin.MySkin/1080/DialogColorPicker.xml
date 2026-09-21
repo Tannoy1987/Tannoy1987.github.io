@@ -99,7 +99,7 @@
 				<top>748</top>
 				<width>275</width>
 				<height>35</height>
-				<font>font13</font>
+				
 				<align>right</align>
 				<textcolor>grey</textcolor>
 				<label>$VAR[SelectLabel]</label>

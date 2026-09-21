@@ -37,7 +37,7 @@
             <size>26</size>
         </font>
         <font>
-            <name>font13</name>
+            <name>font14</name>
             <filename>Netflix-sans-medium.ttf</filename>
 			<style>lighten</style>
             <size>33</size>
@@ -715,6 +715,13 @@
 			<linespacing>0.8</linespacing>
             <size>40</size>
         </font>
+		<font>
+            <name>title4</name> <!--Clearlogo media fallback-->
+            <filename>Netflix-sans-bold.ttf</filename>
+			<style>lighten</style>
+			<linespacing>0.8</linespacing>
+            <size>33</size>
+        </font>
 		<font>		
 			<name>Plots</name> <!--plot font for bingie home/bingie library & Info Dialogue-->
             <filename>Netflix-sans-medium.ttf</filename>
@@ -823,7 +830,7 @@
             <size>25</size>
         </font>
         <font>
-            <name>font13</name>
+            <name>font14</name>
             <filename>Arial.ttf</filename>
             <size>32</size>
         </font>
@@ -1480,6 +1487,12 @@
 			<linespacing>1</linespacing>
             <size>44</size>
         </font>
+		<font>
+            <name>title4</name> <!--Clearlogo media fallback-->
+            <filename>Arial.ttf</filename>
+			<linespacing>1</linespacing>
+            <size>34</size>
+        </font>
 		<font>		
 			<name>Plots</name> <!--plot font for bingie home/bingie library & Info Dialogue-->
             <filename>Arial.ttf</filename>
@@ -1585,7 +1598,7 @@
             <size>25</size>
         </font>
         <font>
-            <name>font13</name>
+            <name>font14</name>
             <filename>Inter-Regular.ttf</filename>
             <size>32</size>
         </font>
@@ -2198,6 +2211,12 @@
             <filename>Inter-Regular.ttf</filename>
 			<linespacing>0.96</linespacing>
             <size>44</size>
+        </font>
+		<font>
+            <name>title4</name> <!--Clearlogo media fallback-->
+            <filename>Inter-Regular.ttf</filename>
+			<linespacing>0.96</linespacing>
+            <size>34</size>
         </font>
 		<font>		
 			<name>Plots</name> <!--plot font for bingie home/bingie library & Info Dialogue-->

@@ -1234,11 +1234,11 @@
                     <include>DynamicFocusPanel</include>
 
                         <include content="filesterfolders">
-                            <param name="top" value="7" />
-                            <param name="left" value="18" />
+                            <param name="top" value="12" />
+                            <param name="left" value="23" />
                             <param name="tc" value="button_focus" />
-                            <param name="ft" value="7" />
-                            <param name="fl" value="9" />
+                            <param name="ft" value="15" />
+                            <param name="fl" value="17" />
                             <param name="fcd" value="button_focus" />
                         </include>
                 </focusedlayout>    

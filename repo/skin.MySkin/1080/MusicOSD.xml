@@ -1072,7 +1072,7 @@
                     <width>80%</width>
                     <height>80</height>
                     <align>center</align>
-                    <font>font13</font>
+                    
                     <label>$VAR[SeekLabel]</label>
                     <shadowcolor>black</shadowcolor>
                     <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
@@ -1084,7 +1084,7 @@
                     <height>80</height>
                     <align>left</align>
                     <aligny>center</aligny>
-                    <font>font13</font>
+                    
                     <label>$VAR[OSDHelpTextVar]</label>
                     <shadowcolor>black</shadowcolor>
                     <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>

@@ -2,7 +2,7 @@
 <window>
 	<defaultcontrol>3</defaultcontrol>
 	<controls>
-		<include>DefaultBG</include>
+		<include>DefaultBGNSB</include>
  		<include content="DialogBackgroundCommons">
 			<param name="width" value="1920" />
 			<param name="height" value="1080" />
@@ -62,7 +62,7 @@
 			<label></label>
 			<align>center</align>
 			<aligny>center</aligny>
-			<font>font25_title</font>
+			
 			<textcolor>grey</textcolor>
 			<shadowcolor>black</shadowcolor>
 		</control>
@@ -92,7 +92,7 @@
 				<textoffsetx>0</textoffsetx>
 				<aligny>center</aligny>
 				<align>center</align>
-				<font>font16</font>
+				<font>Reg33</font>
 			</control>
 		</control>
 
@@ -145,7 +145,7 @@
 				<bottom>5</bottom>
 				<right>8%</right>
 				<height>104</height>
-				<font>font13</font>
+				<font>Reg26</font>
 				<align>center</align>
 				<aligny>center</aligny>
 				<textcolor>button_focus</textcolor>
@@ -156,5 +156,15 @@
 			<description>breadcrumbs label</description>
 			<visible>false</visible>
 		</control>
+			<control type="scrollbar" id="531">
+				<texturesliderbar colordiffuse="ff515151">colors/white.png</texturesliderbar>
+				<texturesliderbarfocus colordiffuse="button_focus">colors/white.png</texturesliderbarfocus>
+				<onleft>5</onleft>
+				<top>0</top>
+                <right>0</right>
+                <bottom>0</bottom>
+				<width>3</width>
+			</control>
+		<include>crt</include>
 	</controls>
 </window>

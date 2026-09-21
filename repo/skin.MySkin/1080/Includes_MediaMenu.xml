@@ -67,7 +67,7 @@
 						<textoffsetx>20</textoffsetx>
 						<textoffsety>15</textoffsety>
 						<height>50</height>
-						<font>font13</font>
+						
 						<align>right</align>
 						<aligny>top</aligny>
 						<textcolor>grey</textcolor>
@@ -265,7 +265,7 @@
 		<textoffsety>15</textoffsety>
 		<height>50</height>
 		<radioposx>300</radioposx>
-		<font>font25_title</font>
+		
 		<aligny>top</aligny>
 		<textcolor>button_focus</textcolor>
 	</include>

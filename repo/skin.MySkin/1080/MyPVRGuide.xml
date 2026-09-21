@@ -33,7 +33,7 @@
 					<top>0</top>
 					<left>20</left>
 					<right>20</right>							
-					<font>font13</font>
+					
 					<align>center</align>
 					<aligny>center</aligny>
 					<scroll>true</scroll>
@@ -98,7 +98,7 @@
 								<control type="label">
 									<width>1290</width>
 									<height>45</height>
-									<font>font13</font>
+									
 									<label>$INFO[ListItem.Label]</label>
 									<textcolor>button_focus</textcolor>
 									<align>center</align>
@@ -110,7 +110,7 @@
 									<left>0</left>
 									<width>480</width>
 									<height>45</height>
-									<font>font13</font>
+									
 									<label>$INFO[ListItem.Label]</label>
 									<textcolor>button_focus</textcolor>
 									<align>center</align>
@@ -140,7 +140,7 @@
 									<left>120</left>
 									<top>0</top>
 									<height>73</height>
-									<font>font13</font>
+									
 									<label>$INFO[ListItem.ChannelName]</label>
 									<aligny>center</aligny>
 									<textoffsetx>10</textoffsetx>
@@ -171,7 +171,7 @@
 									<top>0</top>
 									<height>73</height>
 									<width>540</width>
-									<font>font13</font>
+									
 									<label>$INFO[ListItem.ChannelName]</label>
 									<aligny>center</aligny>
 									<textoffsetx>10</textoffsetx>
@@ -191,7 +191,7 @@
 									<top>11</top>
 									<height>73</height>
 									<aligny>center</aligny>
-									<font>font13</font>
+									
 									<label>$INFO[ListItem.Label]</label>
 								</control>
 								<control type="image">
@@ -229,7 +229,7 @@
 									<top>1</top>
 									<height>65</height>
 									<aligny>center</aligny>
-									<font>font13</font>
+									
 									<label>$INFO[ListItem.Label]</label>
 								</control>
 								<control type="image">

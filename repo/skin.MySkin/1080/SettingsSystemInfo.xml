@@ -26,62 +26,62 @@
 				<control type="label" id="2">
 					<height>47</height>
 					<width>1400</width>
-					<font>Mono26</font>
+					<font>font14</font>
 				</control>
 				<control type="label" id="3">
 					<height>47</height>
 					<width>1400</width>
-					<font>Mono26</font>
+					<font>font14</font>
 				</control>
 				<control type="label" id="4">
 					<height>47</height>
 					<width>1400</width>
-					<font>Mono26</font>
+					<font>font14</font>
 				</control>
 				<control type="label" id="5">
 					<height>47</height>
 					<width>1400</width>
-					<font>Mono26</font>
+					<font>font14</font>
 				</control>
 				<control type="label" id="6">
 					<height>47</height>
 					<width>1400</width>
-					<font>Mono26</font>
+					<font>font14</font>
 				</control>
 				<control type="label" id="7">
 					<height>47</height>
 					<width>1400</width>
-					<font>Mono26</font>
+					<font>font14</font>
 				</control>
 				<control type="label" id="8">
 					<height>47</height>
 					<width>1400</width>
-					<font>Mono26</font>
+					<font>font14</font>
 				</control>
 				<control type="label" id="9">
 					<height>47</height>
 					<width>1400</width>
-					<font>Mono26</font>
+					<font>font14</font>
 				</control>
 				<control type="label" id="10">
 					<height>47</height>
 					<width>1400</width>
-					<font>Mono26</font>
+					<font>font14</font>
 				</control>
 				<control type="label" id="11">
 					<height>47</height>
 					<width>1400</width>
-					<font>Mono26</font>
+					<font>font14</font>
 				</control>
 				<control type="label" id="12">
 					<height>47</height>
 					<width>1400</width>
-					<font>Mono26</font>
+					<font>font14</font>
 				</control>
 				<control type="label" id="13">
 					<height>47</height>
 					<width>1400</width>
-					<font>Mono26</font>
+					<font>font14</font>
 				</control>
 			</control>
 			<control type="textbox" id="30">
@@ -138,7 +138,6 @@
 					<include content="DefaultSettingButton">
 						<param name="height" value="85" />
 					</include>
-		
 					<label>$LOCALIZE[20037]</label>
 				</control>
 				<control type="button" id="94">
@@ -146,7 +145,6 @@
 					<include content="DefaultSettingButton">
 						<param name="height" value="85" />
 					</include>
-
 					<label>$LOCALIZE[13277]</label>
 				</control>
 				<control type="button" id="96">
@@ -154,7 +152,6 @@
 					<include content="DefaultSettingButton">
 						<param name="height" value="85" />
 					</include>
-
 					<label>$LOCALIZE[13279]</label>
 				</control>
 				<control type="button" id="97">
@@ -162,7 +159,6 @@
 					<include content="DefaultSettingButton">
 						<param name="height" value="85" />
 					</include>
-
 					<label>$LOCALIZE[13280]</label>
 				</control>
 				<control type="button" id="98">
@@ -170,7 +166,6 @@
 					<include content="DefaultSettingButton">
 						<param name="height" value="85" />
 					</include>
-
 					<label>$LOCALIZE[13281]</label>
 				</control>
 				<control type="button" id="99">
@@ -178,7 +173,6 @@
 					<include content="DefaultSettingButton">
 						<param name="height" value="85" />
 					</include>
-
 					<label>$LOCALIZE[19191]</label>
 				</control>
 				<control type="button" id="100">
@@ -186,7 +180,6 @@
 					<include content="DefaultSettingButton">
 						<param name="height" value="85" />
 					</include>
-
 					<label>$LOCALIZE[12389]</label>
 				</control>
 			</control>
@@ -218,7 +211,7 @@
 					<aligny>top</aligny>
 					<textoffsety>40</textoffsety>
 					<shadowcolor>black</shadowcolor>
-					<font>font13</font>
+					<font>font14</font>
 				</control>
 				<control type="progress">
 					<description>Memory BAR</description>
@@ -233,7 +226,7 @@
 					<label>$LOCALIZE[13271] $INFO[System.CPUUsage]</label>
 					<aligny>center</aligny>
 					<shadowcolor>black</shadowcolor>
-					<font>font13</font>
+					<font>font14</font>
 					<visible>System.SupportsCPUUsage</visible>
 				</control>
 				<control type="progress">
@@ -256,7 +249,7 @@
 					<textoffsety>10</textoffsety>
 					<label>$LOCALIZE[31031]:</label>
 					<shadowcolor>black</shadowcolor>
-					<font>font25_title</font>
+					<font>font13</font>
 				</control>
 				<control type="grouplist">
 					<description>Kodi build version</description>

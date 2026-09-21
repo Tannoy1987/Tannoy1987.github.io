@@ -903,7 +903,7 @@
         		<control type="label" id="20011">
         		    <width min="80" max="1100">auto</width>
         		    <height>30</height>
-        		    <font>font13</font>
+        		    
         		    <align>left</align>
 					<aligny>bottom</aligny>
         		    <textcolor>white</textcolor>
@@ -924,7 +924,7 @@
         		<control type="label" id="20022">
         		    <width min="80" max="1100">auto</width>
         		    <height>30</height>
-        		    <font>font13</font>
+        		    
         		    <align>left</align>
         		    <textcolor>white</textcolor>
         		    <label>In Progress Movies</label>
@@ -944,7 +944,7 @@
  				<control type="label" id="20044">
         		    <width min="80" max="1100">auto</width>
         		    <height>30</height>
-        		    <font>font13</font>
+        		    
         		    <align>left</align>
         		    <textcolor>white</textcolor>
         		    <label>Trending TV Shows</label>
@@ -964,7 +964,7 @@
 				 <control type="label" id="20055">
         		    <width min="80" max="1100">auto</width>
         		    <height>30</height>
-        		    <font>font13</font>
+        		    
         		    <align>left</align>
         		    <textcolor>white</textcolor>
         		    <label>Trending Movies</label>
@@ -984,7 +984,7 @@
 				 <control type="label" id="20077">
         		    <width min="80" max="1100">auto</width>
         		    <height>30</height>
-        		    <font>font13</font>
+        		    
         		    <align>left</align>
         		    <textcolor>white</textcolor>
         		    <label>TV Shows Watchlist</label>
@@ -1004,7 +1004,7 @@
 				 <control type="label" id="20088">
         		    <width min="80" max="1100">auto</width>
         		    <height>30</height>
-        		    <font>font13</font>
+        		    
         		    <align>left</align>
         		    <textcolor>white</textcolor>
         		    <label>Movies Watchlist</label>
@@ -1024,7 +1024,7 @@
 	 			<control type="label" id="20133">
         		    <width min="80" max="1100">auto</width>
         		    <height>30</height>
-        		    <font>font13</font>
+        		    
         		    <align>left</align>
         		    <textcolor>white</textcolor>
         		    <label>Recommended TV Shows</label>
@@ -1044,7 +1044,7 @@
 	 			<control type="label" id="20144">
         		    <width min="80" max="1100">auto</width>
         		    <height>30</height>
-        		    <font>font13</font>
+        		    
         		    <align>left</align>
         		    <textcolor>white</textcolor>
         		    <label>Recommended Movies</label>

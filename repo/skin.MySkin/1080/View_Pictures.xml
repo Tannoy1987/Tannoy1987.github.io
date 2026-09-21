@@ -285,7 +285,7 @@
 			<align>center</align>
 			<aligny>center</aligny>
 			<label>$INFO[ListItem.Label]</label>
-            <font>font13</font>
+            
 		</control>
 		<include>IconStatusOverlay</include>
 		<control type="group">

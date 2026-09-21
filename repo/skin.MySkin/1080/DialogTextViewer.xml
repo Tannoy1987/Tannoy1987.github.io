@@ -20,8 +20,8 @@
 				<height>647</height>
 				<shadowcolor>black</shadowcolor>
 				<pagecontrol>3000</pagecontrol>
-				<font>font13</font>
-				<monofont>Mono26</monofont>
+				
+				<monofont>font14</monofont>
 			</control>
 			<control type="scrollbar" id="3000">
 				<include>HiddenObject</include>
@@ -60,7 +60,7 @@
 			<top>880</top>
 			<width>330</width>
 			<height>35</height>
-			<font>font13</font>
+			
 			<textcolor>grey</textcolor>
 			<align>right</align>
 			<aligny>center</aligny>

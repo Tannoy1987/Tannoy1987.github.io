@@ -51,7 +51,7 @@
 						<width>400</width>
 						<height>60</height>
 						<aligny>center</aligny>
-						<font>font25_title</font>
+						
 						<label>[COLOR red][B]$LOCALIZE[19158][/B][/COLOR]</label>
 					</control>
 				</control>

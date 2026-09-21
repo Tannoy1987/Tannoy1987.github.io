@@ -14,6 +14,7 @@
 			<param name="header_label" value="" />
 			<param name="header_id" value="1" />
 		</include>
+		<include>VideoScrollbar</include>
 		<control type="group">
 			<control type="list" id="3">
                 <top>100</top>
@@ -95,7 +96,7 @@
 						<top>60</top>
 						<right>20</right>
 						<height>80</height>
-						<font>font13</font>
+						
 						<textcolor>grey</textcolor>
 						<label>$INFO[ListItem.Label2]</label>
 					</control>
@@ -156,7 +157,7 @@
 						<top>60</top>
 						<right>20</right>
 						<height>80</height>
-						<font>font13</font>
+						
 						<textcolor>black</textcolor>
 						<label>$INFO[ListItem.Label2]</label>
 						<visible>Control.HasFocus(6)</visible>						
@@ -180,20 +181,19 @@
 						<top>60</top>
 						<right>20</right>
 						<height>80</height>
-						<font>font13</font>
+						
 						<textcolor>grey</textcolor>
 						<label>$INFO[ListItem.Label2]</label>
 						<visible>!Control.HasFocus(6)</visible>						
 					</control>
 				</focusedlayout>
 			</control>
-
 			<control type="label">
 				<left>1584</left>
 				<bottom>50</bottom>
 				<width>275</width>
 				<height>35</height>
-				<font>font13</font>
+				<font>Reg28</font>
 				<align>right</align>
 				<textcolor>grey</textcolor>
 				<label>$VAR[SelectLabel]</label>
@@ -220,5 +220,6 @@
 				</include>
 			</control>
 		</control>
+		<include>crt</include>
 	</controls>
 </window>

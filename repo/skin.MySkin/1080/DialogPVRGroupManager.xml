@@ -53,7 +53,7 @@
 							<right>70</right>
 							<height>30</height>
 							<aligny>center</aligny>
-							<font>font13</font>
+							
 							<textcolor>grey</textcolor>
 							<label>[B]$INFO[ListItem.Label][/B]</label>
 						</control>
@@ -94,7 +94,7 @@
 							<right>70</right>
 							<height>30</height>
 							<aligny>center</aligny>
-							<font>font13</font>
+							
 							<label>[B]$INFO[ListItem.Label][/B]</label>
 							<scroll>true</scroll>
 						</control>
@@ -172,28 +172,28 @@
 					<description>OK</description>
 					<width>370</width>
 					<include>SettingsItemCommon</include>
-					<font>font25_title</font>
+					
 					<label>$LOCALIZE[186]</label>
 				</control>
 				<control type="button" id="26">
 					<description>Add Group</description>
 					<width>370</width>
 					<include>SettingsItemCommon</include>
-					<font>font25_title</font>
+					
 					<label>$LOCALIZE[31044]</label>
 				</control>
 				<control type="button" id="27">
 					<description>Rename Group</description>
 					<width>370</width>
 					<include>SettingsItemCommon</include>
-					<font>font25_title</font>
+					
 					<label>$LOCALIZE[31045]</label>
 				</control>
 				<control type="radiobutton" id="25">
 					<description>Hide Group</description>
 					<width>370</width>
 					<include>SettingsItemCommon</include>
-					<font>font25_title</font>
+					
 					<label>$LOCALIZE[19289]</label>
 					<radiowidth>100</radiowidth>
 					<radioposy>13</radioposy>
@@ -202,21 +202,21 @@
 					<description>Delete Group</description>
 					<width>370</width>
 					<include>SettingsItemCommon</include>
-					<font>font25_title</font>
+					
 					<label>$LOCALIZE[31046]</label>
 				</control>
 				<control type="button" id="35">
 					<description>Regenerate Group Thumbnail</description>
 					<width>370</width>
 					<include>SettingsItemCommon</include>
-					<font>font25_title</font>
+					
 					<label>$LOCALIZE[13315]</label>
 				</control>
 				<control type="togglebutton" id="34">
 					<description>TV/Radio toggle</description>
 					<width>370</width>
 					<include>SettingsItemCommon</include>
-					<font>font25_title</font>
+					
 					<label>$LOCALIZE[19174]</label>
 					<altlabel>$LOCALIZE[19173]</altlabel>
 					<usealttexture>!String.IsEmpty(Window.Property(IsRadio))</usealttexture>

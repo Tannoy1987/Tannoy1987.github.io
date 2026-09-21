@@ -37,7 +37,7 @@
 				<textoffsetx>20</textoffsetx>
 				<align>center</align>
 				<aligny>center</aligny>
-				<font>font25_title</font>
+		
 				<texturefocus colordiffuse="button_focus" border="10">boxes/box.png</texturefocus>				
 				<texturenofocus colordiffuse="box" border="10">boxes/box.png</texturenofocus>
 			</control>
@@ -61,7 +61,7 @@
 				<bottom>0</bottom>
 				<right>350</right>
 				<height>200</height>
-				<font>font13</font>
+				
 				<align>center</align>
 				<aligny>center</aligny>
 				<textcolor>button_focus</textcolor>
@@ -156,7 +156,7 @@
 				<top>716</top>
 				<width>356</width>
 				<height>60</height>
-				<font>font25_title</font>
+				
 				<aligny>center</aligny>
 				<onclick>SettingsLevelChange</onclick>
 				<radiowidth>40</radiowidth>

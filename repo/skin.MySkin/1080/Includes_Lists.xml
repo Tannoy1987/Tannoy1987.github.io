@@ -469,7 +469,7 @@
        				  	<left>30</left>
 					    <height>280</height>
 					    <aligny>center</aligny>
-       	    		    <font>font13</font>
+       	    		    
        	    		    <align>center</align>
        	    		    <label>$INFO[ListItem.Title][CR][CR]$INFO[ListItem.Plot]</label>
        	    		    <shadowcolor>black</shadowcolor>
@@ -505,48 +505,46 @@
 					<texture>$INFO[ListItem.Art(poster)]</texture>
 				</control>
 				<control type="image">
-					<top>660</top>
-       	    		<width>960</width>
-       			  	<left>680</left>
-				    <bottom>108</bottom>
+						<top>758</top>	
+						<height>214</height>
+						<left>681</left>	
+						<width>959</width>	
 					<texture colordiffuse="57ffffff">boxes/panel.png</texture>
 				</control>				
 				<control type="group">
 					<control type="image">
 						<height>540</height>
-						<left>680</left>	
-						<top>108</top>	
-						<width>960</width>					
+						<left>681</left>	
+						<top>205</top>	
+						<width>960</width>				
 						<texture>colors/black.png</texture>
 					</control>
 					<control type="image">
 						<height>540</height>
-						<left>680</left>	
-						<top>108</top>	
+						<left>681</left>	
+						<top>205</top>	
 						<width>960</width>							
 						<texture fallback="$INFO[ListItem.Art(fanart)]">$PARAM[poster]</texture>
 						<aspectratio>keep</aspectratio>
 					</control>
-					<control type="label">	
-						<top>2</top>
-       				  	<centerleft>48%</centerleft>
-					    <height>98</height>		
-						<width>1544</width>
+					<control type="textbox">	
+						<top>106</top>
+       				  	<left>680</left>
+					    <height>86</height>		
+						<right>182</right>
 					    <aligny>center</aligny>
-       	    		    <font>title2</font>
+       	    		    <font>title4</font>
        	    		    <align>center</align>
        	    		    <label>$INFO[ListItem.Title]</label>
 						<font>Reg26</font>
        	    		    <shadowcolor>black</shadowcolor>
 						<textcolor>grey</textcolor>
                 		<autoscroll time="4000" delay="10000" repeat="10000">true</autoscroll>
-       	    		    <visible>String.IsEqual(ListItem.DbType,episode)</visible>
-						<!-- <animation effect="slide" end="0,980" condition="Window.IsActive(home)">conditional</animation>	 -->
-       	    		</control>
+       	    		</control>			
 					<control type="textbox">	
-						<height>311</height>
+						<top>758</top>	
+						<height>214</height>
 						<left>700</left>	
-						<top>661</top>	
 						<width>920</width>	
 					    <aligny>center</aligny>
        	    		    <font>Reg30</font>
