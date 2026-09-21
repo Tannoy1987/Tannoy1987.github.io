@@ -5,6 +5,7 @@
 	<onload condition="String.IsEqual(Skin.String(power_menu_layout),2)">Control.SetFocus(9010, 0)</onload>
 	<onload condition="String.IsEqual(Skin.String(power_menu_layout),1)">Control.SetFocus(90100, 0)</onload>
 	<controls>
+	<!--Portrait-->
 		<control type="group">
 			<visible>String.IsEqual(Skin.String(power_menu_layout),3)</visible>
 			<control type="image">
@@ -392,7 +393,7 @@
 								<textoffsety>-2</textoffsety>
 								<visible>System.SupportsCPUUsage</visible>
 								<wrapmultiline>true</wrapmultiline>
-								<font>reg30</font>
+								<font>Reg26</font>
 							</control>
 							<control type="progress">
 								<description>CPU BAR</description>
@@ -414,7 +415,7 @@
 								<label>RAM - $INFO[system.memory(used)] [B]/[/B] $INFO[system.memory(total)] [B]-[/B] $INFO[system.memory(used.percent)]</label>
 								<textoffsety>37</textoffsety>
 								<shadowcolor>black</shadowcolor>
-								<font>reg30</font>
+								<font>Reg26</font>
 							</control>
 							<control type="progress">
 								<description>Memory BAR</description>
@@ -429,6 +430,7 @@
 			</control>				
 			</control>
 		</control>
+	<!--Mouse-->
 		<control type="group">
 			<visible>String.IsEqual(Skin.String(power_menu_layout),1)</visible>
 			<control type="image">
@@ -780,7 +782,7 @@
 								<aligny>bottom</aligny>
 								<align>left</align>
 								<shadowcolor>black</shadowcolor>
-								<font>28</font>
+								<font>Reg26</font>
 								<visible>System.SupportsCPUUsage</visible>
 								<wrapmultiline>true</wrapmultiline>
 							</control>
@@ -805,7 +807,7 @@
 								<aligny>top</aligny>
 								<textoffsety>40</textoffsety>
 								<shadowcolor>black</shadowcolor>
-								<font>28</font>
+								<font>Reg26</font>
 							</control>
 							<control type="progress">
 								<description>Memory BAR</description>
@@ -820,6 +822,7 @@
 			</control>
 			</control>
 		</control>
+	<!--Landscape-->
 		<control type="group">
 			<visible>String.IsEqual(Skin.String(power_menu_layout),2)</visible>
 				<control type="image">
@@ -832,7 +835,7 @@
 <!--Sub Menu-->		
 		<control type="group"> 
  			<include content="ContentPanel">
-				<param name="width" value="78.75%" />
+				<param name="width" value="77%" />
 				<param name="height" value="17.05%" />
 				<param name="left" value="-5%" />
 				<param name="top" value="63.1%" />
@@ -1009,9 +1012,9 @@
 <!--Info Panel-->
 	<control type="group"> 
 		<include content="ContentPanel">
-			<param name="width" value="61%" />
+			<param name="width" value="65%" />
 			<param name="height" value="50%" />
-			<param name="left" value="41.5%" />
+			<param name="left" value="37.75%" />
 			<param name="top" value="3%" />
 		</include>
 		<animation effect="fade" end="100" time="700" tween="cubic" easing="inout">WindowOpen</animation>
@@ -1021,29 +1024,28 @@
 		<height>370</height>
 		<include>DA</include>
 		<visible>true</visible>
-
-<!--CPU-->			
-			<control type="grouplist"> 
+		<!--CPU-->			
+		<control type="grouplist"> 
+				<width>530</width>
 				<top>40</top>
-				<left>413</left>
+				<left>380</left>
 				<itemgap>5</itemgap>
 				<orientation>vertical</orientation>
 				<control type="label">
 					<textoffsety>3</textoffsety>
 					<description>CPU Text</description>
-					<width>auto</width>
 					<height>40</height>
 					<label>CPU - $INFO[System.CPUUsage]</label>
 					<aligny>bottom</aligny>
 					<align>left</align>
 					<shadowcolor>black</shadowcolor>
-					<font>reg30</font>
+					<font>Reg26</font>
 					<visible>System.SupportsCPUUsage</visible>
 					<wrapmultiline>true</wrapmultiline>
 				</control>
 				<control type="progress">
 					<description>CPU BAR</description>
-					<width>490</width>
+
 					<height>16</height>
 					<info>System.CPUUsage</info>
 					<visible>System.SupportsCPUUsage</visible>
@@ -1052,22 +1054,21 @@
 <!--RAM-->			
 			<control type="grouplist"> 
 				<top>75</top>
-					<left>413</left>
+					<left>380</left>
+					<width>530</width>					
 					<itemgap>35</itemgap>
 					<orientation>vertical</orientation>
 				<control type="label">
 					<description>Memory Text</description>
-					<width>auto</width>
 					<height>40</height>
 					<label>RAM - $INFO[system.memory(used)] [B]/[/B] $INFO[system.memory(total)] [B]-[/B] $INFO[system.memory(used.percent)]</label>
 					<aligny>top</aligny>
 					<textoffsety>33</textoffsety>
 					<shadowcolor>black</shadowcolor>
-					<font>reg30</font>
+					<font>Reg26</font>
 				</control>
 				<control type="progress">
 					<description>Memory BAR</description>
-					<width>490</width>
 					<height>16</height>
 					<info>system.memory(used)</info>
 				</control>
@@ -1148,7 +1149,7 @@
 					</item>
 				</content>
 			</control>
-<!--Side Menu-->			
+		<!--Side Menu-->			
 			<control type="group"> 
 				<onload>Control.SetFocus(9020, 0)</onload>	
 				<control type="panel" id="9020"> 
