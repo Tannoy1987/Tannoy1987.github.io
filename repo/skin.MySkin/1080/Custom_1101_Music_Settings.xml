@@ -6,15 +6,18 @@
 	<onunload>ClearProperty(settingsdialog_content,Home)</onunload>
 	<controls>
 		<control type="group">
-			<right>5</right>
-			<top>538</top>
-			<width>530</width>
-			<height>425</height>
+			<top>572</top>
+			<left>1356</left>
+			<right>10</right>
+			<bottom>10</bottom>
 			<animation effect="fade" time="200">VisibleChange</animation>
-    	    <control type="image">
-				<bordersize>10</bordersize>
-                <texture diffuse="diffuse/square.png">colors/black.png</texture> 
-            </control>
+			<animation effect="slide" end="0,-270" time="0" condition="String.IsEqual(Skin.String(musicosd),2)">conditional</animation>
+            <include content="box">
+                <param name="bs" value="5" />
+                <param name="flipy" value="true" />
+				<param name="texture" value="tbox" />
+				<param name="cd" value="button_focus" />
+            </include>
 			<control type="grouplist" id="11000">
 				<left>20</left>
 				<right>20</right>
@@ -64,6 +67,21 @@
 					<onclick>Addon.OpenSettings($INFO[Skin.String(LyricScript_Path)])</onclick>
 					<visible>!String.IsEmpty(Skin.String(LyricScript_Path))</visible>
 				</control>
+    		    <control type="radiobutton" id="22108">
+					<height>56</height>
+    		        <label>CD Spin</label>
+    		        <selected>Skin.HasSetting(cdspin)</selected>
+    		        <onclick>Skin.ToggleSetting(cdspin)</onclick>
+    		    </control>
+    		    <control type="button" id="22109">
+					<visible>String.IsEqual(Skin.String(musicosd),2) + String.IsEmpty(Window(home).Property(discart))</visible>
+    		        <label>- No Discart CD Color</label>
+    		        <label2>$VAR[cd_color]</label2>
+    		        <include>DefaultSettingButton</include>
+    		        <onclick condition="String.IsEqual(Skin.String(cd_color),1)">Skin.SetString(cd_color,3)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(cd_color),2)">Skin.SetString(cd_color,1)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(cd_color),3)">Skin.SetString(cd_color,2)</onclick>
+    		    </control>
 			</control>
 		</control>
 	</controls>

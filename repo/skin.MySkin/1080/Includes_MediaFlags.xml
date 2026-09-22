@@ -199,7 +199,7 @@
 		<value condition="Container.ListItem.IsStereoscopic">flags/videoresolution/3D.png</value>
 		<value>$INFO[Container.ListItem.VideoResolution,flags/videoresolution/,.png]</value>
 	</variable>
-
+	
 <!--  Video Codec  -->
 	<variable name="VideoListCodecVar">
 		<value condition="String.IsEqual(ListItem.VideoCodec,av1)">AV1</value>
@@ -860,6 +860,10 @@
 		</definition>
 	</include>
 	<include name="MediaFlags">
+		<param name="width">604</param>
+		<param name="right"></param>
+		<param name="left">0</param>
+		<param name="bottom">10</param>
 		<param name="visible">true</param>
 		<definition>
 			<control type="group">
@@ -870,13 +874,14 @@
 				<control type="grouplist">
 					<visible>!String.IsEqual(ListItem.DbType,musicvideo) + [Window.IsActive(musicplaylist) | Container.Content(albums) | Window.IsActive(music)]</visible>
 					<visible>![Control.HasFocus(87) | Control.HasFocus(70038) | Control.HasFocus(70039) | Control.HasFocus(70052) | Control.HasFocus(70053) | Control.HasFocus(70054) | Control.HasFocus(70055) | Control.HasFocus(70048) | Control.HasFocus(31066)]</visible>
-					<orientation>horizontal</orientation>
-					<left>0</left>
-					<bottom>10</bottom>
+					<left>$PARAM[left]</left>
+					<right>$PARAM[right]</right>
+					<bottom>$PARAM[bottom]</bottom>
+					<width>$PARAM[width]</width>
 					<height>40</height>
 					<align>center</align>
 					<itemgap>-80</itemgap>
-					<width>604</width>
+					<orientation>horizontal</orientation>
 					<usecontrolcoords>true</usecontrolcoords>
 					<include content="MediaFlag">
 						<param name="flag_visible" value="!String.IsEmpty(ListItem.FileExtension)" />

@@ -116,7 +116,7 @@
 	</include>	
 	<include name="Music_List">
 		<param name="top">9</param>
-		<param name="bottom">120</param>
+		<param name="bottom">128</param>
 		<param name="left">10</param>
 		<param name="right">1</param>
 		<param name="height">60.9</param>
@@ -201,6 +201,10 @@
     		</control>
     	</focusedlayout>
         <itemlayout height="$PARAM[height]" width="$PARAM[width]" condition="Container.Content(songs)">
+    		<include content="backbox">
+    		    <param name="bs" value="5" />
+    		    <param name="vis" value="!Skin.HasSetting(hide_background_fanart)" />
+    		</include>
     		<include content="bg">
     		    <param name="bs" value="5" />
     		</include>

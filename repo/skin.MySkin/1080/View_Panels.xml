@@ -1115,10 +1115,24 @@
                     </control>                 
                 </itemlayout>
                 <focusedlayout width="317.33" height="354.66" condition="String.IsEqual(Skin.String(grid_layout),6) + [Container.Content(artists) | Container.Content(albums)]">
-                    <control type="group">
+                    
                         <include content="box">
                             <param name="texture" value="box3" />
-                        </include>
+                            <param name="vis" value="Container.Content(artists) |  [Container.Content(albums) + String.IsEmpty(ListItem.Art(discart))]" />
+                        </include>  
+                       <control type="group"> 
+                        <visible>Skin.HasSetting(cd)</visible>
+                        <control type="image">
+                            <bordersize>5</bordersize>
+                            <texture colordiffuse="button_focus" border="16">boxes/tdbox.png</texture>
+                        </control>
+					    <control type="image">
+					    	<bordersize>4,5,5,43</bordersize>
+					    	<texture colordiffuse="button_focus">boxes/cd.png</texture>
+					    	<aspectratio>scaled</aspectratio>
+					    	<visible>Container.Content(albums) + !String.IsEmpty(ListItem.Art(discart))</visible>
+					    </control>
+                        </control>
                         <include content="panelfocuslayout">
                             <param name="top" value="304" />    
                             <param name="height" value="40" />                                                                                     
@@ -1135,7 +1149,7 @@
                             <texturebg />
                             <info>ListItem.PercentPlayed</info>
                         </control>   
-                    </control>
+                    
                 </focusedlayout>                                           
             </control>
         </control> 
@@ -1423,6 +1437,7 @@
                 <font>reg25</font>
 		    	<label>[COLOR button_focus]$INFO[ListItem.Label][/COLOR]</label>
                 <autoscroll time="3000" delay="5000" repeat="5000">true</autoscroll>
+                <animation effect="slide" end="0,6" time="0" condition="Skin.HasSetting(cd) + Container.Content(albums) + !String.IsEmpty(ListItem.Art(discart))">conditional</animation>
 		    </control>
         </definition>
     </include> 

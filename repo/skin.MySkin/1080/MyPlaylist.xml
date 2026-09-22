@@ -5,10 +5,13 @@
 	<views>50</views>
 	<controls>
 		<include>DefaultBG</include>
-		<control type="group">
 			<control type="list" id="50">
+                <animation effect="slide" end="279,60" time="0" condition="String.IsEqual(Skin.String(musicosd),2)">conditional</animation>
 		        <include>Music_List</include>
             </control>
+		<control type="group">
+            <visible>String.IsEqual(Skin.String(musicosd),1)</visible>
+
             <control type="group" id="200">
                 <include>DA</include>
                 <include content="bg">
@@ -149,16 +152,6 @@
                         <texturefocus colordiffuse="button_focus">osd/bingie/save.png</texturefocus>
                         <texturenofocus>osd/fullscreen/buttons/save.png</texturenofocus>
                       <onclick>SendClick(9000,21)</onclick>
-                    </control>
-                    <control type="button" id="70039">
-                       <width>60</width>
-                       <height>60</height>
-                       <label></label>
-                       <font></font>
-                       <texturefocus colordiffuse="button_focus">osd/bingie/musicosd.png</texturefocus>
-                        <texturenofocus>osd/fullscreen/buttons/AudioDecoder.png</texturenofocus>
-                        <onclick>Dialog.Close(MusicOSD)</onclick>
-                        <onclick>ActivateWindow(MusicOSD)</onclick>
                     </control>
                     <control type="radiobutton" id="70043">
                         <width>60</width>
@@ -358,8 +351,11 @@
                 <include content="bg">
                     <param name="bs" value="5" />
                 </include>
-
-                   <include>MediaFlags</include>    
+                <include content="MediaFlags">
+                    <param name="left" value="0" />
+                    <param name="bottom" value="20" />
+                    <param name="width" value="545" />
+                </include>
 
 			    <visible>!Container.Content() | Container.Content(files)</visible>
 			    <control type="image">
@@ -388,14 +384,13 @@
 			    	<label>$VAR[MusicAlbumInfoVar]$VAR[ListBoxInfoVar]</label>
 			    	<visible>!Container.Scrolling</visible>
 			    </control>
-
                 <control type="label">
                     <left>-159%</left>
                     <top>94.25%</top>
                     <width>80%</width>
                     <height>80</height>
                     <align>center</align>
-                    
+                    <font>Reg24</font>
                     <label>$VAR[SeekLabel]</label>
                     <shadowcolor>black</shadowcolor>
                     <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
@@ -406,7 +401,7 @@
                     <width>80%</width>
                     <height>80</height>
                     <align>left</align>
-                    
+                    <font>Reg27</font>
                     <aligny>center</aligny>
                     <label>$VAR[OSDHelpTextVar]</label>
                     <shadowcolor>black</shadowcolor>
@@ -447,5 +442,18 @@
 				</control>
 			</control>
 		</control>
+		<control type="group">
+            <visible>String.IsEqual(Skin.String(musicosd),2)</visible>
+                <control type="label">
+                    <right>110</right>
+                    <bottom>15</bottom>
+                    <width>100%</width>
+                    <height>40</height>
+                    <align>right</align>
+                    <label>$INFO[Container.CurrentItem,,/][COLOR button_focus]$INFO[Container.NumItems][/COLOR]</label>
+                    <shadowcolor>black</shadowcolor>
+                    <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
+                </control>
+        </control>
 	</controls>
 </window>

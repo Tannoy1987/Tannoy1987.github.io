@@ -3,7 +3,11 @@
 	<onload condition="!Player.PauseEnabled">SetFocus(603)</onload>
 	<defaultcontrol always="true">602</defaultcontrol>
 	<controls>
-        <include>DefaultBG</include>    
+        
+ <!--Basic-->          
+        <control type="group">
+            <visible>String.IsEqual(Skin.String(musicosd),1)</visible>
+
     <!--List--> 
         <control type="group">
             <control type="list" id="50">
@@ -712,10 +716,184 @@
                 </content>
             </control>
         </control>
+        <control type="group">
+            <include>halfpanel</include>
+            <include content="bg">
+                <param name="bs" value="5" />
+            </include>
+                <include content="MediaFlags">
+                    <param name="left" value="0" />
+                    <param name="bottom" value="20" />
+                    <param name="width" value="545" />
+                </include>
+			<control type="image">
+				<right>5</right>
+				<top>557</top>
+				<left>5</left>
+				<height>430</height>
+				<texture border="5">boxes/inner.png</texture>
+			</control>
+            <control type="textbox">
+				<right>25</right>
+				<top>567</top>
+				<left>25</left>
+				<height>410</height>
+				<aligny>center</aligny>
+				<align>center</align>
+                <label>$VAR[NowPlayingInfoVar2]</label>
+                <shadowcolor>black</shadowcolor>
+            </control>
+	        <control type="image">
+				<top>5</top>
+				<right>5</right>
+				<left>5</left>
+				<bottom>513</bottom>
+				<aspectratio>keep</aspectratio>
+                <include>Visible_Right</include>
+                <visible>[Player.ShowInfo | Window.IsActive(musicosd)] + !MusicPlayer.Content(livetv)</visible>
+                <fadetime>400</fadetime>
+                <texture diffuse="diffuse/cdtop.png" fallback="DefaultAlbumCover.png">$INFO[Player.Art(thumb)]</texture>
+            </control>
+            <control type="group">
+                <control type="label">
+                    <left>-159%</left>
+                    <top>94.25%</top>
+                    <width>80%</width>
+                    <height>80</height>
+                    <align>center</align>
+                    
+                    <label>$VAR[SeekLabel]</label>
+                    <shadowcolor>black</shadowcolor>
+                    <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
+                </control>
+                <control type="textbox">
+                    <left>30</left>
+                    <top>92.25%</top>
+                    <width>80%</width>
+                    <height>80</height>
+                    <align>left</align>
+                    <aligny>center</aligny>
+                    <font>Reg27</font>
+                    <label>$VAR[OSDHelpTextVar]</label>
+                    <shadowcolor>black</shadowcolor>
+                    <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
+                </control>
+            </control>
+        </control> 
+        </control>           
+   <!--Player-->  
+        <control type="group">
+            <visible>String.IsEqual(Skin.String(musicosd),2)</visible>
+            <left>10</left>
+            <right>10</right>
+            <bottom>10</bottom>
+            <height>270</height>
+            <include>box</include>
+            <control type="image">
+                <top>10</top>
+                <width>250</width>
+                <left>10</left>
+                <bottom>10</bottom>
+                <aspectratio>keep</aspectratio>
+                <include>Visible_Left</include>
+                <texture diffuse="diffuse/cd.png" fallback="$VAR[cd_color_location]">$INFO[Window(home).Property(discart)]</texture>
+                <animation effect="rotate" end="-360" time="8000" center="auto" loop="true" condition="Player.Playing + Skin.HasSetting(cdspin)">Conditional</animation>
+            </control>
+	        <control type="image">
+				<right>10</right>
+                <top>10</top>
+                <width>250</width>
+                <bottom>10</bottom>
+				<aspectratio>keep</aspectratio>
+                <include>Visible_Right</include>
+                <fadetime>400</fadetime>
+                <texture>$INFO[Player.Art(thumb)]</texture>
+                <bordertexture colordiffuse="border_alpha">colors/black.png</bordertexture>
+            </control>
+                <control type="label">
+                    <centerleft>50%</centerleft>
+                    <bottom>82%</bottom>
+                    <width>70%</width>
+                    <height>40</height>
+                    <align>left</align>
+                    <label>$INFO[MusicPlayer.Artist]</label>
+                    <shadowcolor>black</shadowcolor>
+                    <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
+                </control>
+                <control type="label">
+                    <centerleft>50%</centerleft>
+                    <bottom>82%</bottom>
+                    <width>70%</width>
+                    <height>40</height>
+                    <align>right</align>
+                    <label>$INFO[MusicPlayer.Album]</label>
+                    <shadowcolor>black</shadowcolor>
+                    <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
+                </control>
+                <control type="label">
+                    <centerleft>50%</centerleft>
+                    <bottom>60%</bottom>
+                    <width>70%</width>
+                    <height>40</height>
+                    <align>left</align>
+                    <label>[COLOR button_focus]$INFO[MusicPlayer.Title][/COLOR]</label>
+                    <shadowcolor>black</shadowcolor>
+                    <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
+                </control>
+                <control type="label">
+                    <centerleft>50%</centerleft>
+                    <bottom>60%</bottom>
+                    <width>70%</width>
+                    <height>40</height>
+                    <align>right</align>
+                    <label>$LOCALIZE[427] $INFO[MusicPlayer.DiscNumber]</label>
+                    <visible>!String.IsEmpty(MusicPlayer.DiscNumber)</visible>
+                    <shadowcolor>black</shadowcolor>
+                    <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
+                </control>
+                <control type="label">
+                    <centerleft>50%</centerleft>
+                    <bottom>38%</bottom>
+                    <width>70%</width>
+                    <height>40</height>
+                    <align>left</align>
+                    <label>$INFO[MusicPlayer.Time,,/]$INFO[MusicPlayer.Duration]     $VAR[SeekLabel]</label>
+                    <shadowcolor>black</shadowcolor>
+                    <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
+                </control>
+                <control type="label">
+                    <centerleft>50%</centerleft>
+                    <bottom>38%</bottom>
+                    <width>70%</width>
+                    <height>40</height>
+                    <align>right</align>
+                    <label>$INFO[MusicPlayer.Year,, ∙] $INFO[MusicPlayer.Genre,, ∙]$VAR[AudioCodecVar,, ∙]$VAR[ObjectAudioTypeVar,, ∙]$INFO[MusicPlayer.BitsPerSample, ,bit ∙]$INFO[MusicPlayer.SampleRate, ,kHz ∙]$INFO[MusicPlayer.BitRate, ,kbps]</label>
+                    <shadowcolor>black</shadowcolor>
+                    <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
+                </control>
+
+
+                <control type="textbox">
+                    <centerleft>51%</centerleft>
+                    <bottom>0</bottom>
+                    <width>20%</width>
+                    <height>90</height>
+                    <align>right</align>
+                    <aligny>center</aligny>
+                    <font>Reg25</font>
+                    <label>$VAR[OSDHelpTextVar2]</label>
+                    <shadowcolor>black</shadowcolor>
+                    <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
+                </control>
+       
+        </control>
         <control type="group" id="200">
+            <animation effect="slide" end="275,0" time="0" condition="String.IsEqual(Skin.String(musicosd),2)">conditional</animation>
+
             <include>DA</include>
             <include content="bg">
                 <param name="bs" value="5" />
+                <param name="vis" value="String.IsEqual(Skin.String(musicosd),1)" />
             </include>
             <bottom>10</bottom>
             <left>10</left>
@@ -988,8 +1166,9 @@
                 </control>
             </control>
         </control>
-    <!--progress-->        
+        <!--progress-->        
         <control type="group" id="220">   
+            <animation effect="slide" end="275,5" time="0" condition="String.IsEqual(Skin.String(musicosd),2)">conditional</animation>
 			<control type="group">          
                 <left>20</left>
                 <top>90%</top>
@@ -998,7 +1177,9 @@
                 <include>DA</include>
                 <control type="button" id="87">
                     <include>HiddenObject</include>
-                    <onup>50</onup>
+                    <onup condition="String.IsEqual(Skin.String(musicosd),1)">50</onup>
+                    <onup condition="String.IsEqual(Skin.String(musicosd),2)">Dialog.Close(MusicOSD)</onup>
+                    <onup condition="String.IsEqual(Skin.String(musicosd),2)">ActivateWindow(MusicPlaylist)</onup>
                     <ondown>201</ondown>
                     <onleft>StepBack</onleft>
                     <onright>StepForward</onright>
@@ -1029,68 +1210,8 @@
                      </control>
                 </control>
             </control>
-	    </control>       
-        <control type="group">
-            <include>halfpanel</include>
-            <include content="bg">
-                <param name="bs" value="5" />
-            </include>
-            <include>MediaFlags</include>    
-			<control type="image">
-				<right>5</right>
-				<top>557</top>
-				<left>5</left>
-				<height>430</height>
-				<texture border="5">boxes/inner.png</texture>
-			</control>
-            <control type="textbox">
-				<right>25</right>
-				<top>567</top>
-				<left>25</left>
-				<height>410</height>
-				<aligny>center</aligny>
-				<align>left</align>
-                <label>$VAR[NowPlayingInfoVar]</label>
-                <shadowcolor>black</shadowcolor>
-            </control>
-	        <control type="image">
-				<top>5</top>
-				<right>5</right>
-				<left>5</left>
-				<bottom>513</bottom>
-				<aspectratio>keep</aspectratio>
-                <include>Visible_Right</include>
-                <visible>[Player.ShowInfo | Window.IsActive(musicosd)] + !MusicPlayer.Content(livetv)</visible>
-                <fadetime>400</fadetime>
-                <texture diffuse="diffuse/cdtop.png" fallback="DefaultAlbumCover.png">$INFO[MusicPlayer.Cover]</texture>
-                <bordertexture colordiffuse="border_alpha">colors/black.png</bordertexture>
-            </control>
-            <control type="group">
-                <control type="label">
-                    <left>-159%</left>
-                    <top>94.25%</top>
-                    <width>80%</width>
-                    <height>80</height>
-                    <align>center</align>
-                    
-                    <label>$VAR[SeekLabel]</label>
-                    <shadowcolor>black</shadowcolor>
-                    <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
-                </control>
-                <control type="textbox">
-                    <left>40</left>
-                    <top>92.25%</top>
-                    <width>80%</width>
-                    <height>80</height>
-                    <align>left</align>
-                    <aligny>center</aligny>
-                    
-                    <label>$VAR[OSDHelpTextVar]</label>
-                    <shadowcolor>black</shadowcolor>
-                    <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
-                </control>
-            </control>
-        </control> 
+	    </control>     
+
         <include>crt</include>        
     </controls> 
 </window>

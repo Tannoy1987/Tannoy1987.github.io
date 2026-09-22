@@ -7,9 +7,11 @@
 	<onload condition="String.IsEmpty(Skin.String(osd_info_layout))">Skin.SetString(osd_info_layout,1)</onload>
 	<onload condition="String.IsEmpty(Skin.String(osd_clearlogo))">Skin.SetString(osd_clearlogo,1)</onload>
 	<onload condition="String.IsEmpty(Skin.String(osd_background))">Skin.SetString(osd_background,2)</onload>
+	<onload condition="String.IsEmpty(Skin.String(musicosd))">Skin.SetString(musicosd,1)</onload>
 	<onload condition="String.IsEmpty(Skin.String(power_menu_layout))">Skin.SetString(power_menu_layout,3)</onload>
 	<onload condition="String.IsEmpty(Skin.String(mediaflags_layout))">Skin.SetString(mediaflags_layout,1)</onload>
 	<onload condition="String.IsEmpty(Skin.String(addon_widget_size))">Skin.SetString(addon_widget_size,3)</onload>
+	<onload condition="String.IsEmpty(Skin.String(cd_color))">Skin.SetString(cd_color,1)</onload>
 	<defaultcontrol>1000</defaultcontrol>
 	<controls>
 		<include>HomeLoad</include>
@@ -26,7 +28,6 @@
 				<include condition="System.HasAddon(plugin.video.pov) + String.IsEqual(Skin.String(home_layout),2)">POVFlixPanel</include>
 				<include condition="System.HasAddon(plugin.video.pov) + String.IsEqual(Skin.String(home_layout),3)">POVRowPanel</include>
 				<include condition="System.HasAddon(plugin.video.pov) + String.IsEqual(Skin.String(home_layout),4)">POVListPanel</include>
-				<include condition="System.HasAddon(plugin.video.pov) + String.IsEqual(Skin.String(home_layout),5)">FlixPlaylistPanel</include>
 			</control>
 			<include>HomePanel</include>
 			<include>HomeMouseMenu</include>

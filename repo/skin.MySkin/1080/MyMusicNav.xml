@@ -224,5 +224,6 @@
 		<include>crt</include>
 		<include>touch</include> 
 	<!--<include>Folderpath</include>-->
+	<!--<include>Content</include>-->
 	</controls>
 </window>

@@ -56,8 +56,7 @@
     		        <onclick condition="String.IsEqual(Skin.String(home_layout),1)">Skin.SetString(home_layout,2)</onclick>
     		        <onclick condition="String.IsEqual(Skin.String(home_layout),2)">Skin.SetString(home_layout,3)</onclick>
     		        <onclick condition="String.IsEqual(Skin.String(home_layout),3)">Skin.SetString(home_layout,4)</onclick>
-    		        <onclick condition="String.IsEqual(Skin.String(home_layout),4)">Skin.SetString(home_layout,5)</onclick>
-    		        <onclick condition="String.IsEqual(Skin.String(home_layout),5)">Skin.SetString(home_layout,1)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(home_layout),4)">Skin.SetString(home_layout,1)</onclick>
     		    </control>
     		    <control type="radiobutton" id="62">
     		        <label>- POV Search</label>
@@ -169,6 +168,7 @@
     		    <control type="radiobutton" id="603">
     		        <label>Animation Slide</label>
     		    </control>
+			<!--Music-->
     		    <control type="label" id="604">
             		<height>70</height>
             		<label>Music</label>
@@ -180,6 +180,22 @@
     		        <label>Focused Albums Are Discs</label>
     		        <selected>Skin.HasSetting(cd)</selected>
     		        <onclick>Skin.ToggleSetting(cd)</onclick>
+    		    </control>
+    		    <control type="button" id="606">
+    		        <label> MusicOSD</label>
+    		        <label2>$VAR[musicosd]</label2>
+    		        <include>DefaultSettingButton</include>
+    		        <onclick condition="String.IsEqual(Skin.String(musicosd),2)">Skin.SetString(musicosd,1)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(musicosd),1)">Skin.SetString(musicosd,2)</onclick>
+    		    </control>
+    		    <control type="button" id="607">
+					<visible>String.IsEqual(Skin.String(musicosd),2)</visible>
+    		        <label>- No Discart CD Color</label>
+    		        <label2>$VAR[cd_color]</label2>
+    		        <include>DefaultSettingButton</include>
+    		        <onclick condition="String.IsEqual(Skin.String(cd_color),1)">Skin.SetString(cd_color,3)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(cd_color),2)">Skin.SetString(cd_color,1)</onclick>
+    		        <onclick condition="String.IsEqual(Skin.String(cd_color),3)">Skin.SetString(cd_color,2)</onclick>
     		    </control>
     		</control>
     	<!--osd-->
