@@ -18,8 +18,14 @@
 			<screenshot>resources/screenshot-01.jpg</screenshot>
 			<screenshot>resources/screenshot-02.jpg</screenshot>
 			<screenshot>resources/screenshot-03.jpg</screenshot>
+			<screenshot>resources/screenshot-04.jpg</screenshot>
+			<screenshot>resources/screenshot-05.jpg</screenshot>
+			<screenshot>resources/screenshot-06.jpg</screenshot>
+			<screenshot>resources/screenshot-07.jpg</screenshot>
+			<screenshot>resources/screenshot-08.jpg</screenshot>
 		</assets>
 		<summary lang="en_GB">MySkin — a custom Kodi skin by Tannoy</summary>
 		<description lang="en_GB">A custom Kodi skin with a modern look.</description>
+		<disclaimer lang="en_GB"></disclaimer>
 	</extension>
 </addon>

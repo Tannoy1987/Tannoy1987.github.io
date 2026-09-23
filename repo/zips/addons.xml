@@ -32,14 +32,12 @@
             <fanart>fanart.jpg</fanart>
         </assets>
     </extension>
-</addon>
-<addon id="service.discart" name="DiscArt Service" version="1.0.0" provider-name="you">
+</addon><addon id="service.discart" name="DiscArt Service" version="1.0.0" provider-name="you">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
     </requires>
     <extension point="xbmc.service" library="service.py" start="login" />
-</addon>
-<addon id="skin.MySkin" version="0.4.1" name="MySkin" provider-name="Tannoy">
+</addon><addon id="skin.MySkin" version="0.4.1" name="MySkin" provider-name="Tannoy">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0" />
 		<import addon="xbmc.python" version="3.0.0" />
@@ -58,8 +56,14 @@
 			<screenshot>resources/screenshot-01.jpg</screenshot>
 			<screenshot>resources/screenshot-02.jpg</screenshot>
 			<screenshot>resources/screenshot-03.jpg</screenshot>
+			<screenshot>resources/screenshot-04.jpg</screenshot>
+			<screenshot>resources/screenshot-05.jpg</screenshot>
+			<screenshot>resources/screenshot-06.jpg</screenshot>
+			<screenshot>resources/screenshot-07.jpg</screenshot>
+			<screenshot>resources/screenshot-08.jpg</screenshot>
 		</assets>
 		<summary lang="en_GB">MySkin — a custom Kodi skin by Tannoy</summary>
 		<description lang="en_GB">A custom Kodi skin with a modern look.</description>
+		<disclaimer lang="en_GB" />
 	</extension>
 </addon></addons>
