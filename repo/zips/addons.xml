@@ -37,7 +37,7 @@
         <import addon="xbmc.python" version="3.0.0" />
     </requires>
     <extension point="xbmc.service" library="service.py" start="login" />
-</addon><addon id="skin.MySkin" version="0.4.1" name="MySkin" provider-name="Tannoy">
+</addon><addon id="skin.MySkin" version="0.4.3" name="MySkin" provider-name="Tannoy">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0" />
 		<import addon="xbmc.python" version="3.0.0" />
