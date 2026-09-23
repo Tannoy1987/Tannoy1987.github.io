@@ -32,7 +32,6 @@
 			<visible>Player.ShowInfo + ![MusicPlayer.Content(livetv) | Window.IsActive(musicosd)]</visible>
 			<height>460</height>
 			<include>DA</include>
-
 			<bottom>0</bottom>
 			<control type="image">
 				<bottom>0</bottom>
@@ -63,7 +62,7 @@
 					<height>50</height>
 					<aligny>center</aligny>
 					<label>[B]$INFO[MusicPlayer.TrackNumber,,. ]$INFO[Player.Title][/B]</label>
-					<font>font45</font>
+					<font>Reg38</font>
 					<shadowcolor>black</shadowcolor>
 					<scroll>true</scroll>
 				</control>
@@ -73,7 +72,7 @@
 					<height>50</height>
 					<aligny>center</aligny>
 					<label>$INFO[MusicPlayer.Artist]</label>
-					<font>font45</font>
+					<font>Reg36</font>
 					<shadowcolor>black</shadowcolor>
 					<scroll>true</scroll>
 				</control>
@@ -88,7 +87,7 @@
 						<width>auto</width>
 						<height>35</height>
 						<label>$INFO[MusicPlayer.Year]</label>
-						<font>font45</font>
+						<font>Reg26</font>
 						<shadowcolor>black</shadowcolor>
 						<aligny>center</aligny>
 						<align>left</align>
@@ -98,7 +97,7 @@
 						<width min="0" max="1130">auto</width>
 						<height>35</height>
 						<label>$INFO[MusicPlayer.Genre]</label>
-						<font>font45</font>
+						<font>Reg26</font>
 						<shadowcolor>black</shadowcolor>
 						<aligny>center</aligny>
 						<align>left</align>
@@ -107,11 +106,11 @@
 					</control>
 					<control type="image">
 						<width>190</width>
-						<height>40</height>
+						<height>31</height>
 						<texture fallback="flags/starrating/0.png">$INFO[MusicPlayer.UserRating,flags/starrating/,.png]</texture>
 						<aspectratio>keep</aspectratio>
-						<aligny>center</aligny>
-						<align>left</align>
+
+
 					</control>
 				</control>
 				<control type="label">
@@ -120,7 +119,7 @@
 					<height>40</height>
 					<aligny>center</aligny>
 					<label>$INFO[MusicPlayer.Album]$VAR[MultiDiscVar]</label>
-					<font>font45</font>
+					<font>Reg32</font>
 					<shadowcolor>black</shadowcolor>
 					<scroll>true</scroll>
 				</control>
@@ -129,6 +128,7 @@
 					<width>1860</width>
 					<height>40</height>
 					<aligny>center</aligny>
+					<font>Reg32</font>
 					<label>$VAR[OSDNextLabelVar]</label>
 					<shadowcolor>black</shadowcolor>
 					<scroll>true</scroll>

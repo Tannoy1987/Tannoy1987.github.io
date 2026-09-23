@@ -789,6 +789,11 @@
             <bottom>10</bottom>
             <height>270</height>
             <include>box</include>
+			<include content="box">
+				<param name="texture" value="box"/>
+				<param name="bs" value="285,10,285,10"/>
+				<param name="cd" value="black"/>
+			</include>
             <control type="image">
                 <top>10</top>
                 <width>250</width>
@@ -810,86 +815,77 @@
                 <texture>$INFO[Player.Art(thumb)]</texture>
                 <bordertexture colordiffuse="border_alpha">colors/black.png</bordertexture>
             </control>
+            <control type="group">  
+                    <left>300</left>
+                    <right>300</right>   
                 <control type="label">
-                    <centerleft>50%</centerleft>
+                    <left>10</left>
+                    <right>10</right>
                     <bottom>82%</bottom>
-                    <width>70%</width>
                     <height>40</height>
                     <align>left</align>
-                    <label>$INFO[MusicPlayer.Artist]</label>
-                    <shadowcolor>black</shadowcolor>
+                    <font>Reg38</font>
+                    <label>$INFO[MusicPlayer.Artist] - [COLOR button_focus]$INFO[MusicPlayer.Title][/COLOR]</label>
                     <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
                 </control>
                 <control type="label">
-                    <centerleft>50%</centerleft>
-                    <bottom>82%</bottom>
-                    <width>70%</width>
-                    <height>40</height>
-                    <align>right</align>
-                    <label>$INFO[MusicPlayer.Album]</label>
-                    <shadowcolor>black</shadowcolor>
-                    <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
-                </control>
-                <control type="label">
-                    <centerleft>50%</centerleft>
+                    <left>10</left>
+                    <right>10</right>
                     <bottom>60%</bottom>
-                    <width>70%</width>
                     <height>40</height>
                     <align>left</align>
-                    <label>[COLOR button_focus]$INFO[MusicPlayer.Title][/COLOR]</label>
-                    <shadowcolor>black</shadowcolor>
+                    <font>Reg32</font>
+                    <label>$INFO[MusicPlayer.Album]$INFO[MusicPlayer.Year, ∙]$INFO[MusicPlayer.Genre, ∙]</label>
                     <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
                 </control>
                 <control type="label">
-                    <centerleft>50%</centerleft>
+                    <left>10</left>
+                    <right>10</right>
                     <bottom>60%</bottom>
-                    <width>70%</width>
                     <height>40</height>
                     <align>right</align>
+                    <font>Reg32</font>
                     <label>$LOCALIZE[427] $INFO[MusicPlayer.DiscNumber]</label>
                     <visible>!String.IsEmpty(MusicPlayer.DiscNumber)</visible>
-                    <shadowcolor>black</shadowcolor>
-                    <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
+                    <textcolor>grey</textcolor>                    
                 </control>
                 <control type="label">
-                    <centerleft>50%</centerleft>
+                    <left>10</left>
+                    <right>10</right>
                     <bottom>38%</bottom>
-                    <width>70%</width>
                     <height>40</height>
                     <align>left</align>
+                    <font>Reg26</font>
                     <label>$INFO[MusicPlayer.Time,,/]$INFO[MusicPlayer.Duration]     $VAR[SeekLabel]</label>
-                    <shadowcolor>black</shadowcolor>
-                    <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
+                    <textcolor>grey</textcolor>
                 </control>
                 <control type="label">
-                    <centerleft>50%</centerleft>
+                    <left>10</left>
+                    <right>10</right>
                     <bottom>38%</bottom>
-                    <width>70%</width>
                     <height>40</height>
                     <align>right</align>
-                    <label>$INFO[MusicPlayer.Year,, ∙] $INFO[MusicPlayer.Genre,, ∙]$VAR[AudioCodecVar,, ∙]$VAR[ObjectAudioTypeVar,, ∙]$INFO[MusicPlayer.BitsPerSample, ,bit ∙]$INFO[MusicPlayer.SampleRate, ,kHz ∙]$INFO[MusicPlayer.BitRate, ,kbps]</label>
-                    <shadowcolor>black</shadowcolor>
-                    <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
+                    <font>Reg26</font>
+                    <label> $VAR[AudioCodecVar,, ∙]$VAR[ObjectAudioTypeVar,, ∙]$INFO[MusicPlayer.BitsPerSample, ,bit ∙]$INFO[MusicPlayer.SampleRate, ,kHz ∙]$INFO[MusicPlayer.BitRate, ,kbps]</label>
+                    <textcolor>grey</textcolor>                    
                 </control>
-
-
-                <control type="textbox">
-                    <centerleft>51%</centerleft>
-                    <bottom>0</bottom>
-                    <width>20%</width>
-                    <height>90</height>
-                    <align>right</align>
-                    <aligny>center</aligny>
-                    <font>Reg25</font>
-                    <label>$VAR[OSDHelpTextVar2]</label>
-                    <shadowcolor>black</shadowcolor>
-                    <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
-                </control>
-       
+            </control>   
+             <control type="textbox">
+                 <centerleft>50%</centerleft>
+                 <bottom>0</bottom>
+                 <width>100%</width>
+                 <height>90</height>
+                 <align>center</align>
+                 <aligny>center</aligny>
+                 <font>Reg26</font>
+                 <label>$VAR[OSDHelpTextVar2]</label>
+                 <textcolor>grey</textcolor>
+                 <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
+             </control>
         </control>
+   <!--Controls-->          
         <control type="group" id="200">
-            <animation effect="slide" end="275,0" time="0" condition="String.IsEqual(Skin.String(musicosd),2)">conditional</animation>
-
+            <animation effect="slide" end="275,-1" time="0" condition="String.IsEqual(Skin.String(musicosd),2)">conditional</animation>
             <include>DA</include>
             <include content="bg">
                 <param name="bs" value="5" />
@@ -925,7 +921,7 @@
                     <label></label>
                     <font></font>
                     <texturefocus colordiffuse="button_focus">osd/bingie/play_beginning_fo.png</texturefocus>
-                    <texturenofocus>osd/fullscreen/buttons/previous.png</texturenofocus>
+                    <texturenofocus colordiffuse="grey">osd/fullscreen/buttons/previous.png</texturenofocus>
                     <onclick>PlayerControl(Previous)</onclick>
                     <visible>Player.ChapterCount | MusicPlayer.HasPrevious | [Player.SeekEnabled + MusicPlayer.Content(livetv)]</visible>
                 </control>
@@ -935,7 +931,7 @@
                     <label></label>
                     <font></font>
                     <texturefocus colordiffuse="button_focus">osd/bingie/rewind_fo.png</texturefocus>
-                    <texturenofocus>osd/fullscreen/buttons/rewind.png</texturenofocus>
+                    <texturenofocus colordiffuse="grey">osd/fullscreen/buttons/rewind.png</texturenofocus>
                     <onclick condition="Player.Paused">PlayerControl(Play)</onclick>
                     <onclick condition="!Player.Paused">PlayerControl(Rewind)</onclick>
                     <visible>Player.SeekEnabled + !MusicPlayer.Content(livetv)</visible>
@@ -947,7 +943,7 @@
                     <label></label>
                     <font></font>
                     <texturefocus colordiffuse="button_focus">osd/bingie/pause_fo.png</texturefocus>
-                    <texturenofocus>osd/bingie/pause.png</texturenofocus>
+                    <texturenofocus colordiffuse="grey">osd/bingie/pause.png</texturenofocus>
                     <usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
                     <alttexturefocus colordiffuse="button_focus">osd/bingie/play_fo.png</alttexturefocus>
                     <alttexturenofocus>osd/bingie/play.png</alttexturenofocus>
@@ -959,7 +955,7 @@
                     <label></label>
                     <font></font>
                     <texturefocus colordiffuse="button_focus">osd/bingie/stop-fo.png</texturefocus>
-                    <texturenofocus>osd/fullscreen/buttons/stop.png</texturenofocus>
+                    <texturenofocus colordiffuse="grey">osd/fullscreen/buttons/stop.png</texturenofocus>
                     <onclick>PlayerControl(Stop)</onclick>
                 </control>
                 <control type="button" id="606"> <!--osd forward-->
@@ -968,7 +964,7 @@
                     <label></label>
                     <font></font>
                     <texturefocus colordiffuse="button_focus">osd/bingie/forward_fo.png</texturefocus>
-                    <texturenofocus>osd/fullscreen/buttons/forward.png</texturenofocus>
+                    <texturenofocus colordiffuse="grey">osd/fullscreen/buttons/forward.png</texturenofocus>
                     <onclick condition="Player.Paused">PlayerControl(Play)</onclick>
                     <onclick condition="!Player.Paused">PlayerControl(Forward)</onclick>
                     <visible>Player.SeekEnabled + !MusicPlayer.Content(livetv)</visible>
@@ -979,7 +975,7 @@
                     <label></label>
                     <font></font>
                     <texturefocus colordiffuse="button_focus">osd/bingie/next_fo.png</texturefocus>
-                    <texturenofocus>osd/fullscreen/buttons/next.png</texturenofocus>
+                    <texturenofocus colordiffuse="grey">osd/fullscreen/buttons/next.png</texturenofocus>
                     <onclick>PlayerControl(Next)</onclick>
                     <visible>Player.ChapterCount | MusicPlayer.HasNext | PVR.IsTimeShift</visible>
                 </control>
@@ -1022,7 +1018,7 @@
                     <label></label>
                     <font></font>
                     <texturefocus colordiffuse="button_focus">osd/bingie/playlist-fo2.png</texturefocus>
-                    <texturenofocus>osd/fullscreen/buttons/playlist.png</texturenofocus>
+                    <texturenofocus colordiffuse="grey">osd/fullscreen/buttons/playlist.png</texturenofocus>
                     <onclick>Dialog.Close(MusicOSD)</onclick>
                     <onclick>ActivateWindow(MusicPlaylist)</onclick>
                     <visible>Integer.IsGreater(Container(50).NumItems,0)</visible>
@@ -1033,7 +1029,7 @@
                     <label></label>
                     <font></font>
                     <texturefocus colordiffuse="button_focus">osd/fullscreen/buttons/channels.png</texturefocus>
-                    <texturenofocus>osd/fullscreen/buttons/channels.png</texturenofocus>
+                    <texturenofocus colordiffuse="grey">osd/fullscreen/buttons/channels.png</texturenofocus>
                     <onclick>Dialog.Close(MusicOSD)</onclick>
                     <onclick>ActivateWindow(PVROSDChannels)</onclick>
                     <visible>MusicPlayer.Content(LiveTV)</visible>
@@ -1044,7 +1040,7 @@
                     <label></label>
                     <font></font>
                     <texturefocus colordiffuse="button_focus">osd/fullscreen/buttons/guide.png</texturefocus>
-                    <texturenofocus>osd/fullscreen/buttons/guide.png</texturenofocus>
+                    <texturenofocus colordiffuse="grey">osd/fullscreen/buttons/guide.png</texturenofocus>
                     <onclick>Dialog.Close(MusicOSD)</onclick>
                     <onclick>ActivateWindow(PVRChannelGuide)</onclick>
                     <visible>MusicPlayer.Content(LiveTV) + VideoPlayer.HasEPG</visible>
@@ -1055,7 +1051,7 @@
                     <label></label>
                     <font></font>
                     <texturefocus colordiffuse="button_focus">osd/fullscreen/buttons/rds.png</texturefocus>
-                    <texturenofocus>osd/fullscreen/buttons/rds.png</texturenofocus>
+                    <texturenofocus colordiffuse="grey">osd/fullscreen/buttons/rds.png</texturenofocus>
                     <onclick>Dialog.Close(MusicOSD)</onclick>
                     <onclick>ActivateWindow(PVRRadioRDSInfo)</onclick>
                     <visible>MusicPlayer.Content(LiveTV) + RDS.HasRadiotext</visible>
@@ -1066,7 +1062,7 @@
                     <label></label>
                     <font></font>
                     <texturefocus colordiffuse="button_focus">osd/bingie/rating.png</texturefocus>
-                    <texturenofocus>osd/fullscreen/buttons/rating.png</texturenofocus>
+                    <texturenofocus colordiffuse="grey">osd/fullscreen/buttons/rating.png</texturenofocus>
                     <onclick>SetRating</onclick>
                 </control>
                  <control type="group" id="203">
@@ -1138,7 +1134,7 @@
                     <label/>
                     <font />
                     <texturefocus colordiffuse="button_focus">osd/bingie/random-off.png</texturefocus>
-                    <texturenofocus>osd/fullscreen/buttons/random-off.png</texturenofocus>
+                    <texturenofocus colordiffuse="grey">osd/fullscreen/buttons/random-off.png</texturenofocus>
                     <alttexturenofocus>osd/fullscreen/buttons/random-on.png</alttexturenofocus>
                     <alttexturefocus colordiffuse="button_focus">osd/bingie/random-on.png</alttexturefocus>
                 </control>
@@ -1148,7 +1144,7 @@
                     <label></label>
                     <font></font>
                     <texturefocus colordiffuse="button_focus">osd/bingie/subtitles_fo.png</texturefocus>
-                    <texturenofocus>osd/fullscreen/buttons/settings-subtitle.png</texturenofocus>
+                    <texturenofocus colordiffuse="grey">osd/fullscreen/buttons/settings-subtitle.png</texturenofocus>
                     <onclick>Close</onclick>
                     <onclick condition="!String.IsEmpty(Skin.String(LyricScript_Path))">RunScript($INFO[Skin.String(LyricScript_Path)])</onclick>
                     <onclick condition="String.IsEmpty(Skin.String(LyricScript_Path))">Skin.SetAddon(LyricScript_Path,xbmc.python.lyrics)</onclick>
@@ -1161,14 +1157,14 @@
                     <label></label>
                     <font></font>
                     <texturefocus colordiffuse="button_focus">osd/bingie/settings.png</texturefocus>
-                    <texturenofocus>osd/fullscreen/buttons/settings.png</texturenofocus>
+                    <texturenofocus colordiffuse="grey">osd/fullscreen/buttons/settings.png</texturenofocus>
                     <onclick>ActivateWindow(1101)</onclick>
                 </control>
             </control>
         </control>
         <!--progress-->        
         <control type="group" id="220">   
-            <animation effect="slide" end="275,5" time="0" condition="String.IsEqual(Skin.String(musicosd),2)">conditional</animation>
+            <animation effect="slide" end="279,5" time="0" condition="String.IsEqual(Skin.String(musicosd),2)">conditional</animation>
 			<control type="group">          
                 <left>20</left>
                 <top>90%</top>

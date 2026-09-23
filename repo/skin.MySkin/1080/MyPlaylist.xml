@@ -6,7 +6,8 @@
 	<controls>
 		<include>DefaultBG</include>
 			<control type="list" id="50">
-                <animation effect="slide" end="279,60" time="0" condition="String.IsEqual(Skin.String(musicosd),2)">conditional</animation>
+                <animation effect="slide" end="279,212" time="0" condition="String.IsEqual(Skin.String(musicosd),2) + Integer.IsEqual(Container(50).NumItems,10)">conditional</animation>
+                <animation effect="slide" end="279,60" time="0" condition="String.IsEqual(Skin.String(musicosd),2) + !Integer.IsEqual(Container(50).NumItems,10)">conditional</animation>
 		        <include>Music_List</include>
             </control>
 		<control type="group">

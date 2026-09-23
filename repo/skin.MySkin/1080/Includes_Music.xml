@@ -3,23 +3,13 @@
 	<include name="MusicInfoArtistInfo">
 		<item>
 			<label>$LOCALIZE[21893]:</label>
-			<label2>$INFO[ListItem.Property(Artist_Born)]</label2>
+			<label2>$INFO[ListItem.Property(Artist_Born)]$INFO[ListItem.Property(Artist_Died),, - ]</label2>
 			<visible>!String.IsEmpty(ListItem.Property(Artist_Born))</visible>
 		</item>
 		<item>
-			<label>$LOCALIZE[21897]:</label>
-			<label2>$INFO[ListItem.Property(Artist_Died)]</label2>
-			<visible>!String.IsEmpty(ListItem.Property(Artist_Died))</visible>
-		</item>
-		<item>
 			<label>$LOCALIZE[21894]:</label>
-			<label2>$INFO[ListItem.Property(Artist_Formed)]</label2>
+			<label2>$INFO[ListItem.Property(Artist_Formed)]$INFO[ListItem.Property(Artist_Disbanded),, - ]</label2>
 			<visible>!String.IsEmpty(ListItem.Property(Artist_Formed))</visible>
-		</item>
-		<item>
-			<label>$LOCALIZE[21896]:</label>
-			<label2>$INFO[ListItem.Property(Artist_Disbanded)]</label2>
-			<visible>!String.IsEmpty(ListItem.Property(Artist_Disbanded))</visible>
 		</item>
 		<item>
 			<label>$LOCALIZE[21898]:</label>
@@ -80,7 +70,16 @@
 		
 
 	</include>
-	<include name="MusicInfoSongInfo">
+	<include name="MusicRatings">
+		<item>
+			<label>$LOCALIZE[563]:</label>
+			<label2>$INFO[ListItem.Year]</label2>
+			<visible>!String.IsEmpty(ListItem.Year)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[38018]:</label>
+			<label2>$INFO[Container(50).NumItems]</label2>
+		</item>
 
 	</include>
 	<include name="MusicInfoSongInfo">
@@ -200,12 +199,317 @@
 			<visible>!String.IsEmpty(ListItem.BitRate)</visible>
 		</item>	
 	</include>
+	<include name="MusicInfoMenu">
+		<control type="grouplist" id="9000">
+			<width>1280</width>
+			<height>55</height>
+			<onleft>7</onleft>
+			<align>top</align>
+			<itemgap>10</itemgap>
+			<orientation>horizontal</orientation>
+			<include content="InfoDialogButton2">
+				<param name="id" value="7" />
+				<param name="width" value="120" />
+				<param name="icon" value="icons/infodialogs/rating.png" />
+				<param name="textoffsety" value="100" />
+				<param name="radioposx" value="45" />
+				<param name="onright" value="8" />
+				<param name="ondown" value="130" />
+				<param name="onleft" value="6" />
+				<param name="onup" value="50" />
+				<param name="visible" value="String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)" />
+			</include>			
+			<include content="InfoDialogButton2">
+				<param name="id" value="8" />
+				<param name="width" value="120" />
+				<param name="icon" value="icons/infodialogs/play.png" />
+				<param name="label" value="$LOCALIZE[208]" />
+				<param name="textoffsety" value="100" />
+				<param name="radioposx" value="45" />
+				<param name="ondown" value="130" />
+				<param name="onup" value="50" />
+			</include>
+			<include content="InfoDialogButton2">
+				<param name="id" value="12" />
+				<param name="width" value="120" />
+				<param name="icon" value="icons/infodialogs/info.png" />
+				<param name="label" value="" />
+				<param name="textoffsety" value="100" />
+				<param name="radioposx" value="45" />	
+				<param name="ondown" value="130" />
+				<param name="onup" value="50" />				
+			</include>
+			<include content="InfoDialogButton2">
+				<param name="id" value="120" />
+				<param name="width" value="120" />
+				<param name="icon" value="icons/infodialogs/image.png" />
+				<param name="label" value="" />
+				<param name="textoffsety" value="100" />
+				<param name="radioposx" value="45" />	
+				<param name="onclick_1" value="SetProperty(fanart,$ESCINFO[ListItem.Art(fanart)],home)" />				
+				<param name="onclick_2" value="ActivateWindow(1104)" />				
+				<param name="visible" value="String.IsEqual(ListItem.DBType,artist) | String.IsEqual(ListItem.DBType,album)" />		
+				<param name="ondown" value="130" />	
+				<param name="onup" value="50" />									
+			</include>
+			<include content="InfoDialogButton2">
+				<param name="id" value="10" />
+				<param name="width" value="120" />
+				<param name="icon" value="icons/infodialogs/choose_image.png" />
+				<param name="label" value="$LOCALIZE[13405]" />
+				<param name="textoffsety" value="100" />
+				<param name="radioposx" value="45" />
+				<param name="ondown" value="130" />
+				<param name="onup" value="50" />
+			</include>
+			<include content="InfoDialogButton2">
+				<param name="id" value="6" />
+				<param name="width" value="120" />
+				<param name="icon" value="icons/infodialogs/update.png" />
+				<param name="label" value="$LOCALIZE[184]" />
+				<param name="textoffsety" value="100" />
+				<param name="radioposx" value="45" />
+				<param name="ondown" value="130" />
+				<param name="onup" value="50" />				
+			</include>			
+		</control>
+			<control type="label" id="921">
+				<textoffsetx>20</textoffsetx>
+				<textoffsety>0</textoffsety>
+				<height>40</height>
+				<font>Reg30</font>  
+				<label>$VAR[FocusedButtonLabel]</label>
+				<textcolor>button_focus</textcolor>
+		 	</control>	
+	</include>
+	<include name="MusicInfoRatings">
+		<control type="group" id="900">
+			<height>120</height>
+			<width>250</width>
+    		<control type="label" id="910">
+				<textoffsetx>20</textoffsetx>
+
+				<height>40</height>
+        	    <label>$LOCALIZE[38018]:</label>
+			</control>		
+			<control type="label">
+
+				<textoffsety>50</textoffsety>
+<textoffsetx>20</textoffsetx>
+			    <height>40</height>
+				<label>$LOCALIZE[563]:</label>
+			</control>        		
+   			<control type="image" id="911">
+   			    <left>205</left>
+   			    <top>7</top>
+   			    <width>196</width>
+   			    <height>30</height>
+   			    <texture colordiffuse="button_focus">$VAR[StarRatingAndVotesVar]</texture>
+   			    <aspectratio>keep</aspectratio>
+   			</control>
+   			<control type="image" id="920">
+   			    <left>205</left>
+   			    <top>57</top>
+   			    <width>196</width>
+   			    <height>30</height>
+   			    <texture colordiffuse="button_focus">$VAR[StarRatingVar]</texture>
+   			    <aspectratio>keep</aspectratio>
+   			</control>
+		</control>
+	</include>
+	<include name="MusicInfo">
+		<include condition="![Container.Content(artists) | Container.Content(albums)]">Song_Layout</include>
+		<include condition="[Container.Content(artists) | Container.Content(albums)]">Album/Artsit_Layout</include>
+	</include>
+	<include name="Song_Layout">
+		<definition>
+   			<control type="group">		
+				<visible allowhiddenfocus="true">![Control.HasFocus(50) | Control.HasFocus(9334)]</visible>	
+				<left>634</left>
+				<top>10</top>
+	    	    <width>1280</width>
+	    	    <height>1080</height>
+	    	    <control type="grouplist">
+	    	        <left>10</left>
+	    	        <right>10</right>
+	    	        <top>0</top> 
+	    	        <bottom>0</bottom> 
+	    	        <orientation>vertical</orientation>
+	    	        <align>center</align>
+	    	        <itemgap>15</itemgap>
+        			<control type="label">
+						<width>1260</width>
+        			    <textoffsetx>10</textoffsetx>
+        			    <top>7</top>
+        			    <height>60</height>
+        			    <font>Reg60</font>
+        			    <label>$INFO[ListItem.Label]</label>
+						<textcolor>white</textcolor>
+					</control>				
+        			<control type="label">
+        			    <textoffsetx>10</textoffsetx>
+        			    <top>100</top>
+        			    <height>50</height>
+        			    <font>Reg50</font>
+        			    <label>$INFO[ListItem.Artist]</label>
+						<textcolor>button_focus</textcolor>
+        			</control>
+   					<control type="panel" id="42">
+   					    <width>1280</width>
+   					    <height>480</height>
+   					    <scrolltime>200</scrolltime>
+						<orientation>horizontal</orientation>
+        				<itemlayout height="40" width="640">
+        	   				<control type="label">
+        	   				    <left>20</left>
+        	   				    <top>7</top>
+        	   				    <label>$INFO[ListItem.Label]</label>
+        	   				</control>
+        	   				<control type="label">
+        	   				    <left>250</left>
+        	   				    <top>7</top>
+        	   				    <label>$INFO[ListItem.Label2]</label>
+        	   				</control>
+        				</itemlayout>
+						<focusedlayout height="40" width="640">
+        	    			<control type="label">
+        	    			    <left>20</left>
+        	    			    <top>7</top>
+        	    			    <label>$INFO[ListItem.Label]</label>
+        	    			</control>
+        	    			<control type="label">
+        	    			    <left>250</left>
+        	    			    <top>7</top>
+        	    			    <label>$INFO[ListItem.Label2]</label>
+        	    			</control>
+        				</focusedlayout>
+        				<content>
+							<include condition="String.IsEqual(ListItem.DBTYPE,song)">MusicInfoSongInfo</include>
+        				</content>
+   					</control>
 
 
+					<include>MusicInfoRatings</include>
+					<include>MusicInfoMenu</include>
+				</control>
+			</control>
 
 
+		</definition>
+	</include>
+	<include name="Album/Artsit_Layout">
+		<definition>
+   			<control type="group">		
+				<visible allowhiddenfocus="true">![Control.HasFocus(50) | Control.HasFocus(9334)]</visible>	
+				<left>634</left>
+				<top>10</top>
+	    	    <width>1280</width>
+	    	    <height>720</height>
+	    	    <control type="grouplist">
+	    	        <left>10</left>
+	    	        <right>10</right>
+	    	        <top>0</top> 
+	    	        <bottom>0</bottom> 
+	    	        <orientation>vertical</orientation>
+	    	        <align>center</align>
+	    	        <itemgap>15</itemgap>
+        			<control type="label">
+						<width>1260</width>
+        			    <left>20</left>
+        			    <top>7</top>
+        			    <height>60</height>
+        			    <font>Reg75</font>
+        			    <label>$VAR[Artist/Album]</label>
+						<textcolor>$VAR[Artist/AlbumBF]</textcolor>
+						<visible>Container.Content(albums) | [Container.Content(artists) + String.IsEmpty(ListItem.Art(clearlogo))]</visible>
+					</control>				
+        			<control type="label">
+        			    <left>20</left>
+        			    <top>100</top>
+        			    <height>50</height>
+        			    <font>Reg50</font>
+        			    <label>$INFO[ListItem.Artist]</label>
+						<textcolor>button_focus</textcolor>
+						<visible>!Container.Content(artists)</visible>
+        			</control>
+   					<control type="panel" id="41">
+   					    <width>1280</width>
+   					    <height>260</height>
+						<aligny>center</aligny>
+   					    <scrolltime>200</scrolltime>
+						<orientation>vertical</orientation>
+        				<itemlayout height="40" width="1280">
+        	   				<control type="label">
+        	   				    <left>20</left>
+        	   				    <top>7</top>
+        	   				    <label>$INFO[ListItem.Label]</label>
+        	   				</control>
+        	   				<control type="label">
+        	   				    <left>250</left>
+        	   				    <top>7</top>
+        	   				    <label>$INFO[ListItem.Label2]</label>
+        	   				</control>
+        				</itemlayout>
+						<focusedlayout height="40" width="1280">
+        	    			<control type="label">
+        	    			    <left>20</left>
+        	    			    <top>7</top>
+        	    			    <label>$INFO[ListItem.Label]</label>
+        	    			</control>
+        	    			<control type="label">
+        	    			    <left>250</left>
+        	    			    <top>7</top>
+        	    			    <label>$INFO[ListItem.Label2]</label>
+        	    			</control>
+        				</focusedlayout>
+        				<content>
+							<include condition="String.IsEqual(ListItem.DBTYPE,artist)">MusicInfoArtistInfo</include>
+        				    <include condition="String.IsEqual(ListItem.DBTYPE,album)">MusicInfoAlbumInfo</include>	
+        				</content>
+   					</control>
+   					
+
+					<include>MusicInfoRatings</include>
+					<include>MusicInfoMenu</include>
+				</control>
+			</control>
+			<control type="group">
+				<visible>![Control.HasFocus(50) | Control.HasFocus(9334) | Container.Content(songs)]</visible>
+				<left>634</left>
+				<top>740</top>
+	    	    <right>10</right>
+	    	    <height>330</height>
+				<control type="button" id="130">
+					<onup>9000</onup>
+					<onback>9000</onback>
+					<width>100%</width>
+					<height>100%</height>
+					<label></label>
+					<texturefocus border="16" colordiffuse="button_focus">boxes/box3.png</texturefocus>
+					<texturenofocus	/>
+					<onclick>SetProperty(TextViewer_Header,$LOCALIZE[21821],home)</onclick>
+					<onclick>SetProperty(TextViewer_Text,$ESCVAR[MusicInfoTextboxVar],home)</onclick>
+					<onclick condition="[String.IsEqual(ListItem.DbType,song) + !String.IsEmpty(ListItem.Comment)] | [String.IsEqual(ListItem.DbType,album) + !String.IsEmpty(ListItem.Property(Album_Description))] | [String.IsEqual(ListItem.DbType,artist) + !String.IsEmpty(ListItem.Property(Artist_Description))]">ActivateWindow(1102)</onclick>
+				</control>
+				<control type="textbox" id="400">
+					<wrapmultiline>true</wrapmultiline>
+					<label>$VAR[MusicInfoTextboxVar]</label>
+					<textcolor>button_focus</textcolor>
+					<top>2</top>
+					<left>30</left>
+					<right>0</right>
+					<bottom>2</bottom>
+					<align>left</align>
+					<aligny>center</aligny>
+					<font>Reg34</font>
+				</control>
+			</control>
+
+		</definition>
+	</include>
 
 
+	
 	<variable name="StarRatingAndVotesVar">
 		<value condition="String.IsEmpty(ListItem.RatingAndVotes)">flags/starrating/0.png</value>
 	    <value condition="Integer.IsGreater(ListItem.RatingAndVotes,9)">flags/starrating/10.png</value>

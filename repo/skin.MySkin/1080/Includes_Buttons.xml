@@ -132,7 +132,7 @@
 			<radioposx>95</radioposx>
 			<radioposy>6</radioposy>
 			<radiowidth>48</radiowidth>
-				<font>Reg33</font>
+			<font>Reg28</font>
 			<textureradioonfocus colordiffuse="D0FFFFFF">$PARAM[icon]</textureradioonfocus>
 			<textureradioonnofocus colordiffuse="D0FFFFFF">$PARAM[icon]</textureradioonnofocus>
 			<textureradioofffocus colordiffuse="D0FFFFFF">$PARAM[icon]</textureradioofffocus>
@@ -144,7 +144,7 @@
 	<include name="VideoInfoButtonsCommon2">
 		<param name="width">254</param>
 		<param name="top">0</param>
-		<param name="textoffsety">12</param>
+		<param name="textoffsety">120</param>
 		<param name="radioposx">10</param>
 		<definition>
 			<top>$PARAM[top]</top>
@@ -154,13 +154,13 @@
 			<align>center</align>
 			<aligny>center</aligny>
 			<texturefocus colordiffuse="button_focus" border="10">boxes/box.png</texturefocus>
-			<texturenofocus colordiffuse="box" border="10">boxes/box.png</texturenofocus>
+			<texturenofocus colordiffuse="button_focus" border="10">boxes/dbox.png</texturenofocus>
 			<textoffsetx>0</textoffsetx>
 			<textoffsety>$PARAM[textoffsety]</textoffsety>
 			<radioposx>$PARAM[radioposx]</radioposx>
 			<radioposy>0</radioposy>
 			<radiowidth>30</radiowidth>
-				<font>Reg33</font>
+			<font>Reg28</font>
 			<textcolor>white</textcolor>
     	    <focusedcolor>black</focusedcolor>
     	    <disabledcolor>red</disabledcolor>
@@ -191,7 +191,7 @@
 				<radioposx>95</radioposx>
 				<radioposy>6</radioposy>
 				<radiowidth>48</radiowidth>
-					<font>Reg33</font>
+				<font>Reg28</font>
 				<textureradioonfocus colordiffuse="D0FFFFFF">$PARAM[icon]</textureradioonfocus>
 				<textureradioonnofocus colordiffuse="D0FFFFFF">$PARAM[icon]</textureradioonnofocus>
 				<textureradioofffocus colordiffuse="D0FFFFFF">$PARAM[icon]</textureradioofffocus>
@@ -209,7 +209,7 @@
 	</include>
 	<include name="InfoDialogButton2">
 		<param name="width">252</param>
-		<param name="textoffsety">12</param>
+		<param name="textoffsety">8</param>
 		<param name="radioposx">10</param>		
 		<param name="onclick_1_condition">true</param>
 		<param name="onclick_2_condition">true</param>
@@ -221,13 +221,13 @@
 				<align>center</align>
 				<aligny>top</aligny>
 				<texturefocus colordiffuse="button_focus" border="10">boxes/box.png</texturefocus>
-				<texturenofocus colordiffuse="box" border="10">boxes/box.png</texturenofocus>
+				<texturenofocus colordiffuse="button_focus" border="10">boxes/dbox.png</texturenofocus>
 				<textoffsetx>0</textoffsetx>
-			<textoffsety>$PARAM[textoffsety]</textoffsety>
+				<textoffsety>$PARAM[textoffsety]</textoffsety>
 				<radioposx>$PARAM[radioposx]</radioposx>
-			<radioposy>0</radioposy>
+				<radioposy>0</radioposy>
 				<radiowidth>30</radiowidth>
-					<font>Reg33</font>
+				<font>Reg28</font>
 				<textcolor>white</textcolor>
         		<focusedcolor>black</focusedcolor>
         		<disabledcolor>red</disabledcolor>
@@ -265,7 +265,7 @@
 				<radioposx>108</radioposx>
 				<radioposy>16</radioposy>
 				<radiowidth>48</radiowidth>
-					<font>Reg33</font>
+					<font>Reg28</font>
 				<textureradioonfocus colordiffuse="D0FFFFFF">$PARAM[icon_on]</textureradioonfocus>
 				<textureradioonnofocus colordiffuse="D0FFFFFF">$PARAM[icon_on]</textureradioonnofocus>
 				<textureradioofffocus colordiffuse="D0FFFFFF">$PARAM[icon_off]</textureradioofffocus>
@@ -288,13 +288,13 @@
 				<align>center</align>
 				<aligny>top</aligny>
 				<texturefocus colordiffuse="button_focus" border="10">boxes/box.png</texturefocus>
-				<texturenofocus colordiffuse="box" border="10">boxes/box.png</texturenofocus>
+				<texturenofocus colordiffuse="button_focus" border="10">boxes/dbox.png</texturenofocus>
 				<textoffsetx>0</textoffsetx>
-				<textoffsety>12</textoffsety>
+				<textoffsety>8</textoffsety>
 				<radioposx>10</radioposx>
 				<radioposy>0</radioposy>
 				<radiowidth>30</radiowidth>
-					<font>Reg33</font>
+				<font>Reg28</font>
 				<textureradioonfocus colordiffuse="black">$PARAM[icon_on]</textureradioonfocus>
 				<textureradioonnofocus colordiffuse="D0FFFFFF">$PARAM[icon_on]</textureradioonnofocus>
 				<textureradioofffocus colordiffuse="black">$PARAM[icon_off]</textureradioofffocus>
@@ -312,7 +312,7 @@
 
 	<include name="DefaultDialogButton">
 		<param name="wrapmultiline">false</param>
-		<param name="font">Reg33</param>
+		<param name="font">Reg28</param>
 		<param name="onclick"></param>
 		<param name="visible">true</param>
 		<param name="enable">true</param>
@@ -364,7 +364,7 @@
 				<visible>Player.Process(videohwdecoder)</visible>
 				<visible>!Integer.IsEqual(System.GetInt(coreelec.amlogic.dolbyvision.mode),2) + ![String.IsEqual(Player.Process(video.source.hdr.type.raw),2) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)]</visible>
 				<visible>$PARAM[visible]</visible>
-				<font>Reg33</font>
+				<font>Reg28</font>
 			</control>
 		</definition>
 	</include>

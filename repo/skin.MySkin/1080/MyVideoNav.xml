@@ -90,6 +90,94 @@
 				</control>
 			</control>
 		</control>
+		            <control type="label">
+                <top>840</top>
+                <left>10</left>
+                <right>27</right>
+                <font>Reg20</font>
+                <align>left</align>
+                <label>Testing</label>
+            </control>
+		            <control type="label">
+                <top>800</top>
+                <left>80</left>
+                <right>27</right>
+                <font>Reg22</font>
+                <align>left</align>
+                <label>Testing</label>
+            </control>
+		            <control type="label">
+                <top>840</top>
+                <left>155</left>
+                <right>27</right>
+                <font>Reg24</font>
+                <align>left</align>
+                <label>Testing</label>
+            </control>
+		            <control type="label">
+                <top>880</top>
+                <left>235</left>
+                <right>27</right>
+                <font>Reg26</font>
+                <align>left</align>
+                <label>Testing</label>
+            </control>
+		            <control type="label">
+                <top>840</top>
+                <left>323</left>
+                <right>27</right>
+                <font>Reg28</font>
+                <align>left</align>
+                <label>Testing</label>
+            </control>	
+				            <control type="label">
+                <top>800</top>
+                <left>415</left>
+                <right>27</right>
+                <font>Reg30</font>
+                <align>left</align>
+                <label>Testing</label>
+            </control>
+		            <control type="label">
+                <top>840</top>
+                <left>515</left>
+                <right>27</right>
+                <font>Reg32</font>
+                <align>left</align>
+                <label>Testing</label>
+            </control>
+            <control type="label">
+                <top>880</top>
+                <left>625</left>
+                <right>27</right>
+                <font>Reg34</font>
+                <align>left</align>
+                <label>Testing</label>
+            </control>
+		            <control type="label">
+                <top>840</top>
+                <left>740</left>
+                <right>27</right>
+                <font>Reg36</font>
+                <align>left</align>
+                <label>Testing</label>
+            </control>
+            <control type="label">
+                <top>800</top>
+                <left>862</left>
+                <right>27</right>
+                <font>Reg38</font>
+                <align>left</align>
+                <label>Testing</label>
+            </control>
+		            <control type="label">
+                <top>840</top>
+                <left>988</left>
+                <right>27</right>
+                <font>Reg40</font>
+                <align>left</align>
+                <label>Testing</label>
+            </control>
 	<!--<include>Content</include>-->
 	<!--<include>Folderpath</include>-->
 		<include>crt</include>	
