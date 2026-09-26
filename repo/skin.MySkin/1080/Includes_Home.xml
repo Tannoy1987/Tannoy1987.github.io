@@ -384,21 +384,29 @@
 				<control type="group">
 					<left>0</left>
 					<top>0</top>
+                        <include content="box">
+                            <param name="texture" value="box3" />
+                             <param name="vis" value="!Skin.HasSetting(cd) | [Skin.HasSetting(cd) + [String.IsEmpty(ListItem.Art(discart)) | Container.Content(artists)]]" />
+                        </include>  
 					<control type="image">
 						<bordersize>5</bordersize>
-						<texture border="10" colordiffuse="button_focus">boxes/box3.png</texture>
-						<visible>String.IsEmpty(ListItem.Art(discart))</visible>
-					</control>
-					<control type="image">
-						<bordersize>6</bordersize>
 						<texture colordiffuse="button_focus">boxes/cd.png</texture>
 						<aspectratio>scaled</aspectratio>
 						<visible>!String.IsEmpty(ListItem.Art(discart))</visible>
 					</control>
-					<control type="image">
-						<bordersize>12</bordersize>
-						<texture diffuse="diffuse/square.png" fallback="DefaultMusicAlbums.png">$VAR[musicthumbnails2]</texture>
-					</control>
+
+<control type="image">
+    <bordersize>12</bordersize>
+    <texture diffuse="diffuse/cd.png">$VAR[musicthumbnails2]</texture>
+    <aspectratio align="center" aligny="center">keep</aspectratio>
+    <visible>Skin.HasSetting(cd) + !String.IsEmpty(ListItem.Art(discart)) + String.IsEqual(listitem.dbtype,album)</visible>
+</control>
+<control type="image">
+    <bordersize>12</bordersize>
+    <texture diffuse="diffuse/cdtop.png">$VAR[musicthumbnails2]</texture>
+    <aspectratio align="center" aligny="center">keep</aspectratio>
+    <visible>[!Skin.HasSetting(cd) | String.IsEmpty(ListItem.Art(discart)) | !String.IsEqual(listitem.dbtype,album)]</visible>
+</control>
 				</control>
 			</focusedlayout>
 			<content target="music" limit="0" browse="auto" sortorder="descending" sortby="lastused">musicdb://recentlyplayedalbums</content>

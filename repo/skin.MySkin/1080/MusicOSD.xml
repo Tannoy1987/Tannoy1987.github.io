@@ -791,13 +791,13 @@
             <include>box</include>
 			<include content="box">
 				<param name="texture" value="box"/>
-				<param name="bs" value="285,10,285,10"/>
+				<param name="bs" value="265,10,265,10"/>
 				<param name="cd" value="black"/>
 			</include>
             <control type="image">
                 <top>10</top>
                 <width>250</width>
-                <left>10</left>
+                <right>10</right>
                 <bottom>10</bottom>
                 <aspectratio>keep</aspectratio>
                 <include>Visible_Left</include>
@@ -805,7 +805,7 @@
                 <animation effect="rotate" end="-360" time="8000" center="auto" loop="true" condition="Player.Playing + Skin.HasSetting(cdspin)">Conditional</animation>
             </control>
 	        <control type="image">
-				<right>10</right>
+				<left>10</left>
                 <top>10</top>
                 <width>250</width>
                 <bottom>10</bottom>
@@ -835,7 +835,7 @@
                     <height>40</height>
                     <align>left</align>
                     <font>Reg32</font>
-                    <label>$INFO[MusicPlayer.Album]$INFO[MusicPlayer.Year, ∙]$INFO[MusicPlayer.Genre, ∙]</label>
+                    <label>$INFO[MusicPlayer.Album]$INFO[MusicPlayer.Year, ∙ ]</label>
                     <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
                 </control>
                 <control type="label">
@@ -882,6 +882,18 @@
                  <textcolor>grey</textcolor>
                  <autoscroll delay="2000" time="2000" repeat="500">true</autoscroll>
              </control>
+            <control type="label">
+				<top>208</top>
+                <right>290</right>
+				<width>820</width>
+				<height>40</height>
+				<align>right</align>
+				<aligny>center</aligny>
+				<font>Reg31</font>
+				<label>$VAR[OSDNextLabelVar]</label>
+				<shadowcolor>black</shadowcolor>
+				<visible>Control.HasFocus(607) + Integer.IsGreater(Playlist.Length(music),1)</visible>
+			</control>
         </control>
    <!--Controls-->          
         <control type="group" id="200">
@@ -905,7 +917,7 @@
             <effect type="slide" start="0,0" end="0,200" time="300" tween="cubic" easing="out" />
             </animation>
             <control type="grouplist" id="201">
-                <top>38</top>
+                <top>40</top>
                 <left>20</left>
                 <itemgap>20</itemgap>
                 <scrolltime tween="sine">200</scrolltime>
@@ -1001,7 +1013,8 @@
                 </control>
             </control>
             <control type="grouplist" id="202">
-                <top>38</top>
+                <visible allowhiddenfocus="true">![Control.HasFocus(607) + Integer.IsGreater(Playlist.Length(music),1)]</visible>
+                <top>40</top>
                 <right>15</right>
                 <itemgap>10</itemgap>
                 <scrolltime tween="sine">200</scrolltime>

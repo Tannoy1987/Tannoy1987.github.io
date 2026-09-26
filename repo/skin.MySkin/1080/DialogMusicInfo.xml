@@ -5,42 +5,95 @@
 	<onunload>ClearProperty(infobackground,home)</onunload>
 	<controls> 
 		<control type="image">
-			<texture>colors/black.png</texture>
+			<texture>colors/musicinfo.png</texture>
 		</control>
 		<control type="image">
-			<left>0</left>
+			<left>633</left>
 			<top>0</top>
-			<width>1920</width>
+			<right>0</right>
+			<height>1080</height>
+			<texture colordiffuse="ff1d1d1d">colors/white.png</texture>
+			<visible>String.IsEmpty(ListItem.Art(fanart))</visible>
+		</control>
+		<control type="image">
+			<left>633</left>
+			<top>0</top>
+			<right>0</right>
 			<height>1080</height>
 			<aspectratio aligny="top">scale</aspectratio>
-			<texture colordiffuse="e01d1d1d" fallback="special://skin/extras/home-images/music.jpg">$INFO[ListItem.Art(fanart)]</texture>
+			<texture colordiffuse="e01d1d1d">$INFO[ListItem.Art(fanart)]</texture>
 		</control>
-	<!--left-->
+		<control type="label">
+		  <width>1240</width>
+		  <left>662</left>
+		  <top>34</top>
+		  <height>74</height>
+		  <font>Reg75</font>
+		  <label>$INFO[ListItem.Artist]</label>
+		  <textcolor>$VAR[Artist/AlbumBF]</textcolor>
+		  <visible>Container.Content(albums) + [Control.HasFocus(50) | Control.HasFocus(9334)]</visible>
+	    </control>				
+	    <control type="label">
+		  	<left>662</left>
+		  	<width>1150</width>
+		  	<top>123</top>
+		  	<height>49</height>
+		  	<font>Reg50</font>
+		  	<label>$INFO[ListItem.Title]</label>
+		  	<textcolor>button_focus</textcolor>
+		  	<visible>Container.Content(albums) + [Control.HasFocus(50) | Control.HasFocus(9334)]</visible>
+	  	</control>	
 		<control type="group">
-			<include>L 1/3 List</include>
-		<!--CD-Image-->
+			<bottom>0</bottom>
+			<height>1080</height>
+			<left>0</left>
+			<width>632</width>	
+			<control type="image">
+				<right>0</right>
+				<top>0</top>
+				<bottom>0</bottom>
+			    <texture>$INFO[ListItem.Art(fanart)]</texture>
+			    <aspectratio>scale</aspectratio>
+				<visible>!String.IsEmpty(ListItem.Art(fanart))</visible>
+				<animation effect="fade"
+					start="100" end="0" time="300" condition="Control.HasFocus(50) | Control.HasFocus(9334)">Conditonal</animation>
+			</control>			
+			<control type="image">
+				<right>0</right>
+				<top>0</top>
+				<bottom>0</bottom>
+			    <texture>$VAR[MusicInfoThumbVar]</texture>
+			    <aspectratio>keep</aspectratio>
+				<visible>String.IsEmpty(ListItem.Art(fanart))</visible>
+				<animation effect="fade"
+					start="100" end="0" time="300" condition="Control.HasFocus(50) | Control.HasFocus(9334)">Conditonal</animation>
+			</control>			
+	
 			<control type="group">
-				<visible>Container.Content(albums)</visible>
-				    <top>10</top>
-				    <left>10</left>
-				    <right>10</right>
-				    <bottom>10</bottom>				
+				<visible>[Control.HasFocus(50) | Control.HasFocus(9334)] + Container.Content(albums)</visible>
 				<control type="image">
-				    <texture>$INFO[ListItem.Art(discart)]</texture>
+				    <top>56</top>
+				    <left>56</left>
+				    <width>520</width>
+				    <height>520</height>
+				    <texture fallback="$VAR[cd_color_location]">$INFO[ListItem.Art(discart)]</texture>
 				    <aspectratio>keep</aspectratio>
-				    <animation effect="slide" start="0,0" end="0,-223" time="600" condition="true">WindowOpen</animation>
-				    <animation effect="slide" start="0,-223"  end="0,0" time="300" condition="true">WindowClose</animation>
+				    <animation effect="slide"
+						start="0,1080" end="0,-28" time="600" condition="true">WindowOpen</animation>
 				</control>
 				<control type="image">
+				    <top>56</top>
+				    <left>56</left>
+				    <width>520</width>
+				    <height>520</height>
 				    <texture>$VAR[MusicInfoThumbVar]</texture>
 				    <aspectratio>keep</aspectratio>
-				    <animation effect="slide" start="0,0" end="0,223" time="600" condition="!String.IsEmpty(ListItem.Art(discart))">WindowOpen</animation>
-				    <animation effect="slide" start="0,223"  end="0,0" time="300" condition="!String.IsEmpty(ListItem.Art(discart))">WindowClose</animation>
+				    <animation effect="slide"
+						start="0,1080" end="0,514" time="600" condition="true">WindowOpen</animation>
 				</control>
 			</control>
-			<control type="group">
-				<visible>Container.Content(artists)</visible>
-				<visible>![String.IsEmpty(ListItem.Art(cutout)) | String.IsEmpty(ListItem.Art(clearlogo))]</visible>
+				<control type="group">
+				<visible>Container.Content(artists) + Control.HasFocus(50)</visible>
 				<control type="image">
 				    <top>115</top>
 				    <left>35</left>
@@ -54,19 +107,12 @@
 				    <left>-20</left>
 				    <right>0</right>
 				    <bottom>-25</bottom>
-				    <texture fallback="$INFO[ListItem.Art(clearart)]">$INFO[ListItem.Art(cutout)]</texture>
+				    <texture>$INFO[ListItem.Art(cutout)]</texture>
 				    <aspectratio>keep</aspectratio>
 				</control>
 			</control>
-			<control type="group">
-				<visible>Container.Content(songs)</visible>
-				<control type="image">
-					<right>10</right>
-				    <texture>$INFO[ListItem.Art(fanart)]</texture>
-				    <aspectratio>scale</aspectratio>
-				</control>
-			</control>
-		</control>
+
+		</control>	
 		<control type="group">
 			<visible>ControlGroup(9000).HasFocus()</visible>	
 			<control type="image">
@@ -102,6 +148,7 @@
 				<onclick condition="!System.HasAddon(script.playalbum)">Notification(Play Album script missing,Please install script.playalbum,5000)</onclick>
 				<onleft>50</onleft>
 				<ondown>50</ondown>
+				<onback>50</onback>
 			</control>
 			<control type="panel" id="50">
 				<visible>![Container.Content(songs) | Container.Content(artists)]</visible>
@@ -150,7 +197,7 @@
 			</control>
 			<control type="panel" id="50">
 				<visible>![Container.Content(songs) | Container.Content(albums)]</visible>
-				<left>60</left>
+				<left>24</left>
 				<top>2</top>
 				<right>0</right>
 				<bottom>5</bottom>
@@ -209,6 +256,8 @@
 		</control>
 		<include>MusicInfo</include>
 		<include>crt</include>
-		<!-- <include>Content</include> -->
+	<!-- 	<include>Content</include>
+			 <include>Lineoverlay</include>  -->
+
 	</controls>
 </window>

@@ -6,8 +6,6 @@
 			<width>100%</width>
 			<height>22.2%</height>
 			<top>841</top>
-			<animation effect="fade" start="100" end="0" time="200" tween="sine" condition="$EXP[infodialog_active]">conditional</animation>
-			<control type="group">
 				<include>Keyboard_Slide_Up</include>
 				<include content="box">
 					<param name="texture" value="box3"/>
@@ -28,7 +26,7 @@
 					<param name="texture" value="box"/>
 					<param name="bs" value="750,5,410,15"/>
 					<param name="cd" value="box"/>
-				</include>	
+				</include>
 			<!--channel logo-->	
 				<control type="image"> 
 					<left>79%</left>
@@ -89,7 +87,6 @@
 							<top>0</top>
 							<right>0</right>
 							<height>44</height>
-							<animation effect="fade" start="100" end="0" time="0">UnFocus</animation>
 							<texture colordiffuse="button_focus" border="10,10,10,10">boxes/box.png</texture>
 						</control>
 						<control type="label">
@@ -118,14 +115,13 @@
 							<width>765</width>
 							<top>4</top>
 							<height>44</height>
-							
 							<aligny>top</aligny>
 							<label>$VAR[PVRListItemSubLabel]</label>
 							<textcolor>black</textcolor>	
 						</control>
 					</focusedlayout>
 				</control>
-			</control>
+
 		</control>
 	</controls>
 </window>

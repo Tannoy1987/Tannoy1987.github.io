@@ -11,7 +11,7 @@
 		</control>		
 		<control type="group">
 			<height>100%</height>
-    	    <width>490</width>
+    	    <width>540</width>
 			<animation effect="zoom" start="100" end="100.5" time="5" condition="Window.IsActive(home)">conditional</animation>
 			<animation effect="slide" start="0" end="-3,-3" time="0" condition="Window.IsActive(home)">conditional</animation>
 			<animation effect="slide" start="0" end="0,210" time="0" condition="Window.IsActive(visualisation)">conditional</animation>

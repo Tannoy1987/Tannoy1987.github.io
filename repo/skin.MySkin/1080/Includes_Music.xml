@@ -3,12 +3,12 @@
 	<include name="MusicInfoArtistInfo">
 		<item>
 			<label>$LOCALIZE[21893]:</label>
-			<label2>$INFO[ListItem.Property(Artist_Born)]$INFO[ListItem.Property(Artist_Died),, - ]</label2>
+			<label2>$INFO[ListItem.Property(Artist_Born)] $INFO[ListItem.Property(Artist_Died),               Died:                  ]</label2>
 			<visible>!String.IsEmpty(ListItem.Property(Artist_Born))</visible>
 		</item>
 		<item>
 			<label>$LOCALIZE[21894]:</label>
-			<label2>$INFO[ListItem.Property(Artist_Formed)]$INFO[ListItem.Property(Artist_Disbanded),, - ]</label2>
+			<label2>$INFO[ListItem.Property(Artist_Formed)]</label2>
 			<visible>!String.IsEmpty(ListItem.Property(Artist_Formed))</visible>
 		</item>
 		<item>
@@ -62,6 +62,11 @@
 			<label2>$INFO[ListItem.Property(Album_Mood)]</label2>
 			<visible>!String.IsEmpty(ListItem.Property(Album_Mood))</visible>
 		</item>
+		<item>
+			<label>$LOCALIZE[21899]: </label>
+			<label2>$INFO[ListItem.Property(Album_Label)]</label2>
+			<visible>!String.IsEmpty(ListItem.Property(Album_Label))</visible>
+		</item>
 
 
 		
@@ -89,9 +94,9 @@
 			<visible>!String.IsEmpty(ListItem.LastPlayed)</visible>
 		</item>
 		<item>
-			<label>$LOCALIZE[558]:</label>
-			<label2>$INFO[ListItem.Album]$INFO[listitem.discnumber, - $LOCALIZE[427] ]</label2>
-			<visible>!String.IsEmpty(ListItem.Album)</visible>
+			<label>$LOCALIZE[427]:</label>
+			<label2>$INFO[listitem.discnumber]</label2>
+			<visible>!String.IsEmpty(ListItem.discnumber)</visible>
 		</item>
 		<item>
 			<label>$LOCALIZE[515]:</label>
@@ -201,10 +206,11 @@
 	</include>
 	<include name="MusicInfoMenu">
 		<control type="grouplist" id="9000">
+		 <animation effect="slide" 
+		 	end="21,0" time="0" condition="true">conditional</animation>
 			<width>1280</width>
 			<height>55</height>
 			<onleft>7</onleft>
-			<align>top</align>
 			<itemgap>10</itemgap>
 			<orientation>horizontal</orientation>
 			<include content="InfoDialogButton2">
@@ -288,16 +294,16 @@
 			<width>250</width>
     		<control type="label" id="910">
 				<textoffsetx>20</textoffsetx>
-
 				<height>40</height>
-        	    <label>$LOCALIZE[38018]:</label>
+        	    <label>$LOCALIZE[563]:</label>
+				<visible>!String.IsEmpty(ListItem.RatingAndVotes)</visible>
 			</control>		
 			<control type="label">
-
 				<textoffsety>50</textoffsety>
-<textoffsetx>20</textoffsetx>
+				<textoffsetx>20</textoffsetx>
 			    <height>40</height>
-				<label>$LOCALIZE[563]:</label>
+				<label>$LOCALIZE[38018]:</label>
+				<visible>!String.IsEmpty(ListItem.UserRating)</visible>
 			</control>        		
    			<control type="image" id="911">
    			    <left>205</left>
@@ -306,6 +312,7 @@
    			    <height>30</height>
    			    <texture colordiffuse="button_focus">$VAR[StarRatingAndVotesVar]</texture>
    			    <aspectratio>keep</aspectratio>
+				<visible>!String.IsEmpty(ListItem.RatingAndVotes)</visible>
    			</control>
    			<control type="image" id="920">
    			    <left>205</left>
@@ -314,12 +321,13 @@
    			    <height>30</height>
    			    <texture colordiffuse="button_focus">$VAR[StarRatingVar]</texture>
    			    <aspectratio>keep</aspectratio>
+				<visible>!String.IsEmpty(ListItem.UserRating)</visible>
    			</control>
 		</control>
 	</include>
 	<include name="MusicInfo">
 		<include condition="![Container.Content(artists) | Container.Content(albums)]">Song_Layout</include>
-		<include condition="[Container.Content(artists) | Container.Content(albums)]">Album/Artsit_Layout</include>
+		<include condition="[Container.Content(artists) | Container.Content(albums)]">Album/Artist_Layout</include>
 	</include>
 	<include name="Song_Layout">
 		<definition>
@@ -337,24 +345,34 @@
 	    	        <orientation>vertical</orientation>
 	    	        <align>center</align>
 	    	        <itemgap>15</itemgap>
-        			<control type="label">
+        			<control type="textbox">
 						<width>1260</width>
+						<height>145</height>
         			    <textoffsetx>10</textoffsetx>
-        			    <top>7</top>
-        			    <height>60</height>
         			    <font>Reg60</font>
         			    <label>$INFO[ListItem.Label]</label>
 						<textcolor>white</textcolor>
+						<align>left</align>
+
 					</control>				
         			<control type="label">
         			    <textoffsetx>10</textoffsetx>
         			    <top>100</top>
-        			    <height>50</height>
+        			    <height>49</height>
         			    <font>Reg50</font>
         			    <label>$INFO[ListItem.Artist]</label>
 						<textcolor>button_focus</textcolor>
         			</control>
+        			<control type="label">
+        			    <textoffsetx>10</textoffsetx>
+        			    <top>100</top>
+        			    <height>49</height>
+        			    <font>Reg50</font>
+        			    <label>$INFO[ListItem.Album]</label>
+	
+        			</control>
    					<control type="panel" id="42">
+						<include>songinfocenter</include>
    					    <width>1280</width>
    					    <height>480</height>
    					    <scrolltime>200</scrolltime>
@@ -387,9 +405,8 @@
 							<include condition="String.IsEqual(ListItem.DBTYPE,song)">MusicInfoSongInfo</include>
         				</content>
    					</control>
+					<include condition="!String.IsEmpty(ListItem.RatingAndVotes) | !String.IsEmpty(ListItem.UserRating)">MusicInfoRatings</include>
 
-
-					<include>MusicInfoRatings</include>
 					<include>MusicInfoMenu</include>
 				</control>
 			</control>
@@ -397,9 +414,9 @@
 
 		</definition>
 	</include>
-	<include name="Album/Artsit_Layout">
+	<include name="Album/Artist_Layout">
 		<definition>
-   			<control type="group">		
+   			<control type="group">	
 				<visible allowhiddenfocus="true">![Control.HasFocus(50) | Control.HasFocus(9334)]</visible>	
 				<left>634</left>
 				<top>10</top>
@@ -413,28 +430,31 @@
 	    	        <orientation>vertical</orientation>
 	    	        <align>center</align>
 	    	        <itemgap>15</itemgap>
-        			<control type="label">
+					<animation effect="slide" end="0,162" time="0" condition="!Control.IsVisible(130)">conditional</animation>
+        			<control type="label" id="5">
 						<width>1260</width>
-        			    <left>20</left>
+        			    <textoffsetx>18</textoffsetx>
         			    <top>7</top>
-        			    <height>60</height>
+        			    <height>74</height>
         			    <font>Reg75</font>
-        			    <label>$VAR[Artist/Album]</label>
-						<textcolor>$VAR[Artist/AlbumBF]</textcolor>
-						<visible>Container.Content(albums) | [Container.Content(artists) + String.IsEmpty(ListItem.Art(clearlogo))]</visible>
-					</control>				
-        			<control type="label">
-        			    <left>20</left>
-        			    <top>100</top>
-        			    <height>50</height>
-        			    <font>Reg50</font>
         			    <label>$INFO[ListItem.Artist]</label>
+						<textcolor>$VAR[Artist/AlbumBF]</textcolor>
+
+					</control>				
+        			<control type="label" id="4">
+						<width>1260</width>
+        			    <textoffsetx>18</textoffsetx>
+        			    <top>7</top>
+        			    <height>49</height>
+        			    <font>Reg50</font>
+        			    <label>$INFO[ListItem.Title]</label>
 						<textcolor>button_focus</textcolor>
-						<visible>!Container.Content(artists)</visible>
-        			</control>
+
+					</control>				
    					<control type="panel" id="41">
+						<include>aainfocenter</include>
    					    <width>1280</width>
-   					    <height>260</height>
+   					    <height>290</height>
 						<aligny>center</aligny>
    					    <scrolltime>200</scrolltime>
 						<orientation>vertical</orientation>
@@ -467,24 +487,23 @@
         				    <include condition="String.IsEqual(ListItem.DBTYPE,album)">MusicInfoAlbumInfo</include>	
         				</content>
    					</control>
-   					
-
-					<include>MusicInfoRatings</include>
+					 <include condition="!String.IsEmpty(ListItem.RatingAndVotes) | !String.IsEmpty(ListItem.UserRating)">MusicInfoRatings</include>
 					<include>MusicInfoMenu</include>
 				</control>
 			</control>
 			<control type="group">
 				<visible>![Control.HasFocus(50) | Control.HasFocus(9334) | Container.Content(songs)]</visible>
-				<left>634</left>
+				<left>643</left>
 				<top>740</top>
 	    	    <right>10</right>
 	    	    <height>330</height>
 				<control type="button" id="130">
+					<visible>!String.IsEmpty(ListItem.Property(Artist_Description)) | !String.IsEmpty(ListItem.Property(Album_Description))</visible>			
 					<onup>9000</onup>
 					<onback>9000</onback>
 					<width>100%</width>
 					<height>100%</height>
-					<label></label>
+					<label />
 					<texturefocus border="16" colordiffuse="button_focus">boxes/box3.png</texturefocus>
 					<texturenofocus	/>
 					<onclick>SetProperty(TextViewer_Header,$LOCALIZE[21821],home)</onclick>
@@ -495,16 +514,15 @@
 					<wrapmultiline>true</wrapmultiline>
 					<label>$VAR[MusicInfoTextboxVar]</label>
 					<textcolor>button_focus</textcolor>
-					<top>2</top>
+					<top>5</top>
 					<left>30</left>
-					<right>0</right>
-					<bottom>2</bottom>
+					<right>30</right>
+					<bottom>5</bottom>
 					<align>left</align>
 					<aligny>center</aligny>
 					<font>Reg34</font>
 				</control>
 			</control>
-
 		</definition>
 	</include>
 

@@ -1303,6 +1303,11 @@
 			<label>$VAR[Content]</label>
 		</control>
 	</include>
+	<include name="Lineoverlay">
+		<control type="image">
+			<texture>centerline.png</texture>
+		</control>
+	</include>	
 	<include name="Folderpath">
 		<control type="textbox">
             <top>5</top>

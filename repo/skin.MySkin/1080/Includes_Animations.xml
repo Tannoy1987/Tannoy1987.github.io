@@ -17,6 +17,33 @@
 		<animation effect="slide" end="238,0" time="0" condition="Integer.IsEqual(Container(50).NumItems,6)">conditional</animation>
 		<animation effect="slide" end="119,0" time="0" condition="Integer.IsEqual(Container(50).NumItems,7)">conditional</animation>
 	</include>
+	<include name="songinfocenter">
+		<animation effect="slide" end="0,220" time="0" condition="Integer.IsEqual(Container(42).NumItems,1)">conditional</animation>
+		<animation effect="slide" end="0,200" time="0" condition="Integer.IsEqual(Container(42).NumItems,2)">conditional</animation>
+		<animation effect="slide" end="0,180" time="0" condition="Integer.IsEqual(Container(42).NumItems,3)">conditional</animation>
+		<animation effect="slide" end="0,160" time="0" condition="Integer.IsEqual(Container(42).NumItems,4)">conditional</animation>
+		<animation effect="slide" end="0,140" time="0" condition="Integer.IsEqual(Container(42).NumItems,5)">conditional</animation>
+		<animation effect="slide" end="0,120" time="0" condition="Integer.IsEqual(Container(42).NumItems,6)">conditional</animation>
+		<animation effect="slide" end="0,100" time="0" condition="Integer.IsEqual(Container(42).NumItems,7)">conditional</animation>
+		<animation effect="slide" end="0,80" time="0" condition="Integer.IsEqual(Container(42).NumItems,8)">conditional</animation>
+		<animation effect="slide" end="0,60" time="0" condition="Integer.IsEqual(Container(42).NumItems,9)">conditional</animation>
+		<animation effect="slide" end="0,40" time="0" condition="Integer.IsEqual(Container(42).NumItems,10)">conditional</animation>
+		<animation effect="slide" end="0,20" time="0" condition="Integer.IsEqual(Container(42).NumItems,11)">conditional</animation>
+	</include>
+	<include name="aainfocenter">
+		<animation effect="slide" end="0,100" time="0" condition="Integer.IsEqual(Container(41).NumItems,1)">conditional</animation>
+		<animation effect="slide" end="0,80" time="0" condition="Integer.IsEqual(Container(41).NumItems,2)">conditional</animation>
+		<animation effect="slide" end="0,60" time="0" condition="Integer.IsEqual(Container(41).NumItems,3)">conditional</animation>
+		<animation effect="slide" end="0,40" time="0" condition="Integer.IsEqual(Container(41).NumItems,4)">conditional</animation>
+		<animation effect="slide" end="0,20" time="0" condition="Integer.IsEqual(Container(41).NumItems,5)">conditional</animation>
+	</include>
+
+
+
+
+
+
+
 	<include name="MenuZoom">
 		<!-- <animation effect="slide" end="22,30" time="5" condition="Control.HasFocus(1000) + String.IsEqual(Skin.String(home_layout),5)">conditional</animation> -->
 		<animation effect="slide" end="75,25" time="5" condition="Control.HasFocus(1000)">conditional</animation>

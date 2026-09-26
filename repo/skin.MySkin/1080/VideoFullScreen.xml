@@ -5,22 +5,9 @@
  	<onload>SetProperty(ShowDVLogo, true, home)</onload>
     <onload>AlarmClock(dv_clear_timer, ClearProperty(ShowDVLogo, home), 00:05, silent)</onload>
 	<controls> 
-		            <!-- <control type="label" id="222">
-    
-                <label>$VAR[videoplaying]</label>
-				<top>540</top>
-				<right>960</right>
-                <width>200</width>
-                <height>138</height>
-                <aligny>center</aligny>
-                <align>center</align>
-                <font>reg30</font>
-
-				<shadowcolor>black</shadowcolor>
-            </control> -->
   		<control type="group" id="2">
 			<visible>Skin.HasSetting(DV/HDRflags)</visible>
-            <visible>String.IsEqual(Window(home).Property(ShowDVLogo), true)</visible>
+            <visible>String.IsEqual(Window(home).Property(ShowDVLogo), true) + onAVStarted()</visible>
             <animation effect="fade" delay="300" time="200">Visible</animation>
             <animation effect="fade" delay="200" time="150">Hidden</animation>
             <right>-4</right>
