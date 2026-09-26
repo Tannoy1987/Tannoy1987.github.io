@@ -1329,6 +1329,17 @@
                 <visible>!Window.IsActive(music)</visible>
 				<visible>Integer.IsGreater(ListItem.PlayCount,0) + !ListItem.IsResumable</visible>
             </control>  
+            <control type="label">
+                <bottom>-5</bottom>
+                <right>15</right>
+                <left>15</left>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>font12</font>
+                <label>$INFO[ListItem.Label]</label>
+				<visible>Window.IsActive(music) + Control.IsVisible(640)</visible>
+                <scroll>true</scroll>
+            </control>    
             <control type="textbox">
                 <height>$PARAM[height]</height>
                 <left>20</left>
@@ -1338,6 +1349,7 @@
                 <aligny>center</aligny>
                 <font>reg25</font>
                 <label>$INFO[ListItem.Label]</label>
+                <visible>!Window.IsActive(music)</visible>
             </control>
         </definition>
     </include>
@@ -1433,6 +1445,17 @@
                 <visible>!Window.IsActive(music)</visible>
 				<visible>Control.HasFocus(640)</visible>
             </control>           
+            <control type="label">
+                <bottom>0</bottom>
+                <right>15</right>
+                <left>15</left>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>font12</font>
+                <label>[COLOR button_focus]$INFO[ListItem.Label][/COLOR]</label>
+				<visible>Window.IsActive(music) + Control.HasFocus(640)</visible>
+                <scroll>true</scroll>
+            </control>           
             <control type="textbox">
                 <height>$PARAM[height]</height>
 		    	<left>20</left>
@@ -1443,6 +1466,7 @@
                 <font>reg25</font>
 		    	<label>[COLOR button_focus]$INFO[ListItem.Label][/COLOR]</label>
                 <autoscroll time="3000" delay="5000" repeat="5000">true</autoscroll>
+                <visible>!Window.IsActive(music)</visible>                
                 <animation effect="slide" end="0,6" time="0" condition="Skin.HasSetting(cd) + Container.Content(albums) + !String.IsEmpty(ListItem.Art(discart))">conditional</animation>
 		    </control>
         </definition>

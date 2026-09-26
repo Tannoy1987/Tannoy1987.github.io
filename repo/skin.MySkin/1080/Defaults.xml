@@ -21,7 +21,7 @@
 		<disabledcolor>red</disabledcolor>
 		<selectedcolor>selected</selectedcolor>
 		<scroll>false</scroll>
-		<scrollspeed>20</scrollspeed>
+		<scrollspeed>15</scrollspeed>
 	</default>
 	<default type="fadelabel">
 		<align>left</align>
@@ -41,7 +41,7 @@
 		<pulseonselect>no</pulseonselect>
 		<height>60</height>
 		<scroll>true</scroll>
-		<scrollspeed>20</scrollspeed>
+		<scrollspeed>15</scrollspeed>
 	</default>
 	<default type="togglebutton">
 		<height>60</height>
